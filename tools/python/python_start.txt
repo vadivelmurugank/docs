@@ -1,0 +1,185 @@
+
+
+###########################################
+# Python Docs
+##########################################
+ 
+import mymodule
+help(mymodule)
+
+pydoc3 <mymodule>
+pydoc3 -k  <keyword>
+pydoc3 -m pydoc  <mymodule>
+
+###########################################
+# Python Debugger
+##########################################
+  
+import pdb
+import mymodule
+pdb.run('mymodule.run())
+
+
+python -m pdb myscript.py.
+
+>>> import pdb
+>>> a="a string"
+>>> pdb.set_trace()
+--Return--
+> <stdin>(1)<module>()->None
+(Pdb) p a
+'a string'
+(Pdb) c
+
+
+###########################################
+# command
+##########################################
+  
+
+python 
+       -c "command" 
+       -m "import modules" 
+       -i "interactive for variable inspection"
+                -d   "parser logs"
+
+##########################################
+# Python Start
+##########################################
+
+Order of python files:
+    *<MODULE>.so
+    *<MODULE>module.so
+    *<MODULE>.py
+    *<MODULE>.pyc
+
+root> echo $PYTHONPATH
+
+root> export PYTHONPATH=/root/
+
+###########################################
+# Python Packages
+##########################################
+
+	* https://www.python.org/downloads/release/python-343/
+
+	* http://www.scipy.org/install.html (Anaconda, WinPython)
+		* WINDOWS
+			* WinPython: A free distribution including the SciPy stack. Windows only.
+			* WinPython - Windows distribution of scipy + matplotlib + other scientific packages.
+			* http://winpython.github.io/
+
+		* LINUX
+			* Anaconda: A free distribution for the SciPy stack. Supports Linux, Windows and Mac.
+				* http://continuum.io/downloads#all
+
+			* Ubuntu & Debian
+				* sudo apt-get install python-numpy python-scipy python-matplotlib \
+					ipython ipython-notebook python-pandas python-sympy python-nose
+
+			* Fedora
+				* sudo yum install numpy scipy python-matplotlib ipython python-pandas sympy python-nose
+
+###########################################
+# PIP and SETUP TOOLS
+##########################################
+
+tar -xf pip-7.1.0.tar.gz
+cd pip-7.1.0
+python3 setup.py install
+
+
+###########################################
+# Python search and Install
+##########################################
+
+pip3.4  search <package>
+
+pip3.4  install  <Package>
+
+
+###########################################
+# My required Packages
+##########################################
+
+blockdiag   - blockdiag generates block-diagram image from text
+seqdiag     - seqdiag generates sequence-diagram image from text
+actdiag     - actdiag generates activity-diagram image from text
+nwdiag      - nwdiag generates network-diagram image from text
+classgraph  - Generate a Graphviz diagram of Python classes
+bdp         - Block Diagrams in Python
+daflsim     - Simulate a data-flow described by a graphviz diagram
+diagram     - Text mode diagrams using UTF-8 characters and fancy colors
+quickdiagrams - A text-to-class_diagram conversion tool.
+
+mekk     - xmind data files reading library
+
+ 
+###########################################
+# Python One-liner
+##########################################
+   
+# Multiple each item in a list
+# lambda - higher order functions (input function and output is also a function)
+# lambda [function: <function statements>, input lists ]
+ 
+$ python -c "print map(lambda x: x * 2, range(1,11))"
+[2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+
+# Print sum of numbers.
+$ python -c "print sum(range(1,1001))"
+500500
+ 
+Read in a File
+>>> print open("hello.py").readlines()
+['#! /usr/bin/python\r\n', 'print "Hello"\r\n']
+
+Happy Birthday to You!
+>>> print map(lambda x: "Happy Birthday to " + ("you" if x != 2 else "dear Name"),range(4))
+['Happy Birthday to you', 'Happy Birthday to you', 'Happy Birthday to dear Name', 'Happy Birthday to you']
+>>> 
+
+Verify if Exists in a String
+# string split
+>>> wordlist = ["scala", "akka", "play framework", "sbt", "typesafe"]
+>>> tweet = "This is an example tweet talking about scala and sbt."
+>>>
+>>> print map(lambda x: x in tweet.split(),wordlist)
+[True, False, False, False, False]
+
+6. Filter list of numbers
+#reduce
+>>> print reduce(lambda(a,b),c: (a+[c],b) if c > 60 else (a,b + [c]), [49, 58, 76, 82, 88, 90],([],[]))
+([76, 82, 88, 90], [49, 58])
+>>> 
+ 
+Fetch and Parse an XML web service
+>>> from xml.dom.minidom import parse, parseString
+>>> import urllib2
+>>> # note - i convert it back into xml to pretty print it
+... print parse(urllib2.urlopen("http://search.twitter.com/search.atom?&q=python")).toprettyxml(encoding="utf-8")
+<?xml version="1.0" encoding="utf-8"?>
+<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom" xmlns:georss="http://www.georss.org/georss" xmlns:google="http://base.google.com/ns/1 0" xmlns:openSearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:twitter="http://api.twitter.com/">
+
+Find minimum (or maximum) in a List
+>>> print min([14, 35, -7, 46, 98])
+-7
+>>> print max([14, 35, -7, 46, 98])
+98
+>>> 
+
+Parallel Processing
+>>> import multiprocessing
+>>> import math
+>>>
+>>> print list(multiprocessing.Pool(processes=4).map(math.exp,range(1,11)))
+
+Prime numbers between 2 and 50
+>>> n = 50 # We want to find prime numbers between 2 and 50
+>>>
+>>> print sorted(set(range(2,n+1)).difference(set((p * f) for p in range(2,int(n**0.5) + 2) for f in range(2,(n/p)+1))))
+[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
+>>> 
+
+  
+

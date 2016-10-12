@@ -128,6 +128,9 @@ PICOMINDS
     # cognitive tree
         https://github.com/PICOMINDS/cognitivetree.git
 
+    # http server at:
+        http://picominds.github.io/cognitivetree/
+
 
 PICOTHING
 ---------
@@ -136,6 +139,14 @@ PICOTHING
 PICOSENSE
 ---------
 
+
+
+PYPI UPLOADS
+------------
+
+    # Python upload to pypi
+    python setup.py register
+    python setup.py sdist bdist_wininst upload
 
 
 

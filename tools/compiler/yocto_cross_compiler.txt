@@ -1,0 +1,51 @@
+
+##########################################################
+
+    YOCTO POKY CROSS COMPILER
+
+    APPLICATION DEVELOPMENT TOOLKIT (ADT)
+
+########################################################
+
+ADT INSTALL:
+
+
+sudo yum install gawk wget git-core diffstat unzip texinfo build-essential chrpath libsdl1.2-dev xterm
+sudo yum install python gcc gcc-c++ git chrpath make wget diffstat texinfo python-curses libSDL-devel xterm
+
+yocto repository:
+	git clone git://git.yoctoproject.org/poky
+
+open embedded:
+	cd  poke
+	git clone git://git.openembedded.org/meta-openembedded
+
+source ./oe-init-build
+sudo bitbake adt-installer
+	=> Edit adt-installer.conf
+
+
+
+
+###########################
+
+/opt/poky/1.8
+
+###########################
+
+
+environment-setup-armv5e-poky-linux-gnueabi
+environment-setup-core2-64-poky-linux
+environment-setup-i586-poky-linux
+environment-setup-mips32r2-poky-linux
+environment-setup-ppc7400-poky-linux
+
+
+x86:
+source /opt/poky/1.8/environment-setup-i586-poky-linux
+
+
+
+
+
+

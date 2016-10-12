@@ -1,0 +1,34 @@
+
+================================================
+
+	Cross Compiler toolchain Install
+
+================================================
+
+Yocto Releases:
+1.8
+
+http://adtrepo.yoctoproject.org//1.8
+
+
+Download:
+ http://downloads.yoctoproject.org/releases/yocto/yocto-1.8/adt-installer 
+
+
+Download adt-installer to $HOME/adt_installer.tar.bz2
+tar -xjf adt_installer.tar.bz2
+
+cd adt-installer
+
+	Edit adt-installer.conf file:
+		YOCTOADT_TARGETS = arm ppc x86
+		YOCTOADT_TARGET_SYSROOT_LOC
+
+./adt_installer
+
+	Tool chain installed in /opt/poky/1.8/..
+
+
+
+
+
