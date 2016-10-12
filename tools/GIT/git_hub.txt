@@ -1,0 +1,143 @@
+===========================================
+            GIT HUB Repo
+===========================================
+
+PROJECTS
+--------
+
+VADIVELMURUGANK
+    - source
+    - docs
+    - resume
+    - opensrc
+    - docgenerator
+
+    PICOMINDS
+        -cognitive tree
+
+    PICOTHING
+
+    PICOSENSE
+
+
+GIT SETUP
+---------
+
+echo "Hello I am Git" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/vadivelmurugank/hello.git
+git push -u origin master
+
+
+HOME TREE
+--------
+
+    # Source
+    https://github.com/vadivelmurugank/source.git
+
+        - template
+            - Code
+                - C
+                - C++
+                - kernel
+                - glibc
+                - math
+            - init
+
+
+        - build
+                - make
+                    - autoconf
+                - conf
+
+        - sample
+            - C
+            - Algorithms
+            - C++
+            - Python
+
+        - proj
+
+            - Problems
+
+
+    # DOCS
+    https://github.com/vadivelmurugank/docs.git
+
+        - plat
+            - linux
+            - cygwin
+            - windows
+        
+        - tools
+            - compiler
+                - gcc
+                    - yocto
+                - erlang
+                - mingw
+            
+           
+            - git
+                - ppt
+            
+            - doxy
+                - ppt
+
+            - ssh
+
+        - Code
+            - C
+            - CPP
+            - Python
+
+        - Design
+            - OOAD
+
+    #opensrc
+    https://github.com/vadivelmurugank/opensrc.git
+
+    # Resume
+    https://github.com/vadivelmurugank/resume.git
+
+
+    # DOC GENERATOR
+
+        # API PARSE
+        https://github.com/vadivelmurugank/apiparse.git
+
+        # DOCGEN TEMPLATE
+        https://github.com/vadivelmurugank/docgen.git
+
+        #Python Inspect show
+        https://github.com/vadivelmurugank/inspectshow.git
+
+        # Calltree
+        https://github.com/vadivelmurugank/calltree.git
+
+        # Peekextn
+        https://github.com/vadivelmurugank/peekextn.git
+
+        # Picothing
+        https://github.com/vadivelmurugank/picothing
+
+
+PICOMINDS
+---------
+    # cognitive tree
+        https://github.com/PICOMINDS/cognitivetree.git
+
+
+PICOTHING
+---------
+
+
+PICOSENSE
+---------
+
+
+
+
+
+ 
