@@ -2,15 +2,17 @@
         GIT INTERNALS
 ===========================================
 
+..  sectnum::
+..  contents:: Table of Contents
+
 The name "git"
--------------
+--------------------------------------------------------------------
     * Stupid. Contemptible and despicable. Simple. Take your pick from the dictionary of slang.
     * "Global information tracker"
 
 
-
 Database vs Repository
-----------------------
+--------------------------------------------------------------------
 
     * Database - Data
         - Source files are the Data
@@ -26,7 +28,8 @@ Database vs Repository
 
 
 Meta-Data
----------
+--------------------------------------------------------------------
+
 Metadata is information about data, and describes basic characteristics of the data
 
     * Who created the data
@@ -42,7 +45,7 @@ Metadata is information about data, and describes basic characteristics of the d
 
 
 Hashing
--------
+--------------------------------------------------------------------
 
 Hashing is a mathematical process, which is based on substitution and transposition of data to generate a unique alphanumeric value.  The unique alphanumeric of a computer file is called its hash value
 
@@ -62,7 +65,7 @@ Two commonly used hash algorithms
     
 
 SHA1
-----
+--------------------------------------------------------------------
 
     * SHA-1 produces a 160-bit (20-byte) hash value known as a message digest. A SHA-1 hash value is typically rendered as a hexadecimal number, 40 digits long.
 
@@ -70,415 +73,438 @@ SHA1
 
     * SHA-1 forms part of several widely used security applications and protocols, including TLS and SSL, PGP, SSH, S/MIME, and IPsec.
 
-.. code-block:: shell
+    ..  code-block:: bash
 
-    SHA1:
-    echo -n "hash of hashes" | openssl sha1
-    (stdin)= e452add379d59bb81f06dcd398bd28a0d9a31de4
+        SHA1:
+        echo -n "hash of hashes" | openssl sha1
+        (stdin)= e452add379d59bb81f06dcd398bd28a0d9a31de4
 
-    echo -n "hash of hashes" | git hash-object -w --stdin
-    784f3cfc967690659bcf85e613394229c2e3f7f4
-
-
-    Md5:
-    echo -n "hash of hashes" | openssl dgst
-    (stdin)= 507c2e5dad72bd992ece6c44d0f6fbfb
-
-    base64 encoding:
-    echo -n "hash of hashes" | openssl sha1 | base64
-    KHN0ZGluKT0gZTQ1MmFkZDM3OWQ1OWJiODFmMDZkY2QzOThiZDI4YTBkOWEzMWRlNAo=
+        echo -n "hash of hashes" | git hash-object -w --stdin
+        784f3cfc967690659bcf85e613394229c2e3f7f4
 
 
-.. code-block:: shell
+        Md5:
+        echo -n "hash of hashes" | openssl dgst
+        (stdin)= 507c2e5dad72bd992ece6c44d0f6fbfb
 
-    git hash-object Makefile 
-    7159fb1b25c98506005f40892775b991238a9946
+        base64 encoding:
+        echo -n "hash of hashes" | openssl sha1 | base64
+        KHN0ZGluKT0gZTQ1MmFkZDM3OWQ1OWJiODFmMDZkY2QzOThiZDI4YTBkOWEzMWRlNAo=
 
-    git cat-file -p 7159f
-    << contents of Makefile >>
 
-    openssl sha1 Makefile 
-    SHA1(Makefile)= 39562937108b5f08cbde71a6b587a3d032659307
+    ..  code-block:: bash
+
+        git hash-object Makefile 
+        7159fb1b25c98506005f40892775b991238a9946
+
+        git cat-file -p 7159f
+        << contents of Makefile >>
+
+        openssl sha1 Makefile 
+        SHA1(Makefile)= 39562937108b5f08cbde71a6b587a3d032659307
 
 
 Git Objects
------------
+--------------------------------------------------------------------
 
-Blob           - Content/data of source
-Tree object    - Source and Subdirectories
-Commit Object  - Commit meta-data and source/directory.
+    Blob           - Content/data of source
+    Tree object    - Source and Subdirectories
+    Commit Object  - Commit meta-data and source/directory.
 
 
 
 Hash-Object
------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-hash of "dictionary of hashes"
+    hash of "dictionary of hashes"
 
-sha1(
-    meta data
-        commit message  : <<hash>>
-        commiter        : <<hash>>
-        commit date     : <<hash>>
-        author          : <<hash>>
-        authoring date  : <<hash>>
-        content         : <<hash of source/blob>> 
-)
+    ..  code-block:: python
+
+        sha1(
+            meta data
+                commit message  : <<hash>>
+                commiter        : <<hash>>
+                commit date     : <<hash>>
+                author          : <<hash>>
+                authoring date  : <<hash>>
+                content         : <<hash of source/blob>> 
+        )
 
 
 Commit Object
-------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-sha1(
-    commit message  => <<hash>> "Makefile initial commit"
-    commiter        => <<hash>> vad
-    commit date     => <<hash>> March 10 09:40:30
-    author          => <<hash>> Vad
-    author date     => <<hash>> March 10 09:40:30
-    tree            => <<hash>> 9c435a86e664be00db0d973e981425e4a3ef3f8d
-    Parents         => <<hash>> Hash of Parent Commit
-)
+    ..  code-block:: python
+
+        sha1(
+            commit message  => <<hash>> "Makefile initial commit"
+            commiter        => <<hash>> vad
+            commit date     => <<hash>> March 10 09:40:30
+            author          => <<hash>> Vad
+            author date     => <<hash>> March 10 09:40:30
+            tree            => <<hash>> 9c435a86e664be00db0d973e981425e4a3ef3f8d
+            Parents         => <<hash>> Hash of Parent Commit
+        )
 
 
 git Terminologies or vernaculars
------------
+--------------------------------------------------------------------
 
-Working (User) Tree    -->  Index (Staging) ---> Repository
-
-
-HEAD   : Pointer to Top of Index
-
-Reference : indexes are stored as file, named after sha-1. (.git/refs/..)
-
-master : Repository: default branch
-
-origin : Default name for the remote git repository that is cloned.
-
-         "git remote show origin" show info on remote git repo.
+    Working (User) Tree    -->  Index (Staging) ---> Repository
 
 
-Source Files  - blob
-Directories   - tree
+    HEAD   : Pointer to Top of Index
+
+    Reference : indexes are stored as file, named after sha-1. (.git/refs/..)
+
+    master : Repository: default branch
+
+    origin : Default name for the remote git repository that is cloned.
+
+             "git remote show origin" show info on remote git repo.
+
+
+    Source Files  - blob
+    Directories   - tree
 
 
 git init
----------
+--------------------------------------------------------------------
 
-    .git
-    |
-    |-- config
-    |-- description
-    |-- HEAD
-    |-- hooks
-    |   |-- applypatch-msg.sample
-    |   |-- commit-msg.sample
-    |   |-- post-update.sample
-    |   |-- pre-applypatch.sample
-    |   |-- pre-commit.sample
-    |   |-- prepare-commit-msg.sample
-    |   |-- pre-push.sample
-    |   |-- pre-rebase.sample
-    |   `-- update.sample
-    |-- info
-    |   `-- exclude
-    |-- objects
-    |   |-- info
-    |   `-- pack
-    `-- refs
-        |-- heads
-    `-- tags
+    ..  code-block:: text
+
+        .git
+        |
+        |-- config
+        |-- description
+        |-- HEAD
+        |-- hooks
+        |   |-- applypatch-msg.sample
+        |   |-- commit-msg.sample
+        |   |-- post-update.sample
+        |   |-- pre-applypatch.sample
+        |   |-- pre-commit.sample
+        |   |-- prepare-commit-msg.sample
+        |   |-- pre-push.sample
+        |   |-- pre-rebase.sample
+        |   `-- update.sample
+        |-- info
+        |   `-- exclude
+        |-- objects
+        |   |-- info
+        |   `-- pack
+        `-- refs
+            |-- heads
+        `-- tags
 
 
 File blobs
---------------------------
+--------------------------------------------------------------------
 
-echo -n "Hash of Dictionary of hashes" > hash.info
-git hash-object hash.info
+    ..  code-block:: bash
 
-git add hash.info
+        echo -n "Hash of Dictionary of hashes" > hash.info
+        git hash-object hash.info
 
-git hash-object hash.info
-89ac35eb8a1a6dd61cb86e9e9102cdf2dafc0811
+        git add hash.info
 
-89
-  `-- ac35eb8a1a6dd61cb86e9e9102cdf2dafc0811
+        git hash-object hash.info
+        89ac35eb8a1a6dd61cb86e9e9102cdf2dafc0811
 
-
-git cat-file -p 89ac35eb8a1a6dd61cb86e9e9102cdf2dafc0811
-Hash of Dictionary of hashes
-
-git cat-file blob 89ac3
-Hash of Dictionary of hashes
+        89
+          `-- ac35eb8a1a6dd61cb86e9e9102cdf2dafc0811
 
 
+        git cat-file -p 89ac35eb8a1a6dd61cb86e9e9102cdf2dafc0811
+        Hash of Dictionary of hashes
 
-.git
-|
-|-- objects
-|   |-- 89
-|   |   `-- ac35eb8a1a6dd61cb86e9e9102cdf2dafc0811
-|   |-- info
-|   `-- pack
+        git cat-file blob 89ac3
+        Hash of Dictionary of hashes
+
+
+    ..  code-block:: text
+
+        .git
+        |
+        |-- objects
+        |   |-- 89
+        |   |   `-- ac35eb8a1a6dd61cb86e9e9102cdf2dafc0811
+        |   |-- info
+        |   `-- pack
 
 
 
 Directory Trees
 -------------------------
 
-$git ls-tree HEAD
-100644 blob 89ac35eb8a1a6dd61cb86e9e9102cdf2dafc0811    hash.info
-040000 tree 9ea162ba560bf24b7d74bc76efe9564cd6d43bfd    src
+    ..  code-block:: bash
 
-$git ls-files --stage
-100644 89ac35eb8a1a6dd61cb86e9e9102cdf2dafc0811 0       hash.info
-100644 641d7f4c84bcae99ff118ac98cc7f305a6ed3587 0       src/Makefile
+        $git ls-tree HEAD
+        100644 blob 89ac35eb8a1a6dd61cb86e9e9102cdf2dafc0811    hash.info
+        040000 tree 9ea162ba560bf24b7d74bc76efe9564cd6d43bfd    src
+
+        $git ls-files --stage
+        100644 89ac35eb8a1a6dd61cb86e9e9102cdf2dafc0811 0       hash.info
+        100644 641d7f4c84bcae99ff118ac98cc7f305a6ed3587 0       src/Makefile
 
 
-$git cat-file commit HEAD
-tree f31720a71b30d7c8b6fb5eb565ab941ebc075056
-parent d1dcae49da43693067f0897d73b21b70886b6d4e
-author vadivelmurugank <vadivelmurugank@gmail.com> 1473711795 -0700
-committer vadivelmurugank <vadivelmurugank@gmail.com> 1473711795 -0700
+        $git cat-file commit HEAD
+        tree f31720a71b30d7c8b6fb5eb565ab941ebc075056
+        parent d1dcae49da43693067f0897d73b21b70886b6d4e
+        author vadivelmurugank <vadivelmurugank@gmail.com> 1473711795 -0700
+        committer vadivelmurugank <vadivelmurugank@gmail.com> 1473711795 -0700
 
-Add Source files
+    Add Source files
 
-git ls-tree f31720a71b30d7c8b6fb5eb565ab941ebc075056
-100644 blob 89ac35eb8a1a6dd61cb86e9e9102cdf2dafc0811    hash.info
-040000 tree 9ea162ba560bf24b7d74bc76efe9564cd6d43bfd    src
+    ..  code-block:: bash
 
-# Recursive into sub trees
-git ls-tree -r f31720a71b30d7c8b6fb5eb565ab941ebc075056
-100644 blob 89ac35eb8a1a6dd61cb86e9e9102cdf2dafc0811    hash.info
-100644 blob 641d7f4c84bcae99ff118ac98cc7f305a6ed3587    src/Makefile
-[evadkan@US00034637 gitwork]$
+        git ls-tree f31720a71b30d7c8b6fb5eb565ab941ebc075056
+        100644 blob 89ac35eb8a1a6dd61cb86e9e9102cdf2dafc0811    hash.info
+        040000 tree 9ea162ba560bf24b7d74bc76efe9564cd6d43bfd    src
+
+        # Recursive into sub trees
+        git ls-tree -r f31720a71b30d7c8b6fb5eb565ab941ebc075056
+        100644 blob 89ac35eb8a1a6dd61cb86e9e9102cdf2dafc0811    hash.info
+        100644 blob 641d7f4c84bcae99ff118ac98cc7f305a6ed3587    src/Makefile
 
 
 Finding Object Types
 --------------------
 
-# find Object types
-find .git/objects/ -type f -exec sh -c \
-    'hashid=$(basename $(dirname $0))$(basename $0) ; \
-    echo "$(git cat-file -t $hashid) : $hashid:" ; ' \
-    {} \;
+    ..  code-block:: bash
 
-blob : .git/objects/64/1d7f4c84bcae99ff118ac98cc7f305a6ed3587
-blob : .git/objects/89/ac35eb8a1a6dd61cb86e9e9102cdf2dafc0811
-commit : .git/objects/9d/5b0f5d534a444cec96b4a3e39c978570fb3eb2
-tree : .git/objects/9e/a162ba560bf24b7d74bc76efe9564cd6d43bfd
-tree : .git/objects/b8/10e4e972254ed11e21a05d024d7fd5b44454c6
-commit : .git/objects/d1/dcae49da43693067f0897d73b21b70886b6d4e
-tree : .git/objects/f3/1720a71b30d7c8b6fb5eb565ab941ebc075056
+        # find Object types
+        find .git/objects/ -type f -exec sh -c \
+            'hashid=$(basename $(dirname $0))$(basename $0) ; \
+            echo "$(git cat-file -t $hashid) : $hashid:" ; ' \
+            {} \;
+
+    blob : .git/objects/64/1d7f4c84bcae99ff118ac98cc7f305a6ed3587
+    blob : .git/objects/89/ac35eb8a1a6dd61cb86e9e9102cdf2dafc0811
+    commit : .git/objects/9d/5b0f5d534a444cec96b4a3e39c978570fb3eb2
+    tree : .git/objects/9e/a162ba560bf24b7d74bc76efe9564cd6d43bfd
+    tree : .git/objects/b8/10e4e972254ed11e21a05d024d7fd5b44454c6
+    commit : .git/objects/d1/dcae49da43693067f0897d73b21b70886b6d4e
+    tree : .git/objects/f3/1720a71b30d7c8b6fb5eb565ab941ebc075056
 
 
 Creating Commit Object
 -----------------------
 
+    ..  code-block: bash
 
-$git ls-tree $(git write-tree)
-100644 blob 89ac35eb8a1a6dd61cb86e9e9102cdf2dafc0811    hash.info
-040000 tree 9ea162ba560bf24b7d74bc76efe9564cd6d43bfd    src
+        $git ls-tree $(git write-tree)
+        100644 blob 89ac35eb8a1a6dd61cb86e9e9102cdf2dafc0811    hash.info
+        040000 tree 9ea162ba560bf24b7d74bc76efe9564cd6d43bfd    src
 
-# Create a new file
-$echo 'Hello World!' > greeting
+        # Create a new file
+        $echo 'Hello World!' > greeting
 
-# Add File "greeting"
-$git add greeting
-
-
-$git hash-object greeting
-980a0d5f19a64b4b30a87d4206aade58726b60e3
-
-# File blob is being created on git add
-$git ls-files --stage
-100644 980a0d5f19a64b4b30a87d4206aade58726b60e3 0       greeting
-100644 89ac35eb8a1a6dd61cb86e9e9102cdf2dafc0811 0       hash.info
-100644 641d7f4c84bcae99ff118ac98cc7f305a6ed3587 0       src/Makefile
+        # Add File "greeting"
+        $git add greeting
 
 
-# The blob is not referenced by blob yet. Currently reference with .git/index
+        $git hash-object greeting
+        980a0d5f19a64b4b30a87d4206aade58726b60e3
 
-# The new greeting blob is referenced in .git/index. Create new tree object with .git/index
-# contents with "write-tree".
-$git write-tree
-39dea6858ce63e3fe37cf3b802179285f3f6e5d2
-
-
-# Make a Commit Object to hold the new tree with the log.
-$echo "Greeting message" | git commit-tree 39dea
-631f6ac1f8aa7772333059490252b69ae9cca820
+        # File blob is being created on git add
+        $git ls-files --stage
+        100644 980a0d5f19a64b4b30a87d4206aade58726b60e3 0       greeting
+        100644 89ac35eb8a1a6dd61cb86e9e9102cdf2dafc0811 0       hash.info
+        100644 641d7f4c84bcae99ff118ac98cc7f305a6ed3587 0       src/Makefile
 
 
-# Make the new tree as the new HEAD of current branch
-echo 631f6ac1f8aa7772333059490252b69ae9cca820 > .git/refs/heads/master
+    The blob is not referenced by blob yet. Currently reference with .git/index
 
-# Refer branch master refer to the new HEAD
-$git update-ref refs/heads/master 631f6
+        ..  code-block:: bash
 
-# Attach symbolic reference of HEAD to master
-$git symbolic-ref HEAD refs/heads/master
+            # The new greeting blob is referenced in .git/index. Create new tree object with .git/index
+            # contents with "write-tree".
+            $git write-tree
+            39dea6858ce63e3fe37cf3b802179285f3f6e5d2
 
 
-# Now the actual commit object with all references added
-$git log
-commit 631f6ac1f8aa7772333059490252b69ae9cca820
-Author: vadivelmurugank <vadivelmurugank@gmail.com>
-Date:   Mon Sep 12 15:39:00 2016 -0700
+            # Make a Commit Object to hold the new tree with the log.
+            $echo "Greeting message" | git commit-tree 39dea
+            631f6ac1f8aa7772333059490252b69ae9cca820
 
-    Greeting message
+
+            # Make the new tree as the new HEAD of current branch
+            echo 631f6ac1f8aa7772333059490252b69ae9cca820 > .git/refs/heads/master
+
+            # Refer branch master refer to the new HEAD
+            $git update-ref refs/heads/master 631f6
+
+            # Attach symbolic reference of HEAD to master
+            $git symbolic-ref HEAD refs/heads/master
+
+
+            # Now the actual commit object with all references added
+            $git log
+            commit 631f6ac1f8aa7772333059490252b69ae9cca820
+            Author: vadivelmurugank <vadivelmurugank@gmail.com>
+            Date:   Mon Sep 12 15:39:00 2016 -0700
+
+                Greeting message
 
 
 Commit object and Parent Relationship
 -------------------------------------
 
-Every Commit holds a tree and every tree may contain any number of other
-trees and blobs in its leaves.
+    Every Commit holds a tree and every tree may contain any number of other
+    trees and blobs in its leaves.
 
-Commit objects link to one of more parent commits to form "revision history"
-
-
-Parent of any commit is referenced using caret symbol. If a commit has more than
-one parent, the first is used.
-
-name^   : Parent of commit <name>
-name^^  : Parent of Parent of Commit <name>
-name^2  : Nth Parent if there are more than one parent in case of merge
-name~10 : Commit's nth ancestor referenced using tilde(~) followed by ordinal number.
-name:path : HEAD^1:Makefile HEAD^2:Makefile
-name^{tree} : reference commit by tree
-
-name1..name2 : (double dots) commit ranges. commits reachable from name2 back to, but not
-including name1.
-
-name1...name2 : (triple dots) commit ranges excluding references to name1 and name2.
-
-master..      : master..HEAD
-..master      : Commits occured since last rebase or merge
-
---grep=pattern
---commiter=pattern
---author=pattern
---since="2 weeks ago"
---until="1 week ago"
-
-# All commits since last two weeks
-git log  --all --oneline --graph --since="2 weeks ago" --no-merges
-
-#git log --ADOG
-git log --all --decorate --oneline --graph <<--no-merges>> <<--reverse>>
+    Commit objects link to one of more parent commits to form "revision history"
 
 
-# Git commit count from author
-git shortlog -s -n
-git shortlog -s -n --author="vadivel" --no-merges --reverse
-git shortlog --author="vadivel" --since="1 year ago"
+    Parent of any commit is referenced using caret symbol. If a commit has more than
+    one parent, the first is used.
+
+    name^   : Parent of commit <name>
+    name^^  : Parent of Parent of Commit <name>
+    name^2  : Nth Parent if there are more than one parent in case of merge
+    name~10 : Commit's nth ancestor referenced using tilde(~) followed by ordinal number.
+    name:path : HEAD^1:Makefile HEAD^2:Makefile
+    name^{tree} : reference commit by tree
+
+    name1..name2 : (double dots) commit ranges. commits reachable from name2 back to, but not
+    including name1.
+
+    name1...name2 : (triple dots) commit ranges excluding references to name1 and name2.
+
+    master..      : master..HEAD
+    ..master      : Commits occured since last rebase or merge
+
+    --grep=pattern
+    --commiter=pattern
+    --author=pattern
+    --since="2 weeks ago"
+    --until="1 week ago"
+
+    ..  code-block:: bash
+
+        # All commits since last two weeks
+        git log  --all --oneline --graph --since="2 weeks ago" --no-merges
+
+        #git log --ADOG
+        git log --all --decorate --oneline --graph <<--no-merges>> <<--reverse>>
+
+
+        # Git commit count from author
+        git shortlog -s -n
+        git shortlog -s -n --author="vadivel" --no-merges --reverse
+        git shortlog --author="vadivel" --since="1 year ago"
 
 
 Branching
----------
+--------------------------------------------------------------------
 
-Branch is a named reference to a commit object. Commit objects has complete tree object of sources.
+    Branch is a named reference to a commit object. Commit objects has complete tree object of sources.
 
-# List all branches
-git branch -v 
-git show-branch
+    # List all branches
+    git branch -v 
+    git show-branch
 
-# Create a branch
-git checkout <<commit hash or branchname>>
+    # Create a branch
+    git checkout <<commit hash or branchname>>
 
-Branchname is simply an alias for most recent commit on that branch, which is similar to using alias "HEAD" for recent commit instead of recent hash id. 
+    Branchname is simply an alias for most recent commit on that branch, which is similar to using alias "HEAD" for recent commit instead of recent hash id. 
 
-tagname is also alias for naming a commit instead of hashid. Tag aliases
-never change and references the same hash-id.
+    tagname is also alias for naming a commit instead of hashid. Tag aliases
+    never change and references the same hash-id.
 
 
 Merge and Rebase
-----------------
+--------------------------------------------------------------------
 
-O <-- A <-- B <-- C <-- D (HEAD)       <<-- Branch D
-       \
-        \W <-- X <-- Y <--- Z (HEAD)   <<-- Branch Z
+    ..  code-block:: text
 
-At A : create new branch Z 
-Two branches: Branch D and Branch Z.
+        O <-- A <-- B <-- C <-- D (HEAD)       <<-- Branch D
+               \
+                \W <-- X <-- Y <--- Z (HEAD)   <<-- Branch Z
 
-* Merge
-  Merge Branch D to Branch Z => Z' (Z+D)    
+    At A : create new branch Z 
+    Two branches: Branch D and Branch Z.
 
-    New Z' commit has been created from the merge which has changes of D and Z
-into Z'  
+    * Merge
+        Merge Branch D to Branch Z => Z' (Z+D)    
 
-    git checkout Z
-    git merge D
+        New Z' commit has been created from the merge which has changes of D and Z into Z'  
 
-
-O <-- A <-- B <-- C <-- D <----\
-       \                        \
-        \                        \
-         W <-- X <-- Y <--- Z <-- Z' ( Z+D) (HEAD)   <<-- Branch Z
+        git checkout Z
+        git merge D
 
 
-* Rebase
-  
-  Transplant the Z branch straight onto D, effectively moving it forward in
-time.
+    ..  code-block:: text
 
-   git checkout Z
-   git rebase D
-
-   #Interative rebasing
-   git rebase -i D
-
-    O <-- A <-- B <-- C <-- D
-                            \   <<-- rebase to D    
-                             \                       
-                              W' <-- X' <-- Y' <--- Z'
-                            (W+D)   (W'+X)  (X'+ Y)  (Y'+Z)
+        O <-- A <-- B <-- C <-- D <----\
+               \                        \
+                \                        \
+                 W <-- X <-- Y <--- Z <-- Z' ( Z+D) (HEAD)   <<-- Branch Z
 
 
+    * Rebase
+      
+        Transplant the Z branch straight onto D, effectively moving it forward in time.
 
- * Git Hard and Soft Reset
+       git checkout Z
+       git rebase D
 
-    git reset HEAD
+       #Interative rebasing
+       git rebase -i D
 
-    * Soft Reset
+        ..  code-block:: text
 
-    git reset --soft HEAD~1
-
-    git reset --soft HEAD^ ( porcelain command) 
-
-    git update-ref HEAD HEAD^ ( Plumbing to do same soft reset)
-
-    * Hard Reset
-
-    git reset --hard HEAD~3
-
-
-* Git Stash before Reset
-
-    # Create temporary commit
-    git stash 
-
-    git checkout -b new-branch HEAD~3
-
-    git checkout master
-
-    git stash apply
+            O <-- A <-- B <-- C <-- D
+                                    \   <<-- rebase to D    
+                                     \                       
+                                      W' <-- X' <-- Y' <--- Z'
+                                    (W+D)   (W'+X)  (X'+ Y)  (Y'+Z)
 
 
-    # Git stash operations
-    git stash list
-    git stash clear
-    git log stash@{1}
-    git show stash@{1}
+    * Git Hard and Soft Reset
 
-* Git reflogs
-    Git reference logs to track every change made to the repository.
+        git reset HEAD
 
-    git reflog
 
-    git stash list
-    git reflog show stash
+        * Soft Reset
+
+            git reset --soft HEAD~1
+
+            git reset --soft HEAD^ ( porcelain command) 
+
+            git update-ref HEAD HEAD^ ( Plumbing to do same soft reset)
+
+        * Hard Reset
+
+            git reset --hard HEAD~3
+
+
+    * Git Stash before Reset
+
+        # Create temporary commit
+        git stash 
+
+        git checkout -b new-branch HEAD~3
+
+        git checkout master
+
+        git stash apply
+
+
+        # Git stash operations
+        git stash list
+        git stash clear
+        git log stash@{1}
+        git show stash@{1}
+
+    * Git reflogs
+        Git reference logs to track every change made to the repository.
+
+        git reflog
+
+        git stash list
+        git reflog show stash
 
 
 
@@ -486,297 +512,308 @@ Git Plumbing and Porcelain commands
 -----------------------------------
 
 Plumbing or low level commands
-==============================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# the plumbing commands #
+    # the plumbing commands #
 
-* `rev-parse [something]`
-    * show the SHA of any weird git phrase
- 
-* `hash-object -w [file]`
-    * take any file or stdin and return a blob sha
+    * `rev-parse [something]`
+        * show the SHA of any weird git phrase
+     
+    * `hash-object -w [file]`
+        * take any file or stdin and return a blob sha
 
-* `ls-tree (-r) [sha]`
-    * show the entries of a git tree in the db
+    * `ls-tree (-r) [sha]`
+        * show the entries of a git tree in the db
 
-* `ls-files -s`
-    * show the entries of the index
+    * `ls-files -s`
+        * show the entries of the index
 
-* `read-tree`
-    * make the index look like a git tree in the db 
+    * `read-tree`
+        * make the index look like a git tree in the db 
 
-* `update-index`
-    * take an existing blob or a file from the work tree and update the index entry
+    * `update-index`
+        * take an existing blob or a file from the work tree and update the index entry
 
-* `write-tree`
-    * record the current state of the index into a git tree in the db and return the sha
+    * `write-tree`
+        * record the current state of the index into a git tree in the db and return the sha
 
-* `commit-tree`
-    * create a commit object from a git tree in the db
+    * `commit-tree`
+        * create a commit object from a git tree in the db
 
-* `update-ref`
-    * update a branch (or other reference) to point to a specific commit sha
+    * `update-ref`
+        * update a branch (or other reference) to point to a specific commit sha
 
-* `symbolic-ref`
-    * update a reference (usually HEAD) to point to another reference (like a branch)
+    * `symbolic-ref`
+        * update a reference (usually HEAD) to point to another reference (like a branch)
 
 
 Porcelain or user interface commands
-====================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+    * MAKE CHANGES
 
-* MAKE CHANGES
-Review edits and craf a commit transaction
+        Review edits and craf a commit transaction
 
-     $ git status
-    Lists all new or modified files to be commited
+             $ git status
+                Lists all new or modified files to be commited
 
-     $ git add [file]
-    Snapshots the file in preparation for versioning
+             $ git add [file]
+                Snapshots the file in preparation for versioning
 
-     $ git reset [file]
-    Unstages the file, but preserve its contents
+             $ git reset [file]
+                Unstages the file, but preserve its contents
 
-     $ git diff
-    Shows file differences not yet staged
+             $ git diff
+                Shows file differences not yet staged
 
-     $ git diff --staged
-    Shows file differences between staging and the last file version
+             $ git diff --staged
+                Shows file differences between staging and the last file version
 
-     $ git commit -m "[descriptive message]"
-    Records file snapshots permanently in version history
+             $ git commit -m "[descriptive message]"
+                Records file snapshots permanently in version history
 
 
-* CONFIGURE TOOLING
-Configure user information for all local repositories
+    * CONFIGURE TOOLING
 
+        Configure user information for all local repositories
 
-     $ git config --global user.name "[name]"
-    Sets the name you want atached to your commit transactions
 
-     $ git config --global user.email "[email address]"
-    Sets the email you want atached to your commit transactions
+             $ git config --global user.name "[name]"
+                Sets the name you want atached to your commit transactions
 
-     $ git config --global color.ui auto
-    Enables helpful colorization of command line output
+             $ git config --global user.email "[email address]"
+                Sets the email you want atached to your commit transactions
 
+             $ git config --global color.ui auto
+                Enables helpful colorization of command line output
 
-* CREATE REPOSITORIES
-Start a new repository or obtain one from an existing URL
 
-     $ git init [project-name]
-    Creates a new local repository with the specified name
+    * CREATE REPOSITORIES
 
-     $ git clone [url]
-    Downloads a project and its entire version history
+        Start a new repository or obtain one from an existing URL
 
-* GROUP CHANGES
-Name a series of commits and combine completed efforts
+             $ git init [project-name]
+                Creates a new local repository with the specified name
 
-     $ git branch
-    Lists all local branches in the current repository
+             $ git clone [url]
+                Downloads a project and its entire version history
 
-     $ git branch [branch-name]
-    Creates a new branch
+    * GROUP CHANGES
 
-     $ git checkout [branch-name]
-    Switches to the specified branch and updates the working directory
+        Name a series of commits and combine completed efforts
 
-     $ git merge [branch]
-    Combines the specified branch’s history into the current branch
+             $ git branch
+                Lists all local branches in the current repository
 
-     $ git branch -d [branch-name]
-    Deletes the specified branch
+             $ git branch [branch-name]
+                Creates a new branch
 
+             $ git checkout [branch-name]
+                Switches to the specified branch and updates the working directory
 
+             $ git merge [branch]
+                Combines the specified branch’s history into the current branch
 
-* SYNCHRONIZE CHANGES
-Register a repository bookmark and exchange version history
+             $ git branch -d [branch-name]
+                Deletes the specified branch
 
-     $ git fetch [bookmark]
-    Downloads all history from the repository bookmark
 
-     $ git merge [bookmark]/[branch]
-    Combines bookmark’s branch into current local branch
 
-     $ git push [alias] [branch]
-    Uploads all local branch commits to GitHub
+    * SYNCHRONIZE CHANGES
 
-     $ git pull
-    Downloads bookmark history and incorporates changes
+        Register a repository bookmark and exchange version history
 
-     $git tag
-    Tag a specific commit with a human readable alias.
+             $ git fetch [bookmark]
+                Downloads all history from the repository bookmark
 
+             $ git merge [bookmark]/[branch]
+                Combines bookmark’s branch into current local branch
 
-* REFACTOR FILENAMES
-Relocate and remove versioned files
+             $ git push [alias] [branch]
+                Uploads all local branch commits to GitHub
 
-     $ git rm [file]
-    Deletes the file from the working directory and stages the deletion
+             $ git pull
+                Downloads bookmark history and incorporates changes
 
-     $ git rm --cached [file]
-    Removes the file from version control but preserves the file locally
+             $git tag
+                Tag a specific commit with a human readable alias.
 
-     $ git mv [file-original] [file-renamed]
-    Changes the file name and prepares it for commit
 
-* SAVE FRAGMENTS
-Shelve and restore incomplete changes
+    * REFACTOR FILENAMES
 
-     $ git stash
-    Temporarily stores all modified tracked files
+        Relocate and remove versioned files
 
-     $ git stash list
-    Lists all stashed changesets
+             $ git rm [file]
+                Deletes the file from the working directory and stages the deletion
 
-     $ git stash pop
-    Restores the most recently stashed files
+             $ git rm --cached [file]
+                Removes the file from version control but preserves the file locally
 
-     $ git stash drop
-    Discards the most recently stashed changeset
+             $ git mv [file-original] [file-renamed]
+                Changes the file name and prepares it for commit
 
+    * SAVE FRAGMENTS
 
-* REDO COMMITS
-Erase mistakes and craf replacement history
+        Shelve and restore incomplete changes
 
-     $ git reset [commit]
-    Undoes all commits afer [commit], preserving changes locally
+             $ git stash
+                Temporarily stores all modified tracked files
 
-     $ git reset --hard [commit]
-    Discards all history and changes back to the specified commit
+             $ git stash list
+                Lists all stashed changesets
 
+             $ git stash pop
+                Restores the most recently stashed files
 
-* REVIEW HISTORY
-Browse and inspect the evolution of project files
+             $ git stash drop
+                Discards the most recently stashed changeset
 
-     $ git log
-    Lists version history for the current branch
 
-     $ git log --follow [file]
-    Lists version history for a file, including renames
+    * REDO COMMITS
 
-     $ git diff [first-branch]...[second-branch]
-    Shows content differences between two branches
+        Erase mistakes and craf replacement history
 
-     $ git show [commit]
-    Outputs metadata and content changes of the specified commit
+             $ git reset [commit]
+                Undoes all commits afer [commit], preserving changes locally
 
+             $ git reset --hard [commit]
+                Discards all history and changes back to the specified commit
 
-* SUPPRESS TRACKING
-Exclude temporary files and paths
 
-     $ git ls-files --other --ignored --exclude-standard
-    Lists all ignored files in this project
+    * REVIEW HISTORY
 
-* GIT WEB SERVER
-Run Git webserver for the local repository.
+        Browse and inspect the evolution of project files
 
-    $ git instaweb --httpd=webrick
+             $ git log
+                Lists version history for the current branch
 
-    $ git instaweb --stop
+             $ git log --follow [file]
+                Lists version history for a file, including renames
 
-* GIT FORMATTING
+             $ git diff [first-branch]...[second-branch]
+                Shows content differences between two branches
 
-   $ git archive
-    Creates a tar or zip file including the contents of a single tree from your repository. Example: git archive --format=zip master^ README >file.zip
+             $ git show [commit]
+                Outputs metadata and content changes of the specified commit
 
-    $ git gc
-    Garbage collector for your repository. Optimizes your repository. Should be run occasionally. Example: git gc Counting objects: 7, done. Delta compression using up to 2 threads. Compressing objects: 100% (5/5), done. Writing objects: 100% (7/7), done. Total 7 (delta 1), reused 0 (delta 0)
 
-    $ git fsck
-Does an integrity check of the Git file system, identifying corrupted objects. Example: git fsck
+    * SUPPRESS TRACKING
 
-    $ git prune
-Removes objects that are no longer pointed to by any object in any reachable branch.
-    
+        Exclude temporary files and paths
 
+            $ git ls-files --other --ignored --exclude-standard
+                Lists all ignored files in this project
 
-.git directory
----------------
+        * GIT WEB SERVER
 
-* The .git directory
+            Run Git webserver for the local repository.
 
-There are a number of files in the .git directory used by the
-porcelain.  In case you're curious (I was), this is what they are:
+            $ git instaweb --httpd=webrick
 
-index
-- The actual index file.
+            $ git instaweb --stop
 
-objects/
-- The object database.  Can be overridden by $GIT_OBJECT_DIRECTORY
+    * GIT FORMATTING
 
-hooks/
-- where the hook scripts are kept.  The standard git template includes
-  examples, but disabled by being marked non-executable.
+       $ git archive
+            Creates a tar or zip file including the contents of a single tree from your repository. Example: git archive --format=zip master^ README >file.zip
 
-info/exclude
-- Default project-wide list of file patterns to exclude from notice.
-  To this is added the per-directory list in .gitignore.
-  See the git-ls-files docs for full details.
+        $ git gc
+            Garbage collector for your repository. Optimizes your repository. Should be run occasionally. Example: git gc Counting objects: 7, done. Delta compression using up to 2 threads. Compressing objects: 100% (5/5), done. Writing objects: 100% (7/7), done. Total 7 (delta 1), reused 0 (delta 0)
 
-refs/
-- References to development heads (branches) and tags.
+        $ git fsck
+            Does an integrity check of the Git file system, identifying corrupted objects. Example: git fsck
 
-remotes/
-- Short names of remote repositories we pull from or push to.
-  Details are in the "git-fetch" man page.
+        $ git prune
+            Removes objects that are no longer pointed to by any object in any reachable branch.
 
-HEAD
-- The current default development head.
-- Created by git-init-db and never deleted
-- Changed by git-checkout
-- Used by git-commit and any other command that commits changes.
-- May be a dangling pointer, in which case git-commit
-  does an "initial checkin" with no parent.
 
-COMMIT_EDITMSG
-- Temp used by git-commit to edit a commit message.
-COMMIT_MSG
-- Temp used by git-commit to form a commit message,
-  post-processed from COMMIT_EDITMSG.
+".git" directory
+--------------------------------------------------------------------
 
-FETCH_HEAD
-- Just-fetched commits, to be merged into the local trunk.
-- Created by git-fetch.
-- Used by git-pull as the source of data to merge.
+    * The .git directory
 
-MERGE_HEAD
-- Keeps track of what heads are currently being merged into HEAD.
-- Created by git-merge --no-commit with the heads used 
-- Deleted by git-checkout and git-reset (since you're abandoning
-  the merge)
-- Used by git-commit to supply additional parents to the current commit.
-  (And deleted when done.)
+        There are a number of files in the .git directory used by the
+        porcelain.  In case you're curious (I was), this is what they are:
 
-MERGE_MSG
-- Generated by git-merge --no-commit.
-- Used by git-commit as the commit message for a merge
-  (If present, git-commit doesn't prompt.)
+        index
+            - The actual index file.
 
-MERGE_SAVE
-- cpio archive of all locally modified files created by
-  "git-merge" before starting to do anything, if multiple
-  merge strategies are being attempted.
-  Used to rewind the tree in case a merge fails.
+        objects/
+            - The object database.  Can be overridden by $GIT_OBJECT_DIRECTORY
 
-ORIG_HEAD
-- Previous HEAD commit prior to a merge or reset operation.
+        hooks/
+            - where the hook scripts are kept.  The standard git template includes
+              examples, but disabled by being marked non-executable.
 
-LAST_MERGE
-- Set by the "resolve" strategy to the most recently merged-in branch.
-  Basically, a copy of MERGE_HEAD.  Not used by the other merge strategies,
-  and resolve is no longer the default, so its utility is very limited.
+        info/exclude
+            - Default project-wide list of file patterns to exclude from notice.
+              To this is added the per-directory list in .gitignore.
+              See the git-ls-files docs for full details.
 
-BISECT_LOG
-- History of a git-bisect operation.
-- Can be replayed (or, more usefully, a prefix can) by "git-bisect replay"
-BISECT_NAMES
-- The list of files to be modified by git-bisect.
-- Set by "git-bisect start"
+        refs/
+            - References to development heads (branches) and tags.
 
-TMP_HEAD (used by git-fetch)
-TMP_ALT (used by git-fetch)
+        remotes/
+            - Short names of remote repositories we pull from or push to.
+              Details are in the "git-fetch" man page.
+
+        HEAD
+            - The current default development head.
+            - Created by git-init-db and never deleted
+            - Changed by git-checkout
+            - Used by git-commit and any other command that commits changes.
+            - May be a dangling pointer, in which case git-commit
+              does an "initial checkin" with no parent.
+
+        COMMIT_EDITMSG
+            - Temp used by git-commit to edit a commit message.
+
+        COMMIT_MSG
+            - Temp used by git-commit to form a commit message,
+              post-processed from COMMIT_EDITMSG.
+
+        FETCH_HEAD
+            - Just-fetched commits, to be merged into the local trunk.
+            - Created by git-fetch.
+            - Used by git-pull as the source of data to merge.
+
+        MERGE_HEAD
+            - Keeps track of what heads are currently being merged into HEAD.
+            - Created by git-merge --no-commit with the heads used 
+            - Deleted by git-checkout and git-reset (since you're abandoning
+              the merge)
+            - Used by git-commit to supply additional parents to the current commit.
+              (And deleted when done.)
+
+        MERGE_MSG
+            - Generated by git-merge --no-commit.
+            - Used by git-commit as the commit message for a merge
+              (If present, git-commit doesn't prompt.)
+
+        MERGE_SAVE
+            - cpio archive of all locally modified files created by
+              "git-merge" before starting to do anything, if multiple
+              merge strategies are being attempted.
+              Used to rewind the tree in case a merge fails.
+
+        ORIG_HEAD
+            - Previous HEAD commit prior to a merge or reset operation.
+
+        LAST_MERGE
+            - Set by the "resolve" strategy to the most recently merged-in branch.
+              Basically, a copy of MERGE_HEAD.  Not used by the other merge strategies,
+              and resolve is no longer the default, so its utility is very limited.
+
+        BISECT_LOG
+            - History of a git-bisect operation.
+            - Can be replayed (or, more usefully, a prefix can) by "git-bisect replay"
+
+        BISECT_NAMES
+            - The list of files to be modified by git-bisect.
+            - Set by "git-bisect start"
+
+        TMP_HEAD (used by git-fetch)
+        TMP_ALT (used by git-fetch)
 
 
 

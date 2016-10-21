@@ -28,8 +28,31 @@
 
 .. Comment: This line will not be processed and displayed
 
+
+Convert to HTML and S5 Presentation 
+--------------------------------------------------------------------
+
+    # HTML Files
+    rst2html.py temp.txt temp.html
+
+
+    # Presentation
+    # S5: A Simple Standards-Based Slide Show System
+
+    rst2s5.py --theme small-white temp.txt temp.html
+
+        themes: default
+                small/medium/big-white/black
+
+                /usr/lib/python3.2/site-packages/docutils/writers/s5_html/themes/
+                    big-black/  default/	   medium-white/  small-black/
+                    big-white/  medium-black/  README.txt	  small-white/
+
+        http://www.meyerweb.com/eric/tools/s5/credits.html
+                    
+                
 ===========
- PORTMOD
+Table Block
 ===========
 
 TABLE BLOCK
