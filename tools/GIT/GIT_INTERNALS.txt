@@ -4,10 +4,16 @@
 
 ..  sectnum::
 ..  contents:: Table of Contents
+..  header::
+    GIT Internals
+
+.. footer::
+    @ Vadivel 2014
 
 The name "git"
 --------------------------------------------------------------------
-    * Stupid. Contemptible and despicable. Simple. Take your pick from the dictionary of slang.
+    * Stupid. Contemptible and despicable. Simple. Take your pick from the
+      dictionary of slang.
     * "Global information tracker"
 
 
@@ -30,7 +36,8 @@ Database vs Repository
 Meta-Data
 --------------------------------------------------------------------
 
-Metadata is information about data, and describes basic characteristics of the data
+Metadata is information about data, and describes basic characteristics of the 
+data
 
     * Who created the data
     * What the data file contains
@@ -47,7 +54,9 @@ Metadata is information about data, and describes basic characteristics of the d
 Hashing
 --------------------------------------------------------------------
 
-Hashing is a mathematical process, which is based on substitution and transposition of data to generate a unique alphanumeric value.  The unique alphanumeric of a computer file is called its hash value
+Hashing is a mathematical process, which is based on substitution and 
+transposition of data to generate a unique alphanumeric value.  The unique 
+alphanumeric of a computer file is called its hash value
 
 In the linguistic sense of "to chop and mix"
 
@@ -67,11 +76,15 @@ Two commonly used hash algorithms
 SHA1
 --------------------------------------------------------------------
 
-    * SHA-1 produces a 160-bit (20-byte) hash value known as a message digest. A SHA-1 hash value is typically rendered as a hexadecimal number, 40 digits long.
+    * SHA-1 produces a 160-bit (20-byte) hash value known as a message digest. A 
+    * SHA-1 hash value is typically rendered as a hexadecimal number, 40 digits 
+    * long.
 
-    * SHA-1 differs from SHA-0 only by a single bitwise rotation in the message schedule of its compression function.
+    * SHA-1 differs from SHA-0 only by a single bitwise rotation in the message 
+    * schedule of its compression function.
 
-    * SHA-1 forms part of several widely used security applications and protocols, including TLS and SSL, PGP, SSH, S/MIME, and IPsec.
+    * SHA-1 forms part of several widely used security applications and 
+    * protocols, including TLS and SSL, PGP, SSH, S/MIME, and IPsec.
 
     ..  code-block:: bash
 
@@ -94,14 +107,13 @@ SHA1
 
     ..  code-block:: bash
 
-        git hash-object Makefile 
-        7159fb1b25c98506005f40892775b991238a9946
+        git hash-object Makefile 7159fb1b25c98506005f40892775b991238a9946
 
         git cat-file -p 7159f
         << contents of Makefile >>
 
-        openssl sha1 Makefile 
-        SHA1(Makefile)= 39562937108b5f08cbde71a6b587a3d032659307
+        openssl sha1 Makefile SHA1(Makefile)= 
+            39562937108b5f08cbde71a6b587a3d032659307
 
 
 Git Objects
@@ -127,8 +139,7 @@ Hash-Object
                 commit date     : <<hash>>
                 author          : <<hash>>
                 authoring date  : <<hash>>
-                content         : <<hash of source/blob>> 
-        )
+                content         : <<hash of source/blob>> )
 
 
 Commit Object
@@ -318,7 +329,8 @@ Creating Commit Object
 
         ..  code-block:: bash
 
-            # The new greeting blob is referenced in .git/index. Create new tree object with .git/index
+            # The new greeting blob is referenced in .git/index. Create new tree 
+            # object with .git/index
             # contents with "write-tree".
             $git write-tree
             39dea6858ce63e3fe37cf3b802179285f3f6e5d2
@@ -330,7 +342,8 @@ Creating Commit Object
 
 
             # Make the new tree as the new HEAD of current branch
-            echo 631f6ac1f8aa7772333059490252b69ae9cca820 > .git/refs/heads/master
+            echo 631f6ac1f8aa7772333059490252b69ae9cca820 > 
+                .git/refs/heads/master
 
             # Refer branch master refer to the new HEAD
             $git update-ref refs/heads/master 631f6
@@ -357,29 +370,35 @@ Commit object and Parent Relationship
     Commit objects link to one of more parent commits to form "revision history"
 
 
-    Parent of any commit is referenced using caret symbol. If a commit has more than
-    one parent, the first is used.
+    Parent of any commit is referenced using caret symbol. If a commit has more 
+    than one parent, the first is used.
 
-    name^   : Parent of commit <name>
-    name^^  : Parent of Parent of Commit <name>
-    name^2  : Nth Parent if there are more than one parent in case of merge
-    name~10 : Commit's nth ancestor referenced using tilde(~) followed by ordinal number.
-    name:path : HEAD^1:Makefile HEAD^2:Makefile
-    name^{tree} : reference commit by tree
+    .. code-block:: text
 
-    name1..name2 : (double dots) commit ranges. commits reachable from name2 back to, but not
-    including name1.
+        name^   : Parent of commit <name>
+        name^^  : Parent of Parent of Commit <name>
+        name^2  : Nth Parent if there are more than one parent in case of merge
+        name~10 : Commit's nth ancestor referenced using tilde(~) followed by 
+        ordinal number.
+        name:path : HEAD^1:Makefile HEAD^2:Makefile
+        name^{tree} : reference commit by tree
 
-    name1...name2 : (triple dots) commit ranges excluding references to name1 and name2.
+    .. code-block:: text
 
-    master..      : master..HEAD
-    ..master      : Commits occured since last rebase or merge
+        name1..name2 : (double dots) commit ranges. commits reachable from name2 
+        back to, but not including name1.
 
-    --grep=pattern
-    --commiter=pattern
-    --author=pattern
-    --since="2 weeks ago"
-    --until="1 week ago"
+        name1...name2 : (triple dots) commit ranges excluding references to name1 
+        and name2.  
+
+        master..      : master..HEAD
+        ..master      : Commits occured since last rebase or merge
+
+        --grep=pattern
+        --commiter=pattern
+        --author=pattern
+        --since="2 weeks ago"
+        --until="1 week ago"
 
     ..  code-block:: bash
 
@@ -399,16 +418,17 @@ Commit object and Parent Relationship
 Branching
 --------------------------------------------------------------------
 
-    Branch is a named reference to a commit object. Commit objects has complete tree object of sources.
+    Branch is a named reference to a commit object. Commit objects has complete 
+    tree object of sources.
 
     # List all branches
-    git branch -v 
-    git show-branch
+    git branch -v git show-branch
 
     # Create a branch
     git checkout <<commit hash or branchname>>
 
-    Branchname is simply an alias for most recent commit on that branch, which is similar to using alias "HEAD" for recent commit instead of recent hash id. 
+    Branchname is simply an alias for most recent commit on that branch, which 
+    is similar to using alias "HEAD" for recent commit instead of recent hash id. 
 
     tagname is also alias for naming a commit instead of hashid. Tag aliases
     never change and references the same hash-id.
@@ -423,13 +443,13 @@ Merge and Rebase
                \
                 \W <-- X <-- Y <--- Z (HEAD)   <<-- Branch Z
 
-    At A : create new branch Z 
-    Two branches: Branch D and Branch Z.
+    At A : create new branch Z Two branches: Branch D and Branch Z.
 
     * Merge
         Merge Branch D to Branch Z => Z' (Z+D)    
 
-        New Z' commit has been created from the merge which has changes of D and Z into Z'  
+        New Z' commit has been created from the merge which has changes of D and 
+        Z into Z'  
 
         git checkout Z
         git merge D
@@ -445,7 +465,8 @@ Merge and Rebase
 
     * Rebase
       
-        Transplant the Z branch straight onto D, effectively moving it forward in time.
+        Transplant the Z branch straight onto D, effectively moving it forward 
+        in time.
 
        git checkout Z
        git rebase D
@@ -456,8 +477,7 @@ Merge and Rebase
         ..  code-block:: text
 
             O <-- A <-- B <-- C <-- D
-                                    \   <<-- rebase to D    
-                                     \                       
+                                    \   <<-- rebase to D    \                       
                                       W' <-- X' <-- Y' <--- Z'
                                     (W+D)   (W'+X)  (X'+ Y)  (Y'+Z)
 
@@ -532,10 +552,12 @@ Plumbing or low level commands
         * make the index look like a git tree in the db 
 
     * `update-index`
-        * take an existing blob or a file from the work tree and update the index entry
+        * take an existing blob or a file from the work tree and update the 
+        * index entry
 
     * `write-tree`
-        * record the current state of the index into a git tree in the db and return the sha
+        * record the current state of the index into a git tree in the db and 
+        * return the sha
 
     * `commit-tree`
         * create a commit object from a git tree in the db
@@ -544,7 +566,8 @@ Plumbing or low level commands
         * update a branch (or other reference) to point to a specific commit sha
 
     * `symbolic-ref`
-        * update a reference (usually HEAD) to point to another reference (like a branch)
+        * update a reference (usually HEAD) to point to another reference (like 
+        * a branch)
 
 
 Porcelain or user interface commands
@@ -609,7 +632,8 @@ Porcelain or user interface commands
                 Creates a new branch
 
              $ git checkout [branch-name]
-                Switches to the specified branch and updates the working directory
+                Switches to the specified branch and updates the working 
+                directory
 
              $ git merge [branch]
                 Combines the specified branch’s history into the current branch
@@ -644,10 +668,12 @@ Porcelain or user interface commands
         Relocate and remove versioned files
 
              $ git rm [file]
-                Deletes the file from the working directory and stages the deletion
+                Deletes the file from the working directory and stages the 
+                deletion
 
              $ git rm --cached [file]
-                Removes the file from version control but preserves the file locally
+                Removes the file from version control but preserves the file 
+                locally
 
              $ git mv [file-original] [file-renamed]
                 Changes the file name and prepares it for commit
@@ -715,16 +741,22 @@ Porcelain or user interface commands
     * GIT FORMATTING
 
        $ git archive
-            Creates a tar or zip file including the contents of a single tree from your repository. Example: git archive --format=zip master^ README >file.zip
+            Creates a tar or zip file including the contents of a single tree 
+            from your repository. Example: git archive --format=zip master
 
         $ git gc
-            Garbage collector for your repository. Optimizes your repository. Should be run occasionally. Example: git gc Counting objects: 7, done. Delta compression using up to 2 threads. Compressing objects: 100% (5/5), done. Writing objects: 100% (7/7), done. Total 7 (delta 1), reused 0 (delta 0)
+            Garbage collector for your repository. Optimizes your repository.  
+            Should be run occasionally. Example: git gc Counting objects: 7, done. Delta 
+            compression using up to 2 threads. Compressing objects: 100% (5/5), done.  
+            Writing objects: 100% (7/7), done. Total 7 (delta 1), reused 0 (delta 0)
 
         $ git fsck
-            Does an integrity check of the Git file system, identifying corrupted objects. Example: git fsck
+            Does an integrity check of the Git file system, identifying 
+            corrupted objects. Example: git fsck
 
         $ git prune
-            Removes objects that are no longer pointed to by any object in any reachable branch.
+            Removes objects that are no longer pointed to by any object in any 
+            reachable branch.
 
 
 ".git" directory
@@ -742,7 +774,8 @@ Porcelain or user interface commands
             - The object database.  Can be overridden by $GIT_OBJECT_DIRECTORY
 
         hooks/
-            - where the hook scripts are kept.  The standard git template includes
+            - where the hook scripts are kept.  The standard git template 
+              includes
               examples, but disabled by being marked non-executable.
 
         info/exclude
@@ -782,7 +815,8 @@ Porcelain or user interface commands
             - Created by git-merge --no-commit with the heads used 
             - Deleted by git-checkout and git-reset (since you're abandoning
               the merge)
-            - Used by git-commit to supply additional parents to the current commit.
+            - Used by git-commit to supply additional parents to the current 
+              commit.
               (And deleted when done.)
 
         MERGE_MSG
@@ -800,13 +834,16 @@ Porcelain or user interface commands
             - Previous HEAD commit prior to a merge or reset operation.
 
         LAST_MERGE
-            - Set by the "resolve" strategy to the most recently merged-in branch.
-              Basically, a copy of MERGE_HEAD.  Not used by the other merge strategies,
-              and resolve is no longer the default, so its utility is very limited.
+            - Set by the "resolve" strategy to the most recently merged-in 
+              branch.
+              Basically, a copy of MERGE_HEAD.  Not used by the other merge 
+              strategies, and resolve is no longer the default, so its utility is very 
+              limited.
 
         BISECT_LOG
             - History of a git-bisect operation.
-            - Can be replayed (or, more usefully, a prefix can) by "git-bisect replay"
+            - Can be replayed (or, more usefully, a prefix can) by "git-bisect 
+              replay"
 
         BISECT_NAMES
             - The list of files to be modified by git-bisect.
