@@ -2,10 +2,6 @@
             BASIC PYTHON MODULES
 ===========================================
 
-.. sectnum::
-.. contents::
-
-
 re - simple regular expression (sre)
 --------------------------------------------------------------------
 

@@ -1,0 +1,17 @@
+.. docs
+
+
+.. toctree::
+   :maxdepth: 2
+
+
+CLOUD OF DOCS
+==============
+
+.. sectnum::
+.. contents::
+
+.. include:: tools/python/builtin_modules.txt
+.. include:: tools/python/python_bytecode.txt
+.. include:: tools/python/modules.txt
+.. include:: tools/python/python_oneliner.txt

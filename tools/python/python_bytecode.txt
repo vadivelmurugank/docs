@@ -2,10 +2,8 @@
 PYTHON Disassembly, Debugger and Byte Code
 ===========================================
 
-.. sectnum::
-.. contents:: Table Of Contents
-.. |date| date::
-.. |time| date:: %H.%M
+.. sectnum
+.. contents
 
 Python Help 
 ----------------------------------------------------------------

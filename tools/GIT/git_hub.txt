@@ -39,6 +39,7 @@ GIT gh-pages branch
 
     #create orphaned gh-pages branch
         git checkout --orphan gh-pages
+        git branch
 
     # remove all cached files to be committed.
         git rm -rf .
@@ -52,10 +53,11 @@ GIT gh-pages branch
 
     # add gh-pages as submodule
         git checkout master
+        git branch
 
     # Create folder "publish" and add gh-pages as submodule.
     # Changing the folder to "publish" will set to gh-pages branch
-    git submodule add -b gh-pages https://github.com/vadivelmurugank/docs.git publish
+    git submodule add -b gh-pages https://github.com/vadivelmurugank/<< GIT >>.git publish
     git submodule init
 
     git commit -m "added gh-pages as submodule"
