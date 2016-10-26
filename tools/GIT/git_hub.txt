@@ -27,8 +27,41 @@ echo "Hello I am Git" >> README.md
 git init
 git add README.md
 git commit -m "first commit"
+
+# Add to remote repo
 git remote add origin https://github.com/vadivelmurugank/hello.git
 git push -u origin master
+
+GIT gh-pages branch
+--------------------
+####
+# create orphaned gh-pages branch
+####
+git checkout --orphan gh-pages
+
+# remove all cached files to be committed.
+git rm -rf .
+
+echo "Hello Pages!!" > index.html
+git add index.html
+git commit -m 'initial gh-pages commit'
+
+# git push to gh-pages branch
+git push origin gh-pages
+
+####
+# add gh-pages as submodule
+###
+git checkout master
+
+# Create folder "publish" and add gh-pages as submodule.
+# Changing the folder to "publish" will set to gh-pages branch
+git submodule add -b gh-pages https://github.com/vadivelmurugank/docs.git publish
+
+git commit -m "added gh-pages as submodule"
+git push origin master
+git submodule init
+
 
 
 HOME TREE
