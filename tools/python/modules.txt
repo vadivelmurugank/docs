@@ -16,6 +16,10 @@ re - simple regular expression (sre)
          |--  ===> /usr/lib/python3.2/re.py
                  @@doc : " re : Support for regular expressions (RE). "
 
+
+          [@SUBPACKAGES]
+
+
           [@SUBMODULES ]
              |--  re
                  |--  copyreg
@@ -29,16 +33,16 @@ re - simple regular expression (sre)
                  |--  sys
 
 
-          [@class        ]
-              @@doc : - classes and Method Resolution Order
-             |--  [class Scanner]
-                     |--  MRO - class Member Resolution Order:
+          [@CLASS        ]
+              @@doc : - Classes and Method Resolution Order
+             |--  [Class Scanner]
+                     |--  MRO - Class Member Resolution Order:
                              |--  <class 're.Scanner'>
                              |--  <class 'object'>
                      |--  [  function  ]:
                              |--  scan (['self', 'string'])
-             |--  [class _pattern_type]
-                     |--  MRO - class Member Resolution Order:
+             |--  [Class _pattern_type]
+                     |--  MRO - Class Member Resolution Order:
                              |--  <class '_sre.SRE_Pattern'>
                              |--  <class 'object'>
                      |--  [  method_descriptor  ]:
@@ -55,8 +59,8 @@ re - simple regular expression (sre)
                              |--  groupindex
                              |--  groups
                              |--  pattern
-             |--  [class error]
-                     |--  MRO - class Member Resolution Order:
+             |--  [Class error]
+                     |--  MRO - Class Member Resolution Order:
                              |--  <class 'sre_constants.error'>
                              |--  <class 'Exception'>
                              |--  <class 'BaseException'>
@@ -86,7 +90,61 @@ re - simple regular expression (sre)
              |--  subn (['pattern', 'repl', 'string', 'count', 'flags'])
              |--  template (['pattern', 'flags'])
 
+
+          [@ METHOD ]
+              @@doc ::   - bound method
+
+
+          [@ GENERATOR ]
+              @@doc :   - object is a generator with "yield" expressions
+
+
+          [@ GENERATOR FUNCTION ]
+              @@doc :     - object is a generator function
+
+
+          [@ TRACEBACK ]
+              @@doc :  - Traceback object
+
+
+          [@ FRAME ]
+              @@doc : - Frame Object
+
+
+          [@ CODE ]
+              @@doc : - Code Object
+
+
+          [@ BUILTIN ]
+              @@doc : - built-in function or bound built-in method
+
+
+          [@ ABSTRACT ]
+              @@doc : - object is abstract base class
+
+
+          [@ METHOD DESCRIPTOR ]
+              @@doc :  - Object has __get__ attribute but NOT __set__ attribute
+
+
+          [@ DATA DESCRIPTOR ]
+              @@doc :  - Object has __get__, __set__, __delete__ attributes
+
+
+          [@ GETSET DESCRIPTOR ]
+
+
+          [@ MEMBER DESCRIPTOR ]
+
+
           [@ VARIABLES ]
+
+
+              [@ GLOBALS ]
+
+
+                  [@ bool ]
+
 
                   [@ int ]
                          |--  re.A
@@ -108,18 +166,49 @@ re - simple regular expression (sre)
                          |--  re.X
                          |--  re._MAXCACHE
 
+
+                  [@ float ]
+
+
+                  [@ complex ]
+
+
+              [@ IMMUTABLE SEQUENCES ]
+
+
+                  [@ str ]
+
+
+                  [@ slice ]
+
+
+                  [@ tuple ]
+
+
                   [@ frozenset ]
                          |--  re._alphanum_bytes
                          |--  re._alphanum_str
 
+
+              [@ MUTABLE SEQUENCES ]
+
+
                   [@ list ]
                          |--  re.__all__
+
+
+                  [@ bytearray ]
+
+
+                  [@ set ]
+
+
+              [@ MAPPING ]
+
 
                   [@ dict ]
                          |--  re._cache
                          |--  re._cache_repl
-
-
 
 os
 --------------------------------------------------------------------
@@ -130,6 +219,10 @@ os
          |--  os
          |--  ===> /usr/lib/python3.2/os.py
                  @@doc : " os : OS routines for Mac, NT, or Posix depending on what system we're on. "
+
+
+          [@SUBPACKAGES]
+
 
           [@SUBMODULES ]
              |--  os
@@ -149,10 +242,10 @@ os
                  |--  sys
 
 
-          [@class ]
-              @@doc : - classes and Method Resolution Order
-             |--  [class MutableMapping]
-                     |--  MRO - class Member Resolution Order:
+          [@CLASS        ]
+              @@doc : - Classes and Method Resolution Order
+             |--  [Class MutableMapping]
+                     |--  MRO - Class Member Resolution Order:
                              |--  <class '_abcoll.MutableMapping'>
                              |--  <class '_abcoll.Mapping'>
                              |--  <class '_abcoll.Sized'>
@@ -190,8 +283,8 @@ os
                              |--  setdefault (['self', 'key', 'default'])
                              |--  update ([])
                              |--  values (['self'])
-             |--  [class _Environ]
-                     |--  MRO - class Member Resolution Order:
+             |--  [Class _Environ]
+                     |--  MRO - Class Member Resolution Order:
                              |--  <class 'os._Environ'>
                              |--  <class '_abcoll.MutableMapping'>
                              |--  <class '_abcoll.Mapping'>
@@ -232,14 +325,14 @@ os
                              |--  setdefault (['self', 'key', 'value'])
                              |--  update ([])
                              |--  values (['self'])
-             |--  [class _wrap_close]
-                     |--  MRO - class Member Resolution Order:
+             |--  [Class _wrap_close]
+                     |--  MRO - Class Member Resolution Order:
                              |--  <class 'os._wrap_close'>
                              |--  <class 'object'>
                      |--  [  function  ]:
                              |--  close (['self'])
-             |--  [class error]
-                     |--  MRO - class Member Resolution Order:
+             |--  [Class error]
+                     |--  MRO - Class Member Resolution Order:
                              |--  <class 'OSError'>
                              |--  <class 'EnvironmentError'>
                              |--  <class 'Exception'>
@@ -253,8 +346,8 @@ os
                              |--  errno
                              |--  filename
                              |--  strerror
-             |--  [class stat_result]
-                     |--  MRO - class Member Resolution Order:
+             |--  [Class stat_result]
+                     |--  MRO - Class Member Resolution Order:
                              |--  <class 'posix.stat_result'>
                              |--  <class 'tuple'>
                              |--  <class 'object'>
@@ -280,8 +373,8 @@ os
                              |--  st_rdev
                              |--  st_size
                              |--  st_uid
-             |--  [class statvfs_result]
-                     |--  MRO - class Member Resolution Order:
+             |--  [Class statvfs_result]
+                     |--  MRO - Class Member Resolution Order:
                              |--  <class 'posix.statvfs_result'>
                              |--  <class 'tuple'>
                              |--  <class 'object'>
@@ -303,6 +396,7 @@ os
                              |--  f_flag
                              |--  f_frsize
                              |--  f_namemax
+
 
           [@ FUNCTION  ]
               @@doc :  - Function including "lambda" anonymous functions
@@ -342,19 +436,171 @@ os
              |--  walk (['top', 'topdown', 'onerror', 'followlinks'])
 
 
+          [@ METHOD ]
+              @@doc ::   - bound method
+
+
+          [@ GENERATOR ]
+              @@doc :   - object is a generator with "yield" expressions
+
+
           [@ GENERATOR FUNCTION ]
               @@doc :     - object is a generator function
              |--  walk (['top', 'topdown', 'onerror', 'followlinks'])
+
+
+          [@ TRACEBACK ]
+              @@doc :  - Traceback object
+
+
+          [@ FRAME ]
+              @@doc : - Frame Object
+
+
+          [@ CODE ]
+              @@doc : - Code Object
+
+
+          [@ BUILTIN ]
+              @@doc : - built-in function or bound built-in method
+             |--  WCOREDUMP (status)   
+             |--  WEXITSTATUS (status)   
+             |--  WIFCONTINUED (status)   
+             |--  WIFEXITED (status)   
+             |--  WIFSIGNALED (status)   
+             |--  WIFSTOPPED (status)   
+             |--  WSTOPSIG (status)   
+             |--  WTERMSIG (status)   
+             |--  _exit (status)   
+             |--  _putenv() 
+             |--  _unsetenv() 
+             |--  abort ()   
+             |--  access (path, mode)   
+             |--  chdir (path)   
+             |--  chmod (path, mode)   
+             |--  chown (path, uid, gid)   
+             |--  chroot (path)   
+             |--  close (fd)   
+             |--  closerange (fd_low, fd_high)   
+             |--  confstr (name)   
+             |--  ctermid ()   
+             |--  device_encoding (fd)   
+             |--  dup (fd)   
+             |--  dup2 (old_fd, new_fd)   
+             |--  execv (path, args)   
+             |--  execve (path, args, env)   
+             |--  fchdir (fildes)   
+             |--  fchmod (fd, mode)   
+             |--  fchown (fd, uid, gid)   
+             |--  fdatasync (fildes)   
+             |--  fork ()   
+             |--  forkpty ()   
+             |--  fpathconf (fd, name)   
+             |--  fstat (fd)   
+             |--  fstatvfs (fd)   
+             |--  fsync (fildes)   
+             |--  ftruncate (fd, length)   
+             |--  getcwd ()   
+             |--  getcwdb ()   
+             |--  getegid ()   
+             |--  geteuid ()   
+             |--  getgid ()   
+             |--  getgroups ()   
+             |--  getlogin ()   
+             |--  getpgid (pid)  getpgid ()   
+             |--  getpgrp ()   
+             |--  getpid ()   
+             |--  getppid ()   
+             |--  getsid (pid)  getsid ()   
+             |--  getuid ()   
+             |--  initgroups (username, gid)  initgroups ()   
+             |--  isatty (fd)   
+             |--  kill (pid, sig)   
+             |--  killpg (pgid, sig)   
+             |--  lchown (path, uid, gid)   
+             |--  link (src, dst)   
+             |--  listdir ([path])   
+             |--  lseek (fd, pos, how)   
+             |--  lstat (path)   
+             |--  major (device)   
+             |--  makedev (major, minor)   
+             |--  minor (device)   
+             |--  mkdir (path [, mode=0777])   
+             |--  mkfifo (filename [, mode=0666])   
+             |--  mknod (filename [, mode=0600, device])   
+             |--  nice (inc)   
+             |--  open (filename, flag [, mode=0777])   
+             |--  openpty ()   
+             |--  pathconf (path, name)   
+             |--  pipe ()   
+             |--  putenv (key, value)   
+             |--  read (fd, buffersize)   
+             |--  readlink (path)   
+             |--  remove (path)   
+             |--  rename (old, new)   
+             |--  rmdir (path)   
+             |--  setegid (gid)   
+             |--  seteuid (uid)   
+             |--  setgid (gid)   
+             |--  setgroups (list)   
+             |--  setpgid (pid, pgrp)  setpgid ()   
+             |--  setpgrp ()   
+             |--  setregid (rgid, egid)   
+             |--  setreuid (ruid, euid)   
+             |--  setsid ()  setsid ()   
+             |--  setuid (uid)   
+             |--  stat (path)   
+             |--  stat_float_times ([newval])   
+             |--  statvfs (path)   
+             |--  strerror (code)   
+             |--  symlink (src, dst)   
+             |--  sysconf (name)   
+             |--  system (command)   
+             |--  tcgetpgrp (fd)   
+             |--  tcsetpgrp (fd, pgid)   
+             |--  times ()   
+             |--  ttyname (fd)   
+             |--  umask (new_mask)   
+             |--  uname ()   
+             |--  unlink (path)   
+             |--  unsetenv (key)   
+             |--  urandom (n)   
+             |--  utime (path, (atime, mtime)  utime (path, None)   
+             |--  wait ()   
+             |--  wait3 (options)   
+             |--  wait4 (pid, options)   
+             |--  waitpid (pid, options)   
+             |--  write (fd, string)   
+
 
           [@ ABSTRACT ]
               @@doc : - object is abstract base class
              |--  MutableMapping
 
 
+          [@ METHOD DESCRIPTOR ]
+              @@doc :  - Object has __get__ attribute but NOT __set__ attribute
+
+
+          [@ DATA DESCRIPTOR ]
+              @@doc :  - Object has __get__, __set__, __delete__ attributes
+
+
+          [@ GETSET DESCRIPTOR ]
+
+
+          [@ MEMBER DESCRIPTOR ]
+
+
           [@ VARIABLES ]
+
+
+              [@ GLOBALS ]
+
 
                   [@ bool ]
                          |--  os.supports_bytes_environ
+
 
                   [@ int ]
                          |--  os.EX_CANTCREAT
@@ -411,6 +657,15 @@ os
                          |--  os.X_OK
 
 
+                  [@ float ]
+
+
+                  [@ complex ]
+
+
+              [@ IMMUTABLE SEQUENCES ]
+
+
                   [@ str ]
                          |--  os.curdir
                          |--  os.defpath
@@ -423,26 +678,3312 @@ os
                          |--  os.sep
 
 
-                [@ list ]
+                  [@ slice ]
+
+
+                  [@ tuple ]
+
+
+                  [@ frozenset ]
+
+
+              [@ MUTABLE SEQUENCES ]
+
+
+                  [@ list ]
                          |--  os.__all__
+
+
+                  [@ bytearray ]
+
+
+                  [@ set ]
+
+
+              [@ MAPPING ]
+
 
                   [@ dict ]
                          |--  os.confstr_names
                          |--  os.pathconf_names
                          |--  os.sysconf_names
 
-
-
 multiprocessing
 --------------------------------------------------------------------
 
+    .. code-block:: python
+
+        multiprocessing
+         |--  multiprocessing
+         |--  ===> /usr/lib/python3.2/multiprocessing/__init__.py
+
+
+          [@SUBPACKAGES]
+             |--  multiprocessing.dummy
+
+
+          [@SUBMODULES ]
+             |--  multiprocessing
+                 |--  _multiprocessing
+                 |--  dummy
+                     |--  array
+                     |--  connection
+                     |--  itertools
+                     |--  sys
+                     |--  threading
+                         |--  _sys
+                     |--  weakref
+                         |--  collections
+                             |--  _abcoll
+                                 |--  sys
+                             |--  _heapq
+                                 |--  bisect
+                             |--  _sys
+                 |--  os
+                     |--  _copyreg
+                     |--  errno
+                     |--  path
+                         |--  genericpath
+                             |--  os
+                             |--  stat
+                         |--  os
+                         |--  stat
+                         |--  sys
+                     |--  sys
+                 |--  process
+                     |--  itertools
+                     |--  os
+                     |--  signal
+                     |--  sys
+                 |--  sys
+                 |--  util
+                     |--  atexit
+                     |--  itertools
+                     |--  threading
+                     |--  weakref
+             |--  multiprocessing.dummy
+                 |--  array
+                 |--  connection
+                 |--  itertools
+                 |--  sys
+                 |--  threading
+                     |--  _sys
+                 |--  weakref
+                     |--  collections
+                         |--  _abcoll
+                             |--  sys
+                         |--  _heapq
+                             |--  bisect
+                         |--  _sys
+
+
+          [@CLASS        ]
+              @@doc : - Classes and Method Resolution Order
+             |--  [Class AuthenticationError]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'multiprocessing.AuthenticationError'>
+                             |--  <class 'multiprocessing.ProcessError'>
+                             |--  <class 'Exception'>
+                             |--  <class 'BaseException'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  with_traceback
+                     |--  [  getset_descriptor  ]:
+                             |--  args
+             |--  [Class BufferTooShort]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'multiprocessing.BufferTooShort'>
+                             |--  <class 'multiprocessing.ProcessError'>
+                             |--  <class 'Exception'>
+                             |--  <class 'BaseException'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  with_traceback
+                     |--  [  getset_descriptor  ]:
+                             |--  args
+             |--  [Class Process]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'multiprocessing.process.Process'>
+                             |--  <class 'object'>
+                     |--  [  property  ]:
+                             |--  authkey
+                             |--  daemon
+                             |--  exitcode
+                             |--  ident
+                             |--  name
+                             |--  pid
+                     |--  [  function  ]:
+                             |--  _bootstrap (['self'])
+                             |--  is_alive (['self'])
+                             |--  join (['self', 'timeout'])
+                             |--  run (['self'])
+                             |--  start (['self'])
+                             |--  terminate (['self'])
+                     |--  [  NoneType  ]:
+                             |--  _Popen
+             |--  [Class ProcessError]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'multiprocessing.ProcessError'>
+                             |--  <class 'Exception'>
+                             |--  <class 'BaseException'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  with_traceback
+                     |--  [  getset_descriptor  ]:
+                             |--  args
+             |--  [Class TimeoutError]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'multiprocessing.TimeoutError'>
+                             |--  <class 'multiprocessing.ProcessError'>
+                             |--  <class 'Exception'>
+                             |--  <class 'BaseException'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  with_traceback
+                     |--  [  getset_descriptor  ]:
+                             |--  args
+             |--  [Class Condition]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'multiprocessing.dummy.Condition'>
+                             |--  <class 'threading._Condition'>
+                             |--  <class 'threading._Verbose'>
+                             |--  <class 'object'>
+                     |--  [  function  ]:
+                             |--  _acquire_restore (['self', 'x'])
+                             |--  _is_owned (['self'])
+                             |--  _note (['self', 'format'])
+                             |--  _release_save (['self'])
+                             |--  notify (['self', 'n'])
+                             |--  notifyAll (['self'])
+                             |--  notify_all (['self'])
+                             |--  wait (['self', 'timeout'])
+                             |--  wait_for (['self', 'predicate', 'timeout'])
+             |--  [Class DummyProcess]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'multiprocessing.dummy.DummyProcess'>
+                             |--  <class 'threading.Thread'>
+                             |--  <class 'threading._Verbose'>
+                             |--  <class 'object'>
+                     |--  [  bool  ]:
+                             |--  _Thread__initialized
+                     |--  [  function  ]:
+                             |--  _bootstrap (['self'])
+                             |--  _bootstrap_inner (['self'])
+                             |--  _delete (['self'])
+                             |--  _note (['self', 'format'])
+                             |--  _reset_internal_locks (['self'])
+                             |--  _set_daemon (['self'])
+                             |--  _set_ident (['self'])
+                             |--  _stop (['self'])
+                             |--  getName (['self'])
+                             |--  isAlive (['self'])
+                             |--  isDaemon (['self'])
+                             |--  is_alive (['self'])
+                             |--  join (['self', 'timeout'])
+                             |--  run (['self'])
+                             |--  setDaemon (['self', 'daemonic'])
+                             |--  setName (['self', 'name'])
+                             |--  start (['self'])
+                     |--  [  property  ]:
+                             |--  daemon
+                             |--  exitcode
+                             |--  ident
+                             |--  name
+                     |--  [  builtin_function_or_method  ]:
+                             |--  _Thread__exc_info
+             |--  [Class JoinableQueue]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'queue.Queue'>
+                             |--  <class 'object'>
+                     |--  [  function  ]:
+                             |--  _get (['self'])
+                             |--  _init (['self', 'maxsize'])
+                             |--  _put (['self', 'item'])
+                             |--  _qsize (['self', 'len'])
+                             |--  empty (['self'])
+                             |--  full (['self'])
+                             |--  get (['self', 'block', 'timeout'])
+                             |--  get_nowait (['self'])
+                             |--  join (['self'])
+                             |--  put (['self', 'item', 'block', 'timeout'])
+                             |--  put_nowait (['self', 'item'])
+                             |--  qsize (['self'])
+                             |--  task_done (['self'])
+             |--  [Class Namespace]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'multiprocessing.dummy.Namespace'>
+                             |--  <class 'object'>
+             |--  [Class Process]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'multiprocessing.dummy.DummyProcess'>
+                             |--  <class 'threading.Thread'>
+                             |--  <class 'threading._Verbose'>
+                             |--  <class 'object'>
+                     |--  [  bool  ]:
+                             |--  _Thread__initialized
+                     |--  [  function  ]:
+                             |--  _bootstrap (['self'])
+                             |--  _bootstrap_inner (['self'])
+                             |--  _delete (['self'])
+                             |--  _note (['self', 'format'])
+                             |--  _reset_internal_locks (['self'])
+                             |--  _set_daemon (['self'])
+                             |--  _set_ident (['self'])
+                             |--  _stop (['self'])
+                             |--  getName (['self'])
+                             |--  isAlive (['self'])
+                             |--  isDaemon (['self'])
+                             |--  is_alive (['self'])
+                             |--  join (['self', 'timeout'])
+                             |--  run (['self'])
+                             |--  setDaemon (['self', 'daemonic'])
+                             |--  setName (['self', 'name'])
+                             |--  start (['self'])
+                     |--  [  property  ]:
+                             |--  daemon
+                             |--  exitcode
+                             |--  ident
+                             |--  name
+                     |--  [  builtin_function_or_method  ]:
+                             |--  _Thread__exc_info
+             |--  [Class Queue]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'queue.Queue'>
+                             |--  <class 'object'>
+                     |--  [  function  ]:
+                             |--  _get (['self'])
+                             |--  _init (['self', 'maxsize'])
+                             |--  _put (['self', 'item'])
+                             |--  _qsize (['self', 'len'])
+                             |--  empty (['self'])
+                             |--  full (['self'])
+                             |--  get (['self', 'block', 'timeout'])
+                             |--  get_nowait (['self'])
+                             |--  join (['self'])
+                             |--  put (['self', 'item', 'block', 'timeout'])
+                             |--  put_nowait (['self', 'item'])
+                             |--  qsize (['self'])
+                             |--  task_done (['self'])
+             |--  [Class TimeoutError]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'multiprocessing.TimeoutError'>
+                             |--  <class 'multiprocessing.ProcessError'>
+                             |--  <class 'Exception'>
+                             |--  <class 'BaseException'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  with_traceback
+                     |--  [  getset_descriptor  ]:
+                             |--  args
+             |--  [Class Value]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'multiprocessing.dummy.Value'>
+                             |--  <class 'object'>
+                     |--  [  property  ]:
+                             |--  value
+                     |--  [  function  ]:
+                             |--  _get (['self'])
+                             |--  _set (['self', 'value'])
+             |--  [Class dict]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'dict'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  clear
+                             |--  copy
+                             |--  get
+                             |--  items
+                             |--  keys
+                             |--  pop
+                             |--  popitem
+                             |--  setdefault
+                             |--  update
+                             |--  values
+                     |--  [  builtin_function_or_method  ]:
+                             |--  fromkeys
+             |--  [Class list]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'list'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  append
+                             |--  count
+                             |--  extend
+                             |--  index
+                             |--  insert
+                             |--  pop
+                             |--  remove
+                             |--  reverse
+                             |--  sort
+
+
+          [@ FUNCTION  ]
+              @@doc :  - Function including "lambda" anonymous functions
+             |--  Array (['typecode_or_type', 'size_or_initializer'])
+             |--  BoundedSemaphore (['value'])
+             |--  Condition (['lock'])
+             |--  Event ([])
+             |--  JoinableQueue (['maxsize'])
+             |--  Lock ([])
+             |--  Manager ([])
+             |--  Pipe (['duplex'])
+             |--  Pool (['processes', 'initializer', 'initargs', 'maxtasksperchild'])
+             |--  Queue (['maxsize'])
+             |--  RLock ([])
+             |--  RawArray (['typecode_or_type', 'size_or_initializer'])
+             |--  RawValue (['typecode_or_type'])
+             |--  Semaphore (['value'])
+             |--  Value (['typecode_or_type'])
+             |--  active_children ([])
+             |--  allow_connection_pickling ([])
+             |--  cpu_count ([])
+             |--  current_process ([])
+             |--  freeze_support ([])
+             |--  get_logger ([])
+             |--  log_to_stderr (['level'])
+             |--  Array (['typecode', 'sequence', 'lock'])
+             |--  BoundedSemaphore ([])
+             |--  Event ([])
+             |--  Manager ([])
+             |--  Pipe (['duplex'])
+             |--  Pool (['processes', 'initializer', 'initargs'])
+             |--  RLock (['verbose'])
+             |--  Semaphore ([])
+             |--  active_children ([])
+             |--  cpu_count ([])
+             |--  current_process ([])
+             |--  freeze_support ([])
+             |--  shutdown ([])
+
+
+          [@ METHOD ]
+              @@doc ::   - bound method
+
+
+          [@ GENERATOR ]
+              @@doc :   - object is a generator with "yield" expressions
+
+
+          [@ GENERATOR FUNCTION ]
+              @@doc :     - object is a generator function
+
+
+          [@ TRACEBACK ]
+              @@doc :  - Traceback object
+
+
+          [@ FRAME ]
+              @@doc : - Frame Object
+
+
+          [@ CODE ]
+              @@doc : - Code Object
+
+
+          [@ BUILTIN ]
+              @@doc : - built-in function or bound built-in method
+             |--  Lock() 
+
+
+          [@ ABSTRACT ]
+              @@doc : - object is abstract base class
+
+
+          [@ METHOD DESCRIPTOR ]
+              @@doc :  - Object has __get__ attribute but NOT __set__ attribute
+
+
+          [@ DATA DESCRIPTOR ]
+              @@doc :  - Object has __get__, __set__, __delete__ attributes
+
+
+          [@ GETSET DESCRIPTOR ]
+
+
+          [@ MEMBER DESCRIPTOR ]
+
+
+          [@ VARIABLES ]
+
+
+              [@ GLOBALS ]
+
+
+                  [@ bool ]
+
+
+                  [@ int ]
+                         |--  multiprocessing.SUBDEBUG
+                         |--  multiprocessing.SUBWARNING
+
+
+                  [@ float ]
+
+
+                  [@ complex ]
+
+
+              [@ IMMUTABLE SEQUENCES ]
+
+
+                  [@ str ]
+                         |--  multiprocessing.__author__
+
+
+                  [@ slice ]
+
+
+                  [@ tuple ]
+
+
+                  [@ frozenset ]
+
+
+              [@ MUTABLE SEQUENCES ]
+
+
+                  [@ list ]
+                         |--  multiprocessing.__all__
+                         |--  multiprocessing.dummy.__all__
+
+
+                  [@ bytearray ]
+
+
+                  [@ set ]
+
+
+              [@ MAPPING ]
+
+
+                  [@ dict ]
 
 math
 --------------------------------------------------------------------
 
+    .. code-block:: python
+
+        math
+         |--  math
+         |--  ===> /usr/lib/python3.2/lib-dynload/math.cpython-32m.dll
+                 @@doc : " math : This module is always available.  It provides access to the "
+
+
+          [@SUBPACKAGES]
+
+
+          [@SUBMODULES ]
+             |--  math
+
+
+          [@CLASS        ]
+              @@doc : - Classes and Method Resolution Order
+
+
+          [@ FUNCTION  ]
+              @@doc :  - Function including "lambda" anonymous functions
+
+
+          [@ METHOD ]
+              @@doc ::   - bound method
+
+
+          [@ GENERATOR ]
+              @@doc :   - object is a generator with "yield" expressions
+
+
+          [@ GENERATOR FUNCTION ]
+              @@doc :     - object is a generator function
+
+
+          [@ TRACEBACK ]
+              @@doc :  - Traceback object
+
+
+          [@ FRAME ]
+              @@doc : - Frame Object
+
+
+          [@ CODE ]
+              @@doc : - Code Object
+
+
+          [@ BUILTIN ]
+              @@doc : - built-in function or bound built-in method
+             |--  acos (x)   
+             |--  acosh (x)   
+             |--  asin (x)   
+             |--  asinh (x)   
+             |--  atan (x)   
+             |--  atan2 (y, x)   
+             |--  atanh (x)   
+             |--  ceil (x)   
+             |--  copysign (x, y)   
+             |--  cos (x)   
+             |--  cosh (x)   
+             |--  degrees (x)   
+             |--  erf (x)   
+             |--  erfc (x)   
+             |--  exp (x)   
+             |--  expm1 (x)   
+             |--  fabs (x)   
+             |--  factorial (x)   
+             |--  floor (x)   
+             |--  fmod (x, y)  fmod (x, y)   
+             |--  frexp (x)   
+             |--  fsum (iterable)   
+             |--  gamma (x)   
+             |--  hypot (x, y)   
+             |--  isfinite (x)   
+             |--  isinf (x)   
+             |--  isnan (x)   
+             |--  ldexp (x, i)   
+             |--  lgamma (x)   
+             |--  log (x[, base])   
+             |--  log10 (x)   
+             |--  log1p (x)   
+             |--  modf (x)   
+             |--  pow (x, y)   
+             |--  radians (x)   
+             |--  sin (x)   
+             |--  sinh (x)   
+             |--  sqrt (x)   
+             |--  tan (x)   
+             |--  tanh (x)   
+             |--  trunc (x:Real)   
+
+
+          [@ ABSTRACT ]
+              @@doc : - object is abstract base class
+
+
+          [@ METHOD DESCRIPTOR ]
+              @@doc :  - Object has __get__ attribute but NOT __set__ attribute
+
+
+          [@ DATA DESCRIPTOR ]
+              @@doc :  - Object has __get__, __set__, __delete__ attributes
+
+
+          [@ GETSET DESCRIPTOR ]
+
+
+          [@ MEMBER DESCRIPTOR ]
+
+
+          [@ VARIABLES ]
+
+
+              [@ GLOBALS ]
+
+
+                  [@ bool ]
+
+
+                  [@ int ]
+
+
+                  [@ float ]
+                         |--  math.e
+                         |--  math.pi
+
+
+                  [@ complex ]
+
+
+              [@ IMMUTABLE SEQUENCES ]
+
+
+                  [@ str ]
+
+
+                  [@ slice ]
+
+
+                  [@ tuple ]
+
+
+                  [@ frozenset ]
+
+
+              [@ MUTABLE SEQUENCES ]
+
+
+                  [@ list ]
+
+
+                  [@ bytearray ]
+
+
+                  [@ set ]
+
+
+              [@ MAPPING ]
+
+
+                  [@ dict ]
+
 collections
 --------------------------------------------------------------------
 
+    .. code-block:: python
+
+        collections
+         |--  collections
+         |--  ===> /usr/lib/python3.2/collections.py
+
+
+          [@SUBPACKAGES]
+
+
+          [@SUBMODULES ]
+             |--  collections
+                 |--  _abcoll
+                     |--  sys
+                 |--  _heapq
+                     |--  bisect
+                 |--  _sys
+
+
+          [@CLASS        ]
+              @@doc : - Classes and Method Resolution Order
+             |--  [Class ByteString]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class '_abcoll.ByteString'>
+                             |--  <class '_abcoll.Sequence'>
+                             |--  <class '_abcoll.Sized'>
+                             |--  <class '_abcoll.Iterable'>
+                             |--  <class '_abcoll.Container'>
+                             |--  <class 'object'>
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+                     |--  [  function  ]:
+                             |--  count (['self', 'value'])
+                             |--  index (['self', 'value'])
+             |--  [Class Callable]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class '_abcoll.Callable'>
+                             |--  <class 'object'>
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+             |--  [Class Container]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class '_abcoll.Container'>
+                             |--  <class 'object'>
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+             |--  [Class Counter]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'collections.Counter'>
+                             |--  <class 'dict'>
+                             |--  <class 'object'>
+                     |--  [  method  ]:
+                             |--  fromkeys
+                     |--  [  method_descriptor  ]:
+                             |--  clear
+                             |--  get
+                             |--  items
+                             |--  keys
+                             |--  pop
+                             |--  popitem
+                             |--  setdefault
+                             |--  values
+                     |--  [  function  ]:
+                             |--  copy (['self'])
+                             |--  elements (['self'])
+                             |--  most_common (['self', 'n'])
+                             |--  subtract (['self', 'iterable'])
+                             |--  update (['self', 'iterable'])
+             |--  [Class Hashable]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class '_abcoll.Hashable'>
+                             |--  <class 'object'>
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+             |--  [Class ItemsView]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class '_abcoll.ItemsView'>
+                             |--  <class '_abcoll.MappingView'>
+                             |--  <class '_abcoll.Set'>
+                             |--  <class '_abcoll.Sized'>
+                             |--  <class '_abcoll.Iterable'>
+                             |--  <class '_abcoll.Container'>
+                             |--  <class 'object'>
+                     |--  [  method  ]:
+                             |--  _from_iterable
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+                     |--  [  function  ]:
+                             |--  _hash (['self'])
+                             |--  isdisjoint (['self', 'other'])
+             |--  [Class Iterable]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class '_abcoll.Iterable'>
+                             |--  <class 'object'>
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+             |--  [Class Iterator]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class '_abcoll.Iterator'>
+                             |--  <class '_abcoll.Iterable'>
+                             |--  <class 'object'>
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+             |--  [Class KeysView]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class '_abcoll.KeysView'>
+                             |--  <class '_abcoll.MappingView'>
+                             |--  <class '_abcoll.Set'>
+                             |--  <class '_abcoll.Sized'>
+                             |--  <class '_abcoll.Iterable'>
+                             |--  <class '_abcoll.Container'>
+                             |--  <class 'object'>
+                     |--  [  method  ]:
+                             |--  _from_iterable
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+                     |--  [  function  ]:
+                             |--  _hash (['self'])
+                             |--  isdisjoint (['self', 'other'])
+             |--  [Class Mapping]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class '_abcoll.Mapping'>
+                             |--  <class '_abcoll.Sized'>
+                             |--  <class '_abcoll.Iterable'>
+                             |--  <class '_abcoll.Container'>
+                             |--  <class 'object'>
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+                     |--  [  function  ]:
+                             |--  get (['self', 'key', 'default'])
+                             |--  items (['self'])
+                             |--  keys (['self'])
+                             |--  values (['self'])
+             |--  [Class MappingView]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class '_abcoll.MappingView'>
+                             |--  <class '_abcoll.Sized'>
+                             |--  <class 'object'>
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+             |--  [Class MutableMapping]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class '_abcoll.MutableMapping'>
+                             |--  <class '_abcoll.Mapping'>
+                             |--  <class '_abcoll.Sized'>
+                             |--  <class '_abcoll.Iterable'>
+                             |--  <class '_abcoll.Container'>
+                             |--  <class 'object'>
+                     |--  [  object  ]:
+                             |--  _MutableMapping__marker
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_negative_cache_version
+                             |--  _abc_registry
+                             |--  clear (['self'])
+                             |--  get (['self', 'key', 'default'])
+                             |--  items (['self'])
+                             |--  keys (['self'])
+                             |--  pop (['self', 'key', 'default'])
+                             |--  popitem (['self'])
+                             |--  setdefault (['self', 'key', 'default'])
+                             |--  update ([])
+                             |--  values (['self'])
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+                     |--  [  function  ]:
+                             |--  clear (['self'])
+                             |--  get (['self', 'key', 'default'])
+                             |--  items (['self'])
+                             |--  keys (['self'])
+                             |--  pop (['self', 'key', 'default'])
+                             |--  popitem (['self'])
+                             |--  setdefault (['self', 'key', 'default'])
+                             |--  update ([])
+                             |--  values (['self'])
+             |--  [Class MutableSequence]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class '_abcoll.MutableSequence'>
+                             |--  <class '_abcoll.Sequence'>
+                             |--  <class '_abcoll.Sized'>
+                             |--  <class '_abcoll.Iterable'>
+                             |--  <class '_abcoll.Container'>
+                             |--  <class 'object'>
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+                     |--  [  function  ]:
+                             |--  append (['self', 'value'])
+                             |--  count (['self', 'value'])
+                             |--  extend (['self', 'values'])
+                             |--  index (['self', 'value'])
+                             |--  insert (['self', 'index', 'value'])
+                             |--  pop (['self', 'index'])
+                             |--  remove (['self', 'value'])
+                             |--  reverse (['self'])
+             |--  [Class MutableSet]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class '_abcoll.MutableSet'>
+                             |--  <class '_abcoll.Set'>
+                             |--  <class '_abcoll.Sized'>
+                             |--  <class '_abcoll.Iterable'>
+                             |--  <class '_abcoll.Container'>
+                             |--  <class 'object'>
+                     |--  [  method  ]:
+                             |--  _from_iterable
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+                     |--  [  function  ]:
+                             |--  _hash (['self'])
+                             |--  add (['self', 'value'])
+                             |--  clear (['self'])
+                             |--  discard (['self', 'value'])
+                             |--  isdisjoint (['self', 'other'])
+                             |--  pop (['self'])
+                             |--  remove (['self', 'value'])
+             |--  [Class OrderedDict]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'collections.OrderedDict'>
+                             |--  <class 'dict'>
+                             |--  <class 'object'>
+                     |--  [  object  ]:
+                             |--  _OrderedDict__marker
+                             |--  _OrderedDict__update ([])
+                             |--  clear (['self'])
+                             |--  copy (['self'])
+                             |--  fromkeys
+                             |--  get
+                             |--  items (['self'])
+                             |--  keys (['self'])
+                             |--  move_to_end (['self', 'key', 'last'])
+                             |--  pop (['self', 'key', 'default'])
+                             |--  popitem (['self', 'last'])
+                             |--  setdefault (['self', 'key', 'default'])
+                             |--  update ([])
+                             |--  values (['self'])
+                     |--  [  method  ]:
+                             |--  fromkeys
+                     |--  [  method_descriptor  ]:
+                             |--  get
+                     |--  [  function  ]:
+                             |--  _OrderedDict__update ([])
+                             |--  clear (['self'])
+                             |--  copy (['self'])
+                             |--  items (['self'])
+                             |--  keys (['self'])
+                             |--  move_to_end (['self', 'key', 'last'])
+                             |--  pop (['self', 'key', 'default'])
+                             |--  popitem (['self', 'last'])
+                             |--  setdefault (['self', 'key', 'default'])
+                             |--  update ([])
+                             |--  values (['self'])
+             |--  [Class Sequence]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class '_abcoll.Sequence'>
+                             |--  <class '_abcoll.Sized'>
+                             |--  <class '_abcoll.Iterable'>
+                             |--  <class '_abcoll.Container'>
+                             |--  <class 'object'>
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+                     |--  [  function  ]:
+                             |--  count (['self', 'value'])
+                             |--  index (['self', 'value'])
+             |--  [Class Set]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class '_abcoll.Set'>
+                             |--  <class '_abcoll.Sized'>
+                             |--  <class '_abcoll.Iterable'>
+                             |--  <class '_abcoll.Container'>
+                             |--  <class 'object'>
+                     |--  [  method  ]:
+                             |--  _from_iterable
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+                     |--  [  function  ]:
+                             |--  _hash (['self'])
+                             |--  isdisjoint (['self', 'other'])
+             |--  [Class Sized]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class '_abcoll.Sized'>
+                             |--  <class 'object'>
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+             |--  [Class UserDict]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'collections.UserDict'>
+                             |--  <class '_abcoll.MutableMapping'>
+                             |--  <class '_abcoll.Mapping'>
+                             |--  <class '_abcoll.Sized'>
+                             |--  <class '_abcoll.Iterable'>
+                             |--  <class '_abcoll.Container'>
+                             |--  <class 'object'>
+                     |--  [  object  ]:
+                             |--  _MutableMapping__marker
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_negative_cache_version
+                             |--  _abc_registry
+                             |--  clear (['self'])
+                             |--  copy (['self'])
+                             |--  fromkeys
+                             |--  get (['self', 'key', 'default'])
+                             |--  items (['self'])
+                             |--  keys (['self'])
+                             |--  pop (['self', 'key', 'default'])
+                             |--  popitem (['self'])
+                             |--  setdefault (['self', 'key', 'default'])
+                             |--  update ([])
+                             |--  values (['self'])
+                     |--  [  method  ]:
+                             |--  fromkeys
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+                     |--  [  function  ]:
+                             |--  clear (['self'])
+                             |--  copy (['self'])
+                             |--  get (['self', 'key', 'default'])
+                             |--  items (['self'])
+                             |--  keys (['self'])
+                             |--  pop (['self', 'key', 'default'])
+                             |--  popitem (['self'])
+                             |--  setdefault (['self', 'key', 'default'])
+                             |--  update ([])
+                             |--  values (['self'])
+             |--  [Class UserList]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'collections.UserList'>
+                             |--  <class '_abcoll.MutableSequence'>
+                             |--  <class '_abcoll.Sequence'>
+                             |--  <class '_abcoll.Sized'>
+                             |--  <class '_abcoll.Iterable'>
+                             |--  <class '_abcoll.Container'>
+                             |--  <class 'object'>
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+                     |--  [  function  ]:
+                             |--  _UserList__cast (['self', 'other'])
+                             |--  append (['self', 'item'])
+                             |--  count (['self', 'item'])
+                             |--  extend (['self', 'other'])
+                             |--  index (['self', 'item'])
+                             |--  insert (['self', 'i', 'item'])
+                             |--  pop (['self', 'i'])
+                             |--  remove (['self', 'item'])
+                             |--  reverse (['self'])
+                             |--  sort (['self'])
+             |--  [Class UserString]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'collections.UserString'>
+                             |--  <class '_abcoll.Sequence'>
+                             |--  <class '_abcoll.Sized'>
+                             |--  <class '_abcoll.Iterable'>
+                             |--  <class '_abcoll.Container'>
+                             |--  <class 'object'>
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+                     |--  [  function  ]:
+                             |--  capitalize (['self'])
+                             |--  center (['self', 'width'])
+                             |--  count (['self', 'sub', 'start', 'end'])
+                             |--  encode (['self', 'encoding', 'errors'])
+                             |--  endswith (['self', 'suffix', 'start', 'end'])
+                             |--  expandtabs (['self', 'tabsize'])
+                             |--  find (['self', 'sub', 'start', 'end'])
+                             |--  format (['self'])
+                             |--  index (['self', 'sub', 'start', 'end'])
+                             |--  isalnum (['self'])
+                             |--  isalpha (['self'])
+                             |--  isdecimal (['self'])
+                             |--  isdigit (['self'])
+                             |--  isidentifier (['self'])
+                             |--  islower (['self'])
+                             |--  isnumeric (['self'])
+                             |--  isspace (['self'])
+                             |--  istitle (['self'])
+                             |--  isupper (['self'])
+                             |--  join (['self', 'seq'])
+                             |--  ljust (['self', 'width'])
+                             |--  lower (['self'])
+                             |--  lstrip (['self', 'chars'])
+                             |--  partition (['self', 'sep'])
+                             |--  replace (['self', 'old', 'new', 'maxsplit'])
+                             |--  rfind (['self', 'sub', 'start', 'end'])
+                             |--  rindex (['self', 'sub', 'start', 'end'])
+                             |--  rjust (['self', 'width'])
+                             |--  rpartition (['self', 'sep'])
+                             |--  rsplit (['self', 'sep', 'maxsplit'])
+                             |--  rstrip (['self', 'chars'])
+                             |--  split (['self', 'sep', 'maxsplit'])
+                             |--  splitlines (['self', 'keepends'])
+                             |--  startswith (['self', 'prefix', 'start', 'end'])
+                             |--  strip (['self', 'chars'])
+                             |--  swapcase (['self'])
+                             |--  title (['self'])
+                             |--  translate (['self'])
+                             |--  upper (['self'])
+                             |--  zfill (['self', 'width'])
+             |--  [Class ValuesView]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class '_abcoll.ValuesView'>
+                             |--  <class '_abcoll.MappingView'>
+                             |--  <class '_abcoll.Sized'>
+                             |--  <class 'object'>
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+             |--  [Class _ChainMap]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'collections._ChainMap'>
+                             |--  <class '_abcoll.MutableMapping'>
+                             |--  <class '_abcoll.Mapping'>
+                             |--  <class '_abcoll.Sized'>
+                             |--  <class '_abcoll.Iterable'>
+                             |--  <class '_abcoll.Container'>
+                             |--  <class 'object'>
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+                     |--  [  function  ]:
+                             |--  clear (['self'])
+                             |--  copy (['self'])
+                             |--  get (['self', 'key', 'default'])
+                             |--  items (['self'])
+                             |--  keys (['self'])
+                             |--  new_child (['self'])
+                             |--  pop (['self', 'key'])
+                             |--  popitem (['self'])
+                             |--  setdefault (['self', 'key', 'default'])
+                             |--  update ([])
+                             |--  values (['self'])
+                     |--  [  property  ]:
+                             |--  parents
+                     |--  [  object  ]:
+                             |--  _MutableMapping__marker
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_negative_cache_version
+                             |--  _abc_registry
+                             |--  clear (['self'])
+                             |--  copy (['self'])
+                             |--  fromkeys
+                             |--  get (['self', 'key', 'default'])
+                             |--  items (['self'])
+                             |--  keys (['self'])
+                             |--  new_child (['self'])
+                             |--  parents
+                             |--  pop (['self', 'key'])
+                             |--  popitem (['self'])
+                             |--  setdefault (['self', 'key', 'default'])
+                             |--  update ([])
+                             |--  values (['self'])
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  method  ]:
+                             |--  fromkeys
+             |--  [Class _Link]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'collections._Link'>
+                             |--  <class 'object'>
+                     |--  [  member_descriptor  ]:
+                             |--  key
+                             |--  next
+                             |--  prev
+             |--  [Class _chain]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.chain'>
+                             |--  <class 'object'>
+                     |--  [  builtin_function_or_method  ]:
+                             |--  from_iterable
+             |--  [Class _itemgetter]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'operator.itemgetter'>
+                             |--  <class 'object'>
+             |--  [Class _repeat]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.repeat'>
+                             |--  <class 'object'>
+             |--  [Class _starmap]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.starmap'>
+                             |--  <class 'object'>
+             |--  [Class defaultdict]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'collections.defaultdict'>
+                             |--  <class 'dict'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  clear
+                             |--  copy
+                             |--  get
+                             |--  items
+                             |--  keys
+                             |--  pop
+                             |--  popitem
+                             |--  setdefault
+                             |--  update
+                             |--  values
+                     |--  [  builtin_function_or_method  ]:
+                             |--  fromkeys
+                     |--  [  member_descriptor  ]:
+                             |--  default_factory
+             |--  [Class deque]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'collections.deque'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  append
+                             |--  appendleft
+                             |--  clear
+                             |--  count
+                             |--  extend
+                             |--  extendleft
+                             |--  pop
+                             |--  popleft
+                             |--  remove
+                             |--  reverse
+                             |--  rotate
+                     |--  [  getset_descriptor  ]:
+                             |--  maxlen
+
+
+          [@ FUNCTION  ]
+              @@doc :  - Function including "lambda" anonymous functions
+             |--  _recursive_repr (['fillvalue'])
+             |--  namedtuple (['typename', 'field_names', 'verbose', 'rename'])
+
+
+          [@ METHOD ]
+              @@doc ::   - bound method
+
+
+          [@ GENERATOR ]
+              @@doc :   - object is a generator with "yield" expressions
+
+
+          [@ GENERATOR FUNCTION ]
+              @@doc :     - object is a generator function
+
+
+          [@ TRACEBACK ]
+              @@doc :  - Traceback object
+
+
+          [@ FRAME ]
+              @@doc : - Frame Object
+
+
+          [@ CODE ]
+              @@doc : - Code Object
+
+
+          [@ BUILTIN ]
+              @@doc : - built-in function or bound built-in method
+             |--  _count_elements (mapping, iterable)   
+             |--  _iskeyword() 
+             |--  _proxy() 
+
+
+          [@ ABSTRACT ]
+              @@doc : - object is abstract base class
+             |--  ByteString
+             |--  Callable
+             |--  Container
+             |--  Hashable
+             |--  Iterable
+             |--  Iterator
+             |--  Mapping
+             |--  MutableMapping
+             |--  MutableSequence
+             |--  MutableSet
+             |--  Sequence
+             |--  Set
+             |--  Sized
+
+
+          [@ METHOD DESCRIPTOR ]
+              @@doc :  - Object has __get__ attribute but NOT __set__ attribute
+
+
+          [@ DATA DESCRIPTOR ]
+              @@doc :  - Object has __get__, __set__, __delete__ attributes
+
+
+          [@ GETSET DESCRIPTOR ]
+
+
+          [@ MEMBER DESCRIPTOR ]
+
+
+          [@ VARIABLES ]
+
+
+              [@ GLOBALS ]
+
+
+                  [@ bool ]
+
+
+                  [@ int ]
+
+
+                  [@ float ]
+
+
+                  [@ complex ]
+
+
+              [@ IMMUTABLE SEQUENCES ]
+
+
+                  [@ str ]
+                         |--  collections._class_template
+                         |--  collections._field_template
+                         |--  collections._repr_template
+
+
+                  [@ slice ]
+
+
+                  [@ tuple ]
+
+
+                  [@ frozenset ]
+
+
+              [@ MUTABLE SEQUENCES ]
+
+
+                  [@ list ]
+                         |--  collections.__all__
+
+
+                  [@ bytearray ]
+
+
+                  [@ set ]
+
+
+              [@ MAPPING ]
+
+
+                  [@ dict ]
+
 itertools
 --------------------------------------------------------------------
-  
+
+    .. code-block:: python 
+
+        itertools
+         |--  itertools
+         |--  ===> Builtin Module
+                 @@doc : " itertools : Functional tools for creating and using iterators. "
+
+
+          [@SUBPACKAGES]
+
+
+          [@SUBMODULES ]
+             |--  itertools
+
+
+          [@CLASS        ]
+              @@doc : - Classes and Method Resolution Order
+             |--  [Class accumulate]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.accumulate'>
+                             |--  <class 'object'>
+             |--  [Class chain]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.chain'>
+                             |--  <class 'object'>
+                     |--  [  builtin_function_or_method  ]:
+                             |--  from_iterable
+             |--  [Class combinations]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.combinations'>
+                             |--  <class 'object'>
+             |--  [Class combinations_with_replacement]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.combinations_with_replacement'>
+                             |--  <class 'object'>
+             |--  [Class compress]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.compress'>
+                             |--  <class 'object'>
+             |--  [Class count]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.count'>
+                             |--  <class 'object'>
+             |--  [Class cycle]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.cycle'>
+                             |--  <class 'object'>
+             |--  [Class dropwhile]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.dropwhile'>
+                             |--  <class 'object'>
+             |--  [Class filterfalse]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.filterfalse'>
+                             |--  <class 'object'>
+             |--  [Class groupby]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.groupby'>
+                             |--  <class 'object'>
+             |--  [Class islice]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.islice'>
+                             |--  <class 'object'>
+             |--  [Class permutations]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.permutations'>
+                             |--  <class 'object'>
+             |--  [Class product]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.product'>
+                             |--  <class 'object'>
+             |--  [Class repeat]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.repeat'>
+                             |--  <class 'object'>
+             |--  [Class starmap]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.starmap'>
+                             |--  <class 'object'>
+             |--  [Class takewhile]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.takewhile'>
+                             |--  <class 'object'>
+             |--  [Class zip_longest]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.zip_longest'>
+                             |--  <class 'object'>
+
+
+          [@ FUNCTION  ]
+              @@doc :  - Function including "lambda" anonymous functions
+
+
+          [@ METHOD ]
+              @@doc ::   - bound method
+
+
+          [@ GENERATOR ]
+              @@doc :   - object is a generator with "yield" expressions
+
+
+          [@ GENERATOR FUNCTION ]
+              @@doc :     - object is a generator function
+
+
+          [@ TRACEBACK ]
+              @@doc :  - Traceback object
+
+
+          [@ FRAME ]
+              @@doc : - Frame Object
+
+
+          [@ CODE ]
+              @@doc : - Code Object
+
+
+          [@ BUILTIN ]
+              @@doc : - built-in function or bound built-in method
+             |--  tee (iterable, n=2)   
+
+
+          [@ ABSTRACT ]
+              @@doc : - object is abstract base class
+
+
+          [@ METHOD DESCRIPTOR ]
+              @@doc :  - Object has __get__ attribute but NOT __set__ attribute
+
+
+          [@ DATA DESCRIPTOR ]
+              @@doc :  - Object has __get__, __set__, __delete__ attributes
+
+
+          [@ GETSET DESCRIPTOR ]
+
+
+          [@ MEMBER DESCRIPTOR ]
+
+
+          [@ VARIABLES ]
+
+
+              [@ GLOBALS ]
+
+
+                  [@ bool ]
+
+
+                  [@ int ]
+
+
+                  [@ float ]
+
+
+                  [@ complex ]
+
+
+              [@ IMMUTABLE SEQUENCES ]
+
+
+                  [@ str ]
+
+
+                  [@ slice ]
+
+
+                  [@ tuple ]
+
+
+                  [@ frozenset ]
+
+
+              [@ MUTABLE SEQUENCES ]
+
+
+                  [@ list ]
+
+
+                  [@ bytearray ]
+
+
+                  [@ set ]
+
+
+              [@ MAPPING ]
+
+
+                  [@ dict ]
+
+yaml
+--------------------------------------------------------------------
+
+    .. code-block:: python 
+
+
+        yaml
+         |--  yaml
+         |--  ===> /usr/lib/python3.2/site-packages/yaml/__init__.py
+
+
+          [@SUBPACKAGES]
+
+
+          [@SUBMODULES ]
+             |--  yaml
+                 |--  composer
+                 |--  constructor
+                     |--  base64
+                         |--  binascii
+                         |--  re
+                             |--  copyreg
+                             |--  functools
+                             |--  sre_compile
+                                 |--  _sre
+                                 |--  sre_parse
+                                     |--  sys
+                                 |--  sys
+                             |--  sre_parse
+                             |--  sys
+                         |--  struct
+                     |--  binascii
+                     |--  collections
+                         |--  _abcoll
+                             |--  sys
+                         |--  _heapq
+                             |--  bisect
+                         |--  _sys
+                     |--  datetime
+                     |--  re
+                     |--  sys
+                     |--  types
+                 |--  cyaml
+                 |--  dumper
+                 |--  emitter
+                 |--  error
+                 |--  events
+                 |--  io
+                     |--  _io
+                     |--  abc
+                 |--  loader
+                 |--  nodes
+                 |--  parser
+                 |--  reader
+                     |--  codecs
+                         |--  builtins
+                         |--  sys
+                     |--  re
+                 |--  representer
+                     |--  base64
+                     |--  collections
+                     |--  copyreg
+                     |--  datetime
+                     |--  sys
+                     |--  types
+                 |--  resolver
+                     |--  re
+                 |--  scanner
+                 |--  serializer
+                 |--  tokens
+
+
+          [@CLASS        ]
+              @@doc : - Classes and Method Resolution Order
+             |--  [Class AliasEvent]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.events.AliasEvent'>
+                             |--  <class 'yaml.events.NodeEvent'>
+                             |--  <class 'yaml.events.Event'>
+                             |--  <class 'object'>
+             |--  [Class AliasToken]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.tokens.AliasToken'>
+                             |--  <class 'yaml.tokens.Token'>
+                             |--  <class 'object'>
+                     |--  [  str  ]:
+                             |--  id
+             |--  [Class AnchorToken]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.tokens.AnchorToken'>
+                             |--  <class 'yaml.tokens.Token'>
+                             |--  <class 'object'>
+                     |--  [  str  ]:
+                             |--  id
+             |--  [Class BaseDumper]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.dumper.BaseDumper'>
+                             |--  <class 'yaml.emitter.Emitter'>
+                             |--  <class 'yaml.serializer.Serializer'>
+                             |--  <class 'yaml.representer.BaseRepresenter'>
+                             |--  <class 'yaml.resolver.BaseResolver'>
+                             |--  <class 'object'>
+                     |--  [  method  ]:
+                             |--  add_implicit_resolver
+                             |--  add_multi_representer
+                             |--  add_path_resolver
+                             |--  add_representer
+                     |--  [  str  ]:
+                             |--  ANCHOR_TEMPLATE
+                             |--  DEFAULT_MAPPING_TAG
+                             |--  DEFAULT_SCALAR_TAG
+                             |--  DEFAULT_SEQUENCE_TAG
+                     |--  [  function  ]:
+                             |--  analyze_scalar (['self', 'scalar'])
+                             |--  anchor_node (['self', 'node'])
+                             |--  ascend_resolver (['self'])
+                             |--  check_empty_document (['self'])
+                             |--  check_empty_mapping (['self'])
+                             |--  check_empty_sequence (['self'])
+                             |--  check_resolver_prefix (['self', 'depth', 'path', 'kind', 'current_node', 'current_index'])
+                             |--  check_simple_key (['self'])
+                             |--  choose_scalar_style (['self'])
+                             |--  close (['self'])
+                             |--  descend_resolver (['self', 'current_node', 'current_index'])
+                             |--  determine_block_hints (['self', 'text'])
+                             |--  dispose (['self'])
+                             |--  emit (['self', 'event'])
+                             |--  expect_alias (['self'])
+                             |--  expect_block_mapping (['self'])
+                             |--  expect_block_mapping_key (['self', 'first'])
+                             |--  expect_block_mapping_simple_value (['self'])
+                             |--  expect_block_mapping_value (['self'])
+                             |--  expect_block_sequence (['self'])
+                             |--  expect_block_sequence_item (['self', 'first'])
+                             |--  expect_document_end (['self'])
+                             |--  expect_document_root (['self'])
+                             |--  expect_document_start (['self', 'first'])
+                             |--  expect_first_block_mapping_key (['self'])
+                             |--  expect_first_block_sequence_item (['self'])
+                             |--  expect_first_document_start (['self'])
+                             |--  expect_first_flow_mapping_key (['self'])
+                             |--  expect_first_flow_sequence_item (['self'])
+                             |--  expect_flow_mapping (['self'])
+                             |--  expect_flow_mapping_key (['self'])
+                             |--  expect_flow_mapping_simple_value (['self'])
+                             |--  expect_flow_mapping_value (['self'])
+                             |--  expect_flow_sequence (['self'])
+                             |--  expect_flow_sequence_item (['self'])
+                             |--  expect_node (['self', 'root', 'sequence', 'mapping', 'simple_key'])
+                             |--  expect_nothing (['self'])
+                             |--  expect_scalar (['self'])
+                             |--  expect_stream_start (['self'])
+                             |--  flush_stream (['self'])
+                             |--  generate_anchor (['self', 'node'])
+                             |--  ignore_aliases (['self', 'data'])
+                             |--  increase_indent (['self', 'flow', 'indentless'])
+                             |--  need_events (['self', 'count'])
+                             |--  need_more_events (['self'])
+                             |--  open (['self'])
+                             |--  prepare_anchor (['self', 'anchor'])
+                             |--  prepare_tag (['self', 'tag'])
+                             |--  prepare_tag_handle (['self', 'handle'])
+                             |--  prepare_tag_prefix (['self', 'prefix'])
+                             |--  prepare_version (['self', 'version'])
+                             |--  process_anchor (['self', 'indicator'])
+                             |--  process_scalar (['self'])
+                             |--  process_tag (['self'])
+                             |--  represent (['self', 'data'])
+                             |--  represent_data (['self', 'data'])
+                             |--  represent_mapping (['self', 'tag', 'mapping', 'flow_style'])
+                             |--  represent_scalar (['self', 'tag', 'value', 'style'])
+                             |--  represent_sequence (['self', 'tag', 'sequence', 'flow_style'])
+                             |--  resolve (['self', 'kind', 'value', 'implicit'])
+                             |--  serialize (['self', 'node'])
+                             |--  serialize_node (['self', 'node', 'parent', 'index'])
+                             |--  write_double_quoted (['self', 'text', 'split'])
+                             |--  write_folded (['self', 'text'])
+                             |--  write_indent (['self'])
+                             |--  write_indicator (['self', 'indicator', 'need_whitespace', 'whitespace', 'indention'])
+                             |--  write_line_break (['self', 'data'])
+                             |--  write_literal (['self', 'text'])
+                             |--  write_plain (['self', 'text', 'split'])
+                             |--  write_single_quoted (['self', 'text', 'split'])
+                             |--  write_stream_end (['self'])
+                             |--  write_stream_start (['self'])
+                             |--  write_tag_directive (['self', 'handle_text', 'prefix_text'])
+                             |--  write_version_directive (['self', 'version_text'])
+                     |--  [  dict  ]:
+                             |--  DEFAULT_TAG_PREFIXES
+                             |--  ESCAPE_REPLACEMENTS
+                             |--  yaml_implicit_resolvers
+                             |--  yaml_multi_representers
+                             |--  yaml_path_resolvers
+                             |--  yaml_representers
+             |--  [Class BaseLoader]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.loader.BaseLoader'>
+                             |--  <class 'yaml.reader.Reader'>
+                             |--  <class 'yaml.scanner.Scanner'>
+                             |--  <class 'yaml.parser.Parser'>
+                             |--  <class 'yaml.composer.Composer'>
+                             |--  <class 'yaml.constructor.BaseConstructor'>
+                             |--  <class 'yaml.resolver.BaseResolver'>
+                             |--  <class 'object'>
+                     |--  [  SRE_Pattern  ]:
+                             |--  NON_PRINTABLE
+                     |--  [  method  ]:
+                             |--  add_constructor
+                             |--  add_implicit_resolver
+                             |--  add_multi_constructor
+                             |--  add_path_resolver
+                     |--  [  str  ]:
+                             |--  DEFAULT_MAPPING_TAG
+                             |--  DEFAULT_SCALAR_TAG
+                             |--  DEFAULT_SEQUENCE_TAG
+                     |--  [  function  ]:
+                             |--  add_indent (['self', 'column'])
+                             |--  ascend_resolver (['self'])
+                             |--  check_block_entry (['self'])
+                             |--  check_data (['self'])
+                             |--  check_directive (['self'])
+                             |--  check_document_end (['self'])
+                             |--  check_document_start (['self'])
+                             |--  check_event (['self'])
+                             |--  check_key (['self'])
+                             |--  check_node (['self'])
+                             |--  check_plain (['self'])
+                             |--  check_printable (['self', 'data'])
+                             |--  check_resolver_prefix (['self', 'depth', 'path', 'kind', 'current_node', 'current_index'])
+                             |--  check_token (['self'])
+                             |--  check_value (['self'])
+                             |--  compose_document (['self'])
+                             |--  compose_mapping_node (['self', 'anchor'])
+                             |--  compose_node (['self', 'parent', 'index'])
+                             |--  compose_scalar_node (['self', 'anchor'])
+                             |--  compose_sequence_node (['self', 'anchor'])
+                             |--  construct_document (['self', 'node'])
+                             |--  construct_mapping (['self', 'node', 'deep'])
+                             |--  construct_object (['self', 'node', 'deep'])
+                             |--  construct_pairs (['self', 'node', 'deep'])
+                             |--  construct_scalar (['self', 'node'])
+                             |--  construct_sequence (['self', 'node', 'deep'])
+                             |--  descend_resolver (['self', 'current_node', 'current_index'])
+                             |--  determine_encoding (['self'])
+                             |--  dispose (['self'])
+                             |--  fetch_alias (['self'])
+                             |--  fetch_anchor (['self'])
+                             |--  fetch_block_entry (['self'])
+                             |--  fetch_block_scalar (['self', 'style'])
+                             |--  fetch_directive (['self'])
+                             |--  fetch_document_end (['self'])
+                             |--  fetch_document_indicator (['self', 'TokenClass'])
+                             |--  fetch_document_start (['self'])
+                             |--  fetch_double (['self'])
+                             |--  fetch_flow_collection_end (['self', 'TokenClass'])
+                             |--  fetch_flow_collection_start (['self', 'TokenClass'])
+                             |--  fetch_flow_entry (['self'])
+                             |--  fetch_flow_mapping_end (['self'])
+                             |--  fetch_flow_mapping_start (['self'])
+                             |--  fetch_flow_scalar (['self', 'style'])
+                             |--  fetch_flow_sequence_end (['self'])
+                             |--  fetch_flow_sequence_start (['self'])
+                             |--  fetch_folded (['self'])
+                             |--  fetch_key (['self'])
+                             |--  fetch_literal (['self'])
+                             |--  fetch_more_tokens (['self'])
+                             |--  fetch_plain (['self'])
+                             |--  fetch_single (['self'])
+                             |--  fetch_stream_end (['self'])
+                             |--  fetch_stream_start (['self'])
+                             |--  fetch_tag (['self'])
+                             |--  fetch_value (['self'])
+                             |--  forward (['self', 'length'])
+                             |--  get_data (['self'])
+                             |--  get_event (['self'])
+                             |--  get_mark (['self'])
+                             |--  get_node (['self'])
+                             |--  get_single_data (['self'])
+                             |--  get_single_node (['self'])
+                             |--  get_token (['self'])
+                             |--  need_more_tokens (['self'])
+                             |--  next_possible_simple_key (['self'])
+                             |--  parse_block_mapping_first_key (['self'])
+                             |--  parse_block_mapping_key (['self'])
+                             |--  parse_block_mapping_value (['self'])
+                             |--  parse_block_node (['self'])
+                             |--  parse_block_node_or_indentless_sequence (['self'])
+                             |--  parse_block_sequence_entry (['self'])
+                             |--  parse_block_sequence_first_entry (['self'])
+                             |--  parse_document_content (['self'])
+                             |--  parse_document_end (['self'])
+                             |--  parse_document_start (['self'])
+                             |--  parse_flow_mapping_empty_value (['self'])
+                             |--  parse_flow_mapping_first_key (['self'])
+                             |--  parse_flow_mapping_key (['self', 'first'])
+                             |--  parse_flow_mapping_value (['self'])
+                             |--  parse_flow_node (['self'])
+                             |--  parse_flow_sequence_entry (['self', 'first'])
+                             |--  parse_flow_sequence_entry_mapping_end (['self'])
+                             |--  parse_flow_sequence_entry_mapping_key (['self'])
+                             |--  parse_flow_sequence_entry_mapping_value (['self'])
+                             |--  parse_flow_sequence_first_entry (['self'])
+                             |--  parse_implicit_document_start (['self'])
+                             |--  parse_indentless_sequence_entry (['self'])
+                             |--  parse_node (['self', 'block', 'indentless_sequence'])
+                             |--  parse_stream_start (['self'])
+                             |--  peek (['self', 'index'])
+                             |--  peek_event (['self'])
+                             |--  peek_token (['self'])
+                             |--  prefix (['self', 'length'])
+                             |--  process_directives (['self'])
+                             |--  process_empty_scalar (['self', 'mark'])
+                             |--  remove_possible_simple_key (['self'])
+                             |--  resolve (['self', 'kind', 'value', 'implicit'])
+                             |--  save_possible_simple_key (['self'])
+                             |--  scan_anchor (['self', 'TokenClass'])
+                             |--  scan_block_scalar (['self', 'style'])
+                             |--  scan_block_scalar_breaks (['self', 'indent'])
+                             |--  scan_block_scalar_ignored_line (['self', 'start_mark'])
+                             |--  scan_block_scalar_indentation (['self'])
+                             |--  scan_block_scalar_indicators (['self', 'start_mark'])
+                             |--  scan_directive (['self'])
+                             |--  scan_directive_ignored_line (['self', 'start_mark'])
+                             |--  scan_directive_name (['self', 'start_mark'])
+                             |--  scan_flow_scalar (['self', 'style'])
+                             |--  scan_flow_scalar_breaks (['self', 'double', 'start_mark'])
+                             |--  scan_flow_scalar_non_spaces (['self', 'double', 'start_mark'])
+                             |--  scan_flow_scalar_spaces (['self', 'double', 'start_mark'])
+                             |--  scan_line_break (['self'])
+                             |--  scan_plain (['self'])
+                             |--  scan_plain_spaces (['self', 'indent', 'start_mark'])
+                             |--  scan_tag (['self'])
+                             |--  scan_tag_directive_handle (['self', 'start_mark'])
+                             |--  scan_tag_directive_prefix (['self', 'start_mark'])
+                             |--  scan_tag_directive_value (['self', 'start_mark'])
+                             |--  scan_tag_handle (['self', 'name', 'start_mark'])
+                             |--  scan_tag_uri (['self', 'name', 'start_mark'])
+                             |--  scan_to_next_token (['self'])
+                             |--  scan_uri_escapes (['self', 'name', 'start_mark'])
+                             |--  scan_yaml_directive_number (['self', 'start_mark'])
+                             |--  scan_yaml_directive_value (['self', 'start_mark'])
+                             |--  stale_possible_simple_keys (['self'])
+                             |--  unwind_indent (['self', 'column'])
+                             |--  update (['self', 'length'])
+                             |--  update_raw (['self', 'size'])
+                     |--  [  dict  ]:
+                             |--  DEFAULT_TAGS
+                             |--  ESCAPE_CODES
+                             |--  ESCAPE_REPLACEMENTS
+                             |--  yaml_constructors
+                             |--  yaml_implicit_resolvers
+                             |--  yaml_multi_constructors
+                             |--  yaml_path_resolvers
+             |--  [Class BlockEndToken]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.tokens.BlockEndToken'>
+                             |--  <class 'yaml.tokens.Token'>
+                             |--  <class 'object'>
+                     |--  [  str  ]:
+                             |--  id
+             |--  [Class BlockEntryToken]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.tokens.BlockEntryToken'>
+                             |--  <class 'yaml.tokens.Token'>
+                             |--  <class 'object'>
+                     |--  [  str  ]:
+                             |--  id
+             |--  [Class BlockMappingStartToken]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.tokens.BlockMappingStartToken'>
+                             |--  <class 'yaml.tokens.Token'>
+                             |--  <class 'object'>
+                     |--  [  str  ]:
+                             |--  id
+             |--  [Class BlockSequenceStartToken]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.tokens.BlockSequenceStartToken'>
+                             |--  <class 'yaml.tokens.Token'>
+                             |--  <class 'object'>
+                     |--  [  str  ]:
+                             |--  id
+             |--  [Class CBaseDumper]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.cyaml.CBaseDumper'>
+                             |--  <class '_yaml.CEmitter'>
+                             |--  <class 'yaml.representer.BaseRepresenter'>
+                             |--  <class 'yaml.resolver.BaseResolver'>
+                             |--  <class 'object'>
+                     |--  [  method  ]:
+                             |--  add_implicit_resolver
+                             |--  add_multi_representer
+                             |--  add_path_resolver
+                             |--  add_representer
+                     |--  [  str  ]:
+                             |--  DEFAULT_MAPPING_TAG
+                             |--  DEFAULT_SCALAR_TAG
+                             |--  DEFAULT_SEQUENCE_TAG
+                     |--  [  function  ]:
+                             |--  ascend_resolver (['self'])
+                             |--  check_resolver_prefix (['self', 'depth', 'path', 'kind', 'current_node', 'current_index'])
+                             |--  descend_resolver (['self', 'current_node', 'current_index'])
+                             |--  ignore_aliases (['self', 'data'])
+                             |--  represent (['self', 'data'])
+                             |--  represent_data (['self', 'data'])
+                             |--  represent_mapping (['self', 'tag', 'mapping', 'flow_style'])
+                             |--  represent_scalar (['self', 'tag', 'value', 'style'])
+                             |--  represent_sequence (['self', 'tag', 'sequence', 'flow_style'])
+                             |--  resolve (['self', 'kind', 'value', 'implicit'])
+                     |--  [  method_descriptor  ]:
+                             |--  close
+                             |--  dispose
+                             |--  emit
+                             |--  open
+                             |--  serialize
+                     |--  [  dict  ]:
+                             |--  yaml_implicit_resolvers
+                             |--  yaml_multi_representers
+                             |--  yaml_path_resolvers
+                             |--  yaml_representers
+             |--  [Class CBaseLoader]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.cyaml.CBaseLoader'>
+                             |--  <class '_yaml.CParser'>
+                             |--  <class 'yaml.constructor.BaseConstructor'>
+                             |--  <class 'yaml.resolver.BaseResolver'>
+                             |--  <class 'object'>
+                     |--  [  method  ]:
+                             |--  add_constructor
+                             |--  add_implicit_resolver
+                             |--  add_multi_constructor
+                             |--  add_path_resolver
+                     |--  [  str  ]:
+                             |--  DEFAULT_MAPPING_TAG
+                             |--  DEFAULT_SCALAR_TAG
+                             |--  DEFAULT_SEQUENCE_TAG
+                     |--  [  function  ]:
+                             |--  ascend_resolver (['self'])
+                             |--  check_data (['self'])
+                             |--  check_resolver_prefix (['self', 'depth', 'path', 'kind', 'current_node', 'current_index'])
+                             |--  construct_document (['self', 'node'])
+                             |--  construct_mapping (['self', 'node', 'deep'])
+                             |--  construct_object (['self', 'node', 'deep'])
+                             |--  construct_pairs (['self', 'node', 'deep'])
+                             |--  construct_scalar (['self', 'node'])
+                             |--  construct_sequence (['self', 'node', 'deep'])
+                             |--  descend_resolver (['self', 'current_node', 'current_index'])
+                             |--  get_data (['self'])
+                             |--  get_single_data (['self'])
+                             |--  resolve (['self', 'kind', 'value', 'implicit'])
+                     |--  [  method_descriptor  ]:
+                             |--  check_event
+                             |--  check_node
+                             |--  check_token
+                             |--  dispose
+                             |--  get_event
+                             |--  get_node
+                             |--  get_single_node
+                             |--  get_token
+                             |--  peek_event
+                             |--  peek_token
+                             |--  raw_parse
+                             |--  raw_scan
+                     |--  [  dict  ]:
+                             |--  yaml_constructors
+                             |--  yaml_implicit_resolvers
+                             |--  yaml_multi_constructors
+                             |--  yaml_path_resolvers
+             |--  [Class CDumper]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.cyaml.CDumper'>
+                             |--  <class '_yaml.CEmitter'>
+                             |--  <class 'yaml.serializer.Serializer'>
+                             |--  <class 'yaml.representer.Representer'>
+                             |--  <class 'yaml.representer.SafeRepresenter'>
+                             |--  <class 'yaml.representer.BaseRepresenter'>
+                             |--  <class 'yaml.resolver.Resolver'>
+                             |--  <class 'yaml.resolver.BaseResolver'>
+                             |--  <class 'object'>
+                     |--  [  float  ]:
+                             |--  inf_value
+                     |--  [  str  ]:
+                             |--  ANCHOR_TEMPLATE
+                             |--  DEFAULT_MAPPING_TAG
+                             |--  DEFAULT_SCALAR_TAG
+                             |--  DEFAULT_SEQUENCE_TAG
+                     |--  [  function  ]:
+                             |--  anchor_node (['self', 'node'])
+                             |--  ascend_resolver (['self'])
+                             |--  check_resolver_prefix (['self', 'depth', 'path', 'kind', 'current_node', 'current_index'])
+                             |--  descend_resolver (['self', 'current_node', 'current_index'])
+                             |--  generate_anchor (['self', 'node'])
+                             |--  ignore_aliases (['self', 'data'])
+                             |--  represent (['self', 'data'])
+                             |--  represent_binary (['self', 'data'])
+                             |--  represent_bool (['self', 'data'])
+                             |--  represent_complex (['self', 'data'])
+                             |--  represent_data (['self', 'data'])
+                             |--  represent_date (['self', 'data'])
+                             |--  represent_datetime (['self', 'data'])
+                             |--  represent_dict (['self', 'data'])
+                             |--  represent_float (['self', 'data'])
+                             |--  represent_int (['self', 'data'])
+                             |--  represent_list (['self', 'data'])
+                             |--  represent_mapping (['self', 'tag', 'mapping', 'flow_style'])
+                             |--  represent_module (['self', 'data'])
+                             |--  represent_name (['self', 'data'])
+                             |--  represent_none (['self', 'data'])
+                             |--  represent_object (['self', 'data'])
+                             |--  represent_ordered_dict (['self', 'data'])
+                             |--  represent_scalar (['self', 'tag', 'value', 'style'])
+                             |--  represent_sequence (['self', 'tag', 'sequence', 'flow_style'])
+                             |--  represent_set (['self', 'data'])
+                             |--  represent_str (['self', 'data'])
+                             |--  represent_tuple (['self', 'data'])
+                             |--  represent_undefined (['self', 'data'])
+                             |--  represent_yaml_object (['self', 'tag', 'data', 'cls', 'flow_style'])
+                             |--  resolve (['self', 'kind', 'value', 'implicit'])
+                             |--  serialize_node (['self', 'node', 'parent', 'index'])
+                     |--  [  method  ]:
+                             |--  add_implicit_resolver
+                             |--  add_multi_representer
+                             |--  add_path_resolver
+                             |--  add_representer
+                     |--  [  method_descriptor  ]:
+                             |--  close
+                             |--  dispose
+                             |--  emit
+                             |--  open
+                             |--  serialize
+                     |--  [  dict  ]:
+                             |--  yaml_implicit_resolvers
+                             |--  yaml_multi_representers
+                             |--  yaml_path_resolvers
+                             |--  yaml_representers
+             |--  [Class CLoader]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.cyaml.CLoader'>
+                             |--  <class '_yaml.CParser'>
+                             |--  <class 'yaml.constructor.Constructor'>
+                             |--  <class 'yaml.constructor.SafeConstructor'>
+                             |--  <class 'yaml.constructor.BaseConstructor'>
+                             |--  <class 'yaml.resolver.Resolver'>
+                             |--  <class 'yaml.resolver.BaseResolver'>
+                             |--  <class 'object'>
+                     |--  [  float  ]:
+                             |--  inf_value
+                             |--  nan_value
+                     |--  [  SRE_Pattern  ]:
+                             |--  timestamp_regexp
+                     |--  [  str  ]:
+                             |--  DEFAULT_MAPPING_TAG
+                             |--  DEFAULT_SCALAR_TAG
+                             |--  DEFAULT_SEQUENCE_TAG
+                     |--  [  function  ]:
+                             |--  ascend_resolver (['self'])
+                             |--  check_data (['self'])
+                             |--  check_resolver_prefix (['self', 'depth', 'path', 'kind', 'current_node', 'current_index'])
+                             |--  construct_document (['self', 'node'])
+                             |--  construct_mapping (['self', 'node', 'deep'])
+                             |--  construct_object (['self', 'node', 'deep'])
+                             |--  construct_pairs (['self', 'node', 'deep'])
+                             |--  construct_python_bytes (['self', 'node'])
+                             |--  construct_python_complex (['self', 'node'])
+                             |--  construct_python_long (['self', 'node'])
+                             |--  construct_python_module (['self', 'suffix', 'node'])
+                             |--  construct_python_name (['self', 'suffix', 'node'])
+                             |--  construct_python_object (['self', 'suffix', 'node'])
+                             |--  construct_python_object_apply (['self', 'suffix', 'node', 'newobj'])
+                             |--  construct_python_object_new (['self', 'suffix', 'node'])
+                             |--  construct_python_str (['self', 'node'])
+                             |--  construct_python_tuple (['self', 'node'])
+                             |--  construct_python_unicode (['self', 'node'])
+                             |--  construct_scalar (['self', 'node'])
+                             |--  construct_sequence (['self', 'node', 'deep'])
+                             |--  construct_undefined (['self', 'node'])
+                             |--  construct_yaml_binary (['self', 'node'])
+                             |--  construct_yaml_bool (['self', 'node'])
+                             |--  construct_yaml_float (['self', 'node'])
+                             |--  construct_yaml_int (['self', 'node'])
+                             |--  construct_yaml_map (['self', 'node'])
+                             |--  construct_yaml_null (['self', 'node'])
+                             |--  construct_yaml_object (['self', 'node', 'cls'])
+                             |--  construct_yaml_omap (['self', 'node'])
+                             |--  construct_yaml_pairs (['self', 'node'])
+                             |--  construct_yaml_seq (['self', 'node'])
+                             |--  construct_yaml_set (['self', 'node'])
+                             |--  construct_yaml_str (['self', 'node'])
+                             |--  construct_yaml_timestamp (['self', 'node'])
+                             |--  descend_resolver (['self', 'current_node', 'current_index'])
+                             |--  find_python_module (['self', 'name', 'mark'])
+                             |--  find_python_name (['self', 'name', 'mark'])
+                             |--  flatten_mapping (['self', 'node'])
+                             |--  get_data (['self'])
+                             |--  get_single_data (['self'])
+                             |--  make_python_instance (['self', 'suffix', 'node', 'args', 'kwds', 'newobj'])
+                             |--  resolve (['self', 'kind', 'value', 'implicit'])
+                             |--  set_python_instance_state (['self', 'instance', 'state'])
+                     |--  [  method  ]:
+                             |--  add_constructor
+                             |--  add_implicit_resolver
+                             |--  add_multi_constructor
+                             |--  add_path_resolver
+                     |--  [  dict  ]:
+                             |--  bool_values
+                             |--  yaml_constructors
+                             |--  yaml_implicit_resolvers
+                             |--  yaml_multi_constructors
+                             |--  yaml_path_resolvers
+                     |--  [  method_descriptor  ]:
+                             |--  check_event
+                             |--  check_node
+                             |--  check_token
+                             |--  dispose
+                             |--  get_event
+                             |--  get_node
+                             |--  get_single_node
+                             |--  get_token
+                             |--  peek_event
+                             |--  peek_token
+                             |--  raw_parse
+                             |--  raw_scan
+             |--  [Class CSafeDumper]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.cyaml.CSafeDumper'>
+                             |--  <class '_yaml.CEmitter'>
+                             |--  <class 'yaml.representer.SafeRepresenter'>
+                             |--  <class 'yaml.representer.BaseRepresenter'>
+                             |--  <class 'yaml.resolver.Resolver'>
+                             |--  <class 'yaml.resolver.BaseResolver'>
+                             |--  <class 'object'>
+                     |--  [  float  ]:
+                             |--  inf_value
+                     |--  [  str  ]:
+                             |--  DEFAULT_MAPPING_TAG
+                             |--  DEFAULT_SCALAR_TAG
+                             |--  DEFAULT_SEQUENCE_TAG
+                     |--  [  function  ]:
+                             |--  ascend_resolver (['self'])
+                             |--  check_resolver_prefix (['self', 'depth', 'path', 'kind', 'current_node', 'current_index'])
+                             |--  descend_resolver (['self', 'current_node', 'current_index'])
+                             |--  ignore_aliases (['self', 'data'])
+                             |--  represent (['self', 'data'])
+                             |--  represent_binary (['self', 'data'])
+                             |--  represent_bool (['self', 'data'])
+                             |--  represent_data (['self', 'data'])
+                             |--  represent_date (['self', 'data'])
+                             |--  represent_datetime (['self', 'data'])
+                             |--  represent_dict (['self', 'data'])
+                             |--  represent_float (['self', 'data'])
+                             |--  represent_int (['self', 'data'])
+                             |--  represent_list (['self', 'data'])
+                             |--  represent_mapping (['self', 'tag', 'mapping', 'flow_style'])
+                             |--  represent_none (['self', 'data'])
+                             |--  represent_scalar (['self', 'tag', 'value', 'style'])
+                             |--  represent_sequence (['self', 'tag', 'sequence', 'flow_style'])
+                             |--  represent_set (['self', 'data'])
+                             |--  represent_str (['self', 'data'])
+                             |--  represent_undefined (['self', 'data'])
+                             |--  represent_yaml_object (['self', 'tag', 'data', 'cls', 'flow_style'])
+                             |--  resolve (['self', 'kind', 'value', 'implicit'])
+                     |--  [  method  ]:
+                             |--  add_implicit_resolver
+                             |--  add_multi_representer
+                             |--  add_path_resolver
+                             |--  add_representer
+                     |--  [  method_descriptor  ]:
+                             |--  close
+                             |--  dispose
+                             |--  emit
+                             |--  open
+                             |--  serialize
+                     |--  [  dict  ]:
+                             |--  yaml_implicit_resolvers
+                             |--  yaml_multi_representers
+                             |--  yaml_path_resolvers
+                             |--  yaml_representers
+             |--  [Class CSafeLoader]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.cyaml.CSafeLoader'>
+                             |--  <class '_yaml.CParser'>
+                             |--  <class 'yaml.constructor.SafeConstructor'>
+                             |--  <class 'yaml.constructor.BaseConstructor'>
+                             |--  <class 'yaml.resolver.Resolver'>
+                             |--  <class 'yaml.resolver.BaseResolver'>
+                             |--  <class 'object'>
+                     |--  [  float  ]:
+                             |--  inf_value
+                             |--  nan_value
+                     |--  [  SRE_Pattern  ]:
+                             |--  timestamp_regexp
+                     |--  [  str  ]:
+                             |--  DEFAULT_MAPPING_TAG
+                             |--  DEFAULT_SCALAR_TAG
+                             |--  DEFAULT_SEQUENCE_TAG
+                     |--  [  function  ]:
+                             |--  ascend_resolver (['self'])
+                             |--  check_data (['self'])
+                             |--  check_resolver_prefix (['self', 'depth', 'path', 'kind', 'current_node', 'current_index'])
+                             |--  construct_document (['self', 'node'])
+                             |--  construct_mapping (['self', 'node', 'deep'])
+                             |--  construct_object (['self', 'node', 'deep'])
+                             |--  construct_pairs (['self', 'node', 'deep'])
+                             |--  construct_scalar (['self', 'node'])
+                             |--  construct_sequence (['self', 'node', 'deep'])
+                             |--  construct_undefined (['self', 'node'])
+                             |--  construct_yaml_binary (['self', 'node'])
+                             |--  construct_yaml_bool (['self', 'node'])
+                             |--  construct_yaml_float (['self', 'node'])
+                             |--  construct_yaml_int (['self', 'node'])
+                             |--  construct_yaml_map (['self', 'node'])
+                             |--  construct_yaml_null (['self', 'node'])
+                             |--  construct_yaml_object (['self', 'node', 'cls'])
+                             |--  construct_yaml_omap (['self', 'node'])
+                             |--  construct_yaml_pairs (['self', 'node'])
+                             |--  construct_yaml_seq (['self', 'node'])
+                             |--  construct_yaml_set (['self', 'node'])
+                             |--  construct_yaml_str (['self', 'node'])
+                             |--  construct_yaml_timestamp (['self', 'node'])
+                             |--  descend_resolver (['self', 'current_node', 'current_index'])
+                             |--  flatten_mapping (['self', 'node'])
+                             |--  get_data (['self'])
+                             |--  get_single_data (['self'])
+                             |--  resolve (['self', 'kind', 'value', 'implicit'])
+                     |--  [  method  ]:
+                             |--  add_constructor
+                             |--  add_implicit_resolver
+                             |--  add_multi_constructor
+                             |--  add_path_resolver
+                     |--  [  dict  ]:
+                             |--  bool_values
+                             |--  yaml_constructors
+                             |--  yaml_implicit_resolvers
+                             |--  yaml_multi_constructors
+                             |--  yaml_path_resolvers
+                     |--  [  method_descriptor  ]:
+                             |--  check_event
+                             |--  check_node
+                             |--  check_token
+                             |--  dispose
+                             |--  get_event
+                             |--  get_node
+                             |--  get_single_node
+                             |--  get_token
+                             |--  peek_event
+                             |--  peek_token
+                             |--  raw_parse
+                             |--  raw_scan
+             |--  [Class CollectionEndEvent]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.events.CollectionEndEvent'>
+                             |--  <class 'yaml.events.Event'>
+                             |--  <class 'object'>
+             |--  [Class CollectionNode]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.nodes.CollectionNode'>
+                             |--  <class 'yaml.nodes.Node'>
+                             |--  <class 'object'>
+             |--  [Class CollectionStartEvent]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.events.CollectionStartEvent'>
+                             |--  <class 'yaml.events.NodeEvent'>
+                             |--  <class 'yaml.events.Event'>
+                             |--  <class 'object'>
+             |--  [Class DirectiveToken]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.tokens.DirectiveToken'>
+                             |--  <class 'yaml.tokens.Token'>
+                             |--  <class 'object'>
+                     |--  [  str  ]:
+                             |--  id
+             |--  [Class DocumentEndEvent]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.events.DocumentEndEvent'>
+                             |--  <class 'yaml.events.Event'>
+                             |--  <class 'object'>
+             |--  [Class DocumentEndToken]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.tokens.DocumentEndToken'>
+                             |--  <class 'yaml.tokens.Token'>
+                             |--  <class 'object'>
+                     |--  [  str  ]:
+                             |--  id
+             |--  [Class DocumentStartEvent]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.events.DocumentStartEvent'>
+                             |--  <class 'yaml.events.Event'>
+                             |--  <class 'object'>
+             |--  [Class DocumentStartToken]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.tokens.DocumentStartToken'>
+                             |--  <class 'yaml.tokens.Token'>
+                             |--  <class 'object'>
+                     |--  [  str  ]:
+                             |--  id
+             |--  [Class Dumper]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.dumper.Dumper'>
+                             |--  <class 'yaml.emitter.Emitter'>
+                             |--  <class 'yaml.serializer.Serializer'>
+                             |--  <class 'yaml.representer.Representer'>
+                             |--  <class 'yaml.representer.SafeRepresenter'>
+                             |--  <class 'yaml.representer.BaseRepresenter'>
+                             |--  <class 'yaml.resolver.Resolver'>
+                             |--  <class 'yaml.resolver.BaseResolver'>
+                             |--  <class 'object'>
+                     |--  [  method  ]:
+                             |--  add_implicit_resolver
+                             |--  add_multi_representer
+                             |--  add_path_resolver
+                             |--  add_representer
+                     |--  [  float  ]:
+                             |--  inf_value
+                     |--  [  str  ]:
+                             |--  ANCHOR_TEMPLATE
+                             |--  DEFAULT_MAPPING_TAG
+                             |--  DEFAULT_SCALAR_TAG
+                             |--  DEFAULT_SEQUENCE_TAG
+                     |--  [  function  ]:
+                             |--  analyze_scalar (['self', 'scalar'])
+                             |--  anchor_node (['self', 'node'])
+                             |--  ascend_resolver (['self'])
+                             |--  check_empty_document (['self'])
+                             |--  check_empty_mapping (['self'])
+                             |--  check_empty_sequence (['self'])
+                             |--  check_resolver_prefix (['self', 'depth', 'path', 'kind', 'current_node', 'current_index'])
+                             |--  check_simple_key (['self'])
+                             |--  choose_scalar_style (['self'])
+                             |--  close (['self'])
+                             |--  descend_resolver (['self', 'current_node', 'current_index'])
+                             |--  determine_block_hints (['self', 'text'])
+                             |--  dispose (['self'])
+                             |--  emit (['self', 'event'])
+                             |--  expect_alias (['self'])
+                             |--  expect_block_mapping (['self'])
+                             |--  expect_block_mapping_key (['self', 'first'])
+                             |--  expect_block_mapping_simple_value (['self'])
+                             |--  expect_block_mapping_value (['self'])
+                             |--  expect_block_sequence (['self'])
+                             |--  expect_block_sequence_item (['self', 'first'])
+                             |--  expect_document_end (['self'])
+                             |--  expect_document_root (['self'])
+                             |--  expect_document_start (['self', 'first'])
+                             |--  expect_first_block_mapping_key (['self'])
+                             |--  expect_first_block_sequence_item (['self'])
+                             |--  expect_first_document_start (['self'])
+                             |--  expect_first_flow_mapping_key (['self'])
+                             |--  expect_first_flow_sequence_item (['self'])
+                             |--  expect_flow_mapping (['self'])
+                             |--  expect_flow_mapping_key (['self'])
+                             |--  expect_flow_mapping_simple_value (['self'])
+                             |--  expect_flow_mapping_value (['self'])
+                             |--  expect_flow_sequence (['self'])
+                             |--  expect_flow_sequence_item (['self'])
+                             |--  expect_node (['self', 'root', 'sequence', 'mapping', 'simple_key'])
+                             |--  expect_nothing (['self'])
+                             |--  expect_scalar (['self'])
+                             |--  expect_stream_start (['self'])
+                             |--  flush_stream (['self'])
+                             |--  generate_anchor (['self', 'node'])
+                             |--  ignore_aliases (['self', 'data'])
+                             |--  increase_indent (['self', 'flow', 'indentless'])
+                             |--  need_events (['self', 'count'])
+                             |--  need_more_events (['self'])
+                             |--  open (['self'])
+                             |--  prepare_anchor (['self', 'anchor'])
+                             |--  prepare_tag (['self', 'tag'])
+                             |--  prepare_tag_handle (['self', 'handle'])
+                             |--  prepare_tag_prefix (['self', 'prefix'])
+                             |--  prepare_version (['self', 'version'])
+                             |--  process_anchor (['self', 'indicator'])
+                             |--  process_scalar (['self'])
+                             |--  process_tag (['self'])
+                             |--  represent (['self', 'data'])
+                             |--  represent_binary (['self', 'data'])
+                             |--  represent_bool (['self', 'data'])
+                             |--  represent_complex (['self', 'data'])
+                             |--  represent_data (['self', 'data'])
+                             |--  represent_date (['self', 'data'])
+                             |--  represent_datetime (['self', 'data'])
+                             |--  represent_dict (['self', 'data'])
+                             |--  represent_float (['self', 'data'])
+                             |--  represent_int (['self', 'data'])
+                             |--  represent_list (['self', 'data'])
+                             |--  represent_mapping (['self', 'tag', 'mapping', 'flow_style'])
+                             |--  represent_module (['self', 'data'])
+                             |--  represent_name (['self', 'data'])
+                             |--  represent_none (['self', 'data'])
+                             |--  represent_object (['self', 'data'])
+                             |--  represent_ordered_dict (['self', 'data'])
+                             |--  represent_scalar (['self', 'tag', 'value', 'style'])
+                             |--  represent_sequence (['self', 'tag', 'sequence', 'flow_style'])
+                             |--  represent_set (['self', 'data'])
+                             |--  represent_str (['self', 'data'])
+                             |--  represent_tuple (['self', 'data'])
+                             |--  represent_undefined (['self', 'data'])
+                             |--  represent_yaml_object (['self', 'tag', 'data', 'cls', 'flow_style'])
+                             |--  resolve (['self', 'kind', 'value', 'implicit'])
+                             |--  serialize (['self', 'node'])
+                             |--  serialize_node (['self', 'node', 'parent', 'index'])
+                             |--  write_double_quoted (['self', 'text', 'split'])
+                             |--  write_folded (['self', 'text'])
+                             |--  write_indent (['self'])
+                             |--  write_indicator (['self', 'indicator', 'need_whitespace', 'whitespace', 'indention'])
+                             |--  write_line_break (['self', 'data'])
+                             |--  write_literal (['self', 'text'])
+                             |--  write_plain (['self', 'text', 'split'])
+                             |--  write_single_quoted (['self', 'text', 'split'])
+                             |--  write_stream_end (['self'])
+                             |--  write_stream_start (['self'])
+                             |--  write_tag_directive (['self', 'handle_text', 'prefix_text'])
+                             |--  write_version_directive (['self', 'version_text'])
+                     |--  [  dict  ]:
+                             |--  DEFAULT_TAG_PREFIXES
+                             |--  ESCAPE_REPLACEMENTS
+                             |--  yaml_implicit_resolvers
+                             |--  yaml_multi_representers
+                             |--  yaml_path_resolvers
+                             |--  yaml_representers
+             |--  [Class Event]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.events.Event'>
+                             |--  <class 'object'>
+             |--  [Class FlowEntryToken]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.tokens.FlowEntryToken'>
+                             |--  <class 'yaml.tokens.Token'>
+                             |--  <class 'object'>
+                     |--  [  str  ]:
+                             |--  id
+             |--  [Class FlowMappingEndToken]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.tokens.FlowMappingEndToken'>
+                             |--  <class 'yaml.tokens.Token'>
+                             |--  <class 'object'>
+                     |--  [  str  ]:
+                             |--  id
+             |--  [Class FlowMappingStartToken]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.tokens.FlowMappingStartToken'>
+                             |--  <class 'yaml.tokens.Token'>
+                             |--  <class 'object'>
+                     |--  [  str  ]:
+                             |--  id
+             |--  [Class FlowSequenceEndToken]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.tokens.FlowSequenceEndToken'>
+                             |--  <class 'yaml.tokens.Token'>
+                             |--  <class 'object'>
+                     |--  [  str  ]:
+                             |--  id
+             |--  [Class FlowSequenceStartToken]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.tokens.FlowSequenceStartToken'>
+                             |--  <class 'yaml.tokens.Token'>
+                             |--  <class 'object'>
+                     |--  [  str  ]:
+                             |--  id
+             |--  [Class KeyToken]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.tokens.KeyToken'>
+                             |--  <class 'yaml.tokens.Token'>
+                             |--  <class 'object'>
+                     |--  [  str  ]:
+                             |--  id
+             |--  [Class Loader]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.loader.Loader'>
+                             |--  <class 'yaml.reader.Reader'>
+                             |--  <class 'yaml.scanner.Scanner'>
+                             |--  <class 'yaml.parser.Parser'>
+                             |--  <class 'yaml.composer.Composer'>
+                             |--  <class 'yaml.constructor.Constructor'>
+                             |--  <class 'yaml.constructor.SafeConstructor'>
+                             |--  <class 'yaml.constructor.BaseConstructor'>
+                             |--  <class 'yaml.resolver.Resolver'>
+                             |--  <class 'yaml.resolver.BaseResolver'>
+                             |--  <class 'object'>
+                     |--  [  float  ]:
+                             |--  inf_value
+                             |--  nan_value
+                     |--  [  SRE_Pattern  ]:
+                             |--  NON_PRINTABLE
+                             |--  timestamp_regexp
+                     |--  [  str  ]:
+                             |--  DEFAULT_MAPPING_TAG
+                             |--  DEFAULT_SCALAR_TAG
+                             |--  DEFAULT_SEQUENCE_TAG
+                     |--  [  function  ]:
+                             |--  add_indent (['self', 'column'])
+                             |--  ascend_resolver (['self'])
+                             |--  check_block_entry (['self'])
+                             |--  check_data (['self'])
+                             |--  check_directive (['self'])
+                             |--  check_document_end (['self'])
+                             |--  check_document_start (['self'])
+                             |--  check_event (['self'])
+                             |--  check_key (['self'])
+                             |--  check_node (['self'])
+                             |--  check_plain (['self'])
+                             |--  check_printable (['self', 'data'])
+                             |--  check_resolver_prefix (['self', 'depth', 'path', 'kind', 'current_node', 'current_index'])
+                             |--  check_token (['self'])
+                             |--  check_value (['self'])
+                             |--  compose_document (['self'])
+                             |--  compose_mapping_node (['self', 'anchor'])
+                             |--  compose_node (['self', 'parent', 'index'])
+                             |--  compose_scalar_node (['self', 'anchor'])
+                             |--  compose_sequence_node (['self', 'anchor'])
+                             |--  construct_document (['self', 'node'])
+                             |--  construct_mapping (['self', 'node', 'deep'])
+                             |--  construct_object (['self', 'node', 'deep'])
+                             |--  construct_pairs (['self', 'node', 'deep'])
+                             |--  construct_python_bytes (['self', 'node'])
+                             |--  construct_python_complex (['self', 'node'])
+                             |--  construct_python_long (['self', 'node'])
+                             |--  construct_python_module (['self', 'suffix', 'node'])
+                             |--  construct_python_name (['self', 'suffix', 'node'])
+                             |--  construct_python_object (['self', 'suffix', 'node'])
+                             |--  construct_python_object_apply (['self', 'suffix', 'node', 'newobj'])
+                             |--  construct_python_object_new (['self', 'suffix', 'node'])
+                             |--  construct_python_str (['self', 'node'])
+                             |--  construct_python_tuple (['self', 'node'])
+                             |--  construct_python_unicode (['self', 'node'])
+                             |--  construct_scalar (['self', 'node'])
+                             |--  construct_sequence (['self', 'node', 'deep'])
+                             |--  construct_undefined (['self', 'node'])
+                             |--  construct_yaml_binary (['self', 'node'])
+                             |--  construct_yaml_bool (['self', 'node'])
+                             |--  construct_yaml_float (['self', 'node'])
+                             |--  construct_yaml_int (['self', 'node'])
+                             |--  construct_yaml_map (['self', 'node'])
+                             |--  construct_yaml_null (['self', 'node'])
+                             |--  construct_yaml_object (['self', 'node', 'cls'])
+                             |--  construct_yaml_omap (['self', 'node'])
+                             |--  construct_yaml_pairs (['self', 'node'])
+                             |--  construct_yaml_seq (['self', 'node'])
+                             |--  construct_yaml_set (['self', 'node'])
+                             |--  construct_yaml_str (['self', 'node'])
+                             |--  construct_yaml_timestamp (['self', 'node'])
+                             |--  descend_resolver (['self', 'current_node', 'current_index'])
+                             |--  determine_encoding (['self'])
+                             |--  dispose (['self'])
+                             |--  fetch_alias (['self'])
+                             |--  fetch_anchor (['self'])
+                             |--  fetch_block_entry (['self'])
+                             |--  fetch_block_scalar (['self', 'style'])
+                             |--  fetch_directive (['self'])
+                             |--  fetch_document_end (['self'])
+                             |--  fetch_document_indicator (['self', 'TokenClass'])
+                             |--  fetch_document_start (['self'])
+                             |--  fetch_double (['self'])
+                             |--  fetch_flow_collection_end (['self', 'TokenClass'])
+                             |--  fetch_flow_collection_start (['self', 'TokenClass'])
+                             |--  fetch_flow_entry (['self'])
+                             |--  fetch_flow_mapping_end (['self'])
+                             |--  fetch_flow_mapping_start (['self'])
+                             |--  fetch_flow_scalar (['self', 'style'])
+                             |--  fetch_flow_sequence_end (['self'])
+                             |--  fetch_flow_sequence_start (['self'])
+                             |--  fetch_folded (['self'])
+                             |--  fetch_key (['self'])
+                             |--  fetch_literal (['self'])
+                             |--  fetch_more_tokens (['self'])
+                             |--  fetch_plain (['self'])
+                             |--  fetch_single (['self'])
+                             |--  fetch_stream_end (['self'])
+                             |--  fetch_stream_start (['self'])
+                             |--  fetch_tag (['self'])
+                             |--  fetch_value (['self'])
+                             |--  find_python_module (['self', 'name', 'mark'])
+                             |--  find_python_name (['self', 'name', 'mark'])
+                             |--  flatten_mapping (['self', 'node'])
+                             |--  forward (['self', 'length'])
+                             |--  get_data (['self'])
+                             |--  get_event (['self'])
+                             |--  get_mark (['self'])
+                             |--  get_node (['self'])
+                             |--  get_single_data (['self'])
+                             |--  get_single_node (['self'])
+                             |--  get_token (['self'])
+                             |--  make_python_instance (['self', 'suffix', 'node', 'args', 'kwds', 'newobj'])
+                             |--  need_more_tokens (['self'])
+                             |--  next_possible_simple_key (['self'])
+                             |--  parse_block_mapping_first_key (['self'])
+                             |--  parse_block_mapping_key (['self'])
+                             |--  parse_block_mapping_value (['self'])
+                             |--  parse_block_node (['self'])
+                             |--  parse_block_node_or_indentless_sequence (['self'])
+                             |--  parse_block_sequence_entry (['self'])
+                             |--  parse_block_sequence_first_entry (['self'])
+                             |--  parse_document_content (['self'])
+                             |--  parse_document_end (['self'])
+                             |--  parse_document_start (['self'])
+                             |--  parse_flow_mapping_empty_value (['self'])
+                             |--  parse_flow_mapping_first_key (['self'])
+                             |--  parse_flow_mapping_key (['self', 'first'])
+                             |--  parse_flow_mapping_value (['self'])
+                             |--  parse_flow_node (['self'])
+                             |--  parse_flow_sequence_entry (['self', 'first'])
+                             |--  parse_flow_sequence_entry_mapping_end (['self'])
+                             |--  parse_flow_sequence_entry_mapping_key (['self'])
+                             |--  parse_flow_sequence_entry_mapping_value (['self'])
+                             |--  parse_flow_sequence_first_entry (['self'])
+                             |--  parse_implicit_document_start (['self'])
+                             |--  parse_indentless_sequence_entry (['self'])
+                             |--  parse_node (['self', 'block', 'indentless_sequence'])
+                             |--  parse_stream_start (['self'])
+                             |--  peek (['self', 'index'])
+                             |--  peek_event (['self'])
+                             |--  peek_token (['self'])
+                             |--  prefix (['self', 'length'])
+                             |--  process_directives (['self'])
+                             |--  process_empty_scalar (['self', 'mark'])
+                             |--  remove_possible_simple_key (['self'])
+                             |--  resolve (['self', 'kind', 'value', 'implicit'])
+                             |--  save_possible_simple_key (['self'])
+                             |--  scan_anchor (['self', 'TokenClass'])
+                             |--  scan_block_scalar (['self', 'style'])
+                             |--  scan_block_scalar_breaks (['self', 'indent'])
+                             |--  scan_block_scalar_ignored_line (['self', 'start_mark'])
+                             |--  scan_block_scalar_indentation (['self'])
+                             |--  scan_block_scalar_indicators (['self', 'start_mark'])
+                             |--  scan_directive (['self'])
+                             |--  scan_directive_ignored_line (['self', 'start_mark'])
+                             |--  scan_directive_name (['self', 'start_mark'])
+                             |--  scan_flow_scalar (['self', 'style'])
+                             |--  scan_flow_scalar_breaks (['self', 'double', 'start_mark'])
+                             |--  scan_flow_scalar_non_spaces (['self', 'double', 'start_mark'])
+                             |--  scan_flow_scalar_spaces (['self', 'double', 'start_mark'])
+                             |--  scan_line_break (['self'])
+                             |--  scan_plain (['self'])
+                             |--  scan_plain_spaces (['self', 'indent', 'start_mark'])
+                             |--  scan_tag (['self'])
+                             |--  scan_tag_directive_handle (['self', 'start_mark'])
+                             |--  scan_tag_directive_prefix (['self', 'start_mark'])
+                             |--  scan_tag_directive_value (['self', 'start_mark'])
+                             |--  scan_tag_handle (['self', 'name', 'start_mark'])
+                             |--  scan_tag_uri (['self', 'name', 'start_mark'])
+                             |--  scan_to_next_token (['self'])
+                             |--  scan_uri_escapes (['self', 'name', 'start_mark'])
+                             |--  scan_yaml_directive_number (['self', 'start_mark'])
+                             |--  scan_yaml_directive_value (['self', 'start_mark'])
+                             |--  set_python_instance_state (['self', 'instance', 'state'])
+                             |--  stale_possible_simple_keys (['self'])
+                             |--  unwind_indent (['self', 'column'])
+                             |--  update (['self', 'length'])
+                             |--  update_raw (['self', 'size'])
+                     |--  [  method  ]:
+                             |--  add_constructor
+                             |--  add_implicit_resolver
+                             |--  add_multi_constructor
+                             |--  add_path_resolver
+                     |--  [  dict  ]:
+                             |--  DEFAULT_TAGS
+                             |--  ESCAPE_CODES
+                             |--  ESCAPE_REPLACEMENTS
+                             |--  bool_values
+                             |--  yaml_constructors
+                             |--  yaml_implicit_resolvers
+                             |--  yaml_multi_constructors
+                             |--  yaml_path_resolvers
+             |--  [Class MappingEndEvent]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.events.MappingEndEvent'>
+                             |--  <class 'yaml.events.CollectionEndEvent'>
+                             |--  <class 'yaml.events.Event'>
+                             |--  <class 'object'>
+             |--  [Class MappingNode]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.nodes.MappingNode'>
+                             |--  <class 'yaml.nodes.CollectionNode'>
+                             |--  <class 'yaml.nodes.Node'>
+                             |--  <class 'object'>
+                     |--  [  str  ]:
+                             |--  id
+             |--  [Class MappingStartEvent]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.events.MappingStartEvent'>
+                             |--  <class 'yaml.events.CollectionStartEvent'>
+                             |--  <class 'yaml.events.NodeEvent'>
+                             |--  <class 'yaml.events.Event'>
+                             |--  <class 'object'>
+             |--  [Class Mark]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.error.Mark'>
+                             |--  <class 'object'>
+                     |--  [  function  ]:
+                             |--  get_snippet (['self', 'indent', 'max_length'])
+             |--  [Class MarkedYAMLError]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.error.MarkedYAMLError'>
+                             |--  <class 'yaml.error.YAMLError'>
+                             |--  <class 'Exception'>
+                             |--  <class 'BaseException'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  with_traceback
+                     |--  [  getset_descriptor  ]:
+                             |--  args
+             |--  [Class Node]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.nodes.Node'>
+                             |--  <class 'object'>
+             |--  [Class NodeEvent]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.events.NodeEvent'>
+                             |--  <class 'yaml.events.Event'>
+                             |--  <class 'object'>
+             |--  [Class SafeDumper]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.dumper.SafeDumper'>
+                             |--  <class 'yaml.emitter.Emitter'>
+                             |--  <class 'yaml.serializer.Serializer'>
+                             |--  <class 'yaml.representer.SafeRepresenter'>
+                             |--  <class 'yaml.representer.BaseRepresenter'>
+                             |--  <class 'yaml.resolver.Resolver'>
+                             |--  <class 'yaml.resolver.BaseResolver'>
+                             |--  <class 'object'>
+                     |--  [  method  ]:
+                             |--  add_implicit_resolver
+                             |--  add_multi_representer
+                             |--  add_path_resolver
+                             |--  add_representer
+                     |--  [  float  ]:
+                             |--  inf_value
+                     |--  [  str  ]:
+                             |--  ANCHOR_TEMPLATE
+                             |--  DEFAULT_MAPPING_TAG
+                             |--  DEFAULT_SCALAR_TAG
+                             |--  DEFAULT_SEQUENCE_TAG
+                     |--  [  function  ]:
+                             |--  analyze_scalar (['self', 'scalar'])
+                             |--  anchor_node (['self', 'node'])
+                             |--  ascend_resolver (['self'])
+                             |--  check_empty_document (['self'])
+                             |--  check_empty_mapping (['self'])
+                             |--  check_empty_sequence (['self'])
+                             |--  check_resolver_prefix (['self', 'depth', 'path', 'kind', 'current_node', 'current_index'])
+                             |--  check_simple_key (['self'])
+                             |--  choose_scalar_style (['self'])
+                             |--  close (['self'])
+                             |--  descend_resolver (['self', 'current_node', 'current_index'])
+                             |--  determine_block_hints (['self', 'text'])
+                             |--  dispose (['self'])
+                             |--  emit (['self', 'event'])
+                             |--  expect_alias (['self'])
+                             |--  expect_block_mapping (['self'])
+                             |--  expect_block_mapping_key (['self', 'first'])
+                             |--  expect_block_mapping_simple_value (['self'])
+                             |--  expect_block_mapping_value (['self'])
+                             |--  expect_block_sequence (['self'])
+                             |--  expect_block_sequence_item (['self', 'first'])
+                             |--  expect_document_end (['self'])
+                             |--  expect_document_root (['self'])
+                             |--  expect_document_start (['self', 'first'])
+                             |--  expect_first_block_mapping_key (['self'])
+                             |--  expect_first_block_sequence_item (['self'])
+                             |--  expect_first_document_start (['self'])
+                             |--  expect_first_flow_mapping_key (['self'])
+                             |--  expect_first_flow_sequence_item (['self'])
+                             |--  expect_flow_mapping (['self'])
+                             |--  expect_flow_mapping_key (['self'])
+                             |--  expect_flow_mapping_simple_value (['self'])
+                             |--  expect_flow_mapping_value (['self'])
+                             |--  expect_flow_sequence (['self'])
+                             |--  expect_flow_sequence_item (['self'])
+                             |--  expect_node (['self', 'root', 'sequence', 'mapping', 'simple_key'])
+                             |--  expect_nothing (['self'])
+                             |--  expect_scalar (['self'])
+                             |--  expect_stream_start (['self'])
+                             |--  flush_stream (['self'])
+                             |--  generate_anchor (['self', 'node'])
+                             |--  ignore_aliases (['self', 'data'])
+                             |--  increase_indent (['self', 'flow', 'indentless'])
+                             |--  need_events (['self', 'count'])
+                             |--  need_more_events (['self'])
+                             |--  open (['self'])
+                             |--  prepare_anchor (['self', 'anchor'])
+                             |--  prepare_tag (['self', 'tag'])
+                             |--  prepare_tag_handle (['self', 'handle'])
+                             |--  prepare_tag_prefix (['self', 'prefix'])
+                             |--  prepare_version (['self', 'version'])
+                             |--  process_anchor (['self', 'indicator'])
+                             |--  process_scalar (['self'])
+                             |--  process_tag (['self'])
+                             |--  represent (['self', 'data'])
+                             |--  represent_binary (['self', 'data'])
+                             |--  represent_bool (['self', 'data'])
+                             |--  represent_data (['self', 'data'])
+                             |--  represent_date (['self', 'data'])
+                             |--  represent_datetime (['self', 'data'])
+                             |--  represent_dict (['self', 'data'])
+                             |--  represent_float (['self', 'data'])
+                             |--  represent_int (['self', 'data'])
+                             |--  represent_list (['self', 'data'])
+                             |--  represent_mapping (['self', 'tag', 'mapping', 'flow_style'])
+                             |--  represent_none (['self', 'data'])
+                             |--  represent_scalar (['self', 'tag', 'value', 'style'])
+                             |--  represent_sequence (['self', 'tag', 'sequence', 'flow_style'])
+                             |--  represent_set (['self', 'data'])
+                             |--  represent_str (['self', 'data'])
+                             |--  represent_undefined (['self', 'data'])
+                             |--  represent_yaml_object (['self', 'tag', 'data', 'cls', 'flow_style'])
+                             |--  resolve (['self', 'kind', 'value', 'implicit'])
+                             |--  serialize (['self', 'node'])
+                             |--  serialize_node (['self', 'node', 'parent', 'index'])
+                             |--  write_double_quoted (['self', 'text', 'split'])
+                             |--  write_folded (['self', 'text'])
+                             |--  write_indent (['self'])
+                             |--  write_indicator (['self', 'indicator', 'need_whitespace', 'whitespace', 'indention'])
+                             |--  write_line_break (['self', 'data'])
+                             |--  write_literal (['self', 'text'])
+                             |--  write_plain (['self', 'text', 'split'])
+                             |--  write_single_quoted (['self', 'text', 'split'])
+                             |--  write_stream_end (['self'])
+                             |--  write_stream_start (['self'])
+                             |--  write_tag_directive (['self', 'handle_text', 'prefix_text'])
+                             |--  write_version_directive (['self', 'version_text'])
+                     |--  [  dict  ]:
+                             |--  DEFAULT_TAG_PREFIXES
+                             |--  ESCAPE_REPLACEMENTS
+                             |--  yaml_implicit_resolvers
+                             |--  yaml_multi_representers
+                             |--  yaml_path_resolvers
+                             |--  yaml_representers
+             |--  [Class SafeLoader]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.loader.SafeLoader'>
+                             |--  <class 'yaml.reader.Reader'>
+                             |--  <class 'yaml.scanner.Scanner'>
+                             |--  <class 'yaml.parser.Parser'>
+                             |--  <class 'yaml.composer.Composer'>
+                             |--  <class 'yaml.constructor.SafeConstructor'>
+                             |--  <class 'yaml.constructor.BaseConstructor'>
+                             |--  <class 'yaml.resolver.Resolver'>
+                             |--  <class 'yaml.resolver.BaseResolver'>
+                             |--  <class 'object'>
+                     |--  [  float  ]:
+                             |--  inf_value
+                             |--  nan_value
+                     |--  [  SRE_Pattern  ]:
+                             |--  NON_PRINTABLE
+                             |--  timestamp_regexp
+                     |--  [  str  ]:
+                             |--  DEFAULT_MAPPING_TAG
+                             |--  DEFAULT_SCALAR_TAG
+                             |--  DEFAULT_SEQUENCE_TAG
+                     |--  [  function  ]:
+                             |--  add_indent (['self', 'column'])
+                             |--  ascend_resolver (['self'])
+                             |--  check_block_entry (['self'])
+                             |--  check_data (['self'])
+                             |--  check_directive (['self'])
+                             |--  check_document_end (['self'])
+                             |--  check_document_start (['self'])
+                             |--  check_event (['self'])
+                             |--  check_key (['self'])
+                             |--  check_node (['self'])
+                             |--  check_plain (['self'])
+                             |--  check_printable (['self', 'data'])
+                             |--  check_resolver_prefix (['self', 'depth', 'path', 'kind', 'current_node', 'current_index'])
+                             |--  check_token (['self'])
+                             |--  check_value (['self'])
+                             |--  compose_document (['self'])
+                             |--  compose_mapping_node (['self', 'anchor'])
+                             |--  compose_node (['self', 'parent', 'index'])
+                             |--  compose_scalar_node (['self', 'anchor'])
+                             |--  compose_sequence_node (['self', 'anchor'])
+                             |--  construct_document (['self', 'node'])
+                             |--  construct_mapping (['self', 'node', 'deep'])
+                             |--  construct_object (['self', 'node', 'deep'])
+                             |--  construct_pairs (['self', 'node', 'deep'])
+                             |--  construct_scalar (['self', 'node'])
+                             |--  construct_sequence (['self', 'node', 'deep'])
+                             |--  construct_undefined (['self', 'node'])
+                             |--  construct_yaml_binary (['self', 'node'])
+                             |--  construct_yaml_bool (['self', 'node'])
+                             |--  construct_yaml_float (['self', 'node'])
+                             |--  construct_yaml_int (['self', 'node'])
+                             |--  construct_yaml_map (['self', 'node'])
+                             |--  construct_yaml_null (['self', 'node'])
+                             |--  construct_yaml_object (['self', 'node', 'cls'])
+                             |--  construct_yaml_omap (['self', 'node'])
+                             |--  construct_yaml_pairs (['self', 'node'])
+                             |--  construct_yaml_seq (['self', 'node'])
+                             |--  construct_yaml_set (['self', 'node'])
+                             |--  construct_yaml_str (['self', 'node'])
+                             |--  construct_yaml_timestamp (['self', 'node'])
+                             |--  descend_resolver (['self', 'current_node', 'current_index'])
+                             |--  determine_encoding (['self'])
+                             |--  dispose (['self'])
+                             |--  fetch_alias (['self'])
+                             |--  fetch_anchor (['self'])
+                             |--  fetch_block_entry (['self'])
+                             |--  fetch_block_scalar (['self', 'style'])
+                             |--  fetch_directive (['self'])
+                             |--  fetch_document_end (['self'])
+                             |--  fetch_document_indicator (['self', 'TokenClass'])
+                             |--  fetch_document_start (['self'])
+                             |--  fetch_double (['self'])
+                             |--  fetch_flow_collection_end (['self', 'TokenClass'])
+                             |--  fetch_flow_collection_start (['self', 'TokenClass'])
+                             |--  fetch_flow_entry (['self'])
+                             |--  fetch_flow_mapping_end (['self'])
+                             |--  fetch_flow_mapping_start (['self'])
+                             |--  fetch_flow_scalar (['self', 'style'])
+                             |--  fetch_flow_sequence_end (['self'])
+                             |--  fetch_flow_sequence_start (['self'])
+                             |--  fetch_folded (['self'])
+                             |--  fetch_key (['self'])
+                             |--  fetch_literal (['self'])
+                             |--  fetch_more_tokens (['self'])
+                             |--  fetch_plain (['self'])
+                             |--  fetch_single (['self'])
+                             |--  fetch_stream_end (['self'])
+                             |--  fetch_stream_start (['self'])
+                             |--  fetch_tag (['self'])
+                             |--  fetch_value (['self'])
+                             |--  flatten_mapping (['self', 'node'])
+                             |--  forward (['self', 'length'])
+                             |--  get_data (['self'])
+                             |--  get_event (['self'])
+                             |--  get_mark (['self'])
+                             |--  get_node (['self'])
+                             |--  get_single_data (['self'])
+                             |--  get_single_node (['self'])
+                             |--  get_token (['self'])
+                             |--  need_more_tokens (['self'])
+                             |--  next_possible_simple_key (['self'])
+                             |--  parse_block_mapping_first_key (['self'])
+                             |--  parse_block_mapping_key (['self'])
+                             |--  parse_block_mapping_value (['self'])
+                             |--  parse_block_node (['self'])
+                             |--  parse_block_node_or_indentless_sequence (['self'])
+                             |--  parse_block_sequence_entry (['self'])
+                             |--  parse_block_sequence_first_entry (['self'])
+                             |--  parse_document_content (['self'])
+                             |--  parse_document_end (['self'])
+                             |--  parse_document_start (['self'])
+                             |--  parse_flow_mapping_empty_value (['self'])
+                             |--  parse_flow_mapping_first_key (['self'])
+                             |--  parse_flow_mapping_key (['self', 'first'])
+                             |--  parse_flow_mapping_value (['self'])
+                             |--  parse_flow_node (['self'])
+                             |--  parse_flow_sequence_entry (['self', 'first'])
+                             |--  parse_flow_sequence_entry_mapping_end (['self'])
+                             |--  parse_flow_sequence_entry_mapping_key (['self'])
+                             |--  parse_flow_sequence_entry_mapping_value (['self'])
+                             |--  parse_flow_sequence_first_entry (['self'])
+                             |--  parse_implicit_document_start (['self'])
+                             |--  parse_indentless_sequence_entry (['self'])
+                             |--  parse_node (['self', 'block', 'indentless_sequence'])
+                             |--  parse_stream_start (['self'])
+                             |--  peek (['self', 'index'])
+                             |--  peek_event (['self'])
+                             |--  peek_token (['self'])
+                             |--  prefix (['self', 'length'])
+                             |--  process_directives (['self'])
+                             |--  process_empty_scalar (['self', 'mark'])
+                             |--  remove_possible_simple_key (['self'])
+                             |--  resolve (['self', 'kind', 'value', 'implicit'])
+                             |--  save_possible_simple_key (['self'])
+                             |--  scan_anchor (['self', 'TokenClass'])
+                             |--  scan_block_scalar (['self', 'style'])
+                             |--  scan_block_scalar_breaks (['self', 'indent'])
+                             |--  scan_block_scalar_ignored_line (['self', 'start_mark'])
+                             |--  scan_block_scalar_indentation (['self'])
+                             |--  scan_block_scalar_indicators (['self', 'start_mark'])
+                             |--  scan_directive (['self'])
+                             |--  scan_directive_ignored_line (['self', 'start_mark'])
+                             |--  scan_directive_name (['self', 'start_mark'])
+                             |--  scan_flow_scalar (['self', 'style'])
+                             |--  scan_flow_scalar_breaks (['self', 'double', 'start_mark'])
+                             |--  scan_flow_scalar_non_spaces (['self', 'double', 'start_mark'])
+                             |--  scan_flow_scalar_spaces (['self', 'double', 'start_mark'])
+                             |--  scan_line_break (['self'])
+                             |--  scan_plain (['self'])
+                             |--  scan_plain_spaces (['self', 'indent', 'start_mark'])
+                             |--  scan_tag (['self'])
+                             |--  scan_tag_directive_handle (['self', 'start_mark'])
+                             |--  scan_tag_directive_prefix (['self', 'start_mark'])
+                             |--  scan_tag_directive_value (['self', 'start_mark'])
+                             |--  scan_tag_handle (['self', 'name', 'start_mark'])
+                             |--  scan_tag_uri (['self', 'name', 'start_mark'])
+                             |--  scan_to_next_token (['self'])
+                             |--  scan_uri_escapes (['self', 'name', 'start_mark'])
+                             |--  scan_yaml_directive_number (['self', 'start_mark'])
+                             |--  scan_yaml_directive_value (['self', 'start_mark'])
+                             |--  stale_possible_simple_keys (['self'])
+                             |--  unwind_indent (['self', 'column'])
+                             |--  update (['self', 'length'])
+                             |--  update_raw (['self', 'size'])
+                     |--  [  method  ]:
+                             |--  add_constructor
+                             |--  add_implicit_resolver
+                             |--  add_multi_constructor
+                             |--  add_path_resolver
+                     |--  [  dict  ]:
+                             |--  DEFAULT_TAGS
+                             |--  ESCAPE_CODES
+                             |--  ESCAPE_REPLACEMENTS
+                             |--  bool_values
+                             |--  yaml_constructors
+                             |--  yaml_implicit_resolvers
+                             |--  yaml_multi_constructors
+                             |--  yaml_path_resolvers
+             |--  [Class ScalarEvent]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.events.ScalarEvent'>
+                             |--  <class 'yaml.events.NodeEvent'>
+                             |--  <class 'yaml.events.Event'>
+                             |--  <class 'object'>
+             |--  [Class ScalarNode]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.nodes.ScalarNode'>
+                             |--  <class 'yaml.nodes.Node'>
+                             |--  <class 'object'>
+                     |--  [  str  ]:
+                             |--  id
+             |--  [Class ScalarToken]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.tokens.ScalarToken'>
+                             |--  <class 'yaml.tokens.Token'>
+                             |--  <class 'object'>
+                     |--  [  str  ]:
+                             |--  id
+             |--  [Class SequenceEndEvent]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.events.SequenceEndEvent'>
+                             |--  <class 'yaml.events.CollectionEndEvent'>
+                             |--  <class 'yaml.events.Event'>
+                             |--  <class 'object'>
+             |--  [Class SequenceNode]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.nodes.SequenceNode'>
+                             |--  <class 'yaml.nodes.CollectionNode'>
+                             |--  <class 'yaml.nodes.Node'>
+                             |--  <class 'object'>
+                     |--  [  str  ]:
+                             |--  id
+             |--  [Class SequenceStartEvent]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.events.SequenceStartEvent'>
+                             |--  <class 'yaml.events.CollectionStartEvent'>
+                             |--  <class 'yaml.events.NodeEvent'>
+                             |--  <class 'yaml.events.Event'>
+                             |--  <class 'object'>
+             |--  [Class StreamEndEvent]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.events.StreamEndEvent'>
+                             |--  <class 'yaml.events.Event'>
+                             |--  <class 'object'>
+             |--  [Class StreamEndToken]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.tokens.StreamEndToken'>
+                             |--  <class 'yaml.tokens.Token'>
+                             |--  <class 'object'>
+                     |--  [  str  ]:
+                             |--  id
+             |--  [Class StreamStartEvent]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.events.StreamStartEvent'>
+                             |--  <class 'yaml.events.Event'>
+                             |--  <class 'object'>
+             |--  [Class StreamStartToken]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.tokens.StreamStartToken'>
+                             |--  <class 'yaml.tokens.Token'>
+                             |--  <class 'object'>
+                     |--  [  str  ]:
+                             |--  id
+             |--  [Class TagToken]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.tokens.TagToken'>
+                             |--  <class 'yaml.tokens.Token'>
+                             |--  <class 'object'>
+                     |--  [  str  ]:
+                             |--  id
+             |--  [Class Token]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.tokens.Token'>
+                             |--  <class 'object'>
+             |--  [Class ValueToken]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.tokens.ValueToken'>
+                             |--  <class 'yaml.tokens.Token'>
+                             |--  <class 'object'>
+                     |--  [  str  ]:
+                             |--  id
+             |--  [Class YAMLError]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.error.YAMLError'>
+                             |--  <class 'Exception'>
+                             |--  <class 'BaseException'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  with_traceback
+                     |--  [  getset_descriptor  ]:
+                             |--  args
+             |--  [Class YAMLObject]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.YAMLObject'>
+                             |--  <class 'object'>
+                     |--  [  method  ]:
+                             |--  from_yaml
+                             |--  to_yaml
+                     |--  [  type  ]:
+                             |--  yaml_dumper
+                             |--  yaml_loader
+                     |--  [  NoneType  ]:
+                             |--  yaml_flow_style
+                             |--  yaml_tag
+             |--  [Class YAMLObjectMetaclass]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'yaml.YAMLObjectMetaclass'>
+                             |--  <class 'type'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  mro
+
+
+          [@ FUNCTION  ]
+              @@doc :  - Function including "lambda" anonymous functions
+             |--  add_constructor (['tag', 'constructor', 'Loader'])
+             |--  add_implicit_resolver (['tag', 'regexp', 'first', 'Loader', 'Dumper'])
+             |--  add_multi_constructor (['tag_prefix', 'multi_constructor', 'Loader'])
+             |--  add_multi_representer (['data_type', 'multi_representer', 'Dumper'])
+             |--  add_path_resolver (['tag', 'path', 'kind', 'Loader', 'Dumper'])
+             |--  add_representer (['data_type', 'representer', 'Dumper'])
+             |--  compose (['stream', 'Loader'])
+             |--  compose_all (['stream', 'Loader'])
+             |--  dump (['data', 'stream', 'Dumper'])
+             |--  dump_all (['documents', 'stream', 'Dumper', 'default_style', 'default_flow_style', 'canonical', 'indent', 'width', 'allow_unicode', 'line_break', 'encoding', 'explicit_start', 'explicit_end', 'version', 'tags'])
+             |--  emit (['events', 'stream', 'Dumper', 'canonical', 'indent', 'width', 'allow_unicode', 'line_break'])
+             |--  load (['stream', 'Loader'])
+             |--  load_all (['stream', 'Loader'])
+             |--  parse (['stream', 'Loader'])
+             |--  safe_dump (['data', 'stream'])
+             |--  safe_dump_all (['documents', 'stream'])
+             |--  safe_load (['stream'])
+             |--  safe_load_all (['stream'])
+             |--  scan (['stream', 'Loader'])
+             |--  serialize (['node', 'stream', 'Dumper'])
+             |--  serialize_all (['nodes', 'stream', 'Dumper', 'canonical', 'indent', 'width', 'allow_unicode', 'line_break', 'encoding', 'explicit_start', 'explicit_end', 'version', 'tags'])
+
+
+          [@ METHOD ]
+              @@doc ::   - bound method
+
+
+          [@ GENERATOR ]
+              @@doc :   - object is a generator with "yield" expressions
+
+
+          [@ GENERATOR FUNCTION ]
+              @@doc :     - object is a generator function
+             |--  compose_all (['stream', 'Loader'])
+             |--  load_all (['stream', 'Loader'])
+             |--  parse (['stream', 'Loader'])
+             |--  scan (['stream', 'Loader'])
+
+
+          [@ TRACEBACK ]
+              @@doc :  - Traceback object
+
+
+          [@ FRAME ]
+              @@doc : - Frame Object
+
+
+          [@ CODE ]
+              @@doc : - Code Object
+
+
+          [@ BUILTIN ]
+              @@doc : - built-in function or bound built-in method
+
+
+          [@ ABSTRACT ]
+              @@doc : - object is abstract base class
+
+
+          [@ METHOD DESCRIPTOR ]
+              @@doc :  - Object has __get__ attribute but NOT __set__ attribute
+
+
+          [@ DATA DESCRIPTOR ]
+              @@doc :  - Object has __get__, __set__, __delete__ attributes
+
+
+          [@ GETSET DESCRIPTOR ]
+
+
+          [@ MEMBER DESCRIPTOR ]
+
+
+          [@ VARIABLES ]
+
+
+              [@ GLOBALS ]
+
+
+                  [@ bool ]
+                         |--  yaml.__with_libyaml__
+
+
+                  [@ int ]
+
+
+                  [@ float ]
+
+
+                  [@ complex ]
+
+
+              [@ IMMUTABLE SEQUENCES ]
+
+
+                  [@ str ]
+
+
+                  [@ slice ]
+
+
+                  [@ tuple ]
+
+
+                  [@ frozenset ]
+
+
+              [@ MUTABLE SEQUENCES ]
+
+
+                  [@ list ]
+
+
+                  [@ bytearray ]
+
+
+                  [@ set ]
+
+
+              [@ MAPPING ]
+
+
+                  [@ dict ]

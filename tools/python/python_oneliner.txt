@@ -57,7 +57,6 @@ Reverse/slice:
 
 
 
-regular expression
 
 
 
@@ -152,5 +151,45 @@ Parallel Processing
 >>>
 >>> print list(multiprocessing.Pool(processes=4).map(math.exp,range(1,11)))
 
-  
+
+re - regular expression  
+--------------------------------------------------------------------
+
+    .. code-block:: python
+
+        s = "'log(x[, base])\n
+
+        s = 'Merge multiple sorted inputs into a single sorted             
+            output.\n\n    Similar to sorted(itertools.chain(*iterables))
+            but returns a generator,\n    does not pull the data into 
+            memory all at once, and assumes that each of\n    the 
+            input streams is already sorted (smallest to largest).\n\n'
+
+        p = r'([\w\d]*[^\(])\( ?([^\)]*)'
+
+            Group 1:
+              [\w\d]*     :[A-Za-z0-9_]*
+              [^\(]       : [any of start of string or '\' or '(']
+
+            Group 2:    
+                \(        : Start of '('
+
+                \s?       : zero or 1 spaces
+                ([^\)]*   : start of string or '\' or '('
+
+
+        >>> re.findall(p, s)
+        [('sorted', 'itertools.chain(*iterables'), ('sorted ', 'smallest to largest')]
+
+    
+
+import re
+p = r'([\w\d]*[^\(])\( ?([^\)]*)'
+
+for obj in dir(__builtins__): s=eval(obj).__doc__; list(filter(lambda ob : 
+bool(ob) and (ob[0] == obj) , re.findall(p,s) if bool(s) else " "))
+
+
+
+
 
