@@ -1,0 +1,4 @@
+[submodule "publish"]
+	path = publish
+	url = https://github.com/vadivelmurugank/docs.git
+	branch = gh-pages
