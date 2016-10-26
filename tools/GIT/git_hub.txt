@@ -30,6 +30,8 @@ GIT SETUP
 
     # Add to remote repo
     git remote add origin https://github.com/vadivelmurugank/hello.git
+
+    # push changes
     git push -u origin master
 
 GIT gh-pages branch
@@ -58,6 +60,18 @@ GIT gh-pages branch
 
     git commit -m "added gh-pages as submodule"
     git push origin master
+
+
+    # Push changes into gh-pages
+    cd publish
+    git add  <<file>>
+    git commit -m  "file updates"
+    git push -u origin gh-pages
+
+    cd ..
+    git add publish
+    git commit -m "update publish"
+    git push -u origin master
 
 
 HOME TREE
