@@ -1,0 +1,172 @@
+..  Command: rst2html.py temp.txt temp.html
+.. /project/pcb/evadkan/python/anaconda3/bin/rst2html.py
+
+===========================================
+Template for reStructured Text
+===========================================
+
+.. Include other  txt/rst files here
+
+..sectnum::
+.. contents:: Table Of Contents
+.. header:: Template
+.. |date| date::
+.. |time| date:: %H.%M
+.. footer::  |date| |time|
+
+.. |image| image:: tulips.jpg
+    :alt: Tulips
+    :target: tulips.jpg
+    :align: middle
+
+
+.. note:: This is a template file for  ReStructured text
+
+.. Comment: This line will not be processed and displayed
+
+BLOCK TABLE
+--------------------------------------------------------------------
+
+    +------------+------------+-----------+
+    | Header 1   | Header 2   | Header 3  |
+    +============+============+===========+
+    | body row 1 | column 2   | column 3  |
+    +------------+------------+-----------+
+    | body row 2 | Cells may span columns.|
+    +------------+------------+-----------+
+    | body row 3 | Cells may  | - Cells   |
+    +------------+ span rows. | - contain |
+    | body row 4 |            | - blocks. |
+    +------------+------------+-----------+
+
+    =====  =====
+    col 1  col 2
+    =====  =====
+    1      Second column of row 1.
+    2      Second column of row 2.
+           Second line of paragraph.
+    3      - Second column of row 3.
+
+           - Second item in bullet
+             list (row 3, column 2).
+    \      Row 4; column 1 will be empty.
+    =====  =====
+
+
+
+CSV-TABLE BLOCK
+***************
+
+.. csv-table:: a title
+   :header: "first header", "second header", "third header"
+   :widths: 20, 20, 10
+
+   "item 1", "item 2", 3
+   "item 4", "item 5", 5
+
+
+SECTION BLOCKS
+**************
+    BLOCK DESCRIPTIONS
+
+LINK DESCRIPTION
+#################
+
+    Here is my `github link <https://github.com/vadivelmurugank/picothing>`_
+
+MODULE 3
+*********
+
+LIST BLOCKS
+--------------------------------------------------------------------
+
+    #. LIST1
+
+       PARAGRAPH 1
+
+    #. LIST 2
+
+       PARAGRAPH 2
+
+    #. LIST 3
+
+       PARAGRAPH 3
+
+MATH BLOCKS
+--------------------------------------------------------------------
+
+Firt Math Equation :math:`\alpha > \beta`
+
+Complex math :math:`n_{\mathrm{offset}} = \sum_{k=0}^{N-1} s_k n_k`
+
+.. Comment: The below will have the formulae centered
+
+.. math:: 
+
+    n_{\mathrm{offset}} = \sum_{k=0}^{N-1} s_k n_k
+
+.. math::
+    :label: Squares
+
+    a^2+ b^2= c^2
+
+.. math::
+   :label: equation array
+
+   \begin{eqnarray}
+     a^2+ b^2= c^2\\
+     a^2+ b^2= c^2\\
+     a^2+ b^2= c^2\\
+   \end{eqnarray}
+
+
+SIDEBAR
+--------------------------------------------------------------------
+
+.. sidebar:: Sidebar Title
+        :subtitle: Optional Sidebar Subtitle
+
+   Subsequent indented lines comprise
+   the body of the sidebar, and are
+   interpreted as body elements.
+
+CODE BLOCK
+--------------------------------------------------------------------
+
+.. code:: python
+	
+	print("Hello World")
+
+
+.. code:: text
+
+	This is a text format
+
+.. code:: raw
+
+	This is a raw format
+
+.. code:: c
+
+	void c_function_code()
+	{
+		printf("C function code \n");
+	}
+
+PYTHON CODE and PLOTs
+--------------------------------------------------------------------
+
+.. plot:: circlemc.py
+  :align: center
+  :height: 300
+  :include-source:
+
+
+IMAGE BLOCKS
+--------------------------------------------------------------------
+
+Here is the image:
+|image|
+
+
+
