@@ -1,0 +1,199 @@
+===========================================
+            GIT HUB Repo
+===========================================
+
+PROJECTS
+--------------------------------------------------------------------
+
+    VADIVELMURUGANK
+        - source
+        - docs
+        - resume
+        - opensrc
+        - docgenerator
+
+        PICOMINDS
+            -cognitive tree
+
+        PICOTHING
+
+        PICOSENSE
+
+
+GIT SETUP
+--------------------------------------------------------------------
+
+    echo "Hello I am Git" >> README.md
+    git init
+    git add README.md
+    git commit -m "first commit"
+
+    # Add to remote repo
+    git remote add origin https://github.com/vadivelmurugank/hello.git
+
+    # push changes
+    git push -u origin master
+
+GIT gh-pages branch
+--------------------------------------------------------------------
+
+    #create orphaned gh-pages branch
+        git checkout --orphan gh-pages
+        git branch
+
+    # remove all cached files to be committed.
+        git rm -rf .
+
+    echo "Hello Pages!!" > index.html
+    git add index.html
+    git commit -m 'initial gh-pages commit'
+
+    # git push to gh-pages branch
+        git push origin gh-pages
+
+    # add gh-pages as submodule
+        git checkout master
+        git branch
+
+    # Create folder "publish" and add gh-pages as submodule.
+    # Changing the folder to "publish" will set to gh-pages branch
+    git submodule add -b gh-pages https://github.com/vadivelmurugank/<< GIT >>.git publish
+    git submodule init
+
+    git commit -m "added gh-pages as submodule"
+    git push origin master
+
+
+    # Push changes into gh-pages
+    cd publish
+    git add  <<file>>
+    git commit -m  "file updates"
+    git push -u origin gh-pages
+
+    cd ..
+    git add publish
+    git commit -m "update publish"
+    git push -u origin master
+
+
+HOME TREE
+--------------------------------------------------------------------
+
+    # Source
+    https://github.com/vadivelmurugank/source.git
+
+        - template
+            - Code
+                - C
+                - C++
+                - kernel
+                - glibc
+                - math
+            - init
+
+
+        - build
+                - make
+                    - autoconf
+                - conf
+
+        - sample
+            - C
+            - Algorithms
+            - C++
+            - Python
+
+        - proj
+
+            - Problems
+
+
+    # DOCS
+    https://github.com/vadivelmurugank/docs.git
+
+        - plat
+            - linux
+            - cygwin
+            - windows
+        
+        - tools
+            - compiler
+                - gcc
+                    - yocto
+                - erlang
+                - mingw
+            
+           
+            - git
+                - ppt
+            
+            - doxy
+                - ppt
+
+            - ssh
+
+        - Code
+            - C
+            - CPP
+            - Python
+
+        - Design
+            - OOAD
+
+    #opensrc
+        https://github.com/vadivelmurugank/opensrc.git
+
+    # Resume
+        https://github.com/vadivelmurugank/resume.git
+
+
+    # DOC GENERATOR
+
+        # API PARSE
+        https://github.com/vadivelmurugank/apiparse.git
+
+        # DOCGEN TEMPLATE
+        https://github.com/vadivelmurugank/docgen.git
+
+        #Python Inspect show
+        https://github.com/vadivelmurugank/inspectshow.git
+
+        # Calltree
+        https://github.com/vadivelmurugank/calltree.git
+
+        # Peekextn
+        https://github.com/vadivelmurugank/peekextn.git
+
+        # Picothing
+        https://github.com/vadivelmurugank/picothing
+
+
+PICOMINDS
+---------
+    # cognitive tree
+        https://github.com/PICOMINDS/cognitivetree.git
+
+    # http server at:
+        http://picominds.github.io/cognitivetree/
+
+
+PICOTHING
+---------
+
+
+PICOSENSE
+---------
+
+
+
+PYPI UPLOADS
+------------
+
+    # Python upload to pypi
+    python setup.py register
+    python setup.py sdist bdist_wininst upload
+
+
+
+
+ 

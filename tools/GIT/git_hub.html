@@ -1,0 +1,453 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>GIT HUB Repo &mdash;   documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="  documentation" href="../../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">PYTHON</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html"></a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+    <li>GIT HUB Repo</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/tools/GIT/git_hub.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="git-hub-repo">
+<h1>GIT HUB Repo<a class="headerlink" href="#git-hub-repo" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="projects">
+<h2>PROJECTS<a class="headerlink" href="#projects" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><dl class="docutils">
+<dt>VADIVELMURUGANK</dt>
+<dd><ul class="first simple">
+<li>source</li>
+<li>docs</li>
+<li>resume</li>
+<li>opensrc</li>
+<li>docgenerator</li>
+</ul>
+<dl class="docutils">
+<dt>PICOMINDS</dt>
+<dd>-cognitive tree</dd>
+</dl>
+<p>PICOTHING</p>
+<p class="last">PICOSENSE</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="git-setup">
+<h2>GIT SETUP<a class="headerlink" href="#git-setup" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>echo &#8220;Hello I am Git&#8221; &gt;&gt; README.md
+git init
+git add README.md
+git commit -m &#8220;first commit&#8221;</p>
+<p># Add to remote repo
+git remote add origin <a class="reference external" href="https://github.com/vadivelmurugank/hello.git">https://github.com/vadivelmurugank/hello.git</a></p>
+<p># push changes
+git push -u origin master</p>
+</div></blockquote>
+</div>
+<div class="section" id="git-gh-pages-branch">
+<h2>GIT gh-pages branch<a class="headerlink" href="#git-gh-pages-branch" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><dl class="docutils">
+<dt>#create orphaned gh-pages branch</dt>
+<dd>git checkout &#8211;orphan gh-pages
+git branch</dd>
+<dt># remove all cached files to be committed.</dt>
+<dd>git rm -rf .</dd>
+</dl>
+<p>echo &#8220;Hello Pages!!&#8221; &gt; index.html
+git add index.html
+git commit -m &#8216;initial gh-pages commit&#8217;</p>
+<dl class="docutils">
+<dt># git push to gh-pages branch</dt>
+<dd>git push origin gh-pages</dd>
+<dt># add gh-pages as submodule</dt>
+<dd>git checkout master
+git branch</dd>
+</dl>
+<p># Create folder &#8220;publish&#8221; and add gh-pages as submodule.
+# Changing the folder to &#8220;publish&#8221; will set to gh-pages branch
+git submodule add -b gh-pages <a class="reference external" href="https://github.com/vadivelmurugank">https://github.com/vadivelmurugank</a>/&lt;&lt; GIT &gt;&gt;.git publish
+git submodule init</p>
+<p>git commit -m &#8220;added gh-pages as submodule&#8221;
+git push origin master</p>
+<p># Push changes into gh-pages
+cd publish
+git add  &lt;&lt;file&gt;&gt;
+git commit -m  &#8220;file updates&#8221;
+git push -u origin gh-pages</p>
+<p>cd ..
+git add publish
+git commit -m &#8220;update publish&#8221;
+git push -u origin master</p>
+</div></blockquote>
+</div>
+<div class="section" id="home-tree">
+<h2>HOME TREE<a class="headerlink" href="#home-tree" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p># Source
+<a class="reference external" href="https://github.com/vadivelmurugank/source.git">https://github.com/vadivelmurugank/source.git</a></p>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt>template</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>Code</dt>
+<dd><ul class="first last simple">
+<li>C</li>
+<li>C++</li>
+<li>kernel</li>
+<li>glibc</li>
+<li>math</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">init</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>build</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>make</dt>
+<dd><ul class="first last simple">
+<li>autoconf</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">conf</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>sample</dt>
+<dd><ul class="first last simple">
+<li>C</li>
+<li>Algorithms</li>
+<li>C++</li>
+<li>Python</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">proj</p>
+<blockquote>
+<div><ul class="simple">
+<li>Problems</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+<p># DOCS
+<a class="reference external" href="https://github.com/vadivelmurugank/docs.git">https://github.com/vadivelmurugank/docs.git</a></p>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt>plat</dt>
+<dd><ul class="first last simple">
+<li>linux</li>
+<li>cygwin</li>
+<li>windows</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>tools</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>compiler</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>gcc</dt>
+<dd><ul class="first last simple">
+<li>yocto</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">erlang</p>
+</li>
+<li><p class="first">mingw</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>git</dt>
+<dd><ul class="first last simple">
+<li>ppt</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>doxy</dt>
+<dd><ul class="first last simple">
+<li>ppt</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">ssh</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Code</dt>
+<dd><ul class="first last simple">
+<li>C</li>
+<li>CPP</li>
+<li>Python</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Design</dt>
+<dd><ul class="first last simple">
+<li>OOAD</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt>#opensrc</dt>
+<dd><a class="reference external" href="https://github.com/vadivelmurugank/opensrc.git">https://github.com/vadivelmurugank/opensrc.git</a></dd>
+<dt># Resume</dt>
+<dd><a class="reference external" href="https://github.com/vadivelmurugank/resume.git">https://github.com/vadivelmurugank/resume.git</a></dd>
+</dl>
+<p># DOC GENERATOR</p>
+<blockquote>
+<div><p># API PARSE
+<a class="reference external" href="https://github.com/vadivelmurugank/apiparse.git">https://github.com/vadivelmurugank/apiparse.git</a></p>
+<p># DOCGEN TEMPLATE
+<a class="reference external" href="https://github.com/vadivelmurugank/docgen.git">https://github.com/vadivelmurugank/docgen.git</a></p>
+<p>#Python Inspect show
+<a class="reference external" href="https://github.com/vadivelmurugank/inspectshow.git">https://github.com/vadivelmurugank/inspectshow.git</a></p>
+<p># Calltree
+<a class="reference external" href="https://github.com/vadivelmurugank/calltree.git">https://github.com/vadivelmurugank/calltree.git</a></p>
+<p># Peekextn
+<a class="reference external" href="https://github.com/vadivelmurugank/peekextn.git">https://github.com/vadivelmurugank/peekextn.git</a></p>
+<p># Picothing
+<a class="reference external" href="https://github.com/vadivelmurugank/picothing">https://github.com/vadivelmurugank/picothing</a></p>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="picominds">
+<h2>PICOMINDS<a class="headerlink" href="#picominds" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><dl class="docutils">
+<dt># cognitive tree</dt>
+<dd><a class="reference external" href="https://github.com/PICOMINDS/cognitivetree.git">https://github.com/PICOMINDS/cognitivetree.git</a></dd>
+<dt># http server at:</dt>
+<dd><a class="reference external" href="http://picominds.github.io/cognitivetree/">http://picominds.github.io/cognitivetree/</a></dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="picothing">
+<h2>PICOTHING<a class="headerlink" href="#picothing" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="picosense">
+<h2>PICOSENSE<a class="headerlink" href="#picosense" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="pypi-uploads">
+<h2>PYPI UPLOADS<a class="headerlink" href="#pypi-uploads" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div># Python upload to pypi
+python setup.py register
+python setup.py sdist bdist_wininst upload</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

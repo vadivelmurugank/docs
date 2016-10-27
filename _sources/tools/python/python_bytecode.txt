@@ -1,0 +1,1955 @@
+===========================================
+PYTHON Disassembly, Debugger and Byte Code
+===========================================
+
+.. sectnum
+.. contents
+
+Python Help 
+----------------------------------------------------------------
+
+    pydoc
+        
+        .. code-block:: python
+
+            pydoc <module>
+            pydoc -k <keyword>
+
+            python -m pydoc <module>
+
+            import pydoc; pydoc.help(<module>)
+
+    help
+
+        .. code-block:: python
+
+            import <module>
+            help(<module>)
+
+    __doc__
+
+        .. code-block:: python
+
+            <module>.__repr__
+            <module>.__doc__
+
+    dir
+
+        .. code-block:: python
+
+
+            dir(<module>)  - list module dictionary
+            type(<module>) - metaclass type of module
+
+    inspect
+
+        .. code-block:: python
+
+            inspect.getmembers(<module>)
+
+
+
+
+inspect
+-------------------------------------------
+
+The inspect module provides several useful functions to help get information about live objects such as modules, classes, methods, functions, tracebacks, frame objects, and code objects.
+
+
+.. code-block:: python
+
+    import inspect
+    inspect.getmembers(<module>
+
+
+
+dis - disassembler
+-------------------------------------------
+
+Disassembler Format
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Python Byte code operates on Objects.
+
+Below is the Python Disassembler output:
+
+ - <#lineno>    : Source Line no.  
+ - <#index>     : Byte Opcode Instruction Index 
+ - <opcodestr>  : OpCode String 
+ - <#opcodearg> : index to (co_code) codeobj types 
+                : ( co_names, co_consts, co_varnames, co_cellvars)
+ - (arg names)  : Resolved Arg Names 
+
+
+Python Disassembly and byte code
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Disassembler of python byte code
+
+.. code-block:: python
+
+    >>> def fun():
+    ...     [print(p) for p in sys.path]
+    ... 
+
+
+.. code-block:: python
+
+    >>> dir(fun)
+    ['__annotations__', '__call__', '__class__', '__closure__', '__code__', '__defaults__', '__delattr__', '__dict__', '__doc__', '__eq__', '__format__', '__ge__', '__get__', '__getattribute__', '__globals__', '__gt__', '__hash__', '__init__', '__kwdefaults__', '__le__', '__lt__', '__module__', '__name__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__']
+
+    # Get Code Object of Fun
+    >>> co = fun.__code__
+    >>> type(co)
+    <class 'code'>
+
+
+
+    >>> print( "\n argcount: ", co.co_argcount,
+           "\n locals:" , co.co_nlocals,
+           "\n stack size:", co.co_stacksize,
+           "\n flags:",  co.co_flags,
+           "\n names:",  co.co_names,
+           "\n vars:",  co.co_varnames,
+           "\n filename:",    co.co_filename,
+           "\n name: ",   co.co_name,
+           "\n first line:",     co.co_firstlineno,
+           "\n tab :" , co.co_lnotab)
+
+         argcount:  0 
+         locals: 0 
+         stack size: 2 
+         flags: 67 
+         names: ('sys', 'path') 
+         vars: () 
+         filename: <stdin> 
+         name:  fun 
+         first line: 1 
+         tab : b'\x00\x01'
+    
+
+
+    >>> co.__hash__   
+    <method-wrapper '__hash__' of code object at 0x6ffff9eda48>
+
+    # byte code
+    >>> co.co_code 
+    b'd\x01\x00\x84\x00\x00t\x00\x00j\x01\x00D\x83\x01\x00\x01d\x00\x00S'
+    >>> 
+
+    >>> [ord(chr(b)) for b in co.co_code]
+    [100, 1, 0, 132, 0, 0, 116, 0, 0, 106, 1, 0, 68, 131, 1, 0, 1, 100, 0, 0, 83]
+    >>> 
+
+    >>> dis.dis(fun)
+
+    <#lineno> <#index> <opcodestr>    <#opcodearg : index to codeobj types> (resolved arg names>
+
+      2           0 LOAD_CONST               1 (<code object <listcomp> at 0x6ffffb4d8b0, file "<stdin>", line 2>) 
+                  3 MAKE_FUNCTION            0 
+                  6 LOAD_GLOBAL              0 (sys) 
+                  9 LOAD_ATTR                1 (path) 
+                 12 GET_ITER             
+                 13 CALL_FUNCTION            1 
+                 16 POP_TOP              
+                 17 LOAD_CONST               0 (None) 
+                 20 RETURN_VALUE         
+
+
+.. code-block:: python
+
+    >>> print(dis.code_info(fun))
+    Name:              fun
+    Filename:          <stdin>
+    Argument count:    0
+    Kw-only arguments: 0
+    Number of locals:  0
+    Stack size:        2
+    Flags:             OPTIMIZED, NEWLOCALS, NOFREE
+    Constants:
+       0: None
+       1: <code object <listcomp> at 0x6ffffb4d8b0, file "<stdin>", line 2>
+    Names:
+       0: sys
+       1: path
+
+.. code-block:: python
+
+    >> dis.distb
+        - trace back and point to bytecode.
+
+
+ 
+Python Byte Opcodes
+--------------------------------------------------------------------
+
+.. code-block:: python
+
+    opcode handlers: https://github.com/python/cpython/blob/master/Python/ceval.c#L1220
+
+     >>> [print("%-20s: %10d (0x%x)" %(name,a[name],a[name])) for name in sorted(a, key=lambda x: a[x])]
+
+    STOP_CODE           :          0 (0x0)
+    POP_TOP             :          1 (0x1)
+    ROT_TWO             :          2 (0x2)
+    ROT_THREE           :          3 (0x3)
+    DUP_TOP             :          4 (0x4)
+    DUP_TOP_TWO         :          5 (0x5)
+    NOP                 :          9 (0x9)
+    UNARY_POSITIVE      :         10 (0xa)
+    UNARY_NEGATIVE      :         11 (0xb)
+    UNARY_NOT           :         12 (0xc)
+    UNARY_INVERT        :         15 (0xf)
+    BINARY_POWER        :         19 (0x13)
+    BINARY_MULTIPLY     :         20 (0x14)
+    BINARY_MODULO       :         22 (0x16)
+    BINARY_ADD          :         23 (0x17)
+    BINARY_SUBTRACT     :         24 (0x18)
+    BINARY_SUBSCR       :         25 (0x19)
+    BINARY_FLOOR_DIVIDE :         26 (0x1a)
+    BINARY_TRUE_DIVIDE  :         27 (0x1b)
+    INPLACE_FLOOR_DIVIDE:         28 (0x1c)
+    INPLACE_TRUE_DIVIDE :         29 (0x1d)
+    STORE_MAP           :         54 (0x36)
+    INPLACE_ADD         :         55 (0x37)
+    INPLACE_SUBTRACT    :         56 (0x38)
+    INPLACE_MULTIPLY    :         57 (0x39)
+    INPLACE_MODULO      :         59 (0x3b)
+    STORE_SUBSCR        :         60 (0x3c)
+    DELETE_SUBSCR       :         61 (0x3d)
+    BINARY_LSHIFT       :         62 (0x3e)
+    BINARY_RSHIFT       :         63 (0x3f)
+    BINARY_AND          :         64 (0x40)
+    BINARY_XOR          :         65 (0x41)
+    BINARY_OR           :         66 (0x42)
+    INPLACE_POWER       :         67 (0x43)
+    GET_ITER            :         68 (0x44)
+    STORE_LOCALS        :         69 (0x45)
+    PRINT_EXPR          :         70 (0x46)
+    LOAD_BUILD_CLASS    :         71 (0x47)
+    INPLACE_LSHIFT      :         75 (0x4b)
+    INPLACE_RSHIFT      :         76 (0x4c)
+    INPLACE_AND         :         77 (0x4d)
+    INPLACE_XOR         :         78 (0x4e)
+    INPLACE_OR          :         79 (0x4f)
+    BREAK_LOOP          :         80 (0x50)
+    WITH_CLEANUP        :         81 (0x51)
+    RETURN_VALUE        :         83 (0x53)
+    IMPORT_STAR         :         84 (0x54)
+    YIELD_VALUE         :         86 (0x56)
+    POP_BLOCK           :         87 (0x57)
+    END_FINALLY         :         88 (0x58)
+    POP_EXCEPT          :         89 (0x59)
+    STORE_NAME          :         90 (0x5a)
+    DELETE_NAME         :         91 (0x5b)
+    UNPACK_SEQUENCE     :         92 (0x5c)
+    FOR_ITER            :         93 (0x5d)
+    UNPACK_EX           :         94 (0x5e)
+    STORE_ATTR          :         95 (0x5f)
+    DELETE_ATTR         :         96 (0x60)
+    STORE_GLOBAL        :         97 (0x61)
+    DELETE_GLOBAL       :         98 (0x62)
+    LOAD_CONST          :        100 (0x64)
+    LOAD_NAME           :        101 (0x65)
+    BUILD_TUPLE         :        102 (0x66)
+    BUILD_LIST          :        103 (0x67)
+    BUILD_SET           :        104 (0x68)
+    BUILD_MAP           :        105 (0x69)
+    LOAD_ATTR           :        106 (0x6a)
+    COMPARE_OP          :        107 (0x6b)
+    IMPORT_NAME         :        108 (0x6c)
+    IMPORT_FROM         :        109 (0x6d)
+    JUMP_FORWARD        :        110 (0x6e)
+    JUMP_IF_FALSE_OR_POP:        111 (0x6f)
+    JUMP_IF_TRUE_OR_POP :        112 (0x70)
+    JUMP_ABSOLUTE       :        113 (0x71)
+    POP_JUMP_IF_FALSE   :        114 (0x72)
+    POP_JUMP_IF_TRUE    :        115 (0x73)
+    LOAD_GLOBAL         :        116 (0x74)
+    CONTINUE_LOOP       :        119 (0x77)
+    SETUP_LOOP          :        120 (0x78)
+    SETUP_EXCEPT        :        121 (0x79)
+    SETUP_FINALLY       :        122 (0x7a)
+    LOAD_FAST           :        124 (0x7c)
+    STORE_FAST          :        125 (0x7d)
+    DELETE_FAST         :        126 (0x7e)
+    RAISE_VARARGS       :        130 (0x82)
+    CALL_FUNCTION       :        131 (0x83)
+    MAKE_FUNCTION       :        132 (0x84)
+    BUILD_SLICE         :        133 (0x85)
+    MAKE_CLOSURE        :        134 (0x86)
+    LOAD_CLOSURE        :        135 (0x87)
+    LOAD_DEREF          :        136 (0x88)
+    STORE_DEREF         :        137 (0x89)
+    DELETE_DEREF        :        138 (0x8a)
+    CALL_FUNCTION_VAR   :        140 (0x8c)
+    CALL_FUNCTION_KW    :        141 (0x8d)
+    CALL_FUNCTION_VAR_KW:        142 (0x8e)
+    SETUP_WITH          :        143 (0x8f)
+    EXTENDED_ARG        :        144 (0x90)
+    LIST_APPEND         :        145 (0x91)
+    SET_ADD             :        146 (0x92)
+    MAP_ADD             :        147 (0x93)
+
+Module Init call hierarchy
+--------------------------------------------------------------------
+
+    -> Py_Initialize
+
+        -> run_mod
+
+            -> Py_Main
+
+                -> RunModule
+
+                    -> PyRun_AnyFileExFlags
+                        -> PyRun_SimpleFileExFlags
+                            -> PyRun_FileExFlags
+                                -> PyParser_ASTFromFile
+                                    -> PyAST_Compile
+                                    -> PyEval_EvalCode
+
+                                        -> call_function
+
+    -> Py_Finalize
+
+
+Python and gdb
+--------------------------------------------------------------------
+
+sudo apt-get install python python-debuginfo
+
+Python debuginfo is here:
+/usr/src/debug/python3-3.2.5-4/
+
+.. code-block:: bash
+
+    # Check if gdb is built with pthon extension
+
+    $gdb  --batch --eval-command="python print gdb"
+    <module 'gdb' from '/usr/share/gdb/python/gdb/__init__.pyc'>
+
+    $gdb
+    (gdb) python print "hello"
+    hello
+    (gdb)
+
+    # libpython.py : Python gdb command wrapper is defined 
+    https://github.com/python/cpython/blob/master/Tools/gdb/libpython.py
+
+
+    # cat hello.py
+        #!/usr/bin/env python3.3
+
+        import pdb
+        print("Hello World")
+         
+    $ gdb python3.2
+    (gdb) source ~/libpython.py
+
+    (gdb) b PyEval_EvalCode
+    (gdb) b PyEval_EvalFrameEx if (strstr(f->f_code->co_filename, "hello") != 0)
+
+    (gdb) run hello.py
+
+    (gdb) py-bt
+    Traceback (most recent call first):
+      File "/usr/lib/python3.2/collections.py", line 367, in namedtuple
+        exec(class_definition, namespace)
+      File "/usr/lib/python3.2/inspect.py", line 839, in <module>
+        ArgInfo = namedtuple('ArgInfo', 'args varargs keywords locals')
+      File "/usr/lib/python3.2/pdb.py", line 78, in <module>
+        import inspect
+      File "hello.py", line 3, in <module>
+        import pdb
+    (gdb) 
+
+    (gdb) py-locals
+    typename = 'ArgInfo'
+    field_names = ['args', 'varargs', 'keywords', 'locals']
+    verbose = False
+    rename = False
+    Python Exception <type 'exceptions.AttributeError'> 'NoneType' object has no attribute 'value': 
+    Error occurred in Python command: 'NoneType' object has no attribute 'value'
+    (gdb) 
+
+    (gdb) bt
+    #0  PyEval_EvalCode (co=co@entry=<code at remote 0x6ffffd1ee00>, 
+    Python Exception <class 'gdb.error'> There is no member named ma_keys.: 
+    Python Exception <class 'gdb.error'> There is no member named ma_keys.: 
+        globals=globals@entry=, locals=locals@entry=)
+        at /usr/src/debug/python3-3.2.5-4/Python/ceval.c:766
+    #1  0x00000003dbe2b773 in run_mod (mod=<optimized out>, 
+        filename=filename@entry=0x3dbee375a <_Py_ctype_table+2266> "<string>", 
+    Python Exception <class 'gdb.error'> There is no member named ma_keys.: 
+    Python Exception <class 'gdb.error'> There is no member named ma_keys.: 
+        globals=globals@entry=, locals=locals@entry=, flags=flags@entry=0x2292f0, 
+        arena=arena@entry=0x60026e170)
+        at /usr/src/debug/python3-3.2.5-4/Python/pythonrun.c:1828
+    #2  0x00000003dbe2cecc in PyRun_StringFlags (
+        str=str@entry=0x600272690 "from builtins import property as _property, tuple as _tuple\nfrom operator import itemgetter as _itemgetter\nfrom collections import OrderedDict\n\nclass ArgInfo(tuple):\n    'ArgInfo(args, varargs, keywor"..., 
+    Python Exception <class 'gdb.error'> There is no member named ma_keys.: 
+    Python Exception <class 'gdb.error'> There is no member named ma_keys.: 
+        start=start@entry=257, globals=, locals=, flags=0x2292f0)
+        at /usr/src/debug/python3-3.2.5-4/Python/pythonrun.c:1762
+
+    (gdb) p *(PyCodeObject*)co
+    $61 = {ob_base = {ob_refcnt = 1, ob_type = 0x3dbe7cc60 <PyCode_Type>}, 
+      co_argcount = 0, co_kwonlyargcount = 0, co_nlocals = 0, co_stacksize = 4, 
+      co_flags = 64, 
+      co_code = b'd\x00\x00d\x01\x00l\x00\x00m\x01\x00Z\x02\x00m\x03\x00Z\x04\x00\x01d\x00\x00d\x02\x00l\x05\x00m\x06\x00Z\x07\x00\x01d\x00\x00d\x03\x00l\x08\x00m\t\x00Z\t\x00\x01Gd\x04\x00\x84\x00\x00d\x05\x00e\x03\x00\x83\x03\x00Z\n\x00d\x06\x00S', 
+      co_consts = (0, ('property', 'tuple'), ('itemgetter',), ('OrderedDict',), <code at remote 0x6ffffd1ed78>, 'ArgInfo', None), 
+      co_names = ('builtins', 'property', '_property', 'tuple', '_tuple', 'operator', 'itemgetter', '_itemgetter', 'collections', 'OrderedDict', 'ArgInfo'), 
+      co_varnames = (), co_freevars = (), co_cellvars = (), co_filename = '<string>', 
+      co_name = '<module>', co_firstlineno = 1, 
+      co_lnotab = b'\x16\x01\x10\x01\x10\x02', co_zombieframe = 0x0, 
+      co_weakreflist = 0x0}
+    (gdb) 
+
+
+
+
+python and pdb
+-------------------------------------------------------
+ pdb - python debugger
+
+    .. code-block:: python
+
+        $python -m pdb hello.py
+        > /Projects/python/hello/hello.py(3)<module>()
+        -> import pdb
+
+        (Pdb) list
+          1  	#!/usr/bin/env python3.3
+          2  	
+          3  ->	import pdb
+          4  	print("Hello World")
+          5  	
+        [EOF]
+
+        (Pdb) b 4
+        Breakpoint 1 at /Projects/python/hello/hello.py:4
+
+        (Pdb) c
+        > /Projects/python/hello/hello.py(4)<module>()
+        -> print("Hello World")
+
+        (Pdb) list
+          1  	#!/usr/bin/env python3.3
+          2  	
+          3  	import pdb
+          4 B->	print("Hello World")
+          5  	
+        [EOF]
+
+        (Pdb) bt
+          /usr/lib/python2.7/bdb.py(400)run()
+        -> exec cmd in globals, locals
+          <string>(1)<module>()
+        > /Projects/python/hello/hello.py(4)<module>()
+        -> print("Hello World")
+
+        (Pdb) h
+
+        Documented commands (type help <topic>):
+        ========================================
+        EOF    bt         cont      enable  jump  pp       run      unt   
+        a      c          continue  exit    l     q        s        until 
+        alias  cl         d         h       list  quit     step     up    
+        args   clear      debug     help    n     r        tbreak   w     
+        b      commands   disable   ignore  next  restart  u        whatis
+        break  condition  down      j       p     return   unalias  where 
+
+        Miscellaneous help topics:
+        ==========================
+        exec  pdb
+
+        Undocumented commands:
+        ======================
+        retval  rv
+
+    .. code-block:: python
+
+        import pdb
+        import mymodule
+        pdb.run('mymodule.run())
+
+
+        python -m pdb myscript.py.
+
+        >>> import pdb
+        >>> a="a string"
+        >>> pdb.set_trace()
+        --Return--
+        > <stdin>(1)<module>()->None
+
+        (Pdb) p a
+        'a string'
+        (Pdb) c
+
+
+
+
+Python Debug Modules
+-------------------------------------------------------
+
+inspect
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    .. code-block:: python
+
+        $python3.2 -m inspectshow inspect
+        inspect
+         |--  inspect
+         |--  ===> /usr/lib/python3.2/inspect.py
+                 @@doc : " inspect : Get useful information from live Python objects. "
+
+
+          [@SUBPACKAGES]
+
+
+          [@SUBMODULES ]
+             |--  inspect
+                 |--  imp
+                 |--  itertools
+                 |--  linecache
+                     |--  os
+                         |--  _copyreg
+                         |--  errno
+                         |--  path
+                             |--  genericpath
+                                 |--  os
+                                 |--  stat
+                             |--  os
+                             |--  stat
+                             |--  sys
+                         |--  sys
+                     |--  sys
+                     |--  tokenize
+                         |--  builtins
+                         |--  collections
+                             |--  _abcoll
+                                 |--  sys
+                             |--  _heapq
+                                 |--  bisect
+                             |--  _sys
+                         |--  re
+                             |--  copyreg
+                             |--  functools
+                             |--  sre_compile
+                                 |--  _sre
+                                 |--  sre_parse
+                                     |--  sys
+                                 |--  sys
+                             |--  sre_parse
+                             |--  sys
+                         |--  sys
+                 |--  os
+                 |--  re
+                 |--  string
+                     |--  _re
+                         |--  copyreg
+                         |--  functools
+                         |--  sre_compile
+                         |--  sre_parse
+                         |--  sys
+                     |--  _string
+                 |--  sys
+                 |--  tokenize
+                 |--  types
+
+
+          [@CLASS        ]
+              @@doc : - Classes and Method Resolution Order
+             |--  [Class ArgInfo]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'inspect.ArgInfo'>
+                             |--  <class 'tuple'>
+                             |--  <class 'object'>
+                     |--  [  method  ]:
+                             |--  _make
+                     |--  [  tuple  ]:
+                             |--  _fields
+                     |--  [  property  ]:
+                             |--  args
+                             |--  keywords
+                             |--  locals
+                             |--  varargs
+                     |--  [  function  ]:
+                             |--  _asdict (['self'])
+                             |--  _replace (['_self'])
+                     |--  [  method_descriptor  ]:
+                             |--  count
+                             |--  index
+             |--  [Class ArgSpec]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'inspect.ArgSpec'>
+                             |--  <class 'tuple'>
+                             |--  <class 'object'>
+                     |--  [  method  ]:
+                             |--  _make
+                     |--  [  tuple  ]:
+                             |--  _fields
+                     |--  [  property  ]:
+                             |--  args
+                             |--  defaults
+                             |--  keywords
+                             |--  varargs
+                     |--  [  function  ]:
+                             |--  _asdict (['self'])
+                             |--  _replace (['_self'])
+                     |--  [  method_descriptor  ]:
+                             |--  count
+                             |--  index
+             |--  [Class Arguments]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'inspect.Arguments'>
+                             |--  <class 'tuple'>
+                             |--  <class 'object'>
+                     |--  [  method  ]:
+                             |--  _make
+                     |--  [  tuple  ]:
+                             |--  _fields
+                     |--  [  property  ]:
+                             |--  args
+                             |--  varargs
+                             |--  varkw
+                     |--  [  function  ]:
+                             |--  _asdict (['self'])
+                             |--  _replace (['_self'])
+                     |--  [  method_descriptor  ]:
+                             |--  count
+                             |--  index
+             |--  [Class Attribute]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'inspect.Attribute'>
+                             |--  <class 'tuple'>
+                             |--  <class 'object'>
+                     |--  [  method  ]:
+                             |--  _make
+                     |--  [  tuple  ]:
+                             |--  _fields
+                     |--  [  method_descriptor  ]:
+                             |--  count
+                             |--  index
+                     |--  [  function  ]:
+                             |--  _asdict (['self'])
+                             |--  _replace (['_self'])
+                     |--  [  property  ]:
+                             |--  defining_class
+                             |--  kind
+                             |--  name
+                             |--  object
+             |--  [Class BlockFinder]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'inspect.BlockFinder'>
+                             |--  <class 'object'>
+                     |--  [  function  ]:
+                             |--  tokeneater (['self', 'type', 'token', 'srowcol', 'erowcol', 'line'])
+             |--  [Class EndOfBlock]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'inspect.EndOfBlock'>
+                             |--  <class 'Exception'>
+                             |--  <class 'BaseException'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  with_traceback
+                     |--  [  getset_descriptor  ]:
+                             |--  args
+             |--  [Class FullArgSpec]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'inspect.FullArgSpec'>
+                             |--  <class 'tuple'>
+                             |--  <class 'object'>
+                     |--  [  method  ]:
+                             |--  _make
+                     |--  [  tuple  ]:
+                             |--  _fields
+                     |--  [  property  ]:
+                             |--  annotations
+                             |--  args
+                             |--  defaults
+                             |--  kwonlyargs
+                             |--  kwonlydefaults
+                             |--  varargs
+                             |--  varkw
+                     |--  [  function  ]:
+                             |--  _asdict (['self'])
+                             |--  _replace (['_self'])
+                     |--  [  method_descriptor  ]:
+                             |--  count
+                             |--  index
+             |--  [Class ModuleInfo]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'inspect.ModuleInfo'>
+                             |--  <class 'tuple'>
+                             |--  <class 'object'>
+                     |--  [  method  ]:
+                             |--  _make
+                     |--  [  tuple  ]:
+                             |--  _fields
+                     |--  [  method_descriptor  ]:
+                             |--  count
+                             |--  index
+                     |--  [  function  ]:
+                             |--  _asdict (['self'])
+                             |--  _replace (['_self'])
+                     |--  [  property  ]:
+                             |--  mode
+                             |--  module_type
+                             |--  name
+                             |--  suffix
+             |--  [Class Traceback]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'inspect.Traceback'>
+                             |--  <class 'tuple'>
+                             |--  <class 'object'>
+                     |--  [  method  ]:
+                             |--  _make
+                     |--  [  tuple  ]:
+                             |--  _fields
+                     |--  [  property  ]:
+                             |--  code_context
+                             |--  filename
+                             |--  function
+                             |--  index
+                             |--  lineno
+                     |--  [  function  ]:
+                             |--  _asdict (['self'])
+                             |--  _replace (['_self'])
+                     |--  [  method_descriptor  ]:
+                             |--  count
+             |--  [Class attrgetter]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'operator.attrgetter'>
+                             |--  <class 'object'>
+
+
+          [@ FUNCTION  ]
+              @@doc :  - Function including "lambda" anonymous functions
+             |--  _check_class (['klass', 'attr'])
+             |--  _check_instance (['obj', 'attr'])
+             |--  _getfullargs (['co'])
+             |--  _is_type (['obj'])
+             |--  _shadowed_dict (['klass'])
+             |--  _static_getmro (['klass'])
+             |--  classify_class_attrs (['cls'])
+             |--  cleandoc (['doc'])
+             |--  currentframe ([])
+             |--  findsource (['object'])
+             |--  formatannotation (['annotation', 'base_module'])
+             |--  formatannotationrelativeto (['object'])
+             |--  formatargspec (['args', 'varargs', 'varkw', 'defaults', 'kwonlyargs', 'kwonlydefaults', 'annotations', 'formatarg', 'formatvarargs', 'formatvarkw', 'formatvalue', 'formatreturns', 'formatannotation'])
+             |--  formatargvalues (['args', 'varargs', 'varkw', 'locals', 'formatarg', 'formatvarargs', 'formatvarkw', 'formatvalue'])
+             |--  getabsfile (['object', '_filename'])
+             |--  getargs (['co'])
+             |--  getargspec (['func'])
+             |--  getargvalues (['frame'])
+             |--  getattr_static (['obj', 'attr', 'default'])
+             |--  getblock (['lines'])
+             |--  getcallargs (['func'])
+             |--  getclasstree (['classes', 'unique'])
+             |--  getcomments (['object'])
+             |--  getdoc (['object'])
+             |--  getfile (['object'])
+             |--  getframeinfo (['frame', 'context'])
+             |--  getfullargspec (['func'])
+             |--  getgeneratorstate (['generator'])
+             |--  getinnerframes (['tb', 'context'])
+             |--  getlineno (['frame'])
+             |--  getmembers (['object', 'predicate'])
+             |--  getmodule (['object', '_filename'])
+             |--  getmoduleinfo (['path'])
+             |--  getmodulename (['path'])
+             |--  getmro (['cls'])
+             |--  getouterframes (['frame', 'context'])
+             |--  getsource (['object'])
+             |--  getsourcefile (['object'])
+             |--  getsourcelines (['object'])
+             |--  indentsize (['line'])
+             |--  isabstract (['object'])
+             |--  isbuiltin (['object'])
+             |--  isclass (['object'])
+             |--  iscode (['object'])
+             |--  isdatadescriptor (['object'])
+             |--  isframe (['object'])
+             |--  isfunction (['object'])
+             |--  isgenerator (['object'])
+             |--  isgeneratorfunction (['object'])
+             |--  isgetsetdescriptor (['object'])
+             |--  ismemberdescriptor (['object'])
+             |--  ismethod (['object'])
+             |--  ismethoddescriptor (['object'])
+             |--  ismodule (['object'])
+             |--  isroutine (['object'])
+             |--  istraceback (['object'])
+             |--  namedtuple (['typename', 'field_names', 'verbose', 'rename'])
+             |--  stack (['context'])
+             |--  trace (['context'])
+             |--  walktree (['classes', 'children', 'parent'])
+
+                  [@ int ]
+                         |--  inspect.CO_GENERATOR
+                         |--  inspect.CO_NESTED
+                         |--  inspect.CO_NEWLOCALS
+                         |--  inspect.CO_NOFREE
+                         |--  inspect.CO_OPTIMIZED
+                         |--  inspect.CO_VARARGS
+                         |--  inspect.CO_VARKEYWORDS
+                         |--  inspect.TPFLAGS_IS_ABSTRACT
+                         |--  inspect.k
+
+                  [@ str ]
+                         |--  inspect.GEN_CLOSED
+                         |--  inspect.GEN_CREATED
+                         |--  inspect.GEN_RUNNING
+                         |--  inspect.GEN_SUSPENDED
+                         |--  inspect.__author__
+                         |--  inspect.__date__
+                         |--  inspect.v
+
+                  [@ dict ]
+                         |--  inspect._filesbymodname
+                         |--  inspect._flag_names
+                         |--  inspect.mod_dict
+                         |--  inspect.modulesbyfile
+    
+dis
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    .. code-block:: python
+
+        dis
+         |--  dis
+         |--  ===> /usr/lib/python3.2/dis.py
+                 @@doc : " dis : Disassembler of Python byte code into mnemonics. "
+
+          [@SUBMODULES ]
+             |--  dis
+                 |--  sys
+                 |--  types
+
+          [@ FUNCTION  ]
+              @@doc :  - Function including "lambda" anonymous functions
+             |--  _disassemble_bytes (['code', 'lasti', 'varnames', 'names', 'constants'])
+             |--  _disassemble_str (['source'])
+             |--  _format_code_info (['co'])
+             |--  _test ([])
+             |--  _try_compile (['source', 'name'])
+             |--  code_info (['x'])
+             |--  dis (['x'])
+             |--  disassemble (['co', 'lasti'])
+             |--  disco (['co', 'lasti'])
+             |--  distb (['tb'])
+             |--  findlabels (['code'])
+             |--  findlinestarts (['code'])
+             |--  pretty_flags (['flags'])
+             |--  show_code (['co'])
+
+          [@ GENERATOR FUNCTION ]
+              @@doc :     - object is a generator function
+             |--  findlinestarts (['code'])
+
+
+          [@ VARIABLES ]
+                  [@ int ]
+                         |--  dis.EXTENDED_ARG
+                         |--  dis.HAVE_ARGUMENT
+                  [@ tuple ]
+                         |--  dis._have_code
+                         |--  dis.cmp_op
+                  [@ list ]
+                         |--  dis.__all__
+                         |--  dis.hascompare
+                         |--  dis.hasconst
+                         |--  dis.hasfree
+                         |--  dis.hasjabs
+                         |--  dis.hasjrel
+                         |--  dis.haslocal
+                         |--  dis.hasname
+                         |--  dis.opname
+                  [@ dict ]
+                         |--  dis.COMPILER_FLAG_NAMES
+                         |--  dis.opmap
+
+
+
+   
+pdb
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    
+    .. code-block:: python
+
+        $python3.2 -m inspectshow pdb    
+        pdb
+         |--  pdb
+         |--  ===> /usr/lib/python3.2/pdb.py
+                 @@doc : " pdb : The Python Debugger Pdb "
+
+          [@SUBMODULES ]
+             |--  pdb
+                 |--  bdb
+                     |--  fnmatch
+                         |--  functools
+                         |--  os
+                             |--  _copyreg
+                             |--  errno
+                             |--  path
+                                 |--  genericpath
+                                     |--  os
+                                     |--  stat
+                                 |--  os
+                                 |--  stat
+                                 |--  sys
+                             |--  sys
+                         |--  posixpath
+                             |--  genericpath
+                             |--  os
+                             |--  stat
+                             |--  sys
+                         |--  re
+                             |--  copyreg
+                             |--  functools
+                             |--  sre_compile
+                                 |--  _sre
+                                 |--  sre_parse
+                                     |--  sys
+                                 |--  sys
+                             |--  sre_parse
+                             |--  sys
+                     |--  os
+                     |--  sys
+                 |--  cmd
+                     |--  string
+                         |--  _re
+                             |--  copyreg
+                             |--  functools
+                             |--  sre_compile
+                             |--  sre_parse
+                             |--  sys
+                         |--  _string
+                     |--  sys
+                 |--  code
+                     |--  sys
+                     |--  traceback
+                         |--  linecache
+                             |--  os
+                             |--  sys
+                             |--  tokenize
+                                 |--  builtins
+                                 |--  collections
+                                     |--  _abcoll
+                                         |--  sys
+                                     |--  _heapq
+                                         |--  bisect
+                                     |--  _sys
+                                 |--  re
+                                 |--  sys
+                         |--  sys
+                 |--  dis
+                     |--  sys
+                     |--  types
+                 |--  inspect
+                     |--  imp
+                     |--  itertools
+                     |--  linecache
+                     |--  os
+                     |--  re
+                     |--  string
+                     |--  sys
+                     |--  tokenize
+                     |--  types
+                 |--  linecache
+                 |--  os
+                 |--  pprint
+                     |--  _sys
+                 |--  re
+                 |--  signal
+                 |--  sys
+                 |--  traceback
+
+
+          [@CLASS        ]
+              @@doc : - Classes and Method Resolution Order
+             |--  [Class Pdb]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'pdb.Pdb'>
+                             |--  <class 'bdb.Bdb'>
+                             |--  <class 'cmd.Cmd'>
+                             |--  <class 'object'>
+                     |--  [  int  ]:
+                             |--  use_rawinput
+                     |--  [  list  ]:
+                             |--  commands_resuming
+                     |--  [  function  ]:
+                             |--  _cmdloop (['self'])
+                             |--  _getval (['self', 'arg'])
+                             |--  _getval_except (['self', 'arg', 'frame'])
+                             |--  _print_lines (['self', 'lines', 'start', 'breaks', 'frame'])
+                             |--  _prune_breaks (['self', 'filename', 'lineno'])
+                             |--  _runscript (['self', 'filename'])
+                             |--  _select_frame (['self', 'number'])
+                             |--  _set_stopinfo (['self', 'stopframe', 'returnframe', 'stoplineno'])
+                             |--  bp_commands (['self', 'frame'])
+                             |--  break_anywhere (['self', 'frame'])
+                             |--  break_here (['self', 'frame'])
+                             |--  canonic (['self', 'filename'])
+                             |--  checkline (['self', 'filename', 'lineno'])
+                             |--  clear_all_breaks (['self'])
+                             |--  clear_all_file_breaks (['self', 'filename'])
+                             |--  clear_bpbynumber (['self', 'arg'])
+                             |--  clear_break (['self', 'filename', 'lineno'])
+                             |--  cmdloop (['self', 'intro'])
+                             |--  columnize (['self', 'list', 'displaywidth'])
+                             |--  complete (['self', 'text', 'state'])
+                             |--  complete_help (['self'])
+                             |--  completedefault (['self'])
+                             |--  completenames (['self', 'text'])
+                             |--  default (['self', 'line'])
+                             |--  defaultFile (['self'])
+                             |--  dispatch_call (['self', 'frame', 'arg'])
+                             |--  dispatch_exception (['self', 'frame', 'arg'])
+                             |--  dispatch_line (['self', 'frame'])
+                             |--  dispatch_return (['self', 'frame', 'arg'])
+                             |--  displayhook (['self', 'obj'])
+                             |--  do_EOF (['self', 'arg'])
+                             |--  do_a (['self', 'arg'])
+                             |--  do_alias (['self', 'arg'])
+                             |--  do_args (['self', 'arg'])
+                             |--  do_b (['self', 'arg', 'temporary'])
+                             |--  do_break (['self', 'arg', 'temporary'])
+                             |--  do_bt (['self', 'arg'])
+                             |--  do_c (['self', 'arg'])
+                             |--  do_cl (['self', 'arg'])
+                             |--  do_clear (['self', 'arg'])
+                             |--  do_commands (['self', 'arg'])
+                             |--  do_condition (['self', 'arg'])
+                             |--  do_cont (['self', 'arg'])
+                             |--  do_continue (['self', 'arg'])
+                             |--  do_d (['self', 'arg'])
+                             |--  do_debug (['self', 'arg'])
+                             |--  do_disable (['self', 'arg'])
+                             |--  do_display (['self', 'arg'])
+                             |--  do_down (['self', 'arg'])
+                             |--  do_enable (['self', 'arg'])
+                             |--  do_exit (['self', 'arg'])
+                             |--  do_h (['self', 'arg'])
+                             |--  do_help (['self', 'arg'])
+                             |--  do_ignore (['self', 'arg'])
+                             |--  do_interact (['self', 'arg'])
+                             |--  do_j (['self', 'arg'])
+                             |--  do_jump (['self', 'arg'])
+                             |--  do_l (['self', 'arg'])
+                             |--  do_list (['self', 'arg'])
+                             |--  do_ll (['self', 'arg'])
+                             |--  do_longlist (['self', 'arg'])
+                             |--  do_n (['self', 'arg'])
+                             |--  do_next (['self', 'arg'])
+                             |--  do_p (['self', 'arg'])
+                             |--  do_pp (['self', 'arg'])
+                             |--  do_print (['self', 'arg'])
+                             |--  do_q (['self', 'arg'])
+                             |--  do_quit (['self', 'arg'])
+                             |--  do_r (['self', 'arg'])
+                             |--  do_restart (['self', 'arg'])
+                             |--  do_return (['self', 'arg'])
+                             |--  do_retval (['self', 'arg'])
+                             |--  do_run (['self', 'arg'])
+                             |--  do_rv (['self', 'arg'])
+                             |--  do_s (['self', 'arg'])
+                             |--  do_source (['self', 'arg'])
+                             |--  do_step (['self', 'arg'])
+                             |--  do_tbreak (['self', 'arg'])
+                             |--  do_u (['self', 'arg'])
+                             |--  do_unalias (['self', 'arg'])
+                             |--  do_undisplay (['self', 'arg'])
+                             |--  do_unt (['self', 'arg'])
+                             |--  do_until (['self', 'arg'])
+                             |--  do_up (['self', 'arg'])
+                             |--  do_w (['self', 'arg'])
+                             |--  do_whatis (['self', 'arg'])
+                             |--  do_where (['self', 'arg'])
+                             |--  emptyline (['self'])
+                             |--  error (['self', 'msg'])
+                             |--  execRcLines (['self'])
+                             |--  forget (['self'])
+                             |--  format_stack_entry (['self', 'frame_lineno', 'lprefix'])
+                             |--  get_all_breaks (['self'])
+                             |--  get_bpbynumber (['self', 'arg'])
+                             |--  get_break (['self', 'filename', 'lineno'])
+                             |--  get_breaks (['self', 'filename', 'lineno'])
+                             |--  get_file_breaks (['self', 'filename'])
+                             |--  get_names (['self'])
+                             |--  get_stack (['self', 'f', 't'])
+                             |--  handle_command_def (['self', 'line'])
+                             |--  help_exec (['self'])
+                             |--  help_pdb (['self'])
+                             |--  interaction (['self', 'frame', 'traceback'])
+                             |--  is_skipped_module (['self', 'module_name'])
+                             |--  lineinfo (['self', 'identifier'])
+                             |--  lookupmodule (['self', 'filename'])
+                             |--  message (['self', 'msg'])
+                             |--  onecmd (['self', 'line'])
+                             |--  parseline (['self', 'line'])
+                             |--  postcmd (['self', 'stop', 'line'])
+                             |--  postloop (['self'])
+                             |--  precmd (['self', 'line'])
+                             |--  preloop (['self'])
+                             |--  print_stack_entry (['self', 'frame_lineno', 'prompt_prefix'])
+                             |--  print_stack_trace (['self'])
+                             |--  print_topics (['self', 'header', 'cmds', 'cmdlen', 'maxcol'])
+                             |--  reset (['self'])
+                             |--  run (['self', 'cmd', 'globals', 'locals'])
+                             |--  runcall (['self', 'func'])
+                             |--  runctx (['self', 'cmd', 'globals', 'locals'])
+                             |--  runeval (['self', 'expr', 'globals', 'locals'])
+                             |--  set_break (['self', 'filename', 'lineno', 'temporary', 'cond', 'funcname'])
+                             |--  set_continue (['self'])
+                             |--  set_next (['self', 'frame'])
+                             |--  set_quit (['self'])
+                             |--  set_return (['self', 'frame'])
+                             |--  set_step (['self'])
+                             |--  set_trace (['self', 'frame'])
+                             |--  set_until (['self', 'frame', 'lineno'])
+                             |--  setup (['self', 'f', 'tb'])
+                             |--  sigint_handler (['self', 'signum', 'frame'])
+                             |--  stop_here (['self', 'frame'])
+                             |--  trace_dispatch (['self', 'frame', 'event', 'arg'])
+                             |--  user_call (['self', 'frame', 'argument_list'])
+                             |--  user_exception (['self', 'frame', 'exc_info'])
+                             |--  user_line (['self', 'frame'])
+                             |--  user_return (['self', 'frame', 'return_value'])
+                     |--  [  str  ]:
+                             |--  doc_header
+                             |--  doc_leader
+                             |--  identchars
+                             |--  lastcmd
+                             |--  misc_header
+                             |--  nohelp
+                             |--  prompt
+                             |--  ruler
+                             |--  undoc_header
+                     |--  [  NoneType  ]:
+                             |--  intro
+             |--  [Class Restart]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'pdb.Restart'>
+                             |--  <class 'Exception'>
+                             |--  <class 'BaseException'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  with_traceback
+                     |--  [  getset_descriptor  ]:
+                             |--  args
+             |--  [Class _rstr]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'pdb._rstr'>
+                             |--  <class 'str'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  capitalize
+                             |--  center
+                             |--  count
+                             |--  encode
+                             |--  endswith
+                             |--  expandtabs
+                             |--  find
+                             |--  format
+                             |--  format_map
+                             |--  index
+                             |--  isalnum
+                             |--  isalpha
+                             |--  isdecimal
+                             |--  isdigit
+                             |--  isidentifier
+                             |--  islower
+                             |--  isnumeric
+                             |--  isprintable
+                             |--  isspace
+                             |--  istitle
+                             |--  isupper
+                             |--  join
+                             |--  ljust
+                             |--  lower
+                             |--  lstrip
+                             |--  partition
+                             |--  replace
+                             |--  rfind
+                             |--  rindex
+                             |--  rjust
+                             |--  rpartition
+                             |--  rsplit
+                             |--  rstrip
+                             |--  split
+                             |--  splitlines
+                             |--  startswith
+                             |--  strip
+                             |--  swapcase
+                             |--  title
+                             |--  translate
+                             |--  upper
+                             |--  zfill
+                     |--  [  builtin_function_or_method  ]:
+                             |--  maketrans
+
+
+          [@ FUNCTION  ]
+              @@doc :  - Function including "lambda" anonymous functions
+             |--  find_function (['funcname', 'filename'])
+             |--  getsourcelines (['obj'])
+             |--  help ([])
+             |--  lasti2lineno (['code', 'lasti'])
+             |--  main ([])
+             |--  pm ([])
+             |--  post_mortem (['t'])
+             |--  run (['statement', 'globals', 'locals'])
+             |--  runcall ([])
+             |--  runctx (['statement', 'globals', 'locals'])
+             |--  runeval (['expression', 'globals', 'locals'])
+             |--  set_trace ([])
+             |--  test ([])
+
+              [@ str ]
+                     |--  pdb.TESTCMD
+                     |--  pdb._usage
+                     |--  pdb.line_prefix
+
+              [@ list ]
+                     |--  pdb.__all__
+
+
+gdb
+~~~~~~~~~~~~~~~~~~~~
+
+
+    .. code-block:: python
+
+        (gdb) python
+        >import sys
+        >sys.append(python/site-packages)
+        >import gdb
+        >import inspectshow
+        >show=inspectshow.showtree()
+        >show("gdb")
+        >end
+
+    .. code-block:: python
+
+        gdb
+         |--  gdb
+         |--  ===> /usr/share/gdb/python/gdb/__init__.py
+
+
+          [@SUBPACKAGES]
+             |--   + gdb.python.gdb.command
+             |--   + gdb.python.gdb.printer
+             |--   + gdb.python.gdb.function
+
+
+          [@SUBMODULES ]
+             |--  gdb
+                 |--  FrameDecorator
+                     |--  gdb
+                         |--  FrameDecorator
+                         |--  FrameIterator
+                             |--  gdb
+                             |--  itertools
+                         |--  _gdb
+                             |--  events
+                         |--  command
+                             |--  explore
+                                 |--  gdb
+                                 |--  sys
+                             |--  frame_filters
+                                 |--  copy
+                                     |--  builtins
+                                     |--  weakref
+                                         |--  collections
+                                             |--  _collections_abc
+                                                 |--  sys
+                                             |--  _heapq
+                                             |--  _sys
+                                             |--  abc
+                                         |--  itertools
+                                         |--  sys
+                                 |--  gdb
+                                 |--  itertools
+                                 |--  sys
+                             |--  pretty_printers
+                                 |--  copy
+                                 |--  gdb
+                                 |--  re
+                                     |--  _locale
+                                     |--  copyreg
+                                     |--  sre_compile
+                                         |--  _sre
+                                         |--  sre_parse
+                                     |--  sre_parse
+                                     |--  sys
+                             |--  prompt
+                                 |--  gdb
+                             |--  type_printers
+                                 |--  copy
+                                 |--  gdb
+                             |--  unwinders
+                                 |--  gdb
+                                 |--  re
+                             |--  xmethods
+                                 |--  gdb
+                                 |--  re
+                         |--  events
+                         |--  frames
+                             |--  collections
+                             |--  gdb
+                             |--  itertools
+                         |--  function
+                             |--  caller_is
+                                 |--  gdb
+                                 |--  re
+                             |--  strfns
+                                 |--  gdb
+                                 |--  re
+                         |--  os
+                             |--  errno
+                             |--  path
+                                 |--  genericpath
+                                     |--  os
+                                     |--  stat
+                                 |--  os
+                                 |--  stat
+                                 |--  sys
+                             |--  st
+                             |--  sys
+                         |--  printer
+                             |--  bound_registers
+                                 |--  gdb
+                         |--  printing
+                             |--  gdb
+                             |--  re
+                             |--  sys
+                         |--  prompt
+                         |--  sys
+                         |--  traceback
+                             |--  collections
+                             |--  itertools
+                             |--  linecache
+                                 |--  functools
+                                 |--  os
+                                 |--  sys
+                                 |--  tokenize
+                                     |--  collections
+                                     |--  re
+                                     |--  sys
+                             |--  sys
+                         |--  types
+                             |--  gdb
+                 |--  FrameIterator
+                 |--  _gdb
+                 |--  command
+                 |--  events
+                 |--  frames
+                 |--  function
+                 |--  os
+                 |--  printer
+                 |--  printing
+                 |--  prompt
+                 |--  sys
+                 |--  traceback
+                 |--  types
+
+
+          [@CLASS        ]
+              @@doc : - Classes and Method Resolution Order
+             |--  [Class Architecture]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.Architecture'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  disassemble
+                             |--  name
+             |--  [Class Block]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.Block'>
+                             |--  <class 'object'>
+                     |--  [  getset_descriptor  ]:
+                             |--  end
+                             |--  function
+                             |--  global_block
+                             |--  is_global
+                             |--  is_static
+                             |--  start
+                             |--  static_block
+                             |--  superblock
+                     |--  [  method_descriptor  ]:
+                             |--  is_valid
+             |--  [Class BlockIterator]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.BlockIterator'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  is_valid
+             |--  [Class Breakpoint]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.Breakpoint'>
+                             |--  <class 'object'>
+                     |--  [  getset_descriptor  ]:
+                             |--  commands
+                             |--  condition
+                             |--  enabled
+                             |--  expression
+                             |--  hit_count
+                             |--  ignore_count
+                             |--  location
+                             |--  number
+                             |--  silent
+                             |--  task
+                             |--  temporary
+                             |--  thread
+                             |--  type
+                             |--  visible
+                     |--  [  method_descriptor  ]:
+                             |--  delete
+                             |--  is_valid
+             |--  [Class BreakpointEvent]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.BreakpointEvent'>
+                             |--  <class 'gdb.StopEvent'>
+                             |--  <class 'gdb.ThreadEvent'>
+                             |--  <class 'gdb.Event'>
+                             |--  <class 'object'>
+             |--  [Class ClearObjFilesEvent]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.ClearObjFilesEvent'>
+                             |--  <class 'gdb.Event'>
+                             |--  <class 'object'>
+             |--  [Class Command]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.Command'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  dont_repeat
+             |--  [Class ContinueEvent]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.ContinueEvent'>
+                             |--  <class 'gdb.ThreadEvent'>
+                             |--  <class 'gdb.Event'>
+                             |--  <class 'object'>
+             |--  [Class Event]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.Event'>
+                             |--  <class 'object'>
+             |--  [Class EventRegistry]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.EventRegistry'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  connect
+                             |--  disconnect
+             |--  [Class ExitedEvent]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.ExitedEvent'>
+                             |--  <class 'gdb.Event'>
+                             |--  <class 'object'>
+             |--  [Class Field]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.Field'>
+                             |--  <class 'object'>
+             |--  [Class FinishBreakpoint]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.FinishBreakpoint'>
+                             |--  <class 'gdb.Breakpoint'>
+                             |--  <class 'object'>
+                     |--  [  getset_descriptor  ]:
+                             |--  commands
+                             |--  condition
+                             |--  enabled
+                             |--  expression
+                             |--  hit_count
+                             |--  ignore_count
+                             |--  location
+                             |--  number
+                             |--  return_value
+                             |--  silent
+                             |--  task
+                             |--  temporary
+                             |--  thread
+                             |--  type
+                             |--  visible
+                     |--  [  method_descriptor  ]:
+                             |--  delete
+                             |--  is_valid
+             |--  [Class Frame]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.Frame'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  architecture
+                             |--  block
+                             |--  find_sal
+                             |--  function
+                             |--  is_valid
+                             |--  name
+                             |--  newer
+                             |--  older
+                             |--  pc
+                             |--  read_register
+                             |--  read_var
+                             |--  select
+                             |--  type
+                             |--  unwind_stop_reason
+             |--  [Class Function]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.Function'>
+                             |--  <class 'object'>
+             |--  [Class GdbError]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.GdbError'>
+                             |--  <class 'Exception'>
+                             |--  <class 'BaseException'>
+                             |--  <class 'object'>
+                     |--  [  getset_descriptor  ]:
+                             |--  args
+                     |--  [  method_descriptor  ]:
+                             |--  with_traceback
+             |--  [Class GdbOutputErrorFile]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.GdbOutputErrorFile'>
+                             |--  <class 'gdb._GdbFile'>
+                             |--  <class 'object'>
+                     |--  [  str  ]:
+                             |--  encoding
+                             |--  errors
+                     |--  [  function  ]:
+                             |--  close (['self'])
+                             |--  flush (['self'])
+                             |--  isatty (['self'])
+                             |--  write (['self', 's'])
+                             |--  writelines (['self', 'iterable'])
+             |--  [Class GdbOutputFile]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.GdbOutputFile'>
+                             |--  <class 'gdb._GdbFile'>
+                             |--  <class 'object'>
+                     |--  [  str  ]:
+                             |--  encoding
+                             |--  errors
+                     |--  [  function  ]:
+                             |--  close (['self'])
+                             |--  flush (['self'])
+                             |--  isatty (['self'])
+                             |--  write (['self', 's'])
+                             |--  writelines (['self', 'iterable'])
+             |--  [Class Inferior]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.Inferior'>
+                             |--  <class 'object'>
+                     |--  [  getset_descriptor  ]:
+                             |--  num
+                             |--  pid
+                             |--  was_attached
+                     |--  [  method_descriptor  ]:
+                             |--  is_valid
+                             |--  read_memory
+                             |--  search_memory
+                             |--  threads
+                             |--  write_memory
+             |--  [Class InferiorCallPostEvent]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.InferiorCallPostEvent'>
+                             |--  <class 'gdb.Event'>
+                             |--  <class 'object'>
+             |--  [Class InferiorCallPreEvent]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.InferiorCallPreEvent'>
+                             |--  <class 'gdb.Event'>
+                             |--  <class 'object'>
+             |--  [Class InferiorThread]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.InferiorThread'>
+                             |--  <class 'object'>
+                     |--  [  getset_descriptor  ]:
+                             |--  global_num
+                             |--  inferior
+                             |--  name
+                             |--  num
+                             |--  ptid
+                     |--  [  method_descriptor  ]:
+                             |--  is_exited
+                             |--  is_running
+                             |--  is_stopped
+                             |--  is_valid
+                             |--  switch
+             |--  [Class LineTable]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.LineTable'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  has_line
+                             |--  is_valid
+                             |--  line
+                             |--  source_lines
+             |--  [Class LineTableEntry]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.LineTableEntry'>
+                             |--  <class 'object'>
+                     |--  [  getset_descriptor  ]:
+                             |--  line
+                             |--  pc
+             |--  [Class LineTableIterator]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.LineTableIterator'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  is_valid
+             |--  [Class Membuf]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.Membuf'>
+                             |--  <class 'object'>
+             |--  [Class MemoryChangedEvent]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.MemoryChangedEvent'>
+                             |--  <class 'gdb.Event'>
+                             |--  <class 'object'>
+             |--  [Class MemoryError]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.MemoryError'>
+                             |--  <class 'gdb.error'>
+                             |--  <class 'RuntimeError'>
+                             |--  <class 'Exception'>
+                             |--  <class 'BaseException'>
+                             |--  <class 'object'>
+                     |--  [  getset_descriptor  ]:
+                             |--  args
+                     |--  [  method_descriptor  ]:
+                             |--  with_traceback
+             |--  [Class NewObjFileEvent]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.NewObjFileEvent'>
+                             |--  <class 'gdb.Event'>
+                             |--  <class 'object'>
+             |--  [Class Objfile]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.Objfile'>
+                             |--  <class 'object'>
+                     |--  [  getset_descriptor  ]:
+                             |--  build_id
+                             |--  filename
+                             |--  frame_filters
+                             |--  frame_unwinders
+                             |--  owner
+                             |--  pretty_printers
+                             |--  progspace
+                             |--  type_printers
+                             |--  username
+                             |--  xmethods
+                     |--  [  method_descriptor  ]:
+                             |--  add_separate_debug_file
+                             |--  is_valid
+             |--  [Class Parameter]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.Parameter'>
+                             |--  <class 'object'>
+             |--  [Class PendingFrame]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.PendingFrame'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  create_unwind_info
+                             |--  read_register
+             |--  [Class Progspace]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.Progspace'>
+                             |--  <class 'object'>
+                     |--  [  getset_descriptor  ]:
+                             |--  filename
+                             |--  frame_filters
+                             |--  frame_unwinders
+                             |--  pretty_printers
+                             |--  type_printers
+                             |--  xmethods
+             |--  [Class RegisterChangedEvent]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.RegisterChangedEvent'>
+                             |--  <class 'gdb.Event'>
+                             |--  <class 'object'>
+             |--  [Class SignalEvent]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.SignalEvent'>
+                             |--  <class 'gdb.StopEvent'>
+                             |--  <class 'gdb.ThreadEvent'>
+                             |--  <class 'gdb.Event'>
+                             |--  <class 'object'>
+             |--  [Class StopEvent]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.StopEvent'>
+                             |--  <class 'gdb.ThreadEvent'>
+                             |--  <class 'gdb.Event'>
+                             |--  <class 'object'>
+             |--  [Class Symbol]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.Symbol'>
+                             |--  <class 'object'>
+                     |--  [  getset_descriptor  ]:
+                             |--  addr_class
+                             |--  is_argument
+                             |--  is_constant
+                             |--  is_function
+                             |--  is_variable
+                             |--  line
+                             |--  linkage_name
+                             |--  name
+                             |--  needs_frame
+                             |--  print_name
+                             |--  symtab
+                             |--  type
+                     |--  [  method_descriptor  ]:
+                             |--  is_valid
+                             |--  value
+             |--  [Class Symtab]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.Symtab'>
+                             |--  <class 'object'>
+                     |--  [  getset_descriptor  ]:
+                             |--  filename
+                             |--  objfile
+                             |--  producer
+                     |--  [  method_descriptor  ]:
+                             |--  fullname
+                             |--  global_block
+                             |--  is_valid
+                             |--  linetable
+                             |--  static_block
+             |--  [Class Symtab_and_line]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.Symtab_and_line'>
+                             |--  <class 'object'>
+                     |--  [  getset_descriptor  ]:
+                             |--  last
+                             |--  line
+                             |--  pc
+                             |--  symtab
+                     |--  [  method_descriptor  ]:
+                             |--  is_valid
+             |--  [Class ThreadEvent]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.ThreadEvent'>
+                             |--  <class 'gdb.Event'>
+                             |--  <class 'object'>
+             |--  [Class Type]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.Type'>
+                             |--  <class 'object'>
+                     |--  [  getset_descriptor  ]:
+                             |--  code
+                             |--  name
+                             |--  sizeof
+                             |--  tag
+                     |--  [  method_descriptor  ]:
+                             |--  array
+                             |--  const
+                             |--  fields
+                             |--  get
+                             |--  has_key
+                             |--  items
+                             |--  iteritems
+                             |--  iterkeys
+                             |--  itervalues
+                             |--  keys
+                             |--  optimized_out
+                             |--  pointer
+                             |--  range
+                             |--  reference
+                             |--  strip_typedefs
+                             |--  target
+                             |--  template_argument
+                             |--  unqualified
+                             |--  values
+                             |--  vector
+                             |--  volatile
+             |--  [Class TypeIterator]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.TypeIterator'>
+                             |--  <class 'object'>
+             |--  [Class UnwindInfo]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.UnwindInfo'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  add_saved_register
+             |--  [Class Value]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.Value'>
+                             |--  <class 'object'>
+                     |--  [  getset_descriptor  ]:
+                             |--  address
+                             |--  dynamic_type
+                             |--  is_lazy
+                             |--  is_optimized_out
+                             |--  type
+                     |--  [  method_descriptor  ]:
+                             |--  cast
+                             |--  const_value
+                             |--  dereference
+                             |--  dynamic_cast
+                             |--  fetch_lazy
+                             |--  lazy_string
+                             |--  reference_value
+                             |--  referenced_value
+                             |--  reinterpret_cast
+                             |--  string
+             |--  [Class _GdbFile]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb._GdbFile'>
+                             |--  <class 'object'>
+                     |--  [  str  ]:
+                             |--  encoding
+                             |--  errors
+                     |--  [  function  ]:
+                             |--  close (['self'])
+                             |--  flush (['self'])
+                             |--  isatty (['self'])
+                             |--  writelines (['self', 'iterable'])
+             |--  [Class error]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'gdb.error'>
+                             |--  <class 'RuntimeError'>
+                             |--  <class 'Exception'>
+                             |--  <class 'BaseException'>
+                             |--  <class 'object'>
+                     |--  [  getset_descriptor  ]:
+                             |--  args
+                     |--  [  method_descriptor  ]:
+                             |--  with_traceback
+
+
+          [@ FUNCTION  ]
+              @@doc :  - Function including "lambda" anonymous functions
+             |--  GdbSetPythonDirectory (['dir'])
+             |--  auto_load_packages ([])
+             |--  execute_unwinders (['pending_frame'])
+             |--  reload (['module'])
+
+
+
+              [@ int ]
+                     |--  gdb.ARCH_FRAME
+                     |--  gdb.BP_ACCESS_WATCHPOINT
+                     |--  gdb.BP_BREAKPOINT
+                     |--  gdb.BP_HARDWARE_WATCHPOINT
+                     |--  gdb.BP_NONE
+                     |--  gdb.BP_READ_WATCHPOINT
+                     |--  gdb.BP_WATCHPOINT
+                     |--  gdb.COMMAND_BREAKPOINTS
+                     |--  gdb.COMMAND_DATA
+                     |--  gdb.COMMAND_FILES
+                     |--  gdb.COMMAND_MAINTENANCE
+                     |--  gdb.COMMAND_NONE
+                     |--  gdb.COMMAND_OBSCURE
+                     |--  gdb.COMMAND_RUNNING
+                     |--  gdb.COMMAND_STACK
+                     |--  gdb.COMMAND_STATUS
+                     |--  gdb.COMMAND_SUPPORT
+                     |--  gdb.COMMAND_TRACEPOINTS
+                     |--  gdb.COMMAND_USER
+                     |--  gdb.COMPLETE_COMMAND
+                     |--  gdb.COMPLETE_EXPRESSION
+                     |--  gdb.COMPLETE_FILENAME
+                     |--  gdb.COMPLETE_LOCATION
+                     |--  gdb.COMPLETE_NONE
+                     |--  gdb.COMPLETE_SYMBOL
+                     |--  gdb.DUMMY_FRAME
+                     |--  gdb.FRAME_UNWIND_INNER_ID
+                     |--  gdb.FRAME_UNWIND_MEMORY_ERROR
+                     |--  gdb.FRAME_UNWIND_NO_REASON
+                     |--  gdb.FRAME_UNWIND_NO_SAVED_PC
+                     |--  gdb.FRAME_UNWIND_NULL_ID
+                     |--  gdb.FRAME_UNWIND_OUTERMOST
+                     |--  gdb.FRAME_UNWIND_SAME_ID
+                     |--  gdb.FRAME_UNWIND_UNAVAILABLE
+                     |--  gdb.INLINE_FRAME
+                     |--  gdb.NORMAL_FRAME
+                     |--  gdb.PARAM_AUTO_BOOLEAN
+                     |--  gdb.PARAM_BOOLEAN
+                     |--  gdb.PARAM_ENUM
+                     |--  gdb.PARAM_FILENAME
+                     |--  gdb.PARAM_INTEGER
+                     |--  gdb.PARAM_OPTIONAL_FILENAME
+                     |--  gdb.PARAM_STRING
+                     |--  gdb.PARAM_STRING_NOESCAPE
+                     |--  gdb.PARAM_UINTEGER
+                     |--  gdb.PARAM_ZINTEGER
+                     |--  gdb.SENTINEL_FRAME
+                     |--  gdb.SIGTRAMP_FRAME
+                     |--  gdb.STDERR
+                     |--  gdb.STDLOG
+                     |--  gdb.STDOUT
+                     |--  gdb.SYMBOL_FUNCTIONS_DOMAIN
+                     |--  gdb.SYMBOL_LABEL_DOMAIN
+                     |--  gdb.SYMBOL_LOC_ARG
+                     |--  gdb.SYMBOL_LOC_BLOCK
+                     |--  gdb.SYMBOL_LOC_COMPUTED
+                     |--  gdb.SYMBOL_LOC_CONST
+                     |--  gdb.SYMBOL_LOC_CONST_BYTES
+                     |--  gdb.SYMBOL_LOC_LABEL
+                     |--  gdb.SYMBOL_LOC_LOCAL
+                     |--  gdb.SYMBOL_LOC_OPTIMIZED_OUT
+                     |--  gdb.SYMBOL_LOC_REF_ARG
+                     |--  gdb.SYMBOL_LOC_REGISTER
+                     |--  gdb.SYMBOL_LOC_REGPARM_ADDR
+                     |--  gdb.SYMBOL_LOC_STATIC
+                     |--  gdb.SYMBOL_LOC_TYPEDEF
+                     |--  gdb.SYMBOL_LOC_UNDEF
+                     |--  gdb.SYMBOL_LOC_UNRESOLVED
+                     |--  gdb.SYMBOL_STRUCT_DOMAIN
+                     |--  gdb.SYMBOL_TYPES_DOMAIN
+                     |--  gdb.SYMBOL_UNDEF_DOMAIN
+                     |--  gdb.SYMBOL_VARIABLES_DOMAIN
+                     |--  gdb.SYMBOL_VAR_DOMAIN
+                     |--  gdb.TAILCALL_FRAME
+                     |--  gdb.TYPE_CODE_ARRAY
+                     |--  gdb.TYPE_CODE_BITSTRING
+                     |--  gdb.TYPE_CODE_BOOL
+                     |--  gdb.TYPE_CODE_CHAR
+                     |--  gdb.TYPE_CODE_COMPLEX
+                     |--  gdb.TYPE_CODE_DECFLOAT
+                     |--  gdb.TYPE_CODE_ENUM
+                     |--  gdb.TYPE_CODE_ERROR
+                     |--  gdb.TYPE_CODE_FLAGS
+                     |--  gdb.TYPE_CODE_FLT
+                     |--  gdb.TYPE_CODE_FUNC
+                     |--  gdb.TYPE_CODE_INT
+                     |--  gdb.TYPE_CODE_INTERNAL_FUNCTION
+                     |--  gdb.TYPE_CODE_MEMBERPTR
+                     |--  gdb.TYPE_CODE_METHOD
+                     |--  gdb.TYPE_CODE_METHODPTR
+                     |--  gdb.TYPE_CODE_NAMESPACE
+                     |--  gdb.TYPE_CODE_PTR
+                     |--  gdb.TYPE_CODE_RANGE
+                     |--  gdb.TYPE_CODE_REF
+                     |--  gdb.TYPE_CODE_SET
+                     |--  gdb.TYPE_CODE_STRING
+                     |--  gdb.TYPE_CODE_STRUCT
+                     |--  gdb.TYPE_CODE_TYPEDEF
+                     |--  gdb.TYPE_CODE_UNION
+                     |--  gdb.TYPE_CODE_VOID
+                     |--  gdb.WP_ACCESS
+                     |--  gdb.WP_READ
+                     |--  gdb.WP_WRITE
+
+
+              [@ str ]
+                     |--  gdb.HOST_CONFIG
+                     |--  gdb.PYTHONDIR
+                     |--  gdb.TARGET_CONFIG
+                     |--  gdb.VERSION
+
+              [@ list ]
+                     |--  gdb.frame_unwinders
+                     |--  gdb.packages
+                     |--  gdb.pretty_printers
+                     |--  gdb.type_printers
+                     |--  gdb.xmethods
+
+              [@ dict ]
+                     |--  gdb.__warningregistry__
+                     |--  gdb.frame_filters

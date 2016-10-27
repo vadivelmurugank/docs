@@ -1,0 +1,243 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>SSH SERVER SETUP &mdash;   documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="  documentation" href="../../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">PYTHON</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html"></a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+    <li>SSH SERVER SETUP</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/tools/ssh/ssh.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ssh-server-setup">
+<h1>SSH SERVER SETUP<a class="headerlink" href="#ssh-server-setup" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><p>sed -i  -e  &#8220;s/PermitRootLogin [Nn]o/PermitRootLogin yes/&#8221;  /etc/ssh/sshd_config
+sed -i  -e  &#8220;s/[#]*ClientAliveInterval.*[0-9]*/ClientAliveInterval 10/&#8221; /etc/ssh/sshd_config
+sed -i  -e  &#8220;s/[#]*ClientAliveCountMax.*[0-9]*/ClientAliveCountMax 6/&#8221; /etc/ssh/sshd_config
+sed -i -e  &#8220;s/[#]*StrictModes.*[a-z]*/StrictModes no/&#8221;  /etc/ssh/sshd_config
+killall sshd</p>
+<p>rm -rf /root/.ssh
+mkdir -p /root/.ssh
+ssh-keygen -v -N &#8220;&#8221;   -f /root/.ssh/id_rsa
+touch /root/.ssh/authorized_keys
+chmod 640 /root/.ssh/authorized_keys
+chmod 700 /root/.ssh
+chmod 600 /root/.ssh/id_rsa
+chmod 640 /root/.ssh/id_rsa.pub</p>
+</div></blockquote>
+</div>
+<div class="section" id="server-keygen">
+<h1>SERVER KEYGEN<a class="headerlink" href="#server-keygen" title="Permalink to this headline">¶</a></h1>
+<p># Remove Existing key entry for the linecard
+ssh-keygen -R  127.3.12.1</p>
+<dl class="docutils">
+<dt># Verify ssh connection to the linecard</dt>
+<dd>ssh -v -o PreferredAuthentications=password -o ServerAliveInterval=10 -o ServerAliveCountMax=20 127.3.12.1 cat /release.inf</dd>
+<dt># ssh to linecard</dt>
+<dd>ssh -v -o ServerAliveInterval=10 -o ServerAliveCountMax=20 127.3.12.1</dd>
+</dl>
+<p>&lt;&lt;&lt; Initial test setup operations&gt;&gt;&gt;</p>
+<hr class="docutils" />
+<dl class="docutils">
+<dt>LOOP_ENTRY:</dt>
+<dd><p class="first"># Remove authorized key entry for line card in RP authorized keys.
+sed -i &#8220;/lc-13$/d&#8221; /root/.ssh/authorized_keys</p>
+<p># Verify SSH connection
+ssh -v -o -o ServerAliveInterval=10 -o ServerAliveCountMax=20 127.3.12.1 cat /release.inf</p>
+<p>ssh <a class="reference external" href="mailto:root&#37;&#52;&#48;lc-3">root<span>&#64;</span>lc-3</a> &#8220;echo &#8220;ClientAliveInterval 10&#8221; &gt;&gt; /etc/ssh/sshd_config&#8221;
+ssh <a class="reference external" href="mailto:root&#37;&#52;&#48;lc-3">root<span>&#64;</span>lc-3</a> &#8220;echo &#8220;ClientAliveCountMax 6&#8221; &gt;&gt; /etc/ssh/sshd_config&#8221;
+ssh <a class="reference external" href="mailto:root&#37;&#52;&#48;lc-3">root<span>&#64;</span>lc-3</a> &#8220;echo &#8220;StrictModes no&#8221; &gt;&gt; /etc/ssh/sshd_config&#8221;
+ssh <a class="reference external" href="mailto:root&#37;&#52;&#48;lc-3">root<span>&#64;</span>lc-3</a> killall sshd</p>
+<p>ssh <a class="reference external" href="mailto:root&#37;&#52;&#48;lc-3">root<span>&#64;</span>lc-3</a> &#8216;rm -rf /root/.ssh; mkdir -p /root/.ssh&#8217;
+ssh-copy-id -i /root/.ssh/id_rsa.pub lc-3
+ssh <a class="reference external" href="mailto:root&#37;&#52;&#48;lc-3">root<span>&#64;</span>lc-3</a> hostname</p>
+<p class="last"># Do ssh connection to line card
+ssh -v -e ServerAliveInterval=10 -o ServerAliveCountMax=20 127.3.12.1</p>
+</dd>
+</dl>
+<p>ssh -v -o ServerAliveInterval=10 -o ServerAliveCountMax=20 lc-3</p>
+<p>rm /root/.ssh/known_hosts
+rm -f /root/.ssh/id_rsa
+ssh-keygen -v -N &#8220;&#8221;   -f /root/.ssh/id_rsa
+ssh-copy-id -i /root/.ssh/id_rsa.pub 127.3.254.1
+ssh <a class="reference external" href="mailto:root&#37;&#52;&#48;127&#46;3&#46;254&#46;1">root<span>&#64;</span>127<span>&#46;</span>3<span>&#46;</span>254<span>&#46;</span>1</a> hostname</p>
+<p>&lt;&lt;&lt;LC Test Operations&gt;&gt;&gt;</p>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

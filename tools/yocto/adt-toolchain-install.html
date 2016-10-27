@@ -1,0 +1,255 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>environment Variables &mdash;   documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="  documentation" href="../../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">PYTHON</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html"></a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+    <li>environment Variables</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/tools/yocto/adt-toolchain-install.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <hr class="docutils" />
+<blockquote>
+<div>Cross Compiler toolchain Install</div></blockquote>
+<hr class="docutils" />
+<p>Yocto Releases:
+1.8</p>
+<p><a class="reference external" href="http://adtrepo.yoctoproject.org//1.8">http://adtrepo.yoctoproject.org//1.8</a></p>
+<dl class="docutils">
+<dt>Download:</dt>
+<dd><a class="reference external" href="http://downloads.yoctoproject.org/releases/yocto/yocto-1.8/adt-installer">http://downloads.yoctoproject.org/releases/yocto/yocto-1.8/adt-installer</a></dd>
+</dl>
+<p>Download adt-installer to $HOME/adt_installer.tar.bz2
+tar -xjf adt_installer.tar.bz2</p>
+<p>cd adt-installer</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Edit adt-installer.conf file:</dt>
+<dd>YOCTOADT_TARGETS = arm ppc x86
+YOCTOADT_TARGET_SYSROOT_LOC</dd>
+</dl>
+</div></blockquote>
+<p>./adt_installer</p>
+<blockquote>
+<div>Tool chain installed in /opt/poky/1.8/..</div></blockquote>
+<div class="section" id="environment-variables">
+<h1>environment Variables<a class="headerlink" href="#environment-variables" title="Permalink to this headline">¶</a></h1>
+<p>/opt/poky/1.8/environment-setup-i586-poky-linux</p>
+<p>export SDKTARGETSYSROOT=/home/pico/tools/yocto-sysroot/qemux86
+export PATH=/opt/poky/1.8/sysroots/x86_64-pokysdk-linux/usr/bin:/opt/poky/1.8/sy
+sroots/x86_64-pokysdk-linux/usr/bin/i586-poky-linux:$PATH
+export CCACHE_PATH=$sdkpathnative$bindir:$sdkpathnative$bindir/i586-poky-linux:$
+CCACHE_PATH
+export PKG_CONFIG_SYSROOT_DIR=$SDKTARGETSYSROOT
+export PKG_CONFIG_PATH=$SDKTARGETSYSROOT/usr/lib/pkgconfig
+export CONFIG_SITE=/opt/poky/1.8/site-config-i586-poky-linux
+export OECORE_NATIVE_SYSROOT=&#8221;/opt/poky/1.8/sysroots/x86_64-pokysdk-linux&#8221;
+export OECORE_TARGET_SYSROOT=&#8221;$SDKTARGETSYSROOT&#8221;
+export OECORE_ACLOCAL_OPTS=&#8221;-I /opt/poky/1.8/sysroots/x86_64-pokysdk-linux/usr/s
+hare/aclocal&#8221;
+export PYTHONHOME=/opt/poky/1.8/sysroots/x86_64-pokysdk-linux/usr
+export CC=&#8221;i586-poky-linux-gcc  -m32 -march=i586 &#8211;sysroot=$SDKTARGETSYSROOT&#8221;
+export CXX=&#8221;i586-poky-linux-g++  -m32 -march=i586 &#8211;sysroot=$SDKTARGETSYSROOT&#8221;
+export CPP=&#8221;i586-poky-linux-gcc -E  -m32 -march=i586 &#8211;sysroot=$SDKTARGETSYSROOT
+&#8221;
+export AS=&#8221;i586-poky-linux-as  &#8221;
+export LD=&#8221;i586-poky-linux-ld   &#8211;sysroot=$SDKTARGETSYSROOT&#8221;
+export GDB=i586-poky-linux-gdb
+export STRIP=i586-poky-linux-strip
+export RANLIB=i586-poky-linux-ranlib
+export OBJCOPY=i586-poky-linux-objcopy
+export OBJDUMP=i586-poky-linux-objdump
+export AR=i586-poky-linux-ar
+export NM=i586-poky-linux-nm
+export M4=m4
+export TARGET_PREFIX=i586-poky-linux-
+export CONFIGURE_FLAGS=&#8221;&#8211;target=i586-poky-linux &#8211;host=i586-poky-linux &#8211;build=
+x86_64-linux &#8211;with-libtool-sysroot=$SDKTARGETSYSROOT&#8221;
+export CFLAGS=&#8221; -O2 -pipe -g -feliminate-unused-debug-types&#8221;
+export CXXFLAGS=&#8221; -O2 -pipe -g -feliminate-unused-debug-types&#8221;
+export LDFLAGS=&#8221;-Wl,-O1 -Wl,&#8211;hash-style=gnu -Wl,&#8211;as-needed&#8221;
+export CPPFLAGS=&#8221;&#8221;
+export KCFLAGS=&#8221;&#8211;sysroot=$SDKTARGETSYSROOT&#8221;
+export OECORE_DISTRO_VERSION=&#8221;1.8&#8221;
+export OECORE_SDK_VERSION=&#8221;1.8&#8221;
+export ARCH=x86
+export CROSS_COMPILE=i586-poky-linux-</p>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

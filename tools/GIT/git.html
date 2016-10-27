@@ -1,0 +1,546 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Branching and merge to a tag &mdash;   documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="  documentation" href="../../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">PYTHON</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html"></a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+    <li>Branching and merge to a tag</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/tools/GIT/git.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <p>git pull &#8211;rebase</p>
+<p>git log
+git status</p>
+<p># Latest commit tag
+git describe</p>
+<p># show all branches
+git branch</p>
+<p># show all tags
+git tag</p>
+<p># show all references
+git show-ref</p>
+<p>#git hash-object
+git hash-object</p>
+<p># git all tags
+git log &#8211;decorate &#8211;oneline
+git log &#8211;decorate &#8211;oneline &#8211;full &#8211;graph ssc_podd.c | more</p>
+<p>git tags -l</p>
+<p>git authclone &lt;tree&gt;  -b  &lt;branch&gt;</p>
+<p>git status</p>
+<p>git checkout -b &lt;branch&gt; remotes/origin/&lt;tree&gt;</p>
+<p>git add .</p>
+<p># cat ~/gitlog/gerrit.log
+git commit
+git commit &#8211;amend</p>
+<p>git review</p>
+<p>git authclone &lt;tree&gt; -b &lt;branch&gt;</p>
+<dl class="docutils">
+<dt>#status</dt>
+<dd><p class="first">git status</p>
+<p>git log</p>
+<p class="last">git diff &#8211;name-status
+for file in $(git diff &#8211;name-only); do git-difftool -y -t gvimdiff $file; done
+git ls-files &#8211;others &#8211;exclude-standard</p>
+</dd>
+</dl>
+<p>#diff
+git diff &#8211;name-status &lt;tree&gt;_dev
+git-difftool -y -t gvimdiff origin &lt;tree&gt;_dev $file</p>
+<blockquote>
+<div>git config &#8211;global diff.tool tkdiff
+git config &#8211;global merge.tool tkdiff
+git config &#8211;global -add difftool.prompt false
+git config &#8211;global &#8211;add difftool.prompt false</div></blockquote>
+<p>git add
+git commit
+git authpush</p>
+<p>#Bundle all modified files
+datestr=$(date +%m%d%y-%H%M)
+mkdir -p ~/gitlog/sandbox/${datestr}
+for file in <cite>cat ~/gitlog/git.files</cite>; do echo $file; ls $file| cpio -pmd ~/gitlog/sandbox/${datestr}; done</p>
+<p># recommit the changes
+git commit &#8211;amend</p>
+<p>#stash previous changes
+git rebase -i</p>
+<p># Go back to previous good tree
+git reset HEAD~1 &#8211;soft</p>
+<p>authclone paas -b paas_dev</p>
+<div class="section" id="branching-and-merge-to-a-tag">
+<h1>Branching and merge to a tag<a class="headerlink" href="#branching-and-merge-to-a-tag" title="Permalink to this headline">¶</a></h1>
+<p>git branch nhk_mfg
+git checkout nhk_mfg</p>
+<p>git fetch &#8211;tags origin
+git merge v16.4.0.600.46</p>
+<p>Updating 74e7711..b642193</p>
+<p>#</p>
+<p># Create a branch with a tag</p>
+<p>git tag v16.4.0.600.46 nhk_diags_mfg_release
+git branch nhk_diags_mfg_release v16.4.0.600.46
+git checkout nhk_diags_mfg_release</p>
+<p>(or)
+git checkout -b nhk_diags_mfg_release v16.4.0.600.46</p>
+<p># Create experiment1 and switch to it
+git branch experiment1
+git checkout experiment1</p>
+<p># Do some work
+git add, git commit ?amend, git add, git commit ?amend ?</p>
+<p># Switch back to the ?master? branch
+git checkout &lt;tree&gt;_dev</p>
+<p>#and merge in the changes
+git merge experiment1</p>
+<p>Delete the branch when done
+git branch ?d experiment1</p>
+<p>You can always do ?git branch? to see all the branches you have created and which one is currently working in.</p>
+<p>git clone <a class="reference external" href="ssh://vadivel&#64;github.com/project/project.git">ssh://vadivel&#64;github.com/project/project.git</a></p>
+<p>cd rel_ssr
+cd pkt
+emq PRODUCT=ASG DBG=yes</p>
+<p>git add &lt;file&gt;
+git commit  -m message &lt;file&gt;
+authpush filename &lt;template log&gt;</p>
+<blockquote>
+<div><p>git clone -q /project/rbnlinux/wolf-int.git /project/vadivel/kernel/linux
+git submodule init
+git submodule update</p>
+<p>Branch:
+git checkout -q &#8211;track -b rbos-3.0 origin/rbos-3.0</p>
+</div></blockquote>
+<p>#Initialize existing Directory into Git revisions
+git init &lt;directory&gt;</p>
+<p># Initialize  bare/empty local repo git
+git init &#8211;shared &#8211;bare
+#git init &#8211;bare</p>
+<p># git remote add
+git remote add origin /firmware/firmware-uboot.git
+git remote -v</p>
+<div class="section" id="git-config">
+<h2>## Git config<a class="headerlink" href="#git-config" title="Permalink to this headline">¶</a></h2>
+<p>git-config denyCurrentBranch &#8220;warn&#8221;
+git-config hooks.mailinglist &#8220;<a class="reference external" href="mailto:vadivel&#46;murugan&#37;&#52;&#48;gmail&#46;com">vadivel<span>&#46;</span>murugan<span>&#64;</span>gmail<span>&#46;</span>com</a>&#8221;
+git-config hooks.emailprefix &#8220;[FIRMWARE-UBOOT.GIT]&#8221;</p>
+<p>git-config hooks.envelopesender &#8220;git_tool&#8221;
+git-config hooks.senderfullname &#8220;GIT Mailer&#8221;</p>
+<p>cp /tools/swdev/devsup/git/admin/hooks/DEVSUP_post-recieve post-receive
+- Edit post-receive for receipients and &lt;repo&gt;.git</p>
+<p>git clone localhost:/firmware/firmware-uboot.git</p>
+<p>git add &lt;dir&gt;
+git commit -m &#8220;initial commit&#8221; &lt;&lt;dir&gt;&gt;
+git push origin master</p>
+<p># used only with git working directory
+#git remote add &lt;origin&gt; &lt;path to .git file&gt;
+#git remote -v</p>
+<p>git reset &#8211;hard</p>
+<p># Show &lt;No of Commits&gt; &lt;author&gt;
+git shortlog -n -s &#8211;no-merges</p>
+<p># git log &#8211;ADOG
+git log &#8211;decorate &#8211;oneline &#8211;graph &#8211;no-merges
+git log &#8211;all &#8211;decorate &#8211;oneline &#8211;graph &#8211;no-merges</p>
+<p>$more config
+[core]</p>
+<blockquote>
+<div>repositoryformatversion = 0
+filemode = true
+bare = true</div></blockquote>
+<dl class="docutils">
+<dt>[remote &#8220;origin&#8221;]</dt>
+<dd>url = /firmware/firmware-uboot.git
+fetch = +refs/heads/<em>:refs/remotes/origin/</em></dd>
+<dt>[hooks]</dt>
+<dd>mailinglist = <a class="reference external" href="mailto:vadivel&#46;murugan&#37;&#52;&#48;gmail&#46;com">vadivel<span>&#46;</span>murugan<span>&#64;</span>gmail<span>&#46;</span>com</a>
+emailprefix = [FIRMWARE-UBOOT.GIT]
+envelopesender = git_tool
+senderfullname = GIT Mailer</dd>
+</dl>
+<hr class="docutils" />
+<p># List all Branches
+$git branch -a
+* master                                 : local master copy</p>
+<blockquote>
+<div>remotes/origin/HEAD -&gt; origin/master   : remote master head
+remotes/origin/master                  : real origin master copy
+remotes/origin/master-lastgoodbuild</div></blockquote>
+<p>$git branch -av
+* (no branch)                         fca8d23 rebase</p>
+<blockquote>
+<div>master                              b15627c [ahead 30] Add valid copyright
+remotes/origin/HEAD                 -&gt; origin/master
+remotes/origin/master               51c39f8 Merge branch &#8216;merge&#8217; into build
+remotes/origin/master-lastgoodbuild 51c39f8 Merge branch &#8216;merge&#8217; into build</div></blockquote>
+<p>SRC_TOP=PROJECT TOP</p>
+<p>#git pull &#8211;rebase
+git fetch &amp;&amp; git diff origin master &#8211;name-only ..origin &gt; $SRC_TOP/../mods/files.&lt;date&gt;
+git pull &#8211;rebase</p>
+<p>#diff local uncommited changes
+git diff origin/master &#8211;name-only</p>
+<p># Diff of files changed
+git diff &#8211;name-status origin master &gt; $SRC_TOP/../files.list</p>
+<p>git diff &#8211;name-only &#8211;relative origin/master HEAD | more</p>
+<blockquote>
+<div><p>#git-difftool -y -t gvimdiff &lt;filepath&gt;
+for file in <cite>cat $SRC_TOP/../files.list</cite>
+do</p>
+<blockquote>
+<div>git-difftool -y -t gvimdiff origin master $file;</div></blockquote>
+<p>done</p>
+</div></blockquote>
+</div>
+<div class="section" id="git-diff-between-two-timestamps">
+<h2>#git diff between two timestamps<a class="headerlink" href="#git-diff-between-two-timestamps" title="Permalink to this headline">¶</a></h2>
+<p>git diff &#8211;stat &#64;{2015-01-08}..&#64;{2015-01-09}</p>
+<p># Just list files only
+git log &#8211;since=&#8221;8 Jan 2015&#8221; &#8211;until=&#8221;10 Jan 2015&#8221; &#8211;stat &#8211;name-only &#8211;pretty=oneline</p>
+<p>git log -p &lt;tree&gt;_dev&#64;{2015-01-08}..&lt;tree&gt;_dev&#64;{2015-01-09}</p>
+<p># git diff between tags
+# git describe
+git diff v16.1.0.700.64 v16.1.0.700.56 &#8211;stat</p>
+<p>#### git reflog
+#### git log -g &#8211;decorate
+git log &#8211;pretty=oneline -3
+git diff origin master</p>
+<p>$git log &#8211;decorate &#8211;oneline &#8211;full &#8211;graph ssc_podd.c | more
+9602d0e EV 220994
+f3ca09c EV213210: Fix for Xbar test Failures
+d87c542 EV 213655- Fix for cavecreek and xbar POD test failures
+4e74f78 Review #16716 - Update with review comments
+728a629 VPF POD server daemon Initial Implementation</p>
+<p># get the tags
+$git name-rev &#8211;name-only 9602d0e
+tags/v13.2.118.0.271~8</p>
+<p># get commit/sha from tags
+git show v13.2.118.0.271~8
+git rev-list -n 1  v16.4.0.600.46
+git show-ref  v16.4.0.600.46</p>
+<p>##### To switch to branch
+git checkout &lt;master | branchname&gt;</p>
+<p>##### Create patch
+git diff origin master&gt; mypatch.patch</p>
+<p>git format-patch HEAD^ HEAD &gt; mypatch.patch</p>
+<p># Check before applying patch
+git apply &#8211;check mypatch.patch
+git apply &#8211;status mypatch.patch
+git apply mypatch.patch</p>
+<p>##### commit files
+git add
+## for file in <cite>cat ~/gitlog/git.files</cite>; do echo git add $file; git add $file ; done</p>
+<p>git commit -m &#8221; &#8221;
+## for file in <cite>cat ~/gitlog/git.files</cite>; do echo git commit $file; git commit -m &#8221;. &#8221; $file ; done</p>
+<p>##### Code collaborator
+gdiff
+gdiffview
+ccollab addgitdiffs new origin master</p>
+<p>## for file in <cite>cat ~/gitlog/git.files</cite>; do ccollab addgitdiffs new origin master ${file}; done</p>
+<p>##### recommit files
+git status
+git add
+git commit -m &#8220;message&#8221; file.c</p>
+<p># Code collaborator
+# for file in <cite>cat ~/gitlog/git.files</cite>; do ccollab addgitdiffs new origin master ${file}; done
+ccollab addgitdiffs &lt;reviewid&gt; origin master</p>
+<p># Run the below builds before authpush
+emq PRODUCT=RBOSPC-REF DBG=yes
+emq PRODUCT=ASG DBG=yes</p>
+<p># rebase to the head
+#git rebase origin/master</p>
+<p>#authpush dryrun
+authpush -n -v</p>
+<p># Actual authpush/commit
+authpush &#8211;filename ../file.log</p>
+<p># List Private files
+# git ls-files &#8211;others -exclude-standard -z | cpio -pmd0 &lt;unzip directory&gt;
+# &#8211;others lists untraced files
+# &#8211;exclude-standard uses.gitignore and the default git excludes
+# -z null delimited output
+# -p pass-through
+# -m preserve modification times
+# -d create missing directories
+# -0 null delimited input
+git ls-files &#8211;others &#8211;exclude-standard</p>
+<p># cleanup all files not under version
+git clean -f
+#git clean -f -n
+git clean -xdf</p>
+<p># Bundle all modified file
+# git ls-files &#8211;others -exclude-standard -z | cpio -pmd0 &lt;unzip directory&gt;
+datestr=$(date +%m%d%y-%H%M)
+mkdir -p ~/gitlog/sandbox/${datestr}
+for file in <cite>cat ~/gitlog/git.files</cite>; do echo $file; ls $file| cpio -pmd ~/gitlog/sandbox/${datestr}; done</p>
+<p>git add &lt;file&gt;
+# Same as p4 checkout &lt;file&gt;</p>
+<p>git diff origin master
+git difftool origin master</p>
+<p>ccollab addgitdiffs new  origin master
+or
+ccollab addgitdiffs &lt;review #&gt;  origin master
+authpush        &lt;- git commit</p>
+<p>clobber:
+from the top level (above pkt)
+git clean –xfd
+You must scratch-config to a new location
+or worse:
+git clean –xfd &amp;&amp; git reset &#8211;hard &amp;&amp; rm -rf $BLDTREE/* &amp;&amp; scratch-config
+$BLDTREE</p>
+<p>git-commit-between .# .#-end
+Are the .# the sha?</p>
+<p>git whatchanged $filename
+# gives all the diffs for the $filename
+git log –p $filename</p>
+<p>git fsck &lt;- what does this do?</p>
+<p>git cherry-pick  $SHA  &lt;- newest to oldest</p>
+<p>git add &lt;file&gt;
+# Same as p4 checkout &lt;file&gt;</p>
+<p>git diff origin master
+git difftool origin master</p>
+<p>ccollab addgitdiffs new  origin master
+or
+ccollab addgitdiffs &lt;review #&gt;  origin master
+authpush        &lt;- git commit</p>
+<p>clobber:
+from the top level (above pkt)
+git clean –xfd
+You must scratch-config to a new location
+or worse:
+git clean –xfd &amp;&amp; git reset &#8211;hard &amp;&amp; rm -rf $BLDTREE/* &amp;&amp; scratch-config
+$BLDTREE</p>
+<p>git-commit-between .# .#-end
+Are the .# the sha?</p>
+<p>git whatchanged $filename
+# gives all the diffs for the $filename
+git log –p $filename</p>
+<p>git fsck &lt;- what does this do?</p>
+<p>git cherry-pick  $SHA  &lt;- newest to oldest</p>
+<p>How do I diff between files in two different git branches/repo. (ex: swfeature_int.git/master and rel_ssr.git/REL_IPOS_13_1_114)</p>
+<p>git remote add rel_ssr <a class="reference external" href="ssh://github.com/project/project.git">ssh://github.com/project/project.git</a>
+git fetch rel_ssr
+git diff rel_ssr/REL_IPOS_13_1_114</p>
+<p># GIT Global Config
+git config &#8211;global user.name &#8220;vmurugan&#8221;
+git config &#8211;global user.email &#8220;vadivel.murugan&#8221;</p>
+<p># Git Commit
+git pull &#8211;rebase
+git show
+git log</p>
+<p>git diff &lt;source&gt;
+git add  &lt;source&gt;  : ADD new file
+git commit &lt;source&gt;
+git push</p>
+<p>$ git diff &#8211;name-status
+$ git diff &#8211;name-only
+# When umerged errors occur, hard reset the unmerged errors.
+git reset &#8211;hard origin/atlas
+#
+#git commit -m &#8220;update&#8221; diag_fe1600.cc
+#fatal: cannot do a partial commit during a merge.
+# Add &#8220;-i&#8221; option. git commit -i -m &#8220;strings&#8221; diag_fe1600.cc</p>
+<p># Push the changes.
+$ git push origin atlas</p>
+<p># merge/rebase
+# git merge
+# git rebase</p>
+<p># git reset</p>
+<p>git checkout atlas</p>
+</div>
+<div class="section" id="remove-files-from-git-repository">
+<h2># Remove files from git repository<a class="headerlink" href="#remove-files-from-git-repository" title="Permalink to this headline">¶</a></h2>
+<p>git rm file.txt
+git commit -m &#8220;remove file.txt&#8221;</p>
+<p>Extract it in the directory:
+~/.vim
+or ~vimfiles on Windows.
+Then
+Go to the directory of your Git repository checkout,
+for example, if working on ITK do:
+cd ~/src/ITK</p>
+<p>gvim CMakeLists.txt
+Look at the equivalent of &#8220;git blame&#8221; by doing
+:Gblame</p>
+<p>## History of a file
+git log &#8211;follow -p &lt;file&gt;</p>
+<p>$git log -1 &#8211;decorate &#8211;oneline ssc_podd.c | more
+9602d0e EV 220994
+$git name-rev &#8211;name-only 9602d0e
+tags/v13.2.118.0.271~8
+$</p>
+<p>$git log -1 &#8211;decorate &#8211;oneline pod_remote.c | more
+a5f31e2 EV 220994
+$git name-rev &#8211;name-only a5f31e2
+tags/v13.2.118.0.271~7</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

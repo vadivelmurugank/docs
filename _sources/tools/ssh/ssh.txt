@@ -1,0 +1,85 @@
+========================
+SSH SERVER SETUP
+========================
+
+    #####
+    # Configure sshd_config
+    ######
+    sed -i  -e  "s/PermitRootLogin [Nn]o/PermitRootLogin yes/"  /etc/ssh/sshd_config
+    sed -i  -e  "s/[\#]*ClientAliveInterval.*[0-9]*/ClientAliveInterval 10/" /etc/ssh/sshd_config
+    sed -i  -e  "s/[\#]*ClientAliveCountMax.*[0-9]*/ClientAliveCountMax 6/" /etc/ssh/sshd_config
+    sed -i -e  "s/[\#]*StrictModes.*[a-z]*/StrictModes no/"  /etc/ssh/sshd_config
+    killall sshd
+
+    ########
+    # Generate RP Private keys and public keys
+    ########
+    rm -rf /root/.ssh
+    mkdir -p /root/.ssh
+    ssh-keygen -v -N ""   -f /root/.ssh/id_rsa
+    touch /root/.ssh/authorized_keys
+    chmod 640 /root/.ssh/authorized_keys
+    chmod 700 /root/.ssh
+    chmod 600 /root/.ssh/id_rsa
+    chmod 640 /root/.ssh/id_rsa.pub
+      
+=============================
+SERVER KEYGEN
+=============================
+
+# Remove Existing key entry for the linecard
+ssh-keygen -R  127.3.12.1 
+
+# Verify ssh connection to the linecard 
+ ssh -v -o PreferredAuthentications=password -o ServerAliveInterval=10 -o ServerAliveCountMax=20 127.3.12.1 cat /release.inf 
+
+# ssh to linecard
+ ssh -v -o ServerAliveInterval=10 -o ServerAliveCountMax=20 127.3.12.1 
+
+<<< Initial test setup operations>>>
+
+
+####################
+## Initial SSH setup operations
+## for every test loop.
+####################
+
+LOOP_ENTRY:
+    # Remove authorized key entry for line card in RP authorized keys.
+    sed -i "/lc-13$/d" /root/.ssh/authorized_keys
+    
+    # Verify SSH connection
+    ssh -v -o -o ServerAliveInterval=10 -o ServerAliveCountMax=20 127.3.12.1 cat /release.inf 
+
+    #######
+    # Configure line card sshd_config
+    #######
+    ssh root@lc-3 "echo "ClientAliveInterval 10" >> /etc/ssh/sshd_config"
+    ssh root@lc-3 "echo "ClientAliveCountMax 6" >> /etc/ssh/sshd_config"
+    ssh root@lc-3 "echo "StrictModes no" >> /etc/ssh/sshd_config"
+    ssh root@lc-3 killall sshd
+
+    ######
+    # copy Public keys to Line card
+    #######
+    ssh root@lc-3 'rm -rf /root/.ssh; mkdir -p /root/.ssh'
+    ssh-copy-id -i /root/.ssh/id_rsa.pub lc-3
+    ssh root@lc-3 hostname
+
+    # Do ssh connection to line card 
+    ssh -v -e ServerAliveInterval=10 -o ServerAliveCountMax=20 127.3.12.1 
+
+    
+================================
+FVT/ESS : At LC
+===============================
+
+ssh -v -o ServerAliveInterval=10 -o ServerAliveCountMax=20 lc-3
+
+rm /root/.ssh/known_hosts 
+rm -f /root/.ssh/id_rsa 
+ssh-keygen -v -N ""   -f /root/.ssh/id_rsa 
+ssh-copy-id -i /root/.ssh/id_rsa.pub 127.3.254.1  
+ssh root@127.3.254.1 hostname 
+
+<<<LC Test Operations>>>

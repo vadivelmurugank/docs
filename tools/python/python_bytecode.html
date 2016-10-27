@@ -1,0 +1,2177 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>PYTHON Disassembly, Debugger and Byte Code &mdash;   documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="  documentation" href="../../index.html"/>
+        <link rel="up" title="PYTHON" href="index.html"/>
+        <link rel="next" title="BASIC PYTHON MODULES" href="modules.html"/>
+        <link rel="prev" title="BUILTIN PYTHON MODULES" href="builtin_modules.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">PYTHON</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="builtin_modules.html">BUILTIN PYTHON MODULES</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PYTHON Disassembly, Debugger and Byte Code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#python-help">Python Help</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inspect">inspect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dis-disassembler">dis - disassembler</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#disassembler-format">Disassembler Format</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#python-disassembly-and-byte-code">Python Disassembly and byte code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#python-byte-opcodes">Python Byte Opcodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-init-call-hierarchy">Module Init call hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#python-and-gdb">Python and gdb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#python-and-pdb">python and pdb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#python-debug-modules">Python Debug Modules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">inspect</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dis">dis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pdb">pdb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gdb">gdb</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html">BASIC PYTHON MODULES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_oneliner.html">Python One-liner</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html"></a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">PYTHON</a> &raquo;</li>
+      
+    <li>PYTHON Disassembly, Debugger and Byte Code</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/tools/python/python_bytecode.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="python-disassembly-debugger-and-byte-code">
+<h1>PYTHON Disassembly, Debugger and Byte Code<a class="headerlink" href="#python-disassembly-debugger-and-byte-code" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="python-help">
+<h2>Python Help<a class="headerlink" href="#python-help" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>pydoc</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">pydoc</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="n">pydoc</span> <span class="o">-</span><span class="n">k</span> <span class="o">&lt;</span><span class="n">keyword</span><span class="o">&gt;</span>
+
+<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pydoc</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+
+<span class="kn">import</span> <span class="nn">pydoc</span><span class="p">;</span> <span class="n">pydoc</span><span class="o">.</span><span class="n">help</span><span class="p">(</span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>help</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="n">help</span><span class="p">(</span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>__doc__</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;.</span><span class="n">__repr__</span>
+<span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;.</span><span class="n">__doc__</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>dir</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="nb">dir</span><span class="p">(</span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">)</span>  <span class="o">-</span> <span class="nb">list</span> <span class="n">module</span> <span class="n">dictionary</span>
+<span class="nb">type</span><span class="p">(</span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-</span> <span class="n">metaclass</span> <span class="nb">type</span> <span class="n">of</span> <span class="n">module</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>inspect</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">inspect</span><span class="o">.</span><span class="n">getmembers</span><span class="p">(</span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="inspect">
+<h2>inspect<a class="headerlink" href="#inspect" title="Permalink to this headline">¶</a></h2>
+<p>The inspect module provides several useful functions to help get information about live objects such as modules, classes, methods, functions, tracebacks, frame objects, and code objects.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">inspect</span>
+<span class="n">inspect</span><span class="o">.</span><span class="n">getmembers</span><span class="p">(</span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dis-disassembler">
+<h2>dis - disassembler<a class="headerlink" href="#dis-disassembler" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="disassembler-format">
+<h3>Disassembler Format<a class="headerlink" href="#disassembler-format" title="Permalink to this headline">¶</a></h3>
+<p>Python Byte code operates on Objects.</p>
+<p>Below is the Python Disassembler output:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">&lt;#lineno&gt;    : Source Line no.</p>
+</li>
+<li><p class="first">&lt;#index&gt;     : Byte Opcode Instruction Index</p>
+</li>
+<li><p class="first">&lt;opcodestr&gt;  : OpCode String</p>
+</li>
+<li><dl class="first docutils">
+<dt>&lt;#opcodearg&gt;</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">index to (co_code) codeobj types</span><dd><p class="first last">: ( co_names, co_consts, co_varnames, co_cellvars)</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">(arg names)  : Resolved Arg Names</p>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="python-disassembly-and-byte-code">
+<h3>Python Disassembly and byte code<a class="headerlink" href="#python-disassembly-and-byte-code" title="Permalink to this headline">¶</a></h3>
+<p>Disassembler of python byte code</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">fun</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="k">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">]</span>
+<span class="gp">...</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">fun</span><span class="p">)</span>
+<span class="go">[&#39;__annotations__&#39;, &#39;__call__&#39;, &#39;__class__&#39;, &#39;__closure__&#39;, &#39;__code__&#39;, &#39;__defaults__&#39;, &#39;__delattr__&#39;, &#39;__dict__&#39;, &#39;__doc__&#39;, &#39;__eq__&#39;, &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__get__&#39;, &#39;__getattribute__&#39;, &#39;__globals__&#39;, &#39;__gt__&#39;, &#39;__hash__&#39;, &#39;__init__&#39;, &#39;__kwdefaults__&#39;, &#39;__le__&#39;, &#39;__lt__&#39;, &#39;__module__&#39;, &#39;__name__&#39;, &#39;__ne__&#39;, &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__setattr__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;]</span>
+
+<span class="go"># Get Code Object of Fun</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">co</span> <span class="o">=</span> <span class="n">fun</span><span class="o">.</span><span class="n">__code__</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">co</span><span class="p">)</span>
+<span class="go">&lt;class &#39;code&#39;&gt;</span>
+
+
+
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> argcount: &quot;</span><span class="p">,</span> <span class="n">co</span><span class="o">.</span><span class="n">co_argcount</span><span class="p">,</span>
+<span class="go">       &quot;\n locals:&quot; , co.co_nlocals,</span>
+<span class="go">       &quot;\n stack size:&quot;, co.co_stacksize,</span>
+<span class="go">       &quot;\n flags:&quot;,  co.co_flags,</span>
+<span class="go">       &quot;\n names:&quot;,  co.co_names,</span>
+<span class="go">       &quot;\n vars:&quot;,  co.co_varnames,</span>
+<span class="go">       &quot;\n filename:&quot;,    co.co_filename,</span>
+<span class="go">       &quot;\n name: &quot;,   co.co_name,</span>
+<span class="go">       &quot;\n first line:&quot;,     co.co_firstlineno,</span>
+<span class="go">       &quot;\n tab :&quot; , co.co_lnotab)</span>
+
+<span class="go">     argcount:  0</span>
+<span class="go">     locals: 0</span>
+<span class="go">     stack size: 2</span>
+<span class="go">     flags: 67</span>
+<span class="go">     names: (&#39;sys&#39;, &#39;path&#39;)</span>
+<span class="go">     vars: ()</span>
+<span class="go">     filename: &lt;stdin&gt;</span>
+<span class="go">     name:  fun</span>
+<span class="go">     first line: 1</span>
+<span class="go">     tab : b&#39;\x00\x01&#39;</span>
+
+
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">co</span><span class="o">.</span><span class="n">__hash__</span>
+<span class="go">&lt;method-wrapper &#39;__hash__&#39; of code object at 0x6ffff9eda48&gt;</span>
+
+<span class="go"># byte code</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">co</span><span class="o">.</span><span class="n">co_code</span>
+<span class="go">b&#39;d\x01\x00\x84\x00\x00t\x00\x00j\x01\x00D\x83\x01\x00\x01d\x00\x00S&#39;</span>
+<span class="go">&gt;&gt;&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="n">b</span><span class="p">))</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">co</span><span class="o">.</span><span class="n">co_code</span><span class="p">]</span>
+<span class="go">[100, 1, 0, 132, 0, 0, 116, 0, 0, 106, 1, 0, 68, 131, 1, 0, 1, 100, 0, 0, 83]</span>
+<span class="go">&gt;&gt;&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dis</span><span class="o">.</span><span class="n">dis</span><span class="p">(</span><span class="n">fun</span><span class="p">)</span>
+
+<span class="go">&lt;#lineno&gt; &lt;#index&gt; &lt;opcodestr&gt;    &lt;#opcodearg : index to codeobj types&gt; (resolved arg names&gt;</span>
+
+<span class="go">  2           0 LOAD_CONST               1 (&lt;code object &lt;listcomp&gt; at 0x6ffffb4d8b0, file &quot;&lt;stdin&gt;&quot;, line 2&gt;)</span>
+<span class="go">              3 MAKE_FUNCTION            0</span>
+<span class="go">              6 LOAD_GLOBAL              0 (sys)</span>
+<span class="go">              9 LOAD_ATTR                1 (path)</span>
+<span class="go">             12 GET_ITER</span>
+<span class="go">             13 CALL_FUNCTION            1</span>
+<span class="go">             16 POP_TOP</span>
+<span class="go">             17 LOAD_CONST               0 (None)</span>
+<span class="go">             20 RETURN_VALUE</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">dis</span><span class="o">.</span><span class="n">code_info</span><span class="p">(</span><span class="n">fun</span><span class="p">))</span>
+<span class="go">Name:              fun</span>
+<span class="go">Filename:          &lt;stdin&gt;</span>
+<span class="go">Argument count:    0</span>
+<span class="go">Kw-only arguments: 0</span>
+<span class="go">Number of locals:  0</span>
+<span class="go">Stack size:        2</span>
+<span class="go">Flags:             OPTIMIZED, NEWLOCALS, NOFREE</span>
+<span class="go">Constants:</span>
+<span class="go">   0: None</span>
+<span class="go">   1: &lt;code object &lt;listcomp&gt; at 0x6ffffb4d8b0, file &quot;&lt;stdin&gt;&quot;, line 2&gt;</span>
+<span class="go">Names:</span>
+<span class="go">   0: sys</span>
+<span class="go">   1: path</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">dis</span><span class="o">.</span><span class="n">distb</span>
+    <span class="o">-</span> <span class="n">trace</span> <span class="n">back</span> <span class="ow">and</span> <span class="n">point</span> <span class="n">to</span> <span class="n">bytecode</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="python-byte-opcodes">
+<h2>Python Byte Opcodes<a class="headerlink" href="#python-byte-opcodes" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">opcode</span> <span class="n">handlers</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cpython</span><span class="o">/</span><span class="n">blob</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="n">ceval</span><span class="o">.</span><span class="n">c</span><span class="c1">#L1220</span>
+
+ <span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%-20s</span><span class="s2">: </span><span class="si">%10d</span><span class="s2"> (0x</span><span class="si">%x</span><span class="s2">)&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">a</span><span class="p">[</span><span class="n">name</span><span class="p">],</span><span class="n">a</span><span class="p">[</span><span class="n">name</span><span class="p">]))</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">a</span><span class="p">[</span><span class="n">x</span><span class="p">])]</span>
+
+<span class="n">STOP_CODE</span>           <span class="p">:</span>          <span class="mi">0</span> <span class="p">(</span><span class="mh">0x0</span><span class="p">)</span>
+<span class="n">POP_TOP</span>             <span class="p">:</span>          <span class="mi">1</span> <span class="p">(</span><span class="mh">0x1</span><span class="p">)</span>
+<span class="n">ROT_TWO</span>             <span class="p">:</span>          <span class="mi">2</span> <span class="p">(</span><span class="mh">0x2</span><span class="p">)</span>
+<span class="n">ROT_THREE</span>           <span class="p">:</span>          <span class="mi">3</span> <span class="p">(</span><span class="mh">0x3</span><span class="p">)</span>
+<span class="n">DUP_TOP</span>             <span class="p">:</span>          <span class="mi">4</span> <span class="p">(</span><span class="mh">0x4</span><span class="p">)</span>
+<span class="n">DUP_TOP_TWO</span>         <span class="p">:</span>          <span class="mi">5</span> <span class="p">(</span><span class="mh">0x5</span><span class="p">)</span>
+<span class="n">NOP</span>                 <span class="p">:</span>          <span class="mi">9</span> <span class="p">(</span><span class="mh">0x9</span><span class="p">)</span>
+<span class="n">UNARY_POSITIVE</span>      <span class="p">:</span>         <span class="mi">10</span> <span class="p">(</span><span class="mh">0xa</span><span class="p">)</span>
+<span class="n">UNARY_NEGATIVE</span>      <span class="p">:</span>         <span class="mi">11</span> <span class="p">(</span><span class="mh">0xb</span><span class="p">)</span>
+<span class="n">UNARY_NOT</span>           <span class="p">:</span>         <span class="mi">12</span> <span class="p">(</span><span class="mh">0xc</span><span class="p">)</span>
+<span class="n">UNARY_INVERT</span>        <span class="p">:</span>         <span class="mi">15</span> <span class="p">(</span><span class="mh">0xf</span><span class="p">)</span>
+<span class="n">BINARY_POWER</span>        <span class="p">:</span>         <span class="mi">19</span> <span class="p">(</span><span class="mh">0x13</span><span class="p">)</span>
+<span class="n">BINARY_MULTIPLY</span>     <span class="p">:</span>         <span class="mi">20</span> <span class="p">(</span><span class="mh">0x14</span><span class="p">)</span>
+<span class="n">BINARY_MODULO</span>       <span class="p">:</span>         <span class="mi">22</span> <span class="p">(</span><span class="mh">0x16</span><span class="p">)</span>
+<span class="n">BINARY_ADD</span>          <span class="p">:</span>         <span class="mi">23</span> <span class="p">(</span><span class="mh">0x17</span><span class="p">)</span>
+<span class="n">BINARY_SUBTRACT</span>     <span class="p">:</span>         <span class="mi">24</span> <span class="p">(</span><span class="mh">0x18</span><span class="p">)</span>
+<span class="n">BINARY_SUBSCR</span>       <span class="p">:</span>         <span class="mi">25</span> <span class="p">(</span><span class="mh">0x19</span><span class="p">)</span>
+<span class="n">BINARY_FLOOR_DIVIDE</span> <span class="p">:</span>         <span class="mi">26</span> <span class="p">(</span><span class="mh">0x1a</span><span class="p">)</span>
+<span class="n">BINARY_TRUE_DIVIDE</span>  <span class="p">:</span>         <span class="mi">27</span> <span class="p">(</span><span class="mh">0x1b</span><span class="p">)</span>
+<span class="n">INPLACE_FLOOR_DIVIDE</span><span class="p">:</span>         <span class="mi">28</span> <span class="p">(</span><span class="mh">0x1c</span><span class="p">)</span>
+<span class="n">INPLACE_TRUE_DIVIDE</span> <span class="p">:</span>         <span class="mi">29</span> <span class="p">(</span><span class="mh">0x1d</span><span class="p">)</span>
+<span class="n">STORE_MAP</span>           <span class="p">:</span>         <span class="mi">54</span> <span class="p">(</span><span class="mh">0x36</span><span class="p">)</span>
+<span class="n">INPLACE_ADD</span>         <span class="p">:</span>         <span class="mi">55</span> <span class="p">(</span><span class="mh">0x37</span><span class="p">)</span>
+<span class="n">INPLACE_SUBTRACT</span>    <span class="p">:</span>         <span class="mi">56</span> <span class="p">(</span><span class="mh">0x38</span><span class="p">)</span>
+<span class="n">INPLACE_MULTIPLY</span>    <span class="p">:</span>         <span class="mi">57</span> <span class="p">(</span><span class="mh">0x39</span><span class="p">)</span>
+<span class="n">INPLACE_MODULO</span>      <span class="p">:</span>         <span class="mi">59</span> <span class="p">(</span><span class="mh">0x3b</span><span class="p">)</span>
+<span class="n">STORE_SUBSCR</span>        <span class="p">:</span>         <span class="mi">60</span> <span class="p">(</span><span class="mh">0x3c</span><span class="p">)</span>
+<span class="n">DELETE_SUBSCR</span>       <span class="p">:</span>         <span class="mi">61</span> <span class="p">(</span><span class="mh">0x3d</span><span class="p">)</span>
+<span class="n">BINARY_LSHIFT</span>       <span class="p">:</span>         <span class="mi">62</span> <span class="p">(</span><span class="mh">0x3e</span><span class="p">)</span>
+<span class="n">BINARY_RSHIFT</span>       <span class="p">:</span>         <span class="mi">63</span> <span class="p">(</span><span class="mh">0x3f</span><span class="p">)</span>
+<span class="n">BINARY_AND</span>          <span class="p">:</span>         <span class="mi">64</span> <span class="p">(</span><span class="mh">0x40</span><span class="p">)</span>
+<span class="n">BINARY_XOR</span>          <span class="p">:</span>         <span class="mi">65</span> <span class="p">(</span><span class="mh">0x41</span><span class="p">)</span>
+<span class="n">BINARY_OR</span>           <span class="p">:</span>         <span class="mi">66</span> <span class="p">(</span><span class="mh">0x42</span><span class="p">)</span>
+<span class="n">INPLACE_POWER</span>       <span class="p">:</span>         <span class="mi">67</span> <span class="p">(</span><span class="mh">0x43</span><span class="p">)</span>
+<span class="n">GET_ITER</span>            <span class="p">:</span>         <span class="mi">68</span> <span class="p">(</span><span class="mh">0x44</span><span class="p">)</span>
+<span class="n">STORE_LOCALS</span>        <span class="p">:</span>         <span class="mi">69</span> <span class="p">(</span><span class="mh">0x45</span><span class="p">)</span>
+<span class="n">PRINT_EXPR</span>          <span class="p">:</span>         <span class="mi">70</span> <span class="p">(</span><span class="mh">0x46</span><span class="p">)</span>
+<span class="n">LOAD_BUILD_CLASS</span>    <span class="p">:</span>         <span class="mi">71</span> <span class="p">(</span><span class="mh">0x47</span><span class="p">)</span>
+<span class="n">INPLACE_LSHIFT</span>      <span class="p">:</span>         <span class="mi">75</span> <span class="p">(</span><span class="mh">0x4b</span><span class="p">)</span>
+<span class="n">INPLACE_RSHIFT</span>      <span class="p">:</span>         <span class="mi">76</span> <span class="p">(</span><span class="mh">0x4c</span><span class="p">)</span>
+<span class="n">INPLACE_AND</span>         <span class="p">:</span>         <span class="mi">77</span> <span class="p">(</span><span class="mh">0x4d</span><span class="p">)</span>
+<span class="n">INPLACE_XOR</span>         <span class="p">:</span>         <span class="mi">78</span> <span class="p">(</span><span class="mh">0x4e</span><span class="p">)</span>
+<span class="n">INPLACE_OR</span>          <span class="p">:</span>         <span class="mi">79</span> <span class="p">(</span><span class="mh">0x4f</span><span class="p">)</span>
+<span class="n">BREAK_LOOP</span>          <span class="p">:</span>         <span class="mi">80</span> <span class="p">(</span><span class="mh">0x50</span><span class="p">)</span>
+<span class="n">WITH_CLEANUP</span>        <span class="p">:</span>         <span class="mi">81</span> <span class="p">(</span><span class="mh">0x51</span><span class="p">)</span>
+<span class="n">RETURN_VALUE</span>        <span class="p">:</span>         <span class="mi">83</span> <span class="p">(</span><span class="mh">0x53</span><span class="p">)</span>
+<span class="n">IMPORT_STAR</span>         <span class="p">:</span>         <span class="mi">84</span> <span class="p">(</span><span class="mh">0x54</span><span class="p">)</span>
+<span class="n">YIELD_VALUE</span>         <span class="p">:</span>         <span class="mi">86</span> <span class="p">(</span><span class="mh">0x56</span><span class="p">)</span>
+<span class="n">POP_BLOCK</span>           <span class="p">:</span>         <span class="mi">87</span> <span class="p">(</span><span class="mh">0x57</span><span class="p">)</span>
+<span class="n">END_FINALLY</span>         <span class="p">:</span>         <span class="mi">88</span> <span class="p">(</span><span class="mh">0x58</span><span class="p">)</span>
+<span class="n">POP_EXCEPT</span>          <span class="p">:</span>         <span class="mi">89</span> <span class="p">(</span><span class="mh">0x59</span><span class="p">)</span>
+<span class="n">STORE_NAME</span>          <span class="p">:</span>         <span class="mi">90</span> <span class="p">(</span><span class="mh">0x5a</span><span class="p">)</span>
+<span class="n">DELETE_NAME</span>         <span class="p">:</span>         <span class="mi">91</span> <span class="p">(</span><span class="mh">0x5b</span><span class="p">)</span>
+<span class="n">UNPACK_SEQUENCE</span>     <span class="p">:</span>         <span class="mi">92</span> <span class="p">(</span><span class="mh">0x5c</span><span class="p">)</span>
+<span class="n">FOR_ITER</span>            <span class="p">:</span>         <span class="mi">93</span> <span class="p">(</span><span class="mh">0x5d</span><span class="p">)</span>
+<span class="n">UNPACK_EX</span>           <span class="p">:</span>         <span class="mi">94</span> <span class="p">(</span><span class="mh">0x5e</span><span class="p">)</span>
+<span class="n">STORE_ATTR</span>          <span class="p">:</span>         <span class="mi">95</span> <span class="p">(</span><span class="mh">0x5f</span><span class="p">)</span>
+<span class="n">DELETE_ATTR</span>         <span class="p">:</span>         <span class="mi">96</span> <span class="p">(</span><span class="mh">0x60</span><span class="p">)</span>
+<span class="n">STORE_GLOBAL</span>        <span class="p">:</span>         <span class="mi">97</span> <span class="p">(</span><span class="mh">0x61</span><span class="p">)</span>
+<span class="n">DELETE_GLOBAL</span>       <span class="p">:</span>         <span class="mi">98</span> <span class="p">(</span><span class="mh">0x62</span><span class="p">)</span>
+<span class="n">LOAD_CONST</span>          <span class="p">:</span>        <span class="mi">100</span> <span class="p">(</span><span class="mh">0x64</span><span class="p">)</span>
+<span class="n">LOAD_NAME</span>           <span class="p">:</span>        <span class="mi">101</span> <span class="p">(</span><span class="mh">0x65</span><span class="p">)</span>
+<span class="n">BUILD_TUPLE</span>         <span class="p">:</span>        <span class="mi">102</span> <span class="p">(</span><span class="mh">0x66</span><span class="p">)</span>
+<span class="n">BUILD_LIST</span>          <span class="p">:</span>        <span class="mi">103</span> <span class="p">(</span><span class="mh">0x67</span><span class="p">)</span>
+<span class="n">BUILD_SET</span>           <span class="p">:</span>        <span class="mi">104</span> <span class="p">(</span><span class="mh">0x68</span><span class="p">)</span>
+<span class="n">BUILD_MAP</span>           <span class="p">:</span>        <span class="mi">105</span> <span class="p">(</span><span class="mh">0x69</span><span class="p">)</span>
+<span class="n">LOAD_ATTR</span>           <span class="p">:</span>        <span class="mi">106</span> <span class="p">(</span><span class="mh">0x6a</span><span class="p">)</span>
+<span class="n">COMPARE_OP</span>          <span class="p">:</span>        <span class="mi">107</span> <span class="p">(</span><span class="mh">0x6b</span><span class="p">)</span>
+<span class="n">IMPORT_NAME</span>         <span class="p">:</span>        <span class="mi">108</span> <span class="p">(</span><span class="mh">0x6c</span><span class="p">)</span>
+<span class="n">IMPORT_FROM</span>         <span class="p">:</span>        <span class="mi">109</span> <span class="p">(</span><span class="mh">0x6d</span><span class="p">)</span>
+<span class="n">JUMP_FORWARD</span>        <span class="p">:</span>        <span class="mi">110</span> <span class="p">(</span><span class="mh">0x6e</span><span class="p">)</span>
+<span class="n">JUMP_IF_FALSE_OR_POP</span><span class="p">:</span>        <span class="mi">111</span> <span class="p">(</span><span class="mh">0x6f</span><span class="p">)</span>
+<span class="n">JUMP_IF_TRUE_OR_POP</span> <span class="p">:</span>        <span class="mi">112</span> <span class="p">(</span><span class="mh">0x70</span><span class="p">)</span>
+<span class="n">JUMP_ABSOLUTE</span>       <span class="p">:</span>        <span class="mi">113</span> <span class="p">(</span><span class="mh">0x71</span><span class="p">)</span>
+<span class="n">POP_JUMP_IF_FALSE</span>   <span class="p">:</span>        <span class="mi">114</span> <span class="p">(</span><span class="mh">0x72</span><span class="p">)</span>
+<span class="n">POP_JUMP_IF_TRUE</span>    <span class="p">:</span>        <span class="mi">115</span> <span class="p">(</span><span class="mh">0x73</span><span class="p">)</span>
+<span class="n">LOAD_GLOBAL</span>         <span class="p">:</span>        <span class="mi">116</span> <span class="p">(</span><span class="mh">0x74</span><span class="p">)</span>
+<span class="n">CONTINUE_LOOP</span>       <span class="p">:</span>        <span class="mi">119</span> <span class="p">(</span><span class="mh">0x77</span><span class="p">)</span>
+<span class="n">SETUP_LOOP</span>          <span class="p">:</span>        <span class="mi">120</span> <span class="p">(</span><span class="mh">0x78</span><span class="p">)</span>
+<span class="n">SETUP_EXCEPT</span>        <span class="p">:</span>        <span class="mi">121</span> <span class="p">(</span><span class="mh">0x79</span><span class="p">)</span>
+<span class="n">SETUP_FINALLY</span>       <span class="p">:</span>        <span class="mi">122</span> <span class="p">(</span><span class="mh">0x7a</span><span class="p">)</span>
+<span class="n">LOAD_FAST</span>           <span class="p">:</span>        <span class="mi">124</span> <span class="p">(</span><span class="mh">0x7c</span><span class="p">)</span>
+<span class="n">STORE_FAST</span>          <span class="p">:</span>        <span class="mi">125</span> <span class="p">(</span><span class="mh">0x7d</span><span class="p">)</span>
+<span class="n">DELETE_FAST</span>         <span class="p">:</span>        <span class="mi">126</span> <span class="p">(</span><span class="mh">0x7e</span><span class="p">)</span>
+<span class="n">RAISE_VARARGS</span>       <span class="p">:</span>        <span class="mi">130</span> <span class="p">(</span><span class="mh">0x82</span><span class="p">)</span>
+<span class="n">CALL_FUNCTION</span>       <span class="p">:</span>        <span class="mi">131</span> <span class="p">(</span><span class="mh">0x83</span><span class="p">)</span>
+<span class="n">MAKE_FUNCTION</span>       <span class="p">:</span>        <span class="mi">132</span> <span class="p">(</span><span class="mh">0x84</span><span class="p">)</span>
+<span class="n">BUILD_SLICE</span>         <span class="p">:</span>        <span class="mi">133</span> <span class="p">(</span><span class="mh">0x85</span><span class="p">)</span>
+<span class="n">MAKE_CLOSURE</span>        <span class="p">:</span>        <span class="mi">134</span> <span class="p">(</span><span class="mh">0x86</span><span class="p">)</span>
+<span class="n">LOAD_CLOSURE</span>        <span class="p">:</span>        <span class="mi">135</span> <span class="p">(</span><span class="mh">0x87</span><span class="p">)</span>
+<span class="n">LOAD_DEREF</span>          <span class="p">:</span>        <span class="mi">136</span> <span class="p">(</span><span class="mh">0x88</span><span class="p">)</span>
+<span class="n">STORE_DEREF</span>         <span class="p">:</span>        <span class="mi">137</span> <span class="p">(</span><span class="mh">0x89</span><span class="p">)</span>
+<span class="n">DELETE_DEREF</span>        <span class="p">:</span>        <span class="mi">138</span> <span class="p">(</span><span class="mh">0x8a</span><span class="p">)</span>
+<span class="n">CALL_FUNCTION_VAR</span>   <span class="p">:</span>        <span class="mi">140</span> <span class="p">(</span><span class="mh">0x8c</span><span class="p">)</span>
+<span class="n">CALL_FUNCTION_KW</span>    <span class="p">:</span>        <span class="mi">141</span> <span class="p">(</span><span class="mh">0x8d</span><span class="p">)</span>
+<span class="n">CALL_FUNCTION_VAR_KW</span><span class="p">:</span>        <span class="mi">142</span> <span class="p">(</span><span class="mh">0x8e</span><span class="p">)</span>
+<span class="n">SETUP_WITH</span>          <span class="p">:</span>        <span class="mi">143</span> <span class="p">(</span><span class="mh">0x8f</span><span class="p">)</span>
+<span class="n">EXTENDED_ARG</span>        <span class="p">:</span>        <span class="mi">144</span> <span class="p">(</span><span class="mh">0x90</span><span class="p">)</span>
+<span class="n">LIST_APPEND</span>         <span class="p">:</span>        <span class="mi">145</span> <span class="p">(</span><span class="mh">0x91</span><span class="p">)</span>
+<span class="n">SET_ADD</span>             <span class="p">:</span>        <span class="mi">146</span> <span class="p">(</span><span class="mh">0x92</span><span class="p">)</span>
+<span class="n">MAP_ADD</span>             <span class="p">:</span>        <span class="mi">147</span> <span class="p">(</span><span class="mh">0x93</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="module-init-call-hierarchy">
+<h2>Module Init call hierarchy<a class="headerlink" href="#module-init-call-hierarchy" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>-&gt; Py_Initialize</p>
+<blockquote>
+<div><p>-&gt; run_mod</p>
+<blockquote>
+<div><p>-&gt; Py_Main</p>
+<blockquote>
+<div><p>-&gt; RunModule</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>-&gt; PyRun_AnyFileExFlags</dt>
+<dd><dl class="first last docutils">
+<dt>-&gt; PyRun_SimpleFileExFlags</dt>
+<dd><dl class="first last docutils">
+<dt>-&gt; PyRun_FileExFlags</dt>
+<dd><dl class="first last docutils">
+<dt>-&gt; PyParser_ASTFromFile</dt>
+<dd><p class="first">-&gt; PyAST_Compile
+-&gt; PyEval_EvalCode</p>
+<blockquote class="last">
+<div>-&gt; call_function</div></blockquote>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>-&gt; Py_Finalize</p>
+</div></blockquote>
+</div>
+<div class="section" id="python-and-gdb">
+<h2>Python and gdb<a class="headerlink" href="#python-and-gdb" title="Permalink to this headline">¶</a></h2>
+<p>sudo apt-get install python python-debuginfo</p>
+<p>Python debuginfo is here:
+/usr/src/debug/python3-3.2.5-4/</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Check if gdb is built with pthon extension</span>
+
+<span class="nv">$gdb</span>  --batch --eval-command<span class="o">=</span><span class="s2">&quot;python print gdb&quot;</span>
+&lt;module <span class="s1">&#39;gdb&#39;</span> from <span class="s1">&#39;/usr/share/gdb/python/gdb/__init__.pyc&#39;</span>&gt;
+
+<span class="nv">$gdb</span>
+<span class="o">(</span>gdb<span class="o">)</span> python print <span class="s2">&quot;hello&quot;</span>
+hello
+<span class="o">(</span>gdb<span class="o">)</span>
+
+<span class="c1"># libpython.py : Python gdb command wrapper is defined</span>
+https://github.com/python/cpython/blob/master/Tools/gdb/libpython.py
+
+
+<span class="c1"># cat hello.py</span>
+    <span class="c1">#!/usr/bin/env python3.3</span>
+
+    import pdb
+    print<span class="o">(</span><span class="s2">&quot;Hello World&quot;</span><span class="o">)</span>
+
+$ gdb python3.2
+<span class="o">(</span>gdb<span class="o">)</span> <span class="nb">source</span> ~/libpython.py
+
+<span class="o">(</span>gdb<span class="o">)</span> b PyEval_EvalCode
+<span class="o">(</span>gdb<span class="o">)</span> b PyEval_EvalFrameEx <span class="k">if</span> <span class="o">(</span>strstr<span class="o">(</span>f-&gt;f_code-&gt;co_filename, <span class="s2">&quot;hello&quot;</span><span class="o">)</span> !<span class="o">=</span> 0<span class="o">)</span>
+
+<span class="o">(</span>gdb<span class="o">)</span> run hello.py
+
+<span class="o">(</span>gdb<span class="o">)</span> py-bt
+Traceback <span class="o">(</span>most recent call first<span class="o">)</span>:
+  File <span class="s2">&quot;/usr/lib/python3.2/collections.py&quot;</span>, line 367, in namedtuple
+    exec<span class="o">(</span>class_definition, namespace<span class="o">)</span>
+  File <span class="s2">&quot;/usr/lib/python3.2/inspect.py&quot;</span>, line 839, in &lt;module&gt;
+    <span class="nv">ArgInfo</span> <span class="o">=</span> namedtuple<span class="o">(</span><span class="s1">&#39;ArgInfo&#39;</span>, <span class="s1">&#39;args varargs keywords locals&#39;</span><span class="o">)</span>
+  File <span class="s2">&quot;/usr/lib/python3.2/pdb.py&quot;</span>, line 78, in &lt;module&gt;
+    import inspect
+  File <span class="s2">&quot;hello.py&quot;</span>, line 3, in &lt;module&gt;
+    import pdb
+<span class="o">(</span>gdb<span class="o">)</span>
+
+<span class="o">(</span>gdb<span class="o">)</span> py-locals
+<span class="nv">typename</span> <span class="o">=</span> <span class="s1">&#39;ArgInfo&#39;</span>
+<span class="nv">field_names</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;args&#39;</span>, <span class="s1">&#39;varargs&#39;</span>, <span class="s1">&#39;keywords&#39;</span>, <span class="s1">&#39;locals&#39;</span><span class="o">]</span>
+<span class="nv">verbose</span> <span class="o">=</span> False
+<span class="nv">rename</span> <span class="o">=</span> False
+Python Exception &lt;<span class="nb">type</span> <span class="s1">&#39;exceptions.AttributeError&#39;</span>&gt; <span class="s1">&#39;NoneType&#39;</span> object has no attribute <span class="s1">&#39;value&#39;</span>:
+Error occurred in Python command: <span class="s1">&#39;NoneType&#39;</span> object has no attribute <span class="s1">&#39;value&#39;</span>
+<span class="o">(</span>gdb<span class="o">)</span>
+
+<span class="o">(</span>gdb<span class="o">)</span> bt
+<span class="c1">#0  PyEval_EvalCode (co=co@entry=&lt;code at remote 0x6ffffd1ee00&gt;,</span>
+Python Exception &lt;class <span class="s1">&#39;gdb.error&#39;</span>&gt; There is no member named ma_keys.:
+Python Exception &lt;class <span class="s1">&#39;gdb.error&#39;</span>&gt; There is no member named ma_keys.:
+    <span class="nv">globals</span><span class="o">=</span>globals@entry<span class="o">=</span>, <span class="nv">locals</span><span class="o">=</span>locals@entry<span class="o">=)</span>
+    at /usr/src/debug/python3-3.2.5-4/Python/ceval.c:766
+<span class="c1">#1  0x00000003dbe2b773 in run_mod (mod=&lt;optimized out&gt;,</span>
+    <span class="nv">filename</span><span class="o">=</span>filename@entry<span class="o">=</span>0x3dbee375a &lt;_Py_ctype_table+2266&gt; <span class="s2">&quot;&lt;string&gt;&quot;</span>,
+Python Exception &lt;class <span class="s1">&#39;gdb.error&#39;</span>&gt; There is no member named ma_keys.:
+Python Exception &lt;class <span class="s1">&#39;gdb.error&#39;</span>&gt; There is no member named ma_keys.:
+    <span class="nv">globals</span><span class="o">=</span>globals@entry<span class="o">=</span>, <span class="nv">locals</span><span class="o">=</span>locals@entry<span class="o">=</span>, <span class="nv">flags</span><span class="o">=</span>flags@entry<span class="o">=</span>0x2292f0,
+    <span class="nv">arena</span><span class="o">=</span>arena@entry<span class="o">=</span>0x60026e170<span class="o">)</span>
+    at /usr/src/debug/python3-3.2.5-4/Python/pythonrun.c:1828
+<span class="c1">#2  0x00000003dbe2cecc in PyRun_StringFlags (</span>
+    <span class="nv">str</span><span class="o">=</span>str@entry<span class="o">=</span>0x600272690 <span class="s2">&quot;from builtins import property as _property, tuple as _tuple\nfrom operator import itemgetter as _itemgetter\nfrom collections import OrderedDict\n\nclass ArgInfo(tuple):\n    &#39;ArgInfo(args, varargs, keywor&quot;</span>...,
+Python Exception &lt;class <span class="s1">&#39;gdb.error&#39;</span>&gt; There is no member named ma_keys.:
+Python Exception &lt;class <span class="s1">&#39;gdb.error&#39;</span>&gt; There is no member named ma_keys.:
+    <span class="nv">start</span><span class="o">=</span>start@entry<span class="o">=</span>257, <span class="nv">globals</span><span class="o">=</span>, <span class="nv">locals</span><span class="o">=</span>, <span class="nv">flags</span><span class="o">=</span>0x2292f0<span class="o">)</span>
+    at /usr/src/debug/python3-3.2.5-4/Python/pythonrun.c:1762
+
+<span class="o">(</span>gdb<span class="o">)</span> p *<span class="o">(</span>PyCodeObject*<span class="o">)</span>co
+<span class="nv">$61</span> <span class="o">=</span> <span class="o">{</span><span class="nv">ob_base</span> <span class="o">=</span> <span class="o">{</span><span class="nv">ob_refcnt</span> <span class="o">=</span> 1, <span class="nv">ob_type</span> <span class="o">=</span> 0x3dbe7cc60 &lt;PyCode_Type&gt;<span class="o">}</span>,
+  <span class="nv">co_argcount</span> <span class="o">=</span> 0, <span class="nv">co_kwonlyargcount</span> <span class="o">=</span> 0, <span class="nv">co_nlocals</span> <span class="o">=</span> 0, <span class="nv">co_stacksize</span> <span class="o">=</span> 4,
+  <span class="nv">co_flags</span> <span class="o">=</span> 64,
+  <span class="nv">co_code</span> <span class="o">=</span> b<span class="s1">&#39;d\x00\x00d\x01\x00l\x00\x00m\x01\x00Z\x02\x00m\x03\x00Z\x04\x00\x01d\x00\x00d\x02\x00l\x05\x00m\x06\x00Z\x07\x00\x01d\x00\x00d\x03\x00l\x08\x00m\t\x00Z\t\x00\x01Gd\x04\x00\x84\x00\x00d\x05\x00e\x03\x00\x83\x03\x00Z\n\x00d\x06\x00S&#39;</span>,
+  <span class="nv">co_consts</span> <span class="o">=</span> <span class="o">(</span>0, <span class="o">(</span><span class="s1">&#39;property&#39;</span>, <span class="s1">&#39;tuple&#39;</span><span class="o">)</span>, <span class="o">(</span><span class="s1">&#39;itemgetter&#39;</span>,<span class="o">)</span>, <span class="o">(</span><span class="s1">&#39;OrderedDict&#39;</span>,<span class="o">)</span>, &lt;code at remote 0x6ffffd1ed78&gt;, <span class="s1">&#39;ArgInfo&#39;</span>, None<span class="o">)</span>,
+  <span class="nv">co_names</span> <span class="o">=</span> <span class="o">(</span><span class="s1">&#39;builtins&#39;</span>, <span class="s1">&#39;property&#39;</span>, <span class="s1">&#39;_property&#39;</span>, <span class="s1">&#39;tuple&#39;</span>, <span class="s1">&#39;_tuple&#39;</span>, <span class="s1">&#39;operator&#39;</span>, <span class="s1">&#39;itemgetter&#39;</span>, <span class="s1">&#39;_itemgetter&#39;</span>, <span class="s1">&#39;collections&#39;</span>, <span class="s1">&#39;OrderedDict&#39;</span>, <span class="s1">&#39;ArgInfo&#39;</span><span class="o">)</span>,
+  <span class="nv">co_varnames</span> <span class="o">=</span> <span class="o">()</span>, <span class="nv">co_freevars</span> <span class="o">=</span> <span class="o">()</span>, <span class="nv">co_cellvars</span> <span class="o">=</span> <span class="o">()</span>, <span class="nv">co_filename</span> <span class="o">=</span> <span class="s1">&#39;&lt;string&gt;&#39;</span>,
+  <span class="nv">co_name</span> <span class="o">=</span> <span class="s1">&#39;&lt;module&gt;&#39;</span>, <span class="nv">co_firstlineno</span> <span class="o">=</span> 1,
+  <span class="nv">co_lnotab</span> <span class="o">=</span> b<span class="s1">&#39;\x16\x01\x10\x01\x10\x02&#39;</span>, <span class="nv">co_zombieframe</span> <span class="o">=</span> 0x0,
+  <span class="nv">co_weakreflist</span> <span class="o">=</span> 0x0<span class="o">}</span>
+<span class="o">(</span>gdb<span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="python-and-pdb">
+<h2>python and pdb<a class="headerlink" href="#python-and-pdb" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>pdb - python debugger</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span>$python -m pdb hello.py
+&gt; /Projects/python/hello/hello.py(3)&lt;module&gt;()
+-&gt; import pdb
+
+(Pdb) list
+  1     #!/usr/bin/env python3.3
+  2
+  3  -&gt; import pdb
+  4     print(&quot;Hello World&quot;)
+  5
+[EOF]
+
+(Pdb) b 4
+Breakpoint 1 at /Projects/python/hello/hello.py:4
+
+(Pdb) c
+&gt; /Projects/python/hello/hello.py(4)&lt;module&gt;()
+-&gt; print(&quot;Hello World&quot;)
+
+(Pdb) list
+  1     #!/usr/bin/env python3.3
+  2
+  3     import pdb
+  4 B-&gt; print(&quot;Hello World&quot;)
+  5
+[EOF]
+
+(Pdb) bt
+  /usr/lib/python2.7/bdb.py(400)run()
+-&gt; exec cmd in globals, locals
+  &lt;string&gt;(1)&lt;module&gt;()
+&gt; /Projects/python/hello/hello.py(4)&lt;module&gt;()
+-&gt; print(&quot;Hello World&quot;)
+
+(Pdb) h
+
+Documented commands (type help &lt;topic&gt;):
+========================================
+EOF    bt         cont      enable  jump  pp       run      unt
+a      c          continue  exit    l     q        s        until
+alias  cl         d         h       list  quit     step     up
+args   clear      debug     help    n     r        tbreak   w
+b      commands   disable   ignore  next  restart  u        whatis
+break  condition  down      j       p     return   unalias  where
+
+Miscellaneous help topics:
+==========================
+exec  pdb
+
+Undocumented commands:
+======================
+retval  rv
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pdb</span>
+<span class="kn">import</span> <span class="nn">mymodule</span>
+<span class="n">pdb</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">&#39;mymodule.run())</span>
+
+
+<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pdb</span> <span class="n">myscript</span><span class="o">.</span><span class="n">py</span><span class="o">.</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">pdb</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">=</span><span class="s2">&quot;a string&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">pdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
+<span class="o">--</span><span class="n">Return</span><span class="o">--</span>
+<span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">stdin</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">()</span><span class="o">-&gt;</span><span class="bp">None</span>
+
+<span class="p">(</span><span class="n">Pdb</span><span class="p">)</span> <span class="n">p</span> <span class="n">a</span>
+<span class="s1">&#39;a string&#39;</span>
+<span class="p">(</span><span class="n">Pdb</span><span class="p">)</span> <span class="n">c</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="python-debug-modules">
+<h2>Python Debug Modules<a class="headerlink" href="#python-debug-modules" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>inspect<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span>$python3.2 -m inspectshow inspect
+inspect
+ |--  inspect
+ |--  ===&gt; /usr/lib/python3.2/inspect.py
+         @@doc : &quot; inspect : Get useful information from live Python objects. &quot;
+
+
+  [@SUBPACKAGES]
+
+
+  [@SUBMODULES ]
+     |--  inspect
+         |--  imp
+         |--  itertools
+         |--  linecache
+             |--  os
+                 |--  _copyreg
+                 |--  errno
+                 |--  path
+                     |--  genericpath
+                         |--  os
+                         |--  stat
+                     |--  os
+                     |--  stat
+                     |--  sys
+                 |--  sys
+             |--  sys
+             |--  tokenize
+                 |--  builtins
+                 |--  collections
+                     |--  _abcoll
+                         |--  sys
+                     |--  _heapq
+                         |--  bisect
+                     |--  _sys
+                 |--  re
+                     |--  copyreg
+                     |--  functools
+                     |--  sre_compile
+                         |--  _sre
+                         |--  sre_parse
+                             |--  sys
+                         |--  sys
+                     |--  sre_parse
+                     |--  sys
+                 |--  sys
+         |--  os
+         |--  re
+         |--  string
+             |--  _re
+                 |--  copyreg
+                 |--  functools
+                 |--  sre_compile
+                 |--  sre_parse
+                 |--  sys
+             |--  _string
+         |--  sys
+         |--  tokenize
+         |--  types
+
+
+  [@CLASS        ]
+      @@doc : - Classes and Method Resolution Order
+     |--  [Class ArgInfo]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;inspect.ArgInfo&#39;&gt;
+                     |--  &lt;class &#39;tuple&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  method  ]:
+                     |--  _make
+             |--  [  tuple  ]:
+                     |--  _fields
+             |--  [  property  ]:
+                     |--  args
+                     |--  keywords
+                     |--  locals
+                     |--  varargs
+             |--  [  function  ]:
+                     |--  _asdict ([&#39;self&#39;])
+                     |--  _replace ([&#39;_self&#39;])
+             |--  [  method_descriptor  ]:
+                     |--  count
+                     |--  index
+     |--  [Class ArgSpec]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;inspect.ArgSpec&#39;&gt;
+                     |--  &lt;class &#39;tuple&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  method  ]:
+                     |--  _make
+             |--  [  tuple  ]:
+                     |--  _fields
+             |--  [  property  ]:
+                     |--  args
+                     |--  defaults
+                     |--  keywords
+                     |--  varargs
+             |--  [  function  ]:
+                     |--  _asdict ([&#39;self&#39;])
+                     |--  _replace ([&#39;_self&#39;])
+             |--  [  method_descriptor  ]:
+                     |--  count
+                     |--  index
+     |--  [Class Arguments]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;inspect.Arguments&#39;&gt;
+                     |--  &lt;class &#39;tuple&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  method  ]:
+                     |--  _make
+             |--  [  tuple  ]:
+                     |--  _fields
+             |--  [  property  ]:
+                     |--  args
+                     |--  varargs
+                     |--  varkw
+             |--  [  function  ]:
+                     |--  _asdict ([&#39;self&#39;])
+                     |--  _replace ([&#39;_self&#39;])
+             |--  [  method_descriptor  ]:
+                     |--  count
+                     |--  index
+     |--  [Class Attribute]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;inspect.Attribute&#39;&gt;
+                     |--  &lt;class &#39;tuple&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  method  ]:
+                     |--  _make
+             |--  [  tuple  ]:
+                     |--  _fields
+             |--  [  method_descriptor  ]:
+                     |--  count
+                     |--  index
+             |--  [  function  ]:
+                     |--  _asdict ([&#39;self&#39;])
+                     |--  _replace ([&#39;_self&#39;])
+             |--  [  property  ]:
+                     |--  defining_class
+                     |--  kind
+                     |--  name
+                     |--  object
+     |--  [Class BlockFinder]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;inspect.BlockFinder&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  function  ]:
+                     |--  tokeneater ([&#39;self&#39;, &#39;type&#39;, &#39;token&#39;, &#39;srowcol&#39;, &#39;erowcol&#39;, &#39;line&#39;])
+     |--  [Class EndOfBlock]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;inspect.EndOfBlock&#39;&gt;
+                     |--  &lt;class &#39;Exception&#39;&gt;
+                     |--  &lt;class &#39;BaseException&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  method_descriptor  ]:
+                     |--  with_traceback
+             |--  [  getset_descriptor  ]:
+                     |--  args
+     |--  [Class FullArgSpec]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;inspect.FullArgSpec&#39;&gt;
+                     |--  &lt;class &#39;tuple&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  method  ]:
+                     |--  _make
+             |--  [  tuple  ]:
+                     |--  _fields
+             |--  [  property  ]:
+                     |--  annotations
+                     |--  args
+                     |--  defaults
+                     |--  kwonlyargs
+                     |--  kwonlydefaults
+                     |--  varargs
+                     |--  varkw
+             |--  [  function  ]:
+                     |--  _asdict ([&#39;self&#39;])
+                     |--  _replace ([&#39;_self&#39;])
+             |--  [  method_descriptor  ]:
+                     |--  count
+                     |--  index
+     |--  [Class ModuleInfo]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;inspect.ModuleInfo&#39;&gt;
+                     |--  &lt;class &#39;tuple&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  method  ]:
+                     |--  _make
+             |--  [  tuple  ]:
+                     |--  _fields
+             |--  [  method_descriptor  ]:
+                     |--  count
+                     |--  index
+             |--  [  function  ]:
+                     |--  _asdict ([&#39;self&#39;])
+                     |--  _replace ([&#39;_self&#39;])
+             |--  [  property  ]:
+                     |--  mode
+                     |--  module_type
+                     |--  name
+                     |--  suffix
+     |--  [Class Traceback]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;inspect.Traceback&#39;&gt;
+                     |--  &lt;class &#39;tuple&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  method  ]:
+                     |--  _make
+             |--  [  tuple  ]:
+                     |--  _fields
+             |--  [  property  ]:
+                     |--  code_context
+                     |--  filename
+                     |--  function
+                     |--  index
+                     |--  lineno
+             |--  [  function  ]:
+                     |--  _asdict ([&#39;self&#39;])
+                     |--  _replace ([&#39;_self&#39;])
+             |--  [  method_descriptor  ]:
+                     |--  count
+     |--  [Class attrgetter]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;operator.attrgetter&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+
+
+  [@ FUNCTION  ]
+      @@doc :  - Function including &quot;lambda&quot; anonymous functions
+     |--  _check_class ([&#39;klass&#39;, &#39;attr&#39;])
+     |--  _check_instance ([&#39;obj&#39;, &#39;attr&#39;])
+     |--  _getfullargs ([&#39;co&#39;])
+     |--  _is_type ([&#39;obj&#39;])
+     |--  _shadowed_dict ([&#39;klass&#39;])
+     |--  _static_getmro ([&#39;klass&#39;])
+     |--  classify_class_attrs ([&#39;cls&#39;])
+     |--  cleandoc ([&#39;doc&#39;])
+     |--  currentframe ([])
+     |--  findsource ([&#39;object&#39;])
+     |--  formatannotation ([&#39;annotation&#39;, &#39;base_module&#39;])
+     |--  formatannotationrelativeto ([&#39;object&#39;])
+     |--  formatargspec ([&#39;args&#39;, &#39;varargs&#39;, &#39;varkw&#39;, &#39;defaults&#39;, &#39;kwonlyargs&#39;, &#39;kwonlydefaults&#39;, &#39;annotations&#39;, &#39;formatarg&#39;, &#39;formatvarargs&#39;, &#39;formatvarkw&#39;, &#39;formatvalue&#39;, &#39;formatreturns&#39;, &#39;formatannotation&#39;])
+     |--  formatargvalues ([&#39;args&#39;, &#39;varargs&#39;, &#39;varkw&#39;, &#39;locals&#39;, &#39;formatarg&#39;, &#39;formatvarargs&#39;, &#39;formatvarkw&#39;, &#39;formatvalue&#39;])
+     |--  getabsfile ([&#39;object&#39;, &#39;_filename&#39;])
+     |--  getargs ([&#39;co&#39;])
+     |--  getargspec ([&#39;func&#39;])
+     |--  getargvalues ([&#39;frame&#39;])
+     |--  getattr_static ([&#39;obj&#39;, &#39;attr&#39;, &#39;default&#39;])
+     |--  getblock ([&#39;lines&#39;])
+     |--  getcallargs ([&#39;func&#39;])
+     |--  getclasstree ([&#39;classes&#39;, &#39;unique&#39;])
+     |--  getcomments ([&#39;object&#39;])
+     |--  getdoc ([&#39;object&#39;])
+     |--  getfile ([&#39;object&#39;])
+     |--  getframeinfo ([&#39;frame&#39;, &#39;context&#39;])
+     |--  getfullargspec ([&#39;func&#39;])
+     |--  getgeneratorstate ([&#39;generator&#39;])
+     |--  getinnerframes ([&#39;tb&#39;, &#39;context&#39;])
+     |--  getlineno ([&#39;frame&#39;])
+     |--  getmembers ([&#39;object&#39;, &#39;predicate&#39;])
+     |--  getmodule ([&#39;object&#39;, &#39;_filename&#39;])
+     |--  getmoduleinfo ([&#39;path&#39;])
+     |--  getmodulename ([&#39;path&#39;])
+     |--  getmro ([&#39;cls&#39;])
+     |--  getouterframes ([&#39;frame&#39;, &#39;context&#39;])
+     |--  getsource ([&#39;object&#39;])
+     |--  getsourcefile ([&#39;object&#39;])
+     |--  getsourcelines ([&#39;object&#39;])
+     |--  indentsize ([&#39;line&#39;])
+     |--  isabstract ([&#39;object&#39;])
+     |--  isbuiltin ([&#39;object&#39;])
+     |--  isclass ([&#39;object&#39;])
+     |--  iscode ([&#39;object&#39;])
+     |--  isdatadescriptor ([&#39;object&#39;])
+     |--  isframe ([&#39;object&#39;])
+     |--  isfunction ([&#39;object&#39;])
+     |--  isgenerator ([&#39;object&#39;])
+     |--  isgeneratorfunction ([&#39;object&#39;])
+     |--  isgetsetdescriptor ([&#39;object&#39;])
+     |--  ismemberdescriptor ([&#39;object&#39;])
+     |--  ismethod ([&#39;object&#39;])
+     |--  ismethoddescriptor ([&#39;object&#39;])
+     |--  ismodule ([&#39;object&#39;])
+     |--  isroutine ([&#39;object&#39;])
+     |--  istraceback ([&#39;object&#39;])
+     |--  namedtuple ([&#39;typename&#39;, &#39;field_names&#39;, &#39;verbose&#39;, &#39;rename&#39;])
+     |--  stack ([&#39;context&#39;])
+     |--  trace ([&#39;context&#39;])
+     |--  walktree ([&#39;classes&#39;, &#39;children&#39;, &#39;parent&#39;])
+
+          [@ int ]
+                 |--  inspect.CO_GENERATOR
+                 |--  inspect.CO_NESTED
+                 |--  inspect.CO_NEWLOCALS
+                 |--  inspect.CO_NOFREE
+                 |--  inspect.CO_OPTIMIZED
+                 |--  inspect.CO_VARARGS
+                 |--  inspect.CO_VARKEYWORDS
+                 |--  inspect.TPFLAGS_IS_ABSTRACT
+                 |--  inspect.k
+
+          [@ str ]
+                 |--  inspect.GEN_CLOSED
+                 |--  inspect.GEN_CREATED
+                 |--  inspect.GEN_RUNNING
+                 |--  inspect.GEN_SUSPENDED
+                 |--  inspect.__author__
+                 |--  inspect.__date__
+                 |--  inspect.v
+
+          [@ dict ]
+                 |--  inspect._filesbymodname
+                 |--  inspect._flag_names
+                 |--  inspect.mod_dict
+                 |--  inspect.modulesbyfile
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="dis">
+<h3>dis<a class="headerlink" href="#dis" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span>dis
+ |--  dis
+ |--  ===&gt; /usr/lib/python3.2/dis.py
+         @@doc : &quot; dis : Disassembler of Python byte code into mnemonics. &quot;
+
+  [@SUBMODULES ]
+     |--  dis
+         |--  sys
+         |--  types
+
+  [@ FUNCTION  ]
+      @@doc :  - Function including &quot;lambda&quot; anonymous functions
+     |--  _disassemble_bytes ([&#39;code&#39;, &#39;lasti&#39;, &#39;varnames&#39;, &#39;names&#39;, &#39;constants&#39;])
+     |--  _disassemble_str ([&#39;source&#39;])
+     |--  _format_code_info ([&#39;co&#39;])
+     |--  _test ([])
+     |--  _try_compile ([&#39;source&#39;, &#39;name&#39;])
+     |--  code_info ([&#39;x&#39;])
+     |--  dis ([&#39;x&#39;])
+     |--  disassemble ([&#39;co&#39;, &#39;lasti&#39;])
+     |--  disco ([&#39;co&#39;, &#39;lasti&#39;])
+     |--  distb ([&#39;tb&#39;])
+     |--  findlabels ([&#39;code&#39;])
+     |--  findlinestarts ([&#39;code&#39;])
+     |--  pretty_flags ([&#39;flags&#39;])
+     |--  show_code ([&#39;co&#39;])
+
+  [@ GENERATOR FUNCTION ]
+      @@doc :     - object is a generator function
+     |--  findlinestarts ([&#39;code&#39;])
+
+
+  [@ VARIABLES ]
+          [@ int ]
+                 |--  dis.EXTENDED_ARG
+                 |--  dis.HAVE_ARGUMENT
+          [@ tuple ]
+                 |--  dis._have_code
+                 |--  dis.cmp_op
+          [@ list ]
+                 |--  dis.__all__
+                 |--  dis.hascompare
+                 |--  dis.hasconst
+                 |--  dis.hasfree
+                 |--  dis.hasjabs
+                 |--  dis.hasjrel
+                 |--  dis.haslocal
+                 |--  dis.hasname
+                 |--  dis.opname
+          [@ dict ]
+                 |--  dis.COMPILER_FLAG_NAMES
+                 |--  dis.opmap
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="pdb">
+<h3>pdb<a class="headerlink" href="#pdb" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span>$python3.2 -m inspectshow pdb
+pdb
+ |--  pdb
+ |--  ===&gt; /usr/lib/python3.2/pdb.py
+         @@doc : &quot; pdb : The Python Debugger Pdb &quot;
+
+  [@SUBMODULES ]
+     |--  pdb
+         |--  bdb
+             |--  fnmatch
+                 |--  functools
+                 |--  os
+                     |--  _copyreg
+                     |--  errno
+                     |--  path
+                         |--  genericpath
+                             |--  os
+                             |--  stat
+                         |--  os
+                         |--  stat
+                         |--  sys
+                     |--  sys
+                 |--  posixpath
+                     |--  genericpath
+                     |--  os
+                     |--  stat
+                     |--  sys
+                 |--  re
+                     |--  copyreg
+                     |--  functools
+                     |--  sre_compile
+                         |--  _sre
+                         |--  sre_parse
+                             |--  sys
+                         |--  sys
+                     |--  sre_parse
+                     |--  sys
+             |--  os
+             |--  sys
+         |--  cmd
+             |--  string
+                 |--  _re
+                     |--  copyreg
+                     |--  functools
+                     |--  sre_compile
+                     |--  sre_parse
+                     |--  sys
+                 |--  _string
+             |--  sys
+         |--  code
+             |--  sys
+             |--  traceback
+                 |--  linecache
+                     |--  os
+                     |--  sys
+                     |--  tokenize
+                         |--  builtins
+                         |--  collections
+                             |--  _abcoll
+                                 |--  sys
+                             |--  _heapq
+                                 |--  bisect
+                             |--  _sys
+                         |--  re
+                         |--  sys
+                 |--  sys
+         |--  dis
+             |--  sys
+             |--  types
+         |--  inspect
+             |--  imp
+             |--  itertools
+             |--  linecache
+             |--  os
+             |--  re
+             |--  string
+             |--  sys
+             |--  tokenize
+             |--  types
+         |--  linecache
+         |--  os
+         |--  pprint
+             |--  _sys
+         |--  re
+         |--  signal
+         |--  sys
+         |--  traceback
+
+
+  [@CLASS        ]
+      @@doc : - Classes and Method Resolution Order
+     |--  [Class Pdb]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;pdb.Pdb&#39;&gt;
+                     |--  &lt;class &#39;bdb.Bdb&#39;&gt;
+                     |--  &lt;class &#39;cmd.Cmd&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  int  ]:
+                     |--  use_rawinput
+             |--  [  list  ]:
+                     |--  commands_resuming
+             |--  [  function  ]:
+                     |--  _cmdloop ([&#39;self&#39;])
+                     |--  _getval ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  _getval_except ([&#39;self&#39;, &#39;arg&#39;, &#39;frame&#39;])
+                     |--  _print_lines ([&#39;self&#39;, &#39;lines&#39;, &#39;start&#39;, &#39;breaks&#39;, &#39;frame&#39;])
+                     |--  _prune_breaks ([&#39;self&#39;, &#39;filename&#39;, &#39;lineno&#39;])
+                     |--  _runscript ([&#39;self&#39;, &#39;filename&#39;])
+                     |--  _select_frame ([&#39;self&#39;, &#39;number&#39;])
+                     |--  _set_stopinfo ([&#39;self&#39;, &#39;stopframe&#39;, &#39;returnframe&#39;, &#39;stoplineno&#39;])
+                     |--  bp_commands ([&#39;self&#39;, &#39;frame&#39;])
+                     |--  break_anywhere ([&#39;self&#39;, &#39;frame&#39;])
+                     |--  break_here ([&#39;self&#39;, &#39;frame&#39;])
+                     |--  canonic ([&#39;self&#39;, &#39;filename&#39;])
+                     |--  checkline ([&#39;self&#39;, &#39;filename&#39;, &#39;lineno&#39;])
+                     |--  clear_all_breaks ([&#39;self&#39;])
+                     |--  clear_all_file_breaks ([&#39;self&#39;, &#39;filename&#39;])
+                     |--  clear_bpbynumber ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  clear_break ([&#39;self&#39;, &#39;filename&#39;, &#39;lineno&#39;])
+                     |--  cmdloop ([&#39;self&#39;, &#39;intro&#39;])
+                     |--  columnize ([&#39;self&#39;, &#39;list&#39;, &#39;displaywidth&#39;])
+                     |--  complete ([&#39;self&#39;, &#39;text&#39;, &#39;state&#39;])
+                     |--  complete_help ([&#39;self&#39;])
+                     |--  completedefault ([&#39;self&#39;])
+                     |--  completenames ([&#39;self&#39;, &#39;text&#39;])
+                     |--  default ([&#39;self&#39;, &#39;line&#39;])
+                     |--  defaultFile ([&#39;self&#39;])
+                     |--  dispatch_call ([&#39;self&#39;, &#39;frame&#39;, &#39;arg&#39;])
+                     |--  dispatch_exception ([&#39;self&#39;, &#39;frame&#39;, &#39;arg&#39;])
+                     |--  dispatch_line ([&#39;self&#39;, &#39;frame&#39;])
+                     |--  dispatch_return ([&#39;self&#39;, &#39;frame&#39;, &#39;arg&#39;])
+                     |--  displayhook ([&#39;self&#39;, &#39;obj&#39;])
+                     |--  do_EOF ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_a ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_alias ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_args ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_b ([&#39;self&#39;, &#39;arg&#39;, &#39;temporary&#39;])
+                     |--  do_break ([&#39;self&#39;, &#39;arg&#39;, &#39;temporary&#39;])
+                     |--  do_bt ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_c ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_cl ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_clear ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_commands ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_condition ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_cont ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_continue ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_d ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_debug ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_disable ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_display ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_down ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_enable ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_exit ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_h ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_help ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_ignore ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_interact ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_j ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_jump ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_l ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_list ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_ll ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_longlist ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_n ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_next ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_p ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_pp ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_print ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_q ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_quit ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_r ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_restart ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_return ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_retval ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_run ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_rv ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_s ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_source ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_step ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_tbreak ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_u ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_unalias ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_undisplay ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_unt ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_until ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_up ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_w ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_whatis ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  do_where ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  emptyline ([&#39;self&#39;])
+                     |--  error ([&#39;self&#39;, &#39;msg&#39;])
+                     |--  execRcLines ([&#39;self&#39;])
+                     |--  forget ([&#39;self&#39;])
+                     |--  format_stack_entry ([&#39;self&#39;, &#39;frame_lineno&#39;, &#39;lprefix&#39;])
+                     |--  get_all_breaks ([&#39;self&#39;])
+                     |--  get_bpbynumber ([&#39;self&#39;, &#39;arg&#39;])
+                     |--  get_break ([&#39;self&#39;, &#39;filename&#39;, &#39;lineno&#39;])
+                     |--  get_breaks ([&#39;self&#39;, &#39;filename&#39;, &#39;lineno&#39;])
+                     |--  get_file_breaks ([&#39;self&#39;, &#39;filename&#39;])
+                     |--  get_names ([&#39;self&#39;])
+                     |--  get_stack ([&#39;self&#39;, &#39;f&#39;, &#39;t&#39;])
+                     |--  handle_command_def ([&#39;self&#39;, &#39;line&#39;])
+                     |--  help_exec ([&#39;self&#39;])
+                     |--  help_pdb ([&#39;self&#39;])
+                     |--  interaction ([&#39;self&#39;, &#39;frame&#39;, &#39;traceback&#39;])
+                     |--  is_skipped_module ([&#39;self&#39;, &#39;module_name&#39;])
+                     |--  lineinfo ([&#39;self&#39;, &#39;identifier&#39;])
+                     |--  lookupmodule ([&#39;self&#39;, &#39;filename&#39;])
+                     |--  message ([&#39;self&#39;, &#39;msg&#39;])
+                     |--  onecmd ([&#39;self&#39;, &#39;line&#39;])
+                     |--  parseline ([&#39;self&#39;, &#39;line&#39;])
+                     |--  postcmd ([&#39;self&#39;, &#39;stop&#39;, &#39;line&#39;])
+                     |--  postloop ([&#39;self&#39;])
+                     |--  precmd ([&#39;self&#39;, &#39;line&#39;])
+                     |--  preloop ([&#39;self&#39;])
+                     |--  print_stack_entry ([&#39;self&#39;, &#39;frame_lineno&#39;, &#39;prompt_prefix&#39;])
+                     |--  print_stack_trace ([&#39;self&#39;])
+                     |--  print_topics ([&#39;self&#39;, &#39;header&#39;, &#39;cmds&#39;, &#39;cmdlen&#39;, &#39;maxcol&#39;])
+                     |--  reset ([&#39;self&#39;])
+                     |--  run ([&#39;self&#39;, &#39;cmd&#39;, &#39;globals&#39;, &#39;locals&#39;])
+                     |--  runcall ([&#39;self&#39;, &#39;func&#39;])
+                     |--  runctx ([&#39;self&#39;, &#39;cmd&#39;, &#39;globals&#39;, &#39;locals&#39;])
+                     |--  runeval ([&#39;self&#39;, &#39;expr&#39;, &#39;globals&#39;, &#39;locals&#39;])
+                     |--  set_break ([&#39;self&#39;, &#39;filename&#39;, &#39;lineno&#39;, &#39;temporary&#39;, &#39;cond&#39;, &#39;funcname&#39;])
+                     |--  set_continue ([&#39;self&#39;])
+                     |--  set_next ([&#39;self&#39;, &#39;frame&#39;])
+                     |--  set_quit ([&#39;self&#39;])
+                     |--  set_return ([&#39;self&#39;, &#39;frame&#39;])
+                     |--  set_step ([&#39;self&#39;])
+                     |--  set_trace ([&#39;self&#39;, &#39;frame&#39;])
+                     |--  set_until ([&#39;self&#39;, &#39;frame&#39;, &#39;lineno&#39;])
+                     |--  setup ([&#39;self&#39;, &#39;f&#39;, &#39;tb&#39;])
+                     |--  sigint_handler ([&#39;self&#39;, &#39;signum&#39;, &#39;frame&#39;])
+                     |--  stop_here ([&#39;self&#39;, &#39;frame&#39;])
+                     |--  trace_dispatch ([&#39;self&#39;, &#39;frame&#39;, &#39;event&#39;, &#39;arg&#39;])
+                     |--  user_call ([&#39;self&#39;, &#39;frame&#39;, &#39;argument_list&#39;])
+                     |--  user_exception ([&#39;self&#39;, &#39;frame&#39;, &#39;exc_info&#39;])
+                     |--  user_line ([&#39;self&#39;, &#39;frame&#39;])
+                     |--  user_return ([&#39;self&#39;, &#39;frame&#39;, &#39;return_value&#39;])
+             |--  [  str  ]:
+                     |--  doc_header
+                     |--  doc_leader
+                     |--  identchars
+                     |--  lastcmd
+                     |--  misc_header
+                     |--  nohelp
+                     |--  prompt
+                     |--  ruler
+                     |--  undoc_header
+             |--  [  NoneType  ]:
+                     |--  intro
+     |--  [Class Restart]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;pdb.Restart&#39;&gt;
+                     |--  &lt;class &#39;Exception&#39;&gt;
+                     |--  &lt;class &#39;BaseException&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  method_descriptor  ]:
+                     |--  with_traceback
+             |--  [  getset_descriptor  ]:
+                     |--  args
+     |--  [Class _rstr]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;pdb._rstr&#39;&gt;
+                     |--  &lt;class &#39;str&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  method_descriptor  ]:
+                     |--  capitalize
+                     |--  center
+                     |--  count
+                     |--  encode
+                     |--  endswith
+                     |--  expandtabs
+                     |--  find
+                     |--  format
+                     |--  format_map
+                     |--  index
+                     |--  isalnum
+                     |--  isalpha
+                     |--  isdecimal
+                     |--  isdigit
+                     |--  isidentifier
+                     |--  islower
+                     |--  isnumeric
+                     |--  isprintable
+                     |--  isspace
+                     |--  istitle
+                     |--  isupper
+                     |--  join
+                     |--  ljust
+                     |--  lower
+                     |--  lstrip
+                     |--  partition
+                     |--  replace
+                     |--  rfind
+                     |--  rindex
+                     |--  rjust
+                     |--  rpartition
+                     |--  rsplit
+                     |--  rstrip
+                     |--  split
+                     |--  splitlines
+                     |--  startswith
+                     |--  strip
+                     |--  swapcase
+                     |--  title
+                     |--  translate
+                     |--  upper
+                     |--  zfill
+             |--  [  builtin_function_or_method  ]:
+                     |--  maketrans
+
+
+  [@ FUNCTION  ]
+      @@doc :  - Function including &quot;lambda&quot; anonymous functions
+     |--  find_function ([&#39;funcname&#39;, &#39;filename&#39;])
+     |--  getsourcelines ([&#39;obj&#39;])
+     |--  help ([])
+     |--  lasti2lineno ([&#39;code&#39;, &#39;lasti&#39;])
+     |--  main ([])
+     |--  pm ([])
+     |--  post_mortem ([&#39;t&#39;])
+     |--  run ([&#39;statement&#39;, &#39;globals&#39;, &#39;locals&#39;])
+     |--  runcall ([])
+     |--  runctx ([&#39;statement&#39;, &#39;globals&#39;, &#39;locals&#39;])
+     |--  runeval ([&#39;expression&#39;, &#39;globals&#39;, &#39;locals&#39;])
+     |--  set_trace ([])
+     |--  test ([])
+
+      [@ str ]
+             |--  pdb.TESTCMD
+             |--  pdb._usage
+             |--  pdb.line_prefix
+
+      [@ list ]
+             |--  pdb.__all__
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="gdb">
+<h3>gdb<a class="headerlink" href="#gdb" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">python</span>
+<span class="o">&gt;</span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="o">&gt;</span><span class="n">sys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">python</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="p">)</span>
+<span class="o">&gt;</span><span class="kn">import</span> <span class="nn">gdb</span>
+<span class="o">&gt;</span><span class="kn">import</span> <span class="nn">inspectshow</span>
+<span class="o">&gt;</span><span class="n">show</span><span class="o">=</span><span class="n">inspectshow</span><span class="o">.</span><span class="n">showtree</span><span class="p">()</span>
+<span class="o">&gt;</span><span class="n">show</span><span class="p">(</span><span class="s2">&quot;gdb&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span><span class="n">end</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span>gdb
+ |--  gdb
+ |--  ===&gt; /usr/share/gdb/python/gdb/__init__.py
+
+
+  [@SUBPACKAGES]
+     |--   + gdb.python.gdb.command
+     |--   + gdb.python.gdb.printer
+     |--   + gdb.python.gdb.function
+
+
+  [@SUBMODULES ]
+     |--  gdb
+         |--  FrameDecorator
+             |--  gdb
+                 |--  FrameDecorator
+                 |--  FrameIterator
+                     |--  gdb
+                     |--  itertools
+                 |--  _gdb
+                     |--  events
+                 |--  command
+                     |--  explore
+                         |--  gdb
+                         |--  sys
+                     |--  frame_filters
+                         |--  copy
+                             |--  builtins
+                             |--  weakref
+                                 |--  collections
+                                     |--  _collections_abc
+                                         |--  sys
+                                     |--  _heapq
+                                     |--  _sys
+                                     |--  abc
+                                 |--  itertools
+                                 |--  sys
+                         |--  gdb
+                         |--  itertools
+                         |--  sys
+                     |--  pretty_printers
+                         |--  copy
+                         |--  gdb
+                         |--  re
+                             |--  _locale
+                             |--  copyreg
+                             |--  sre_compile
+                                 |--  _sre
+                                 |--  sre_parse
+                             |--  sre_parse
+                             |--  sys
+                     |--  prompt
+                         |--  gdb
+                     |--  type_printers
+                         |--  copy
+                         |--  gdb
+                     |--  unwinders
+                         |--  gdb
+                         |--  re
+                     |--  xmethods
+                         |--  gdb
+                         |--  re
+                 |--  events
+                 |--  frames
+                     |--  collections
+                     |--  gdb
+                     |--  itertools
+                 |--  function
+                     |--  caller_is
+                         |--  gdb
+                         |--  re
+                     |--  strfns
+                         |--  gdb
+                         |--  re
+                 |--  os
+                     |--  errno
+                     |--  path
+                         |--  genericpath
+                             |--  os
+                             |--  stat
+                         |--  os
+                         |--  stat
+                         |--  sys
+                     |--  st
+                     |--  sys
+                 |--  printer
+                     |--  bound_registers
+                         |--  gdb
+                 |--  printing
+                     |--  gdb
+                     |--  re
+                     |--  sys
+                 |--  prompt
+                 |--  sys
+                 |--  traceback
+                     |--  collections
+                     |--  itertools
+                     |--  linecache
+                         |--  functools
+                         |--  os
+                         |--  sys
+                         |--  tokenize
+                             |--  collections
+                             |--  re
+                             |--  sys
+                     |--  sys
+                 |--  types
+                     |--  gdb
+         |--  FrameIterator
+         |--  _gdb
+         |--  command
+         |--  events
+         |--  frames
+         |--  function
+         |--  os
+         |--  printer
+         |--  printing
+         |--  prompt
+         |--  sys
+         |--  traceback
+         |--  types
+
+
+  [@CLASS        ]
+      @@doc : - Classes and Method Resolution Order
+     |--  [Class Architecture]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.Architecture&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  method_descriptor  ]:
+                     |--  disassemble
+                     |--  name
+     |--  [Class Block]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.Block&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  getset_descriptor  ]:
+                     |--  end
+                     |--  function
+                     |--  global_block
+                     |--  is_global
+                     |--  is_static
+                     |--  start
+                     |--  static_block
+                     |--  superblock
+             |--  [  method_descriptor  ]:
+                     |--  is_valid
+     |--  [Class BlockIterator]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.BlockIterator&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  method_descriptor  ]:
+                     |--  is_valid
+     |--  [Class Breakpoint]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.Breakpoint&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  getset_descriptor  ]:
+                     |--  commands
+                     |--  condition
+                     |--  enabled
+                     |--  expression
+                     |--  hit_count
+                     |--  ignore_count
+                     |--  location
+                     |--  number
+                     |--  silent
+                     |--  task
+                     |--  temporary
+                     |--  thread
+                     |--  type
+                     |--  visible
+             |--  [  method_descriptor  ]:
+                     |--  delete
+                     |--  is_valid
+     |--  [Class BreakpointEvent]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.BreakpointEvent&#39;&gt;
+                     |--  &lt;class &#39;gdb.StopEvent&#39;&gt;
+                     |--  &lt;class &#39;gdb.ThreadEvent&#39;&gt;
+                     |--  &lt;class &#39;gdb.Event&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+     |--  [Class ClearObjFilesEvent]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.ClearObjFilesEvent&#39;&gt;
+                     |--  &lt;class &#39;gdb.Event&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+     |--  [Class Command]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.Command&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  method_descriptor  ]:
+                     |--  dont_repeat
+     |--  [Class ContinueEvent]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.ContinueEvent&#39;&gt;
+                     |--  &lt;class &#39;gdb.ThreadEvent&#39;&gt;
+                     |--  &lt;class &#39;gdb.Event&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+     |--  [Class Event]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.Event&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+     |--  [Class EventRegistry]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.EventRegistry&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  method_descriptor  ]:
+                     |--  connect
+                     |--  disconnect
+     |--  [Class ExitedEvent]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.ExitedEvent&#39;&gt;
+                     |--  &lt;class &#39;gdb.Event&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+     |--  [Class Field]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.Field&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+     |--  [Class FinishBreakpoint]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.FinishBreakpoint&#39;&gt;
+                     |--  &lt;class &#39;gdb.Breakpoint&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  getset_descriptor  ]:
+                     |--  commands
+                     |--  condition
+                     |--  enabled
+                     |--  expression
+                     |--  hit_count
+                     |--  ignore_count
+                     |--  location
+                     |--  number
+                     |--  return_value
+                     |--  silent
+                     |--  task
+                     |--  temporary
+                     |--  thread
+                     |--  type
+                     |--  visible
+             |--  [  method_descriptor  ]:
+                     |--  delete
+                     |--  is_valid
+     |--  [Class Frame]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.Frame&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  method_descriptor  ]:
+                     |--  architecture
+                     |--  block
+                     |--  find_sal
+                     |--  function
+                     |--  is_valid
+                     |--  name
+                     |--  newer
+                     |--  older
+                     |--  pc
+                     |--  read_register
+                     |--  read_var
+                     |--  select
+                     |--  type
+                     |--  unwind_stop_reason
+     |--  [Class Function]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.Function&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+     |--  [Class GdbError]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.GdbError&#39;&gt;
+                     |--  &lt;class &#39;Exception&#39;&gt;
+                     |--  &lt;class &#39;BaseException&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  getset_descriptor  ]:
+                     |--  args
+             |--  [  method_descriptor  ]:
+                     |--  with_traceback
+     |--  [Class GdbOutputErrorFile]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.GdbOutputErrorFile&#39;&gt;
+                     |--  &lt;class &#39;gdb._GdbFile&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  str  ]:
+                     |--  encoding
+                     |--  errors
+             |--  [  function  ]:
+                     |--  close ([&#39;self&#39;])
+                     |--  flush ([&#39;self&#39;])
+                     |--  isatty ([&#39;self&#39;])
+                     |--  write ([&#39;self&#39;, &#39;s&#39;])
+                     |--  writelines ([&#39;self&#39;, &#39;iterable&#39;])
+     |--  [Class GdbOutputFile]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.GdbOutputFile&#39;&gt;
+                     |--  &lt;class &#39;gdb._GdbFile&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  str  ]:
+                     |--  encoding
+                     |--  errors
+             |--  [  function  ]:
+                     |--  close ([&#39;self&#39;])
+                     |--  flush ([&#39;self&#39;])
+                     |--  isatty ([&#39;self&#39;])
+                     |--  write ([&#39;self&#39;, &#39;s&#39;])
+                     |--  writelines ([&#39;self&#39;, &#39;iterable&#39;])
+     |--  [Class Inferior]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.Inferior&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  getset_descriptor  ]:
+                     |--  num
+                     |--  pid
+                     |--  was_attached
+             |--  [  method_descriptor  ]:
+                     |--  is_valid
+                     |--  read_memory
+                     |--  search_memory
+                     |--  threads
+                     |--  write_memory
+     |--  [Class InferiorCallPostEvent]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.InferiorCallPostEvent&#39;&gt;
+                     |--  &lt;class &#39;gdb.Event&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+     |--  [Class InferiorCallPreEvent]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.InferiorCallPreEvent&#39;&gt;
+                     |--  &lt;class &#39;gdb.Event&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+     |--  [Class InferiorThread]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.InferiorThread&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  getset_descriptor  ]:
+                     |--  global_num
+                     |--  inferior
+                     |--  name
+                     |--  num
+                     |--  ptid
+             |--  [  method_descriptor  ]:
+                     |--  is_exited
+                     |--  is_running
+                     |--  is_stopped
+                     |--  is_valid
+                     |--  switch
+     |--  [Class LineTable]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.LineTable&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  method_descriptor  ]:
+                     |--  has_line
+                     |--  is_valid
+                     |--  line
+                     |--  source_lines
+     |--  [Class LineTableEntry]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.LineTableEntry&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  getset_descriptor  ]:
+                     |--  line
+                     |--  pc
+     |--  [Class LineTableIterator]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.LineTableIterator&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  method_descriptor  ]:
+                     |--  is_valid
+     |--  [Class Membuf]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.Membuf&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+     |--  [Class MemoryChangedEvent]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.MemoryChangedEvent&#39;&gt;
+                     |--  &lt;class &#39;gdb.Event&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+     |--  [Class MemoryError]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.MemoryError&#39;&gt;
+                     |--  &lt;class &#39;gdb.error&#39;&gt;
+                     |--  &lt;class &#39;RuntimeError&#39;&gt;
+                     |--  &lt;class &#39;Exception&#39;&gt;
+                     |--  &lt;class &#39;BaseException&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  getset_descriptor  ]:
+                     |--  args
+             |--  [  method_descriptor  ]:
+                     |--  with_traceback
+     |--  [Class NewObjFileEvent]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.NewObjFileEvent&#39;&gt;
+                     |--  &lt;class &#39;gdb.Event&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+     |--  [Class Objfile]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.Objfile&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  getset_descriptor  ]:
+                     |--  build_id
+                     |--  filename
+                     |--  frame_filters
+                     |--  frame_unwinders
+                     |--  owner
+                     |--  pretty_printers
+                     |--  progspace
+                     |--  type_printers
+                     |--  username
+                     |--  xmethods
+             |--  [  method_descriptor  ]:
+                     |--  add_separate_debug_file
+                     |--  is_valid
+     |--  [Class Parameter]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.Parameter&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+     |--  [Class PendingFrame]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.PendingFrame&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  method_descriptor  ]:
+                     |--  create_unwind_info
+                     |--  read_register
+     |--  [Class Progspace]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.Progspace&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  getset_descriptor  ]:
+                     |--  filename
+                     |--  frame_filters
+                     |--  frame_unwinders
+                     |--  pretty_printers
+                     |--  type_printers
+                     |--  xmethods
+     |--  [Class RegisterChangedEvent]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.RegisterChangedEvent&#39;&gt;
+                     |--  &lt;class &#39;gdb.Event&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+     |--  [Class SignalEvent]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.SignalEvent&#39;&gt;
+                     |--  &lt;class &#39;gdb.StopEvent&#39;&gt;
+                     |--  &lt;class &#39;gdb.ThreadEvent&#39;&gt;
+                     |--  &lt;class &#39;gdb.Event&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+     |--  [Class StopEvent]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.StopEvent&#39;&gt;
+                     |--  &lt;class &#39;gdb.ThreadEvent&#39;&gt;
+                     |--  &lt;class &#39;gdb.Event&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+     |--  [Class Symbol]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.Symbol&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  getset_descriptor  ]:
+                     |--  addr_class
+                     |--  is_argument
+                     |--  is_constant
+                     |--  is_function
+                     |--  is_variable
+                     |--  line
+                     |--  linkage_name
+                     |--  name
+                     |--  needs_frame
+                     |--  print_name
+                     |--  symtab
+                     |--  type
+             |--  [  method_descriptor  ]:
+                     |--  is_valid
+                     |--  value
+     |--  [Class Symtab]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.Symtab&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  getset_descriptor  ]:
+                     |--  filename
+                     |--  objfile
+                     |--  producer
+             |--  [  method_descriptor  ]:
+                     |--  fullname
+                     |--  global_block
+                     |--  is_valid
+                     |--  linetable
+                     |--  static_block
+     |--  [Class Symtab_and_line]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.Symtab_and_line&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  getset_descriptor  ]:
+                     |--  last
+                     |--  line
+                     |--  pc
+                     |--  symtab
+             |--  [  method_descriptor  ]:
+                     |--  is_valid
+     |--  [Class ThreadEvent]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.ThreadEvent&#39;&gt;
+                     |--  &lt;class &#39;gdb.Event&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+     |--  [Class Type]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.Type&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  getset_descriptor  ]:
+                     |--  code
+                     |--  name
+                     |--  sizeof
+                     |--  tag
+             |--  [  method_descriptor  ]:
+                     |--  array
+                     |--  const
+                     |--  fields
+                     |--  get
+                     |--  has_key
+                     |--  items
+                     |--  iteritems
+                     |--  iterkeys
+                     |--  itervalues
+                     |--  keys
+                     |--  optimized_out
+                     |--  pointer
+                     |--  range
+                     |--  reference
+                     |--  strip_typedefs
+                     |--  target
+                     |--  template_argument
+                     |--  unqualified
+                     |--  values
+                     |--  vector
+                     |--  volatile
+     |--  [Class TypeIterator]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.TypeIterator&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+     |--  [Class UnwindInfo]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.UnwindInfo&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  method_descriptor  ]:
+                     |--  add_saved_register
+     |--  [Class Value]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.Value&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  getset_descriptor  ]:
+                     |--  address
+                     |--  dynamic_type
+                     |--  is_lazy
+                     |--  is_optimized_out
+                     |--  type
+             |--  [  method_descriptor  ]:
+                     |--  cast
+                     |--  const_value
+                     |--  dereference
+                     |--  dynamic_cast
+                     |--  fetch_lazy
+                     |--  lazy_string
+                     |--  reference_value
+                     |--  referenced_value
+                     |--  reinterpret_cast
+                     |--  string
+     |--  [Class _GdbFile]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb._GdbFile&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  str  ]:
+                     |--  encoding
+                     |--  errors
+             |--  [  function  ]:
+                     |--  close ([&#39;self&#39;])
+                     |--  flush ([&#39;self&#39;])
+                     |--  isatty ([&#39;self&#39;])
+                     |--  writelines ([&#39;self&#39;, &#39;iterable&#39;])
+     |--  [Class error]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;gdb.error&#39;&gt;
+                     |--  &lt;class &#39;RuntimeError&#39;&gt;
+                     |--  &lt;class &#39;Exception&#39;&gt;
+                     |--  &lt;class &#39;BaseException&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  getset_descriptor  ]:
+                     |--  args
+             |--  [  method_descriptor  ]:
+                     |--  with_traceback
+
+
+  [@ FUNCTION  ]
+      @@doc :  - Function including &quot;lambda&quot; anonymous functions
+     |--  GdbSetPythonDirectory ([&#39;dir&#39;])
+     |--  auto_load_packages ([])
+     |--  execute_unwinders ([&#39;pending_frame&#39;])
+     |--  reload ([&#39;module&#39;])
+
+
+
+      [@ int ]
+             |--  gdb.ARCH_FRAME
+             |--  gdb.BP_ACCESS_WATCHPOINT
+             |--  gdb.BP_BREAKPOINT
+             |--  gdb.BP_HARDWARE_WATCHPOINT
+             |--  gdb.BP_NONE
+             |--  gdb.BP_READ_WATCHPOINT
+             |--  gdb.BP_WATCHPOINT
+             |--  gdb.COMMAND_BREAKPOINTS
+             |--  gdb.COMMAND_DATA
+             |--  gdb.COMMAND_FILES
+             |--  gdb.COMMAND_MAINTENANCE
+             |--  gdb.COMMAND_NONE
+             |--  gdb.COMMAND_OBSCURE
+             |--  gdb.COMMAND_RUNNING
+             |--  gdb.COMMAND_STACK
+             |--  gdb.COMMAND_STATUS
+             |--  gdb.COMMAND_SUPPORT
+             |--  gdb.COMMAND_TRACEPOINTS
+             |--  gdb.COMMAND_USER
+             |--  gdb.COMPLETE_COMMAND
+             |--  gdb.COMPLETE_EXPRESSION
+             |--  gdb.COMPLETE_FILENAME
+             |--  gdb.COMPLETE_LOCATION
+             |--  gdb.COMPLETE_NONE
+             |--  gdb.COMPLETE_SYMBOL
+             |--  gdb.DUMMY_FRAME
+             |--  gdb.FRAME_UNWIND_INNER_ID
+             |--  gdb.FRAME_UNWIND_MEMORY_ERROR
+             |--  gdb.FRAME_UNWIND_NO_REASON
+             |--  gdb.FRAME_UNWIND_NO_SAVED_PC
+             |--  gdb.FRAME_UNWIND_NULL_ID
+             |--  gdb.FRAME_UNWIND_OUTERMOST
+             |--  gdb.FRAME_UNWIND_SAME_ID
+             |--  gdb.FRAME_UNWIND_UNAVAILABLE
+             |--  gdb.INLINE_FRAME
+             |--  gdb.NORMAL_FRAME
+             |--  gdb.PARAM_AUTO_BOOLEAN
+             |--  gdb.PARAM_BOOLEAN
+             |--  gdb.PARAM_ENUM
+             |--  gdb.PARAM_FILENAME
+             |--  gdb.PARAM_INTEGER
+             |--  gdb.PARAM_OPTIONAL_FILENAME
+             |--  gdb.PARAM_STRING
+             |--  gdb.PARAM_STRING_NOESCAPE
+             |--  gdb.PARAM_UINTEGER
+             |--  gdb.PARAM_ZINTEGER
+             |--  gdb.SENTINEL_FRAME
+             |--  gdb.SIGTRAMP_FRAME
+             |--  gdb.STDERR
+             |--  gdb.STDLOG
+             |--  gdb.STDOUT
+             |--  gdb.SYMBOL_FUNCTIONS_DOMAIN
+             |--  gdb.SYMBOL_LABEL_DOMAIN
+             |--  gdb.SYMBOL_LOC_ARG
+             |--  gdb.SYMBOL_LOC_BLOCK
+             |--  gdb.SYMBOL_LOC_COMPUTED
+             |--  gdb.SYMBOL_LOC_CONST
+             |--  gdb.SYMBOL_LOC_CONST_BYTES
+             |--  gdb.SYMBOL_LOC_LABEL
+             |--  gdb.SYMBOL_LOC_LOCAL
+             |--  gdb.SYMBOL_LOC_OPTIMIZED_OUT
+             |--  gdb.SYMBOL_LOC_REF_ARG
+             |--  gdb.SYMBOL_LOC_REGISTER
+             |--  gdb.SYMBOL_LOC_REGPARM_ADDR
+             |--  gdb.SYMBOL_LOC_STATIC
+             |--  gdb.SYMBOL_LOC_TYPEDEF
+             |--  gdb.SYMBOL_LOC_UNDEF
+             |--  gdb.SYMBOL_LOC_UNRESOLVED
+             |--  gdb.SYMBOL_STRUCT_DOMAIN
+             |--  gdb.SYMBOL_TYPES_DOMAIN
+             |--  gdb.SYMBOL_UNDEF_DOMAIN
+             |--  gdb.SYMBOL_VARIABLES_DOMAIN
+             |--  gdb.SYMBOL_VAR_DOMAIN
+             |--  gdb.TAILCALL_FRAME
+             |--  gdb.TYPE_CODE_ARRAY
+             |--  gdb.TYPE_CODE_BITSTRING
+             |--  gdb.TYPE_CODE_BOOL
+             |--  gdb.TYPE_CODE_CHAR
+             |--  gdb.TYPE_CODE_COMPLEX
+             |--  gdb.TYPE_CODE_DECFLOAT
+             |--  gdb.TYPE_CODE_ENUM
+             |--  gdb.TYPE_CODE_ERROR
+             |--  gdb.TYPE_CODE_FLAGS
+             |--  gdb.TYPE_CODE_FLT
+             |--  gdb.TYPE_CODE_FUNC
+             |--  gdb.TYPE_CODE_INT
+             |--  gdb.TYPE_CODE_INTERNAL_FUNCTION
+             |--  gdb.TYPE_CODE_MEMBERPTR
+             |--  gdb.TYPE_CODE_METHOD
+             |--  gdb.TYPE_CODE_METHODPTR
+             |--  gdb.TYPE_CODE_NAMESPACE
+             |--  gdb.TYPE_CODE_PTR
+             |--  gdb.TYPE_CODE_RANGE
+             |--  gdb.TYPE_CODE_REF
+             |--  gdb.TYPE_CODE_SET
+             |--  gdb.TYPE_CODE_STRING
+             |--  gdb.TYPE_CODE_STRUCT
+             |--  gdb.TYPE_CODE_TYPEDEF
+             |--  gdb.TYPE_CODE_UNION
+             |--  gdb.TYPE_CODE_VOID
+             |--  gdb.WP_ACCESS
+             |--  gdb.WP_READ
+             |--  gdb.WP_WRITE
+
+
+      [@ str ]
+             |--  gdb.HOST_CONFIG
+             |--  gdb.PYTHONDIR
+             |--  gdb.TARGET_CONFIG
+             |--  gdb.VERSION
+
+      [@ list ]
+             |--  gdb.frame_unwinders
+             |--  gdb.packages
+             |--  gdb.pretty_printers
+             |--  gdb.type_printers
+             |--  gdb.xmethods
+
+      [@ dict ]
+             |--  gdb.__warningregistry__
+             |--  gdb.frame_filters
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="modules.html" class="btn btn-neutral float-right" title="BASIC PYTHON MODULES" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="builtin_modules.html" class="btn btn-neutral" title="BUILTIN PYTHON MODULES" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,193 @@
+..  Command: rst2html.py temp.txt temp.html
+.. /project/pcb/evadkan/python/anaconda3/bin/rst2html.py
+
+
+*****************************************
+  Template for reStructured Text
+*****************************************
+
+..toctree:: 
+    :maxdepth: 2
+
+.. Include other  txt/rst files here
+
+.. sectnum::
+.. contents:: Table Of Contents
+.. header:: Tarantula Diags Reference
+.. |date| date::
+.. |time| date:: %H.%M
+.. footer::  |date| |time|
+
+.. |image| image:: images/Variable.jpg
+    :alt: Variable
+    :target: images/Variable.jpg
+    :align: middle
+
+
+.. note:: This is a template file for  ReStructured text
+
+.. Comment: This line will not be processed and displayed
+
+
+Convert to HTML and S5 Presentation 
+--------------------------------------------------------------------
+
+    # HTML Files
+    rst2html.py temp.txt temp.html
+
+
+    # Presentation
+    # S5: A Simple Standards-Based Slide Show System
+
+    rst2s5.py --theme small-white temp.txt temp.html
+
+        themes: default
+                small/medium/big-white/black
+
+                /usr/lib/python3.2/site-packages/docutils/writers/s5_html/themes/
+                    big-black/  default/	   medium-white/  small-black/
+                    big-white/  medium-black/  README.txt	  small-white/
+
+        http://www.meyerweb.com/eric/tools/s5/credits.html
+                    
+                
+===========
+Table Block
+===========
+
+TABLE BLOCK
+***********
+
+     +--------+------+--------------------+------------+----------------+
+     | LABEL1 | L1   |    L2              |  L3        |    L4          |
+     +--------+------+--------------------+------------+----------------+
+     |  0     |      | FIRST LINE         |  4         |   NONE         |
+     |        |      |                    |            |                |
+     |        |      | SECOND LINE        |  5         |   LIST         |
+     |        |      |                    |            |                |
+     |        |      | THIRD PARAGRAPH    |  6         |                |
+     +--------+------+--------------------+------------+----------------+
+     |  1     |      | FIRST LINE         |  4         |   NONE         |
+     |        |      |                    |            |                |
+     |        |      | SECOND LINE        |  5         |   LIST         |
+     |        |      |                    |            |                |
+     |        |      | THIRD PARAGRAPH    |  6         |                |
+     +--------+------+--------------------+------------+----------------+
+
+CSV-TABLE BLOCK
+***************
+
+.. csv-table:: a title
+   :header: "first header", "second header", "third header"
+   :widths: 20, 20, 10
+
+   "item 1", "item 2", 3
+   "item 4", "item 5", 5
+
+
+SECTION BLOCKS
+**************
+    BLOCK DESCRIPTIONS
+
+LINK DESCRIPTION
+#################
+
+    Here is my `hithub link <https://github.com/vadivelmurugank/picothing>`_
+
+.. _github link : https://github.com/vadivelmurugank/picothing
+
+Git hub external link is represented here 'github link'_
+
+
+MODULE 3
+*********
+
+=================
+ LIST BLOCKS
+=================
+
+    #. LIST1
+
+       PARAGRAPH 1
+
+    #. LIST 2
+
+       PARAGRAPH 2
+
+    #. LIST 3
+
+       PARAGRAPH 3
+
+==============
+ MATH BLOCKS
+==============
+
+Firt Math Equation :math:`\alpha > \beta`
+
+Complex math :math:`n_{\mathrm{offset}} = \sum_{k=0}^{N-1} s_k n_k`
+
+.. Comment: The below will have the formulae centered
+
+.. math::
+
+    n_{\mathrm{offset}} = \sum_{k=0}^{N-1} s_k n_k
+
+
+==============
+ SIDEBAR
+==============
+
+.. sidebar:: Sidebar Title
+        :subtitle: Optional Sidebar Subtitle
+
+   Subsequent indented lines comprise
+   the body of the sidebar, and are
+   interpreted as body elements.
+
+
+==============
+    PDF BLOCK
+==============
+
+PDF File :download:`pdf <images/slides.pdf>`
+
+==============
+ IMAGE BLOCKS
+==============
+
+Here is the image:
+|image|
+
+===========================================
+        References
+===========================================
+
+Plain text	Typical result	Notes
+
+*emphasis*	emphasis	Normally rendered as italics.
+
+**strong emphasis**	strong emphasis	Normally rendered as boldface.
+
+`interpreted text`	(see note at right)	The rendering and meaning of interpreted text is domain- or application-dependent. It can be used for things like index entries or explicit descriptive markup (like program identifiers).
+
+``inline literal``	inline literal	Normally rendered as monospaced text. Spaces should be preserved, but line breaks will not be.
+
+reference_	reference	A simple, one-word hyperlink reference. See Hyperlink Targets.
+
+`phrase reference`_	phrase reference	A hyperlink reference with spaces or punctuation needs to be quoted with backquotes. See Hyperlink Targets.
+
+anonymous__	anonymous	With two underscores instead of one, both simple and phrase references may be anonymous (the reference text is not repeated at the target). See Hyperlink Targets.
+
+_`inline internal target`	inline internal target	A crossreference target within text. See Hyperlink Targets.
+
+|substitution reference|	(see note at right)	The result is substituted in from the substitution definition. It could be text, an image, a hyperlink, or a combination of these and others.
+
+footnote reference [1]_	footnote reference 1	See Footnotes.
+
+citation reference [CIT2002]_	citation reference [CIT2002]	See Citations.
+
+http://docutils.sf.net/	http://docutils.sf.net/	A standalone hyperlink.
+
+  
+
+

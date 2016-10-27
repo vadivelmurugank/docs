@@ -1,0 +1,1189 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>1   GIT INTERNALS &mdash;   documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="  documentation" href="../../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">PYTHON</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html"></a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+    <li>1&nbsp;&nbsp;&nbsp;GIT INTERNALS</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/tools/GIT/GIT_INTERNALS.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="git-internals">
+<h1><a class="toc-backref" href="#id1">1&nbsp;&nbsp;&nbsp;GIT INTERNALS</a><a class="headerlink" href="#git-internals" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="auto-toc simple">
+<li><a class="reference internal" href="#git-internals" id="id1">1&nbsp;&nbsp;&nbsp;GIT INTERNALS</a><ul class="auto-toc">
+<li><a class="reference internal" href="#the-name-git" id="id2">1.1&nbsp;&nbsp;&nbsp;The name &#8220;git&#8221;</a></li>
+<li><a class="reference internal" href="#database-vs-repository" id="id3">1.2&nbsp;&nbsp;&nbsp;Database vs Repository</a></li>
+<li><a class="reference internal" href="#meta-data" id="id4">1.3&nbsp;&nbsp;&nbsp;Meta-Data</a></li>
+<li><a class="reference internal" href="#hashing" id="id5">1.4&nbsp;&nbsp;&nbsp;Hashing</a></li>
+<li><a class="reference internal" href="#sha1" id="id6">1.5&nbsp;&nbsp;&nbsp;SHA1</a></li>
+<li><a class="reference internal" href="#git-objects" id="id7">1.6&nbsp;&nbsp;&nbsp;Git Objects</a><ul class="auto-toc">
+<li><a class="reference internal" href="#hash-object" id="id8">1.6.1&nbsp;&nbsp;&nbsp;Hash-Object</a></li>
+<li><a class="reference internal" href="#commit-object" id="id9">1.6.2&nbsp;&nbsp;&nbsp;Commit Object</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#git-terminologies-or-vernaculars" id="id10">1.7&nbsp;&nbsp;&nbsp;git Terminologies or vernaculars</a></li>
+<li><a class="reference internal" href="#git-init" id="id11">1.8&nbsp;&nbsp;&nbsp;git init</a></li>
+<li><a class="reference internal" href="#file-blobs" id="id12">1.9&nbsp;&nbsp;&nbsp;File blobs</a></li>
+<li><a class="reference internal" href="#directory-trees" id="id13">1.10&nbsp;&nbsp;&nbsp;Directory Trees</a></li>
+<li><a class="reference internal" href="#finding-object-types" id="id14">1.11&nbsp;&nbsp;&nbsp;Finding Object Types</a></li>
+<li><a class="reference internal" href="#creating-commit-object" id="id15">1.12&nbsp;&nbsp;&nbsp;Creating Commit Object</a></li>
+<li><a class="reference internal" href="#commit-object-and-parent-relationship" id="id16">1.13&nbsp;&nbsp;&nbsp;Commit object and Parent Relationship</a></li>
+<li><a class="reference internal" href="#branching" id="id17">1.14&nbsp;&nbsp;&nbsp;Branching</a></li>
+<li><a class="reference internal" href="#merge-and-rebase" id="id18">1.15&nbsp;&nbsp;&nbsp;Merge and Rebase</a></li>
+<li><a class="reference internal" href="#git-plumbing-and-porcelain-commands" id="id19">1.16&nbsp;&nbsp;&nbsp;Git Plumbing and Porcelain commands</a><ul class="auto-toc">
+<li><a class="reference internal" href="#plumbing-or-low-level-commands" id="id20">1.16.1&nbsp;&nbsp;&nbsp;Plumbing or low level commands</a></li>
+<li><a class="reference internal" href="#porcelain-or-user-interface-commands" id="id21">1.16.2&nbsp;&nbsp;&nbsp;Porcelain or user interface commands</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#git-directory" id="id22">1.17&nbsp;&nbsp;&nbsp;&#8221;.git&#8221; directory</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="the-name-git">
+<h2><a class="toc-backref" href="#id2">1.1&nbsp;&nbsp;&nbsp;The name &#8220;git&#8221;</a><a class="headerlink" href="#the-name-git" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>Stupid. Contemptible and despicable. Simple. Take your pick from the
+dictionary of slang.</li>
+<li>&#8220;Global information tracker&#8221;</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="database-vs-repository">
+<h2><a class="toc-backref" href="#id3">1.2&nbsp;&nbsp;&nbsp;Database vs Repository</a><a class="headerlink" href="#database-vs-repository" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt>Database - Data</dt>
+<dd><ul class="first last simple">
+<li>Source files are the Data</li>
+<li>Data include blob of files and Directory trees</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Repository - Meta-Data - References to Data</dt>
+<dd><ul class="first last">
+<li><p class="first">File blobs and Directory trees</p>
+</li>
+<li><dl class="first docutils">
+<dt>Tracker Meta-datas</dt>
+<dd><ul class="first last simple">
+<li>Timeline - Time and date</li>
+<li>Authors</li>
+<li>Commits - Head, master, Branch, tags</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="meta-data">
+<h2><a class="toc-backref" href="#id4">1.3&nbsp;&nbsp;&nbsp;Meta-Data</a><a class="headerlink" href="#meta-data" title="Permalink to this headline">¶</a></h2>
+<p>Metadata is information about data, and describes basic characteristics of the
+data</p>
+<blockquote>
+<div><ul class="simple">
+<li>Who created the data</li>
+<li>What the data file contains</li>
+<li>When the data were generated</li>
+<li>Where the data were generated</li>
+<li>Why the data were generated</li>
+<li>How the data were generated</li>
+</ul>
+<p>Meta-Data Creation tools:
+<a class="reference external" href="http://library.stanford.edu/research/data-management-services/data-best-practices/creating-metadata/metadata-tools-comparison">http://library.stanford.edu/research/data-management-services/data-best-practices/creating-metadata/metadata-tools-comparison</a></p>
+</div></blockquote>
+</div>
+<div class="section" id="hashing">
+<h2><a class="toc-backref" href="#id5">1.4&nbsp;&nbsp;&nbsp;Hashing</a><a class="headerlink" href="#hashing" title="Permalink to this headline">¶</a></h2>
+<p>Hashing is a mathematical process, which is based on substitution and
+transposition of data to generate a unique alphanumeric value.  The unique
+alphanumeric of a computer file is called its hash value</p>
+<p>In the linguistic sense of &#8220;to chop and mix&#8221;</p>
+<dl class="docutils">
+<dt>Two commonly used hash algorithms</dt>
+<dd><ul class="first last simple">
+<li>MD5</li>
+<li>SHA1</li>
+</ul>
+</dd>
+</dl>
+<ul>
+<li><dl class="first docutils">
+<dt>Secure Hash Algorithm (SHA)</dt>
+<dd><blockquote class="first">
+<div><ul class="simple">
+<li>Message Digest (MD5) - 128bit (4x32bit)</li>
+<li>SHA-0                - 160bit (5x32bit)</li>
+<li>SHA-1                - 160bit (5x32bit)</li>
+<li>SHA-2                - 224-512 ( 256 (8x32bit) 512 (8x64bit))</li>
+</ul>
+</div></blockquote>
+<p class="last"><a class="reference external" href="https://en.wikipedia.org/wiki/Secure_Hash_Algorithm">https://en.wikipedia.org/wiki/Secure_Hash_Algorithm</a></p>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="sha1">
+<h2><a class="toc-backref" href="#id6">1.5&nbsp;&nbsp;&nbsp;SHA1</a><a class="headerlink" href="#sha1" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>SHA-1 produces a 160-bit (20-byte) hash value known as a message digest. A</li>
+<li>SHA-1 hash value is typically rendered as a hexadecimal number, 40 digits</li>
+<li>long.</li>
+<li>SHA-1 differs from SHA-0 only by a single bitwise rotation in the message</li>
+<li>schedule of its compression function.</li>
+<li>SHA-1 forms part of several widely used security applications and</li>
+<li>protocols, including TLS and SSL, PGP, SSH, S/MIME, and IPsec.</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>SHA1:
+<span class="nb">echo</span> -n <span class="s2">&quot;hash of hashes&quot;</span> <span class="p">|</span> openssl sha1
+<span class="o">(</span>stdin<span class="o">)=</span> e452add379d59bb81f06dcd398bd28a0d9a31de4
+
+<span class="nb">echo</span> -n <span class="s2">&quot;hash of hashes&quot;</span> <span class="p">|</span> git hash-object -w --stdin
+784f3cfc967690659bcf85e613394229c2e3f7f4
+
+
+Md5:
+<span class="nb">echo</span> -n <span class="s2">&quot;hash of hashes&quot;</span> <span class="p">|</span> openssl dgst
+<span class="o">(</span>stdin<span class="o">)=</span> 507c2e5dad72bd992ece6c44d0f6fbfb
+
+base64 encoding:
+<span class="nb">echo</span> -n <span class="s2">&quot;hash of hashes&quot;</span> <span class="p">|</span> openssl sha1 <span class="p">|</span> base64
+<span class="nv">KHN0ZGluKT0gZTQ1MmFkZDM3OWQ1OWJiODFmMDZkY2QzOThiZDI4YTBkOWEzMWRlNAo</span><span class="o">=</span>
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>git hash-object Makefile 7159fb1b25c98506005f40892775b991238a9946
+
+git cat-file -p 7159f
+<span class="s">&lt;&lt; contents of Makefile &gt;&gt;</span>
+
+<span class="s">openssl sha1 Makefile SHA1(Makefile)=</span>
+<span class="s">    39562937108b5f08c</span>bde71a6b587a3d032659307
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="git-objects">
+<h2><a class="toc-backref" href="#id7">1.6&nbsp;&nbsp;&nbsp;Git Objects</a><a class="headerlink" href="#git-objects" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>Blob           - Content/data of source
+Tree object    - Source and Subdirectories
+Commit Object  - Commit meta-data and source/directory.</div></blockquote>
+<div class="section" id="hash-object">
+<h3><a class="toc-backref" href="#id8">1.6.1&nbsp;&nbsp;&nbsp;Hash-Object</a><a class="headerlink" href="#hash-object" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>hash of &#8220;dictionary of hashes&#8221;</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">sha1</span><span class="p">(</span>
+    <span class="n">meta</span> <span class="n">data</span>
+        <span class="n">commit</span> <span class="n">message</span>  <span class="p">:</span> <span class="o">&lt;&lt;</span><span class="nb">hash</span><span class="o">&gt;&gt;</span>
+        <span class="n">commiter</span>        <span class="p">:</span> <span class="o">&lt;&lt;</span><span class="nb">hash</span><span class="o">&gt;&gt;</span>
+        <span class="n">commit</span> <span class="n">date</span>     <span class="p">:</span> <span class="o">&lt;&lt;</span><span class="nb">hash</span><span class="o">&gt;&gt;</span>
+        <span class="n">author</span>          <span class="p">:</span> <span class="o">&lt;&lt;</span><span class="nb">hash</span><span class="o">&gt;&gt;</span>
+        <span class="n">authoring</span> <span class="n">date</span>  <span class="p">:</span> <span class="o">&lt;&lt;</span><span class="nb">hash</span><span class="o">&gt;&gt;</span>
+        <span class="n">content</span>         <span class="p">:</span> <span class="o">&lt;&lt;</span><span class="nb">hash</span> <span class="n">of</span> <span class="n">source</span><span class="o">/</span><span class="n">blob</span><span class="o">&gt;&gt;</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="commit-object">
+<h3><a class="toc-backref" href="#id9">1.6.2&nbsp;&nbsp;&nbsp;Commit Object</a><a class="headerlink" href="#commit-object" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">sha1</span><span class="p">(</span>
+    <span class="n">commit</span> <span class="n">message</span>  <span class="o">=&gt;</span> <span class="o">&lt;&lt;</span><span class="nb">hash</span><span class="o">&gt;&gt;</span> <span class="s2">&quot;Makefile initial commit&quot;</span>
+    <span class="n">commiter</span>        <span class="o">=&gt;</span> <span class="o">&lt;&lt;</span><span class="nb">hash</span><span class="o">&gt;&gt;</span> <span class="n">vad</span>
+    <span class="n">commit</span> <span class="n">date</span>     <span class="o">=&gt;</span> <span class="o">&lt;&lt;</span><span class="nb">hash</span><span class="o">&gt;&gt;</span> <span class="n">March</span> <span class="mi">10</span> <span class="mi">09</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">30</span>
+    <span class="n">author</span>          <span class="o">=&gt;</span> <span class="o">&lt;&lt;</span><span class="nb">hash</span><span class="o">&gt;&gt;</span> <span class="n">Vad</span>
+    <span class="n">author</span> <span class="n">date</span>     <span class="o">=&gt;</span> <span class="o">&lt;&lt;</span><span class="nb">hash</span><span class="o">&gt;&gt;</span> <span class="n">March</span> <span class="mi">10</span> <span class="mi">09</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">30</span>
+    <span class="n">tree</span>            <span class="o">=&gt;</span> <span class="o">&lt;&lt;</span><span class="nb">hash</span><span class="o">&gt;&gt;</span> <span class="mi">9</span><span class="n">c435a86e664be00db0d973e981425e4a3ef3f8d</span>
+    <span class="n">Parents</span>         <span class="o">=&gt;</span> <span class="o">&lt;&lt;</span><span class="nb">hash</span><span class="o">&gt;&gt;</span> <span class="n">Hash</span> <span class="n">of</span> <span class="n">Parent</span> <span class="n">Commit</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="git-terminologies-or-vernaculars">
+<h2><a class="toc-backref" href="#id10">1.7&nbsp;&nbsp;&nbsp;git Terminologies or vernaculars</a><a class="headerlink" href="#git-terminologies-or-vernaculars" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Working (User) Tree    &#8211;&gt;  Index (Staging) &#8212;&gt; Repository</p>
+<p>HEAD   : Pointer to Top of Index</p>
+<p>Reference : indexes are stored as file, named after sha-1. (.git/refs/..)</p>
+<p>master : Repository: default branch</p>
+<p>origin : Default name for the remote git repository that is cloned.</p>
+<blockquote>
+<div>&#8220;git remote show origin&#8221; show info on remote git repo.</div></blockquote>
+<p>Source Files  - blob
+Directories   - tree</p>
+</div></blockquote>
+</div>
+<div class="section" id="git-init">
+<h2><a class="toc-backref" href="#id11">1.8&nbsp;&nbsp;&nbsp;git init</a><a class="headerlink" href="#git-init" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><div class="highlight-text"><div class="highlight"><pre><span></span>.git
+|
+|-- config
+|-- description
+|-- HEAD
+|-- hooks
+|   |-- applypatch-msg.sample
+|   |-- commit-msg.sample
+|   |-- post-update.sample
+|   |-- pre-applypatch.sample
+|   |-- pre-commit.sample
+|   |-- prepare-commit-msg.sample
+|   |-- pre-push.sample
+|   |-- pre-rebase.sample
+|   `-- update.sample
+|-- info
+|   `-- exclude
+|-- objects
+|   |-- info
+|   `-- pack
+`-- refs
+    |-- heads
+`-- tags
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="file-blobs">
+<h2><a class="toc-backref" href="#id12">1.9&nbsp;&nbsp;&nbsp;File blobs</a><a class="headerlink" href="#file-blobs" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">echo</span> -n <span class="s2">&quot;Hash of Dictionary of hashes&quot;</span> &gt; hash.info
+git hash-object hash.info
+
+git add hash.info
+
+git hash-object hash.info
+89ac35eb8a1a6dd61cb86e9e9102cdf2dafc0811
+
+89
+  <span class="sb">`</span>-- ac35eb8a1a6dd61cb86e9e9102cdf2dafc0811
+
+
+git cat-file -p 89ac35eb8a1a6dd61cb86e9e9102cdf2dafc0811
+Hash of Dictionary of hashes
+
+git cat-file blob 89ac3
+Hash of Dictionary of hashes
+</pre></div>
+</div>
+<div class="highlight-text"><div class="highlight"><pre><span></span>.git
+|
+|-- objects
+|   |-- 89
+|   |   `-- ac35eb8a1a6dd61cb86e9e9102cdf2dafc0811
+|   |-- info
+|   `-- pack
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="directory-trees">
+<h2><a class="toc-backref" href="#id13">1.10&nbsp;&nbsp;&nbsp;Directory Trees</a><a class="headerlink" href="#directory-trees" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">$git</span> ls-tree HEAD
+<span class="m">100644</span> blob 89ac35eb8a1a6dd61cb86e9e9102cdf2dafc0811    hash.info
+<span class="m">040000</span> tree 9ea162ba560bf24b7d74bc76efe9564cd6d43bfd    src
+
+<span class="nv">$git</span> ls-files --stage
+<span class="m">100644</span> 89ac35eb8a1a6dd61cb86e9e9102cdf2dafc0811 <span class="m">0</span>       hash.info
+<span class="m">100644</span> 641d7f4c84bcae99ff118ac98cc7f305a6ed3587 <span class="m">0</span>       src/Makefile
+
+
+<span class="nv">$git</span> cat-file commit HEAD
+tree f31720a71b30d7c8b6fb5eb565ab941ebc075056
+parent d1dcae49da43693067f0897d73b21b70886b6d4e
+author vadivelmurugank &lt;vadivelmurugank@gmail.com&gt; <span class="m">1473711795</span> -0700
+committer vadivelmurugank &lt;vadivelmurugank@gmail.com&gt; <span class="m">1473711795</span> -0700
+</pre></div>
+</div>
+<p>Add Source files</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>git ls-tree f31720a71b30d7c8b6fb5eb565ab941ebc075056
+<span class="m">100644</span> blob 89ac35eb8a1a6dd61cb86e9e9102cdf2dafc0811    hash.info
+<span class="m">040000</span> tree 9ea162ba560bf24b7d74bc76efe9564cd6d43bfd    src
+
+<span class="c1"># Recursive into sub trees</span>
+git ls-tree -r f31720a71b30d7c8b6fb5eb565ab941ebc075056
+<span class="m">100644</span> blob 89ac35eb8a1a6dd61cb86e9e9102cdf2dafc0811    hash.info
+<span class="m">100644</span> blob 641d7f4c84bcae99ff118ac98cc7f305a6ed3587    src/Makefile
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="finding-object-types">
+<h2><a class="toc-backref" href="#id14">1.11&nbsp;&nbsp;&nbsp;Finding Object Types</a><a class="headerlink" href="#finding-object-types" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># find Object types</span>
+find .git/objects/ -type f -exec sh -c <span class="se">\</span>
+    <span class="s1">&#39;hashid=$(basename $(dirname $0))$(basename $0) ; \</span>
+<span class="s1">    echo &quot;$(git cat-file -t $hashid) : $hashid:&quot; ; &#39;</span> <span class="se">\</span>
+    <span class="o">{}</span> <span class="se">\;</span>
+</pre></div>
+</div>
+<p>blob : .git/objects/64/1d7f4c84bcae99ff118ac98cc7f305a6ed3587
+blob : .git/objects/89/ac35eb8a1a6dd61cb86e9e9102cdf2dafc0811
+commit : .git/objects/9d/5b0f5d534a444cec96b4a3e39c978570fb3eb2
+tree : .git/objects/9e/a162ba560bf24b7d74bc76efe9564cd6d43bfd
+tree : .git/objects/b8/10e4e972254ed11e21a05d024d7fd5b44454c6
+commit : .git/objects/d1/dcae49da43693067f0897d73b21b70886b6d4e
+tree : .git/objects/f3/1720a71b30d7c8b6fb5eb565ab941ebc075056</p>
+</div></blockquote>
+</div>
+<div class="section" id="creating-commit-object">
+<h2><a class="toc-backref" href="#id15">1.12&nbsp;&nbsp;&nbsp;Creating Commit Object</a><a class="headerlink" href="#creating-commit-object" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>The blob is not referenced by blob yet. Currently reference with .git/index</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># The new greeting blob is referenced in .git/index. Create new tree</span>
+<span class="c1"># object with .git/index</span>
+<span class="c1"># contents with &quot;write-tree&quot;.</span>
+<span class="nv">$git</span> write-tree
+39dea6858ce63e3fe37cf3b802179285f3f6e5d2
+
+
+<span class="c1"># Make a Commit Object to hold the new tree with the log.</span>
+<span class="nv">$echo</span> <span class="s2">&quot;Greeting message&quot;</span> <span class="p">|</span> git commit-tree 39dea
+631f6ac1f8aa7772333059490252b69ae9cca820
+
+
+<span class="c1"># Make the new tree as the new HEAD of current branch</span>
+<span class="nb">echo</span> 631f6ac1f8aa7772333059490252b69ae9cca820 &gt;
+    .git/refs/heads/master
+
+<span class="c1"># Refer branch master refer to the new HEAD</span>
+<span class="nv">$git</span> update-ref refs/heads/master 631f6
+
+<span class="c1"># Attach symbolic reference of HEAD to master</span>
+<span class="nv">$git</span> symbolic-ref HEAD refs/heads/master
+
+
+<span class="c1"># Now the actual commit object with all references added</span>
+<span class="nv">$git</span> log
+commit 631f6ac1f8aa7772333059490252b69ae9cca820
+Author: vadivelmurugank &lt;vadivelmurugank@gmail.com&gt;
+Date:   Mon Sep <span class="m">12</span> 15:39:00 <span class="m">2016</span> -0700
+
+    Greeting message
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="commit-object-and-parent-relationship">
+<h2><a class="toc-backref" href="#id16">1.13&nbsp;&nbsp;&nbsp;Commit object and Parent Relationship</a><a class="headerlink" href="#commit-object-and-parent-relationship" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Every Commit holds a tree and every tree may contain any number of other
+trees and blobs in its leaves.</p>
+<p>Commit objects link to one of more parent commits to form &#8220;revision history&#8221;</p>
+<p>Parent of any commit is referenced using caret symbol. If a commit has more
+than one parent, the first is used.</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>name^   : Parent of commit &lt;name&gt;
+name^^  : Parent of Parent of Commit &lt;name&gt;
+name^2  : Nth Parent if there are more than one parent in case of merge
+name~10 : Commit&#39;s nth ancestor referenced using tilde(~) followed by
+ordinal number.
+name:path : HEAD^1:Makefile HEAD^2:Makefile
+name^{tree} : reference commit by tree
+</pre></div>
+</div>
+<div class="highlight-text"><div class="highlight"><pre><span></span>name1..name2 : (double dots) commit ranges. commits reachable from name2
+back to, but not including name1.
+
+name1...name2 : (triple dots) commit ranges excluding references to name1
+and name2.
+
+master..      : master..HEAD
+..master      : Commits occured since last rebase or merge
+
+--grep=pattern
+--commiter=pattern
+--author=pattern
+--since=&quot;2 weeks ago&quot;
+--until=&quot;1 week ago&quot;
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># All commits since last two weeks</span>
+git log  --all --oneline --graph --since<span class="o">=</span><span class="s2">&quot;2 weeks ago&quot;</span> --no-merges
+
+<span class="c1">#git log --ADOG</span>
+git log --all --decorate --oneline --graph &lt;&lt;--no-merges&gt;&gt; &lt;&lt;--reverse&gt;&gt;
+
+
+<span class="c1"># Git commit count from author</span>
+git shortlog -s -n
+git shortlog -s -n --author<span class="o">=</span><span class="s2">&quot;vadivel&quot;</span> --no-merges --reverse
+git shortlog --author<span class="o">=</span><span class="s2">&quot;vadivel&quot;</span> --since<span class="o">=</span><span class="s2">&quot;1 year ago&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="branching">
+<h2><a class="toc-backref" href="#id17">1.14&nbsp;&nbsp;&nbsp;Branching</a><a class="headerlink" href="#branching" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Branch is a named reference to a commit object. Commit objects has complete
+tree object of sources.</p>
+<p># List all branches
+git branch -v git show-branch</p>
+<p># Create a branch
+git checkout &lt;&lt;commit hash or branchname&gt;&gt;</p>
+<p>Branchname is simply an alias for most recent commit on that branch, which
+is similar to using alias &#8220;HEAD&#8221; for recent commit instead of recent hash id.</p>
+<p>tagname is also alias for naming a commit instead of hashid. Tag aliases
+never change and references the same hash-id.</p>
+</div></blockquote>
+</div>
+<div class="section" id="merge-and-rebase">
+<h2><a class="toc-backref" href="#id18">1.15&nbsp;&nbsp;&nbsp;Merge and Rebase</a><a class="headerlink" href="#merge-and-rebase" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><div class="highlight-text"><div class="highlight"><pre><span></span>O &lt;-- A &lt;-- B &lt;-- C &lt;-- D (HEAD)       &lt;&lt;-- Branch D
+       \
+        \W &lt;-- X &lt;-- Y &lt;--- Z (HEAD)   &lt;&lt;-- Branch Z
+</pre></div>
+</div>
+<p>At A : create new branch Z Two branches: Branch D and Branch Z.</p>
+<ul>
+<li><dl class="first docutils">
+<dt>Merge</dt>
+<dd><p class="first">Merge Branch D to Branch Z =&gt; Z&#8217; (Z+D)</p>
+<p>New Z&#8217; commit has been created from the merge which has changes of D and
+Z into Z&#8217;</p>
+<p class="last">git checkout Z
+git merge D</p>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-text"><div class="highlight"><pre><span></span>O &lt;-- A &lt;-- B &lt;-- C &lt;-- D &lt;----\
+       \                        \
+        \                        \
+         W &lt;-- X &lt;-- Y &lt;--- Z &lt;-- Z&#39; ( Z+D) (HEAD)   &lt;&lt;-- Branch Z
+</pre></div>
+</div>
+<ul>
+<li><p class="first">Rebase</p>
+<blockquote>
+<div><blockquote>
+<div><p>Transplant the Z branch straight onto D, effectively moving it forward
+in time.</p>
+</div></blockquote>
+<p>git checkout Z
+git rebase D</p>
+<p>#Interative rebasing
+git rebase -i D</p>
+<blockquote>
+<div><div class="highlight-text"><div class="highlight"><pre><span></span>O &lt;-- A &lt;-- B &lt;-- C &lt;-- D
+                        \   &lt;&lt;-- rebase to D    \
+                          W&#39; &lt;-- X&#39; &lt;-- Y&#39; &lt;--- Z&#39;
+                        (W+D)   (W&#39;+X)  (X&#39;+ Y)  (Y&#39;+Z)
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p class="first">Git Hard and Soft Reset</p>
+<blockquote>
+<div><p>git reset HEAD</p>
+<ul>
+<li><p class="first">Soft Reset</p>
+<blockquote>
+<div><p>git reset &#8211;soft HEAD~1</p>
+<p>git reset &#8211;soft HEAD^ ( porcelain command)</p>
+<p>git update-ref HEAD HEAD^ ( Plumbing to do same soft reset)</p>
+</div></blockquote>
+</li>
+<li><p class="first">Hard Reset</p>
+<blockquote>
+<div><p>git reset &#8211;hard HEAD~3</p>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Git Stash before Reset</p>
+<blockquote>
+<div><p># Create temporary commit
+git stash</p>
+<p>git checkout -b new-branch HEAD~3</p>
+<p>git checkout master</p>
+<p>git stash apply</p>
+<p># Git stash operations
+git stash list
+git stash clear
+git log <a class="reference external" href="mailto:stash&#37;&#52;&#48;{1">stash<span>&#64;</span>{1</a>}
+git show <a class="reference external" href="mailto:stash&#37;&#52;&#48;{1">stash<span>&#64;</span>{1</a>}</p>
+</div></blockquote>
+</li>
+<li><dl class="first docutils">
+<dt>Git reflogs</dt>
+<dd><p class="first">Git reference logs to track every change made to the repository.</p>
+<p>git reflog</p>
+<p class="last">git stash list
+git reflog show stash</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="git-plumbing-and-porcelain-commands">
+<h2><a class="toc-backref" href="#id19">1.16&nbsp;&nbsp;&nbsp;Git Plumbing and Porcelain commands</a><a class="headerlink" href="#git-plumbing-and-porcelain-commands" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="plumbing-or-low-level-commands">
+<h3><a class="toc-backref" href="#id20">1.16.1&nbsp;&nbsp;&nbsp;Plumbing or low level commands</a><a class="headerlink" href="#plumbing-or-low-level-commands" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p># the plumbing commands #</p>
+<ul>
+<li><dl class="first docutils">
+<dt><cite>rev-parse [something]</cite></dt>
+<dd><ul class="first last simple">
+<li>show the SHA of any weird git phrase</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><cite>hash-object -w [file]</cite></dt>
+<dd><ul class="first last simple">
+<li>take any file or stdin and return a blob sha</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><cite>ls-tree (-r) [sha]</cite></dt>
+<dd><ul class="first last simple">
+<li>show the entries of a git tree in the db</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><cite>ls-files -s</cite></dt>
+<dd><ul class="first last simple">
+<li>show the entries of the index</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><cite>read-tree</cite></dt>
+<dd><ul class="first last simple">
+<li>make the index look like a git tree in the db</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><cite>update-index</cite></dt>
+<dd><ul class="first last simple">
+<li>take an existing blob or a file from the work tree and update the</li>
+<li>index entry</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><cite>write-tree</cite></dt>
+<dd><ul class="first last simple">
+<li>record the current state of the index into a git tree in the db and</li>
+<li>return the sha</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><cite>commit-tree</cite></dt>
+<dd><ul class="first last simple">
+<li>create a commit object from a git tree in the db</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><cite>update-ref</cite></dt>
+<dd><ul class="first last simple">
+<li>update a branch (or other reference) to point to a specific commit sha</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><cite>symbolic-ref</cite></dt>
+<dd><ul class="first last simple">
+<li>update a reference (usually HEAD) to point to another reference (like</li>
+<li>a branch)</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="porcelain-or-user-interface-commands">
+<h3><a class="toc-backref" href="#id21">1.16.2&nbsp;&nbsp;&nbsp;Porcelain or user interface commands</a><a class="headerlink" href="#porcelain-or-user-interface-commands" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul>
+<li><p class="first">MAKE CHANGES</p>
+<blockquote>
+<div><p>Review edits and craf a commit transaction</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>$ git status</dt>
+<dd><p class="first last">Lists all new or modified files to be commited</p>
+</dd>
+<dt>$ git add [file]</dt>
+<dd><p class="first last">Snapshots the file in preparation for versioning</p>
+</dd>
+<dt>$ git reset [file]</dt>
+<dd><p class="first last">Unstages the file, but preserve its contents</p>
+</dd>
+<dt>$ git diff</dt>
+<dd><p class="first last">Shows file differences not yet staged</p>
+</dd>
+<dt>$ git diff &#8211;staged</dt>
+<dd><p class="first last">Shows file differences between staging and the last file version</p>
+</dd>
+<dt>$ git commit -m &#8220;[descriptive message]&#8221;</dt>
+<dd><p class="first last">Records file snapshots permanently in version history</p>
+</dd>
+</dl>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p class="first">CONFIGURE TOOLING</p>
+<blockquote>
+<div><p>Configure user information for all local repositories</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>$ git config &#8211;global user.name &#8220;[name]&#8221;</dt>
+<dd><p class="first last">Sets the name you want atached to your commit transactions</p>
+</dd>
+<dt>$ git config &#8211;global user.email &#8220;[email address]&#8221;</dt>
+<dd><p class="first last">Sets the email you want atached to your commit transactions</p>
+</dd>
+<dt>$ git config &#8211;global color.ui auto</dt>
+<dd><p class="first last">Enables helpful colorization of command line output</p>
+</dd>
+</dl>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p class="first">CREATE REPOSITORIES</p>
+<blockquote>
+<div><p>Start a new repository or obtain one from an existing URL</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>$ git init [project-name]</dt>
+<dd><p class="first last">Creates a new local repository with the specified name</p>
+</dd>
+<dt>$ git clone [url]</dt>
+<dd><p class="first last">Downloads a project and its entire version history</p>
+</dd>
+</dl>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p class="first">GROUP CHANGES</p>
+<blockquote>
+<div><p>Name a series of commits and combine completed efforts</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>$ git branch</dt>
+<dd><p class="first last">Lists all local branches in the current repository</p>
+</dd>
+<dt>$ git branch [branch-name]</dt>
+<dd><p class="first last">Creates a new branch</p>
+</dd>
+<dt>$ git checkout [branch-name]</dt>
+<dd><p class="first last">Switches to the specified branch and updates the working
+directory</p>
+</dd>
+<dt>$ git merge [branch]</dt>
+<dd><p class="first last">Combines the specified branch?s history into the current branch</p>
+</dd>
+<dt>$ git branch -d [branch-name]</dt>
+<dd><p class="first last">Deletes the specified branch</p>
+</dd>
+</dl>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p class="first">SYNCHRONIZE CHANGES</p>
+<blockquote>
+<div><p>Register a repository bookmark and exchange version history</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>$ git fetch [bookmark]</dt>
+<dd><p class="first last">Downloads all history from the repository bookmark</p>
+</dd>
+<dt>$ git merge [bookmark]/[branch]</dt>
+<dd><p class="first last">Combines bookmark?s branch into current local branch</p>
+</dd>
+<dt>$ git push [alias] [branch]</dt>
+<dd><p class="first last">Uploads all local branch commits to GitHub</p>
+</dd>
+<dt>$ git pull</dt>
+<dd><p class="first last">Downloads bookmark history and incorporates changes</p>
+</dd>
+<dt>$git tag</dt>
+<dd><p class="first last">Tag a specific commit with a human readable alias.</p>
+</dd>
+</dl>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p class="first">REFACTOR FILENAMES</p>
+<blockquote>
+<div><p>Relocate and remove versioned files</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>$ git rm [file]</dt>
+<dd><p class="first last">Deletes the file from the working directory and stages the
+deletion</p>
+</dd>
+<dt>$ git rm &#8211;cached [file]</dt>
+<dd><p class="first last">Removes the file from version control but preserves the file
+locally</p>
+</dd>
+<dt>$ git mv [file-original] [file-renamed]</dt>
+<dd><p class="first last">Changes the file name and prepares it for commit</p>
+</dd>
+</dl>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p class="first">SAVE FRAGMENTS</p>
+<blockquote>
+<div><p>Shelve and restore incomplete changes</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>$ git stash</dt>
+<dd><p class="first last">Temporarily stores all modified tracked files</p>
+</dd>
+<dt>$ git stash list</dt>
+<dd><p class="first last">Lists all stashed changesets</p>
+</dd>
+<dt>$ git stash pop</dt>
+<dd><p class="first last">Restores the most recently stashed files</p>
+</dd>
+<dt>$ git stash drop</dt>
+<dd><p class="first last">Discards the most recently stashed changeset</p>
+</dd>
+</dl>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p class="first">REDO COMMITS</p>
+<blockquote>
+<div><p>Erase mistakes and craf replacement history</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>$ git reset [commit]</dt>
+<dd><p class="first last">Undoes all commits afer [commit], preserving changes locally</p>
+</dd>
+<dt>$ git reset &#8211;hard [commit]</dt>
+<dd><p class="first last">Discards all history and changes back to the specified commit</p>
+</dd>
+</dl>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p class="first">REVIEW HISTORY</p>
+<blockquote>
+<div><p>Browse and inspect the evolution of project files</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>$ git log</dt>
+<dd><p class="first last">Lists version history for the current branch</p>
+</dd>
+<dt>$ git log &#8211;follow [file]</dt>
+<dd><p class="first last">Lists version history for a file, including renames</p>
+</dd>
+<dt>$ git diff [first-branch]...[second-branch]</dt>
+<dd><p class="first last">Shows content differences between two branches</p>
+</dd>
+<dt>$ git show [commit]</dt>
+<dd><p class="first last">Outputs metadata and content changes of the specified commit</p>
+</dd>
+</dl>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p class="first">SUPPRESS TRACKING</p>
+<blockquote>
+<div><p>Exclude temporary files and paths</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>$ git ls-files &#8211;other &#8211;ignored &#8211;exclude-standard</dt>
+<dd><p class="first last">Lists all ignored files in this project</p>
+</dd>
+</dl>
+</div></blockquote>
+<ul>
+<li><p class="first">GIT WEB SERVER</p>
+<blockquote>
+<div><p>Run Git webserver for the local repository.</p>
+<p>$ git instaweb &#8211;httpd=webrick</p>
+<p>$ git instaweb &#8211;stop</p>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">GIT FORMATTING</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>$ git archive</dt>
+<dd><blockquote class="first">
+<div><p>Creates a tar or zip file including the contents of a single tree
+from your repository. Example: git archive &#8211;format=zip master</p>
+</div></blockquote>
+<dl class="last docutils">
+<dt>$ git gc</dt>
+<dd><p class="first last">Garbage collector for your repository. Optimizes your repository.
+Should be run occasionally. Example: git gc Counting objects: 7, done. Delta
+compression using up to 2 threads. Compressing objects: 100% (5/5), done.
+Writing objects: 100% (7/7), done. Total 7 (delta 1), reused 0 (delta 0)</p>
+</dd>
+<dt>$ git fsck</dt>
+<dd><p class="first last">Does an integrity check of the Git file system, identifying
+corrupted objects. Example: git fsck</p>
+</dd>
+<dt>$ git prune</dt>
+<dd><p class="first last">Removes objects that are no longer pointed to by any object in any
+reachable branch.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="git-directory">
+<h2><a class="toc-backref" href="#id22">1.17&nbsp;&nbsp;&nbsp;&#8221;.git&#8221; directory</a><a class="headerlink" href="#git-directory" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul>
+<li><p class="first">The .git directory</p>
+<blockquote>
+<div><p>There are a number of files in the .git directory used by the
+porcelain.  In case you&#8217;re curious (I was), this is what they are:</p>
+<dl class="docutils">
+<dt>index</dt>
+<dd><ul class="first last simple">
+<li>The actual index file.</li>
+</ul>
+</dd>
+<dt>objects/</dt>
+<dd><ul class="first last simple">
+<li>The object database.  Can be overridden by $GIT_OBJECT_DIRECTORY</li>
+</ul>
+</dd>
+<dt>hooks/</dt>
+<dd><ul class="first last simple">
+<li>where the hook scripts are kept.  The standard git template
+includes
+examples, but disabled by being marked non-executable.</li>
+</ul>
+</dd>
+<dt>info/exclude</dt>
+<dd><ul class="first last simple">
+<li>Default project-wide list of file patterns to exclude from notice.
+To this is added the per-directory list in .gitignore.
+See the git-ls-files docs for full details.</li>
+</ul>
+</dd>
+<dt>refs/</dt>
+<dd><ul class="first last simple">
+<li>References to development heads (branches) and tags.</li>
+</ul>
+</dd>
+<dt>remotes/</dt>
+<dd><ul class="first last simple">
+<li>Short names of remote repositories we pull from or push to.
+Details are in the &#8220;git-fetch&#8221; man page.</li>
+</ul>
+</dd>
+<dt>HEAD</dt>
+<dd><ul class="first last simple">
+<li>The current default development head.</li>
+<li>Created by git-init-db and never deleted</li>
+<li>Changed by git-checkout</li>
+<li>Used by git-commit and any other command that commits changes.</li>
+<li>May be a dangling pointer, in which case git-commit
+does an &#8220;initial checkin&#8221; with no parent.</li>
+</ul>
+</dd>
+<dt>COMMIT_EDITMSG</dt>
+<dd><ul class="first last simple">
+<li>Temp used by git-commit to edit a commit message.</li>
+</ul>
+</dd>
+<dt>COMMIT_MSG</dt>
+<dd><ul class="first last simple">
+<li>Temp used by git-commit to form a commit message,
+post-processed from COMMIT_EDITMSG.</li>
+</ul>
+</dd>
+<dt>FETCH_HEAD</dt>
+<dd><ul class="first last simple">
+<li>Just-fetched commits, to be merged into the local trunk.</li>
+<li>Created by git-fetch.</li>
+<li>Used by git-pull as the source of data to merge.</li>
+</ul>
+</dd>
+<dt>MERGE_HEAD</dt>
+<dd><ul class="first last simple">
+<li>Keeps track of what heads are currently being merged into HEAD.</li>
+<li>Created by git-merge &#8211;no-commit with the heads used</li>
+<li>Deleted by git-checkout and git-reset (since you&#8217;re abandoning
+the merge)</li>
+<li>Used by git-commit to supply additional parents to the current
+commit.
+(And deleted when done.)</li>
+</ul>
+</dd>
+<dt>MERGE_MSG</dt>
+<dd><ul class="first last simple">
+<li>Generated by git-merge &#8211;no-commit.</li>
+<li>Used by git-commit as the commit message for a merge
+(If present, git-commit doesn&#8217;t prompt.)</li>
+</ul>
+</dd>
+<dt>MERGE_SAVE</dt>
+<dd><ul class="first last simple">
+<li>cpio archive of all locally modified files created by
+&#8220;git-merge&#8221; before starting to do anything, if multiple
+merge strategies are being attempted.
+Used to rewind the tree in case a merge fails.</li>
+</ul>
+</dd>
+<dt>ORIG_HEAD</dt>
+<dd><ul class="first last simple">
+<li>Previous HEAD commit prior to a merge or reset operation.</li>
+</ul>
+</dd>
+<dt>LAST_MERGE</dt>
+<dd><ul class="first last simple">
+<li>Set by the &#8220;resolve&#8221; strategy to the most recently merged-in
+branch.
+Basically, a copy of MERGE_HEAD.  Not used by the other merge
+strategies, and resolve is no longer the default, so its utility is very
+limited.</li>
+</ul>
+</dd>
+<dt>BISECT_LOG</dt>
+<dd><ul class="first last simple">
+<li>History of a git-bisect operation.</li>
+<li>Can be replayed (or, more usefully, a prefix can) by &#8220;git-bisect
+replay&#8221;</li>
+</ul>
+</dd>
+<dt>BISECT_NAMES</dt>
+<dd><ul class="first last simple">
+<li>The list of files to be modified by git-bisect.</li>
+<li>Set by &#8220;git-bisect start&#8221;</li>
+</ul>
+</dd>
+</dl>
+<p>TMP_HEAD (used by git-fetch)
+TMP_ALT (used by git-fetch)</p>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

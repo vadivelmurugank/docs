@@ -1,0 +1,356 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Python One-liner &mdash;   documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="  documentation" href="../../index.html"/>
+        <link rel="up" title="PYTHON" href="index.html"/>
+        <link rel="prev" title="BASIC PYTHON MODULES" href="modules.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">PYTHON</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="builtin_modules.html">BUILTIN PYTHON MODULES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_bytecode.html">PYTHON Disassembly, Debugger and Byte Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html">BASIC PYTHON MODULES</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Python One-liner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#transpose">Transpose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#oneliners">oneliners</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lambda-functions">lambda functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#string-operations">String Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numerical">Numerical</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#file-operations">File Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#web-service">Web Service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#os-services">OS Services</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#re-regular-expression">re - regular expression</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html"></a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">PYTHON</a> &raquo;</li>
+      
+    <li>Python One-liner</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/tools/python/python_oneliner.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="python-one-liner">
+<h1>Python One-liner<a class="headerlink" href="#python-one-liner" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="transpose">
+<h2>Transpose<a class="headerlink" href="#transpose" title="Permalink to this headline">¶</a></h2>
+<p>assignments</p>
+<p># multiple variable assignments
+a = [ 1, 2, 3]
+x = a[0]
+x , y , z = a</p>
+<p># swap
+a = 10
+b = 20
+a, b = b, a</p>
+<p>list to/from tuple
+list to/from dict</p>
+<p>list to/from string</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">&#39;code&#39;</span>
+</pre></div>
+</div>
+<p>Reverse, Slice, substring</p>
+<p>Reverse/slice:</p>
+<p># Reverse list</p>
+<blockquote>
+<div><p>a=&#8221;codedoom
+a[::-1]
+&#8216;moodedoc&#8217;</p>
+<p>a=[1,2,3,4]
+a[::-1]
+[4, 3, 2, 1]</p>
+<p>a=(1,2,3,4)
+a[::-1]
+(4, 3, 2, 1)</p>
+</div></blockquote>
+</div>
+<div class="section" id="oneliners">
+<h2>oneliners<a class="headerlink" href="#oneliners" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="lambda-functions">
+<h3>lambda functions<a class="headerlink" href="#lambda-functions" title="Permalink to this headline">¶</a></h3>
+<p># Multiple each item in a list
+# lambda - higher order functions (input function and output is also a function)
+# lambda [function: &lt;function statements&gt;, input lists ]</p>
+<p>$ python -c &#8220;print map(lambda x: x * 2, range(1,11))&#8221;
+[2, 4, 6, 8, 10, 12, 14, 16, 18, 20]</p>
+<p>Happy Birthday to You!
+&gt;&gt;&gt; print map(lambda x: &#8220;Happy Birthday to &#8221; + (&#8220;you&#8221; if x != 2 else &#8220;dear Name&#8221;),range(4))
+[&#8216;Happy Birthday to you&#8217;, &#8216;Happy Birthday to you&#8217;, &#8216;Happy Birthday to dear Name&#8217;, &#8216;Happy Birthday to you&#8217;]
+&gt;&gt;&gt;</p>
+</div>
+<div class="section" id="string-operations">
+<h3>String Operations<a class="headerlink" href="#string-operations" title="Permalink to this headline">¶</a></h3>
+<p>Verify if Exists in a String
+# string split
+&gt;&gt;&gt; wordlist = [&#8220;scala&#8221;, &#8220;akka&#8221;, &#8220;play framework&#8221;, &#8220;sbt&#8221;, &#8220;typesafe&#8221;]
+&gt;&gt;&gt; tweet = &#8220;This is an example tweet talking about scala and sbt.&#8221;
+&gt;&gt;&gt;
+&gt;&gt;&gt; print map(lambda x: x in tweet.split(),wordlist)
+[True, False, False, False, False]</p>
+</div>
+<div class="section" id="numerical">
+<h3>Numerical<a class="headerlink" href="#numerical" title="Permalink to this headline">¶</a></h3>
+<p># Print sum of numbers.
+$ python -c &#8220;print sum(range(1,1001))&#8221;
+500500</p>
+<p>Find minimum (or maximum) in a List
+&gt;&gt;&gt; print min([14, 35, -7, 46, 98])
+-7
+&gt;&gt;&gt; print max([14, 35, -7, 46, 98])
+98
+&gt;&gt;&gt;</p>
+<p>Prime numbers between 2 and 50
+&gt;&gt;&gt; n = 50 # We want to find prime numbers between 2 and 50
+&gt;&gt;&gt;
+&gt;&gt;&gt; print sorted(set(range(2,n+1)).difference(set((p * f) for p in range(2,int(n**0.5) + 2) for f in range(2,(n/p)+1))))
+[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
+&gt;&gt;&gt;</p>
+</div>
+<div class="section" id="file-operations">
+<h3>File Operations<a class="headerlink" href="#file-operations" title="Permalink to this headline">¶</a></h3>
+<p>Read in a File
+&gt;&gt;&gt; print open(&#8220;hello.py&#8221;).readlines()
+[&#8216;#! /usr/bin/pythonrn&#8217;, &#8216;print &#8220;Hello&#8221;rn&#8217;]</p>
+</div>
+<div class="section" id="web-service">
+<h3>Web Service<a class="headerlink" href="#web-service" title="Permalink to this headline">¶</a></h3>
+<p>Fetch and Parse an XML web service
+&gt;&gt;&gt; from xml.dom.minidom import parse, parseString
+&gt;&gt;&gt; import urllib2
+&gt;&gt;&gt; # note - i convert it back into xml to pretty print it
+... print parse(urllib2.urlopen(&#8220;<a class="reference external" href="http://search.twitter.com/search.atom?&amp;q=python">http://search.twitter.com/search.atom?&amp;q=python</a>&#8221;)).toprettyxml(encoding=&#8221;utf-8&#8221;)
+&lt;?xml version=&#8221;1.0&#8221; encoding=&#8221;utf-8&#8221;?&gt;
+&lt;feed xml:lang=&#8221;en-US&#8221; xmlns=&#8221;http://www.w3.org/2005/Atom&#8221; xmlns:georss=&#8221;http://www.georss.org/georss&#8221; xmlns:google=&#8221;http://base.google.com/ns/1 0&#8221; xmlns:openSearch=&#8221;http://a9.com/-/spec/opensearch/1.1/&#8221; xmlns:twitter=&#8221;http://api.twitter.com/&#8221;&gt;</p>
+</div>
+<div class="section" id="os-services">
+<h3>OS Services<a class="headerlink" href="#os-services" title="Permalink to this headline">¶</a></h3>
+<p>Parallel Processing
+&gt;&gt;&gt; import multiprocessing
+&gt;&gt;&gt; import math
+&gt;&gt;&gt;
+&gt;&gt;&gt; print list(multiprocessing.Pool(processes=4).map(math.exp,range(1,11)))</p>
+</div>
+</div>
+<div class="section" id="re-regular-expression">
+<h2>re - regular expression<a class="headerlink" href="#re-regular-expression" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span>s = &quot;&#39;log(x[, base])\n
+
+s = &#39;Merge multiple sorted inputs into a single sorted
+    output.\n\n    Similar to sorted(itertools.chain(*iterables))
+    but returns a generator,\n    does not pull the data into
+    memory all at once, and assumes that each of\n    the
+    input streams is already sorted (smallest to largest).\n\n&#39;
+
+p = r&#39;([\w\d]*[^\(])\( ?([^\)]*)&#39;
+
+    Group 1:
+      [\w\d]*     :[A-Za-z0-9_]*
+      [^\(]       : [any of start of string or &#39;\&#39; or &#39;(&#39;]
+
+    Group 2:
+        \(        : Start of &#39;(&#39;
+
+        \s?       : zero or 1 spaces
+        ([^\)]*   : start of string or &#39;\&#39; or &#39;(&#39;
+
+
+&gt;&gt;&gt; re.findall(p, s)
+[(&#39;sorted&#39;, &#39;itertools.chain(*iterables&#39;), (&#39;sorted &#39;, &#39;smallest to largest&#39;)]
+</pre></div>
+</div>
+</div></blockquote>
+<p>import re
+p = r&#8217;([wd]*[^(])( ?([^)]*)&#8217;</p>
+<p>for obj in dir(__builtins__): s=eval(obj).__doc__; list(filter(lambda ob :
+bool(ob) and (ob[0] == obj) , re.findall(p,s) if bool(s) else &#8221; &#8221;))</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="modules.html" class="btn btn-neutral" title="BASIC PYTHON MODULES" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

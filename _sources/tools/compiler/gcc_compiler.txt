@@ -1,0 +1,36 @@
+###########################################
+# Compiler
+##########################################
+
+GCC
+git clone git://gcc.gnu.org/git/gcc.git
+
+
+GLIBC
+git clone git://sourceware.org/git/glibc.git 
+[evadkan@eussjlx9035 COMPILER]$
+
+# Set ld alternative to gold linker ld.gold
+/usr/sbin/alternatives --set ld /usr/bin/ld.gold
+/usr/sbin/alternatives --config ld
+
+###########################################
+# Pre-requiste
+# https://gcc.gnu.org/install/prerequisites.html
+##########################################
+#
+#ISO C++ Compiler
+sudo yum install gcc-c++
+# GNU Bin utils
+sudo yum install binutils-devel.x86_64
+# Multi-Precision Floating Point Computation
+sudo yum install mpfr.x86_64
+sudo yum install mpfr-devel.x86_64
+# Arithmetic complex numbers
+sudo yum install libmpc-devel.x86_64
+
+sudo yum install automake.noarch
+sudo yum install texinfo.x86_64
+sudo yum install flex-devel.x86_64
+sudo yum install flex.x86_64
+

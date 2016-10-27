@@ -1,0 +1,579 @@
+
+###########################################
+# Basic
+##########################################
+
+git pull --rebase
+
+git log
+git status
+
+# Latest commit tag
+git describe
+
+# show all branches
+git branch
+
+# show all tags
+git tag
+
+# show all references
+git show-ref
+  
+#git hash-object
+git hash-object
+
+# git all tags
+git log --decorate --oneline 
+git log --decorate --oneline --full --graph ssc_podd.c | more
+
+git tags -l
+
+
+
+###########################################
+# Latest Gerrit Instructions
+##########################################
+  
+git authclone <tree>  -b  <branch>
+
+git status
+
+git checkout -b <branch> remotes/origin/<tree>
+
+
+git add .
+
+# cat ~/gitlog/gerrit.log
+git commit
+git commit --amend
+
+git review
+
+###########################################
+Gerrit Integration Branch
+##########################################
+
+git authclone <tree> -b <branch>
+
+#status
+    git status
+
+    git log
+
+    git diff --name-status
+    for file in $(git diff --name-only); do git-difftool -y -t gvimdiff $file; done
+    git ls-files --others --exclude-standard
+
+#diff
+git diff --name-status <tree>_dev
+git-difftool -y -t gvimdiff origin <tree>_dev $file
+
+    git config --global diff.tool tkdiff
+    git config --global merge.tool tkdiff
+    git config --global -add difftool.prompt false
+    git config --global --add difftool.prompt false
+
+
+
+git add
+git commit
+git authpush
+
+#Bundle all modified files
+datestr=$(date +%m%d%y-%H%M)
+mkdir -p ~/gitlog/sandbox/${datestr}
+for file in `cat ~/gitlog/git.files`; do echo $file; ls $file| cpio -pmd ~/gitlog/sandbox/${datestr}; done
+
+# recommit the changes
+git commit --amend
+
+
+#stash previous changes
+git rebase -i
+
+# Go back to previous good tree
+git reset HEAD~1 --soft
+
+###########################################
+# paas dev branch
+##########################################
+
+authclone paas -b paas_dev
+
+
+
+
+===========================================
+   Branching and merge to a tag
+===========================================
+
+git branch nhk_mfg
+git checkout nhk_mfg
+
+git fetch --tags origin
+git merge v16.4.0.600.46
+
+Updating 74e7711..b642193
+
+
+  
+  
+
+###########################################
+#Branching
+##########################################
+#
+
+# Create a branch with a tag
+
+git tag v16.4.0.600.46 nhk_diags_mfg_release
+git branch nhk_diags_mfg_release v16.4.0.600.46
+git checkout nhk_diags_mfg_release
+
+(or)
+git checkout -b nhk_diags_mfg_release v16.4.0.600.46
+
+  
+
+# Create experiment1 and switch to it 
+git branch experiment1
+git checkout experiment1
+
+# Do some work 
+git add, git commit –amend, git add, git commit –amend …
+
+# Switch back to the “master” branch
+git checkout <tree>_dev
+
+#and merge in the changes
+git merge experiment1
+
+Delete the branch when done
+git branch –d experiment1
+
+You can always do “git branch” to see all the branches you have created and which one is currently working in.
+
+###########################################
+git clone
+##########################################
+
+git clone ssh://vadivel@github.com/project/project.git 
+
+cd rel_ssr
+cd pkt
+emq PRODUCT=ASG DBG=yes
+
+git add <file>
+git commit  -m message <file>
+authpush filename <template log>
+
+###########################################
+# Kernel
+##########################################
+
+    git clone -q /project/rbnlinux/wolf-int.git /project/vadivel/kernel/linux
+    git submodule init
+    git submodule update
+
+    Branch:
+    git checkout -q --track -b rbos-3.0 origin/rbos-3.0
+
+
+###########################################
+# Create local repo
+##########################################
+
+#Initialize existing Directory into Git revisions
+git init <directory>
+
+# Initialize  bare/empty local repo git
+git init --shared --bare
+#git init --bare
+
+# git remote add 
+git remote add origin /firmware/firmware-uboot.git
+git remote -v
+
+
+
+###############
+## Git config
+###############
+
+git-config denyCurrentBranch "warn"
+git-config hooks.mailinglist "vadivel.murugan@gmail.com"
+git-config hooks.emailprefix "[FIRMWARE-UBOOT.GIT]"
+
+git-config hooks.envelopesender "git_tool"
+git-config hooks.senderfullname "GIT Mailer"
+
+
+cp /tools/swdev/devsup/git/admin/hooks/DEVSUP_post-recieve post-receive
+- Edit post-receive for receipients and <repo>.git
+
+#######
+## Initial Commits
+#########
+
+git clone localhost:/firmware/firmware-uboot.git
+
+git add <dir>
+git commit -m "initial commit" <<dir>>
+git push origin master
+
+# used only with git working directory
+#git remote add <origin> <path to .git file>
+#git remote -v
+
+git reset --hard
+
+###########################################
+git log
+##########################################
+
+# Show <No of Commits> <author>
+git shortlog -n -s --no-merges
+
+# git log --ADOG
+git log --decorate --oneline --graph --no-merges
+git log --all --decorate --oneline --graph --no-merges
+
+
+
+  
+
+############
+## Log
+#############
+
+$more config 
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = true
+[remote "origin"]
+	url = /firmware/firmware-uboot.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[hooks]
+	mailinglist = vadivel.murugan@gmail.com
+	emailprefix = [FIRMWARE-UBOOT.GIT]
+	envelopesender = git_tool
+	senderfullname = GIT Mailer
+
+
+  
+  
+###########################################
+# 
+##########################################
+
+
+# List all Branches
+$git branch -a
+* master                                 : local master copy
+  remotes/origin/HEAD -> origin/master   : remote master head
+  remotes/origin/master                  : real origin master copy
+  remotes/origin/master-lastgoodbuild
+
+$git branch -av
+* (no branch)                         fca8d23 rebase
+  master                              b15627c [ahead 30] Add valid copyright
+  remotes/origin/HEAD                 -> origin/master
+  remotes/origin/master               51c39f8 Merge branch 'merge' into build
+  remotes/origin/master-lastgoodbuild 51c39f8 Merge branch 'merge' into build
+
+
+SRC_TOP=PROJECT TOP
+
+###########################################
+# GIT DIFF
+##########################################
+  
+#git pull --rebase
+git fetch && git diff origin master --name-only ..origin > $SRC_TOP/../mods/files.<date>
+git pull --rebase
+
+#diff local uncommited changes
+git diff origin/master --name-only
+
+# Diff of files changed
+git diff --name-status origin master > $SRC_TOP/../files.list
+
+git diff --name-only --relative origin/master HEAD | more
+
+    #git-difftool -y -t gvimdiff <filepath>
+    for file in `cat $SRC_TOP/../files.list`
+    do 
+        git-difftool -y -t gvimdiff origin master $file; 
+    done
+
+#################
+#git diff between two timestamps
+#################
+git diff --stat @{2015-01-08}..@{2015-01-09}
+
+# Just list files only
+git log --since="8 Jan 2015" --until="10 Jan 2015" --stat --name-only --pretty=oneline
+
+git log -p <tree>_dev@{2015-01-08}..<tree>_dev@{2015-01-09}
+
+# git diff between tags
+# git describe
+git diff v16.1.0.700.64 v16.1.0.700.56 --stat
+
+#### git reflog
+#### git log -g --decorate
+git log --pretty=oneline -3
+git diff origin master
+
+$git log --decorate --oneline --full --graph ssc_podd.c | more
+9602d0e EV 220994
+f3ca09c EV213210: Fix for Xbar test Failures
+d87c542 EV 213655- Fix for cavecreek and xbar POD test failures
+4e74f78 Review #16716 - Update with review comments
+728a629 VPF POD server daemon Initial Implementation
+
+# get the tags
+$git name-rev --name-only 9602d0e
+tags/v13.2.118.0.271~8
+
+# get commit/sha from tags
+git show v13.2.118.0.271~8
+git rev-list -n 1  v16.4.0.600.46
+git show-ref  v16.4.0.600.46
+
+##### To switch to branch
+git checkout <master | branchname>
+
+##### Create patch
+git diff origin master> mypatch.patch
+
+git format-patch HEAD^ HEAD > mypatch.patch
+
+# Check before applying patch
+git apply --check mypatch.patch
+git apply --status mypatch.patch
+git apply mypatch.patch
+
+
+##### commit files
+git add
+## for file in `cat ~/gitlog/git.files`; do echo git add $file; git add $file ; done
+
+git commit -m " "
+## for file in `cat ~/gitlog/git.files`; do echo git commit $file; git commit -m ". " $file ; done
+
+##### Code collaborator 
+gdiff
+gdiffview
+ccollab addgitdiffs new origin master
+
+## for file in `cat ~/gitlog/git.files`; do ccollab addgitdiffs new origin master ${file}; done
+
+##### recommit files
+git status
+git add
+git commit -m "message" file.c
+
+# Code collaborator 
+# for file in `cat ~/gitlog/git.files`; do ccollab addgitdiffs new origin master ${file}; done
+ccollab addgitdiffs <reviewid> origin master
+
+# Run the below builds before authpush
+emq PRODUCT=RBOSPC-REF DBG=yes
+emq PRODUCT=ASG DBG=yes
+
+# rebase to the head
+#git rebase origin/master
+
+#authpush dryrun
+authpush -n -v
+
+# Actual authpush/commit
+authpush --filename ../file.log
+
+
+# List Private files
+# git ls-files --others -exclude-standard -z | cpio -pmd0 <unzip directory>
+# --others lists untraced files
+# --exclude-standard uses.gitignore and the default git excludes
+# -z null delimited output
+# -p pass-through
+# -m preserve modification times
+# -d create missing directories
+# -0 null delimited input
+git ls-files --others --exclude-standard
+
+# cleanup all files not under version
+git clean -f
+#git clean -f -n
+git clean -xdf
+
+
+# Bundle all modified file
+# git ls-files --others -exclude-standard -z | cpio -pmd0 <unzip directory>
+datestr=$(date +%m%d%y-%H%M)
+mkdir -p ~/gitlog/sandbox/${datestr}
+for file in `cat ~/gitlog/git.files`; do echo $file; ls $file| cpio -pmd ~/gitlog/sandbox/${datestr}; done
+
+
+###########################################
+.. May 02, 2013 (10:01:07)
+##########################################
+   
+git add <file>
+# Same as p4 checkout <file> 
+
+git diff origin master
+git difftool origin master
+
+ccollab addgitdiffs new  origin master
+or
+ccollab addgitdiffs <review #>  origin master
+authpush        <- git commit
+
+clobber: 
+from the top level (above pkt)
+git clean â€“xfd
+You must scratch-config to a new location 
+or worse:
+git clean â€“xfd && git reset --hard && rm -rf $BLDTREE/* && scratch-config
+$BLDTREE
+
+git-commit-between .# .#-end
+Are the .# the sha? 
+
+git whatchanged $filename
+# gives all the diffs for the $filename
+git log â€“p $filename
+
+git fsck <- what does this do? 
+
+git cherry-pick  $SHA  <- newest to oldest
+
+git add <file>
+# Same as p4 checkout <file> 
+
+git diff origin master
+git difftool origin master
+
+ccollab addgitdiffs new  origin master
+or
+ccollab addgitdiffs <review #>  origin master
+authpush        <- git commit
+
+clobber: 
+from the top level (above pkt)
+git clean â€“xfd
+You must scratch-config to a new location 
+or worse:
+git clean â€“xfd && git reset --hard && rm -rf $BLDTREE/* && scratch-config
+$BLDTREE
+
+git-commit-between .# .#-end
+Are the .# the sha? 
+
+git whatchanged $filename
+# gives all the diffs for the $filename
+git log â€“p $filename
+
+git fsck <- what does this do? 
+
+git cherry-pick  $SHA  <- newest to oldest
+
+
+###########################################
+Git betweene two repository
+##########################################
+How do I diff between files in two different git branches/repo. (ex: swfeature_int.git/master and rel_ssr.git/REL_IPOS_13_1_114)  
+
+git remote add rel_ssr ssh://github.com/project/project.git
+git fetch rel_ssr
+git diff rel_ssr/REL_IPOS_13_1_114
+
+
+###########################################
+.. Mar 27, 2013 (16:48:55)
+##########################################
+# GIT Global Config
+git config --global user.name "vmurugan"
+git config --global user.email "vadivel.murugan"
+
+# Git Commit
+git pull --rebase
+git show
+git log 
+
+git diff <source>
+git add  <source>  : ADD new file
+git commit <source>
+git push 
+
+
+$ git diff --name-status
+$ git diff --name-only
+# When umerged errors occur, hard reset the unmerged errors.
+git reset --hard origin/atlas
+#
+#git commit -m "update" diag_fe1600.cc
+#fatal: cannot do a partial commit during a merge.
+# Add "-i" option. git commit -i -m "strings" diag_fe1600.cc
+
+
+# Push the changes.
+$ git push origin atlas
+ 
+
+# merge/rebase
+# git merge
+# git rebase
+
+# git reset
+
+
+git checkout atlas
+
+####
+# Remove files from git repository
+####
+
+git rm file.txt
+git commit -m "remove file.txt"
+
+
+###########################################
+.. May 07, 2013 (13:35:34)
+##########################################
+
+Extract it in the directory:
+~/.vim
+or ~\vimfiles on Windows.
+Then
+Go to the directory of your Git repository checkout,
+for example, if working on ITK do:
+cd ~/src/ITK
+
+gvim CMakeLists.txt
+Look at the equivalent of "git blame" by doing
+:Gblame
+
+## History of a file
+git log --follow -p <file>
+ 
+
+###########################################
+.. Jan 22, 2014 (10:48:27)
+##########################################
+
+$git log -1 --decorate --oneline ssc_podd.c | more
+9602d0e EV 220994
+$git name-rev --name-only 9602d0e
+tags/v13.2.118.0.271~8
+$
+
+
+$git log -1 --decorate --oneline pod_remote.c | more
+a5f31e2 EV 220994
+$git name-rev --name-only a5f31e2
+tags/v13.2.118.0.271~7
