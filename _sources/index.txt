@@ -4,6 +4,7 @@
     :maxdepth: 2
 
     tools/python/index
+    tools/ReST/template/index
 
 Indices and tables
 ==================
