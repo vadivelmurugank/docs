@@ -1,17 +1,13 @@
 .. docs
 
-
 .. toctree::
-   :maxdepth: 2
+    :maxdepth: 2
 
+    tools/python/index
 
-CLOUD OF DOCS
-==============
+Indices and tables
+==================
 
-.. sectnum::
-.. contents::
-
-.. include:: tools/python/builtin_modules.txt
-.. include:: tools/python/python_bytecode.txt
-.. include:: tools/python/modules.txt
-.. include:: tools/python/python_oneliner.txt
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
