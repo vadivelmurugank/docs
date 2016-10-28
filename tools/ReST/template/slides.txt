@@ -51,7 +51,3 @@ This is my 4th slide
     * Background (like this one)
 
     * Page transitions
-
-    .. header::
-
-            Rst2pdf Slide Demo
