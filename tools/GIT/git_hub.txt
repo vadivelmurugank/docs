@@ -65,15 +65,24 @@ GIT gh-pages branch
 
 
     # Push changes into gh-pages
-    cd publish
-    git add  <<file>>
-    git commit -m  "file updates"
-    git push -u origin gh-pages
+        cd publish
+        git add  <<file>>
+        git commit -m  "file updates"
+        git push -u origin gh-pages
 
-    cd ..
-    git add publish
-    git commit -m "update publish"
-    git push -u origin master
+        cd ..
+        git add publish
+        git commit -m "update publish"
+        git push -u origin master
+
+    
+    # Git Clone with submodules
+        git clone https://github.com/vadivelmurugank/docs.git
+        cd publish
+        git submodule update --init --recursive
+
+    # Git clone with all submodules
+        git clone --recursive -j8 https://github.com/vadivelmurugank/docs.git
 
 
 HOME TREE

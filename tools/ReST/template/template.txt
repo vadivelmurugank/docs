@@ -7,7 +7,6 @@ Template for reStructured Text
 
 .. Include other  txt/rst files here
 
-..sectnum::
 .. contents:: Table Of Contents
 .. header:: Template
 .. |date| date::
