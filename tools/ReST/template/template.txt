@@ -155,7 +155,7 @@ CODE BLOCK
 PYTHON CODE and PLOTs
 --------------------------------------------------------------------
 
-.. plot:: circlemc.py
+.. plot:: /home/evadkan/github/docs/tools/ReST/template/circlemc.py
   :align: center
   :height: 300
   :include-source:
