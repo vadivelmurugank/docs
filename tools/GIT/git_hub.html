@@ -79,6 +79,7 @@
             
             
                 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Design</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python/index.html">PYTHON</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ReST/template/template.html">Template for reStructured Text</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ReST/template/slides.html">MY SLIDE TITLE</a></li>
@@ -189,15 +190,24 @@ git submodule add -b gh-pages <a class="reference external" href="https://github
 git submodule init</p>
 <p>git commit -m &#8220;added gh-pages as submodule&#8221;
 git push origin master</p>
-<p># Push changes into gh-pages
-cd publish
+<dl class="docutils">
+<dt># Push changes into gh-pages</dt>
+<dd><p class="first">cd publish
 git add  &lt;&lt;file&gt;&gt;
 git commit -m  &#8220;file updates&#8221;
 git push -u origin gh-pages</p>
-<p>cd ..
+<p class="last">cd ..
 git add publish
 git commit -m &#8220;update publish&#8221;
 git push -u origin master</p>
+</dd>
+<dt># Git Clone with submodules</dt>
+<dd>git clone <a class="reference external" href="https://github.com/vadivelmurugank/docs.git">https://github.com/vadivelmurugank/docs.git</a>
+cd publish
+git submodule update &#8211;init &#8211;recursive</dd>
+<dt># Git clone with all submodules</dt>
+<dd>git clone &#8211;recursive -j8 <a class="reference external" href="https://github.com/vadivelmurugank/docs.git">https://github.com/vadivelmurugank/docs.git</a></dd>
+</dl>
 </div></blockquote>
 </div>
 <div class="section" id="home-tree">

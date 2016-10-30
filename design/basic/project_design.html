@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>PROJECT DESIGN &mdash;   documentation</title>
+  <title>Project Design &mdash;   documentation</title>
   
 
   
@@ -33,7 +33,10 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="  documentation" href="../../index.html"/> 
+    <link rel="top" title="  documentation" href="../../index.html"/>
+        <link rel="up" title="Design" href="../index.html"/>
+        <link rel="next" title="Open Source Reading" href="../opensrc/OPENSOURCE_READING.html"/>
+        <link rel="prev" title="Design" href="../index.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -78,7 +81,19 @@
           
             
             
-                <ul>
+                <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Design</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Project Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#design-synonyms">Design Synonyms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#purpose">Purpose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#interface">Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-structure">Data Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#algorithms">Algorithms</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../opensrc/OPENSOURCE_READING.html">Open Source Reading</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../tools/python/index.html">PYTHON</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tools/ReST/template/template.html">Template for reStructured Text</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tools/ReST/template/slides.html">MY SLIDE TITLE</a></li>
@@ -112,7 +127,9 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-    <li>PROJECT DESIGN</li>
+          <li><a href="../index.html">Design</a> &raquo;</li>
+      
+    <li>Project Design</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -127,11 +144,24 @@
            <div itemprop="articleBody">
             
   <div class="section" id="project-design">
-<h1>PROJECT DESIGN<a class="headerlink" href="#project-design" title="Permalink to this headline">¶</a></h1>
+<h1>Project Design<a class="headerlink" href="#project-design" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="design-synonyms">
+<h2>Design Synonyms<a class="headerlink" href="#design-synonyms" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Data              - strings, numbers, binary</li>
+<li>Meta-Data         - Hash, Schema</li>
+<li>Mark up Language  - config</li>
+<li>Compiler          - syntax, Semantics</li>
+<li>processing        - CPU clock</li>
+<li>Memory            - Data/Meta-Data Storage</li>
+<li>Queues            - Priorities, Load Balance</li>
+<li>Scheduler         - Execution, Atomic Locks, Synchronization</li>
+<li>Exceptions        - Interrupts</li>
+</ul>
+</div>
 <div class="section" id="purpose">
 <h2>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ul>
+<ul>
 <li><p class="first">What is the problem statement?</p>
 <blockquote>
 <div><ul>
@@ -155,53 +185,30 @@
 <li><p class="first">What is the value add? differentiator?</p>
 </li>
 </ul>
-</div></blockquote>
 </div>
 <div class="section" id="interface">
 <h2>Interface<a class="headerlink" href="#interface" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li>Command Line</li>
 <li>Web/GUI</li>
 <li>API</li>
 </ul>
-</div></blockquote>
 </div>
 <div class="section" id="data-structure">
 <h2>Data Structure<a class="headerlink" href="#data-structure" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li>Data Abstraction</li>
 <li>Data Association</li>
 <li>Data Struture</li>
 </ul>
-</div></blockquote>
 </div>
 <div class="section" id="algorithms">
 <h2>Algorithms<a class="headerlink" href="#algorithms" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li>Arrange/Sort/Search</li>
 <li>Memory Allocate/layout</li>
 <li>Queues/Slice/Schedule</li>
 </ul>
-</div></blockquote>
-</div>
-<div class="section" id="design-synonyms">
-<h2>Design Synonyms<a class="headerlink" href="#design-synonyms" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
-<li>Data              - strings, numbers, binary</li>
-<li>Meta-Data         - Hash, Schema</li>
-<li>Mark up Language  - config</li>
-<li>Compiler          - syntax, Semantics</li>
-<li>processing        - CPU clock</li>
-<li>Memory            - Data/Meta-Data Storage</li>
-<li>Queues            - Priorities, Load Balance</li>
-<li>Scheduler         - Execution, Atomic Locks, Synchronization</li>
-<li>Exceptions        - Interrupts</li>
-</ul>
-</div></blockquote>
 </div>
 </div>
 
@@ -209,6 +216,15 @@
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../opensrc/OPENSOURCE_READING.html" class="btn btn-neutral float-right" title="Open Source Reading" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral" title="Design" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

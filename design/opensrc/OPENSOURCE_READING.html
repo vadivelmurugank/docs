@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>&lt;no title&gt; &mdash;   documentation</title>
+  <title>Open Source Reading &mdash;   documentation</title>
   
 
   
@@ -33,7 +33,10 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="  documentation" href="../../index.html"/> 
+    <link rel="top" title="  documentation" href="../../index.html"/>
+        <link rel="up" title="Design" href="../index.html"/>
+        <link rel="next" title="PYTHON" href="../../tools/python/index.html"/>
+        <link rel="prev" title="Project Design" href="../basic/project_design.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -78,7 +81,22 @@
           
             
             
-                <ul>
+                <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Design</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../basic/project_design.html">Project Design</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Open Source Reading</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#open-source-structure">Open Source Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tools-for-open-source-reading">Tools for open source reading</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#required-tools-and-python-packages">Required tools and Python Packages</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#understand-highlevel-source-integration">Understand HighLevel Source Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#understand-highlevel-function-and-call-tree">Understand HighLevel Function and Call Tree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#understand-data-structures-and-hierarchy">Understand Data Structures and Hierarchy</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../tools/python/index.html">PYTHON</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tools/ReST/template/template.html">Template for reStructured Text</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tools/ReST/template/slides.html">MY SLIDE TITLE</a></li>
@@ -112,7 +130,9 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-    <li>&lt;no title&gt;</li>
+          <li><a href="../index.html">Design</a> &raquo;</li>
+      
+    <li>Open Source Reading</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -126,83 +146,237 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <p>Packages Required:</p>
+  <div class="section" id="open-source-reading">
+<h1>Open Source Reading<a class="headerlink" href="#open-source-reading" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="open-source-structure">
+<h2>Open Source Structure<a class="headerlink" href="#open-source-structure" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul>
+<li><p class="first">Compilers</p>
 <blockquote>
 <div><ul class="simple">
-<li>peekextn</li>
-<li>apiparse</li>
-<li>calltree</li>
-<li>doxygen</li>
+<li>Cross Compile sysfs and compiler tools</li>
+<li>Linker file</li>
+<li>Optimization Directives, pragmas</li>
+<li>Inline assembly</li>
 </ul>
 </div></blockquote>
-<p>Understand HighLevel Source Integration</p>
+</li>
+<li><p class="first">Build</p>
 <blockquote>
 <div><ul class="simple">
-<li>git clone &lt;repository&gt;</li>
-<li><ul class="first">
-<li>Get source</li>
-<li><ul class="first">
+<li>Automake files</li>
+<li>Make rules and defs</li>
+<li>Dependency targets</li>
+<li>Global Make Targets</li>
+<li>Makefile structures</li>
+<li>Shared and Static Libraries</li>
+<li>ELF/COFF/PYC executables</li>
+<li>Disk Dump (dd) and Final image</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Source File Types</p>
+<blockquote>
+<div><ul class="simple">
+<li>Source: C, Cpp, py</li>
+<li>header: h, inc,</li>
+<li>config: conf, json, yml</li>
+<li>schema: sql, mongodb</li>
+<li>Document: doc, txt</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Data Definition and Structures</p>
+<blockquote>
+<div><ul class="simple">
+<li>Header files</li>
+<li>Global data arrays</li>
+<li>Struture Definitions</li>
+<li>Class Hierarchy</li>
+<li>Member Resolution order</li>
+<li>Interfaces, Meta and Abstract Classes</li>
+<li>Security and Encryption</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Caller Callee</p>
+<blockquote>
+<div><ul class="simple">
+<li>Functions and depedency graph</li>
+<li>Call tree of a function</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">API and API Groups</p>
+<blockquote>
+<div><ul class="simple">
+<li>List APIs and APIs groups</li>
+<li>processes - fork, clone</li>
+<li>memory - calloc, malloc</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Useful opensource reading links</p>
+<blockquote>
+<div><ul class="simple">
+<li>&#8216;open source design book &lt;<a class="reference external" href="http://www.aosabook.org/en/index.html">http://www.aosabook.org/en/index.html</a>&gt;&#8217;_</li>
+<li>&#8216;open source code browser &lt;<a class="reference external" href="https://sourcecodebrowser.com/">https://sourcecodebrowser.com/</a>&gt;&#8217;_</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="tools-for-open-source-reading">
+<h2>Tools for open source reading<a class="headerlink" href="#tools-for-open-source-reading" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="required-tools-and-python-packages">
+<h3>Required tools and Python Packages<a class="headerlink" href="#required-tools-and-python-packages" title="Permalink to this headline">¶</a></h3>
+<p>Python packages:</p>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt>peekextn</dt>
+<dd><ul class="first last simple">
+<li>apiparse</li>
+<li>calltree</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<p>Analysis tools:</p>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt>strace</dt>
+<dd><ul class="first last simple">
+<li>doxygen</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="understand-highlevel-source-integration">
+<h2>Understand HighLevel Source Integration<a class="headerlink" href="#understand-highlevel-source-integration" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt>Get Source</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>git clone &lt;repository&gt;</dt>
+<dd><ul class="first last simple">
 <li>Git clone/pull</li>
-<li>Tar file</li>
+<li>Download Tar file</li>
 <li>Rpm package</li>
 </ul>
+</dd>
+</dl>
 </li>
 </ul>
+</dd>
+</dl>
 </li>
-<li>python -m peekextn</li>
+<li><p class="first">List File Types</p>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt>python -m peekextn</dt>
+<dd><ul class="first last simple">
 <li>python -m peekextn -t</li>
-<li><ul class="first">
-<li>List file types</li>
 </ul>
+</dd>
+</dl>
 </li>
-<li>python -m peekextn -g make</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Know build Struture</p>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt>python -m peekextn -g make</dt>
+<dd><ul class="first last simple">
 <li>python -m peekextn -g make -t</li>
-<li><ul class="first">
-<li>Know build structure</li>
 </ul>
+</dd>
+</dl>
 </li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Generate Doxygen header paths</p>
+<blockquote>
+<div><ul class="simple">
 <li>python -m peekextn &#8211;doxy</li>
 </ul>
 </div></blockquote>
-<p>Understand HighLevel Function and Call Tree</p>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="understand-highlevel-function-and-call-tree">
+<h2>Understand HighLevel Function and Call Tree<a class="headerlink" href="#understand-highlevel-function-and-call-tree" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul>
+<li><p class="first">List all APIs</p>
 <blockquote>
 <div><ul class="simple">
 <li>python -m apiparse</li>
 <li>python -m apiparse -f &lt;&lt;filename&gt;&gt;</li>
-<li><ul class="first">
-<li>List all APIs</li>
-</ul>
-</li>
-<li>python -m calltree &lt;&lt;function&gt;</li>
-<li><ul class="first">
-<li>Call tree of an API</li>
-</ul>
-</li>
 </ul>
 </div></blockquote>
-<p>LIST APIs and API GROUPS</p>
+</li>
+<li><p class="first">Call tree of an API</p>
+<blockquote>
+<div><ul class="simple">
+<li>python -m calltree &lt;&lt;function&gt;</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">list APIs and API groups</p>
 <blockquote>
 <div><ul class="simple">
 <li>python -m apiparse -s -f &lt;&lt;filename&gt;&gt;</li>
-<li><ul class="first">
-<li>List all API groups</li>
-</ul>
-</li>
 <li>python -m apiparse -g unix -f &lt;&lt;filename&gt;&gt;</li>
 </ul>
 </div></blockquote>
-<p>Understand Data Structures and Hierarchy</p>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="understand-data-structures-and-hierarchy">
+<h2>Understand Data Structures and Hierarchy<a class="headerlink" href="#understand-data-structures-and-hierarchy" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li>Doxygen</li>
-<li></li>
+<li>python -m peekextn &#8211;doxy &gt; project.defines</li>
+<li>doxygen -g project.doxy</li>
+<li>cat doxy.config &gt;&gt; project.doxy</li>
+<li>cat project.defines &gt;&gt; project.doxy</li>
 </ul>
 </div></blockquote>
+</div>
+</div>
 
 
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../tools/python/index.html" class="btn btn-neutral float-right" title="PYTHON" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../basic/project_design.html" class="btn btn-neutral" title="Project Design" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

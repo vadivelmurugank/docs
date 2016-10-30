@@ -1,6 +1,8 @@
 ..  Command: rst2html.py temp.txt temp.html
 .. /project/pcb/evadkan/python/anaconda3/bin/rst2html.py
 
+.. title:: "MY FIRST HOVER/IMPRESS PRESENTATION"
+
 ===========================================
 Template for reStructured Text
 ===========================================
@@ -13,15 +15,32 @@ Template for reStructured Text
 .. |time| date:: %H.%M
 .. footer::  |date| |time|
 
-.. |image| image:: tulips.jpg
-    :alt: Tulips
-    :target: tulips.jpg
-    :align: middle
-
-
 .. note:: This is a template file for  ReStructured text
 
 .. Comment: This line will not be processed and displayed
+
+
+:auto-console: true
+:skip-help: true
+:title: My Hovercraft demo
+
+IMPRESS FIELDS
+--------------------
+
+impress.js fields
+
+    * data-transition-duration: The time it will take to move from one slide to another. Defaults to 1000 (1 second). This is only valid on the presentation as a whole.
+    * data-perspective: Controls the ¿perspective¿ in the 3d effects. It defaults to 500. Setting it to 0 disables 3D effects.
+    * data-x: The horizontal position of a slide in pixels. Can be negative.
+    * data-y: The vertical position of a slide in pixels. Can be negative.
+    * data-scale: Sets the scale of a slide, which is what creates the zoom. Defaults to 1. A value of 4 means the slide is four times larger. In short: Lower means zooming in, higher means zooming out.
+    * data-rotate-z: The rotation of a slide in the x-axis, in degrees. This will cause the slide to be rotated clockwise or counter-clockwise.
+    * data-rotate: The same as data-rotate-z.
+    * data-rotate-x: The rotation of a slide in the x-axis, in degrees. This means you are moving the slide in a third dimension compared with other slides. This is generally cool effect, if used right.
+    * data-rotate-y: The rotation of a slide in the x-axis, in degrees.
+    * data-z: This controls the position of the slide on the z-axis. Setting this value to -3000 means it¿s positioned -3000 pixels away. This is only useful when you use data-rotate-x or data-rotate-y, otherwise it will only give the impression that the slide is made smaller, which isn¿t really useful.
+
+----
 
 BLOCK TABLE
 --------------------------------------------------------------------
@@ -38,6 +57,11 @@ BLOCK TABLE
     | body row 4 |            | - blocks. |
     +------------+------------+-----------+
 
+----
+
+:data-y: r2000
+:data-rotate: 90
+
     =====  =====
     col 1  col 2
     =====  =====
@@ -51,7 +75,9 @@ BLOCK TABLE
     \      Row 4; column 1 will be empty.
     =====  =====
 
+----
 
+:data-rotate: 90
 
 CSV-TABLE BLOCK
 ***************
@@ -63,15 +89,26 @@ CSV-TABLE BLOCK
    "item 1", "item 2", 3
    "item 4", "item 5", 5
 
+----
+
+:data-rotate: 90
 
 SECTION BLOCKS
 **************
     BLOCK DESCRIPTIONS
 
+----
+
+:data-scale: 1
+
 LINK DESCRIPTION
 #################
 
     Here is my `github link <https://github.com/vadivelmurugank/picothing>`_
+
+----
+
+:data-scale: 2
 
 MODULE 3
 *********
@@ -91,6 +128,11 @@ LIST BLOCKS
 
        PARAGRAPH 3
 
+----
+
+:data-scale: 2
+
+
 MATH BLOCKS
 --------------------------------------------------------------------
 
@@ -105,12 +147,10 @@ Complex math :math:`n_{\mathrm{offset}} = \sum_{k=0}^{N-1} s_k n_k`
     n_{\mathrm{offset}} = \sum_{k=0}^{N-1} s_k n_k
 
 .. math::
-    :label: Squares
 
     a^2+ b^2= c^2
 
 .. math::
-   :label: equation array
 
    \begin{eqnarray}
      a^2+ b^2= c^2\\
@@ -118,6 +158,8 @@ Complex math :math:`n_{\mathrm{offset}} = \sum_{k=0}^{N-1} s_k n_k`
      a^2+ b^2= c^2\\
    \end{eqnarray}
 
+
+----
 
 SIDEBAR
 --------------------------------------------------------------------
@@ -128,6 +170,9 @@ SIDEBAR
    Subsequent indented lines comprise
    the body of the sidebar, and are
    interpreted as body elements.
+
+
+----
 
 CODE BLOCK
 --------------------------------------------------------------------
@@ -152,20 +197,55 @@ CODE BLOCK
 		printf("C function code \n");
 	}
 
+----
+
 PYTHON CODE and PLOTs
 --------------------------------------------------------------------
 
-.. plot:: /home/evadkan/github/docs/tools/ReST/template/circlemc.py
-  :align: center
-  :height: 300
-  :include-source:
+.. code-block:: python
+    :name: circlemc.py
+
+    import numpy as np
+    from matplotlib.pyplot import figure, show
+    from matplotlib.patches import Arc
+    from matplotlib.cm import copper
+
+    fig = figure()
+    frame = fig.add_subplot(1,1,1)
+    n = 2000
+    x = np.random.random_sample(n)
+    y = np.random.random_sample(n)
+    radius = x**2 + y**2
+    In = (radius <= 1.0)
+    Out = (radius > 1.0)
+    frame.plot(x[In], y[In], 'g.')
+    frame.plot(x[Out], y[Out], 'r.')
+    arc = Arc((0,0), 2,2, 0,0, 90)
+    frame.add_patch(arc)
+    frame.imshow([[0, 0],[1,1]], interpolation='bicubic', cmap=copper,
+                 vmin=-0.5, vmax=0.5,
+                 extent=(frame.get_xlim()[0], frame.get_xlim()[1],
+                         frame.get_ylim()[0], frame.get_ylim()[1]),
+                 alpha=1)
+
+    frame.set_xlim(0,1)
+    frame.set_ylim(0,1)
+    frame.set_aspect(1.0)
+    show()
+
+
+----
 
 
 IMAGE BLOCKS
 --------------------------------------------------------------------
 
-Here is the image:
-|image|
+.. image:: tulips.jpg
+    :alt: Tulips
+    :target: tulips.jpg
+    :align: center
 
+----
 
-
+END
+------

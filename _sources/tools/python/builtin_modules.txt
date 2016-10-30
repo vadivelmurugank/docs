@@ -1,5 +1,5 @@
 ===========================================
-BUILTIN PYTHON MODULES
+Builtin Python Modules
 ===========================================
 
 .. sectnum
