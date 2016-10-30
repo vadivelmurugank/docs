@@ -1,0 +1,133 @@
+===========================================
+Open Source Reading
+===========================================
+
+Open Source Structure
+--------------------------------------------------------------------
+
+    * Compilers
+
+        * Cross Compile sysfs and compiler tools
+        * Linker file
+        * Optimization Directives, pragmas
+        * Inline assembly
+
+    * Build
+
+        * Automake files
+        * Make rules and defs
+        * Dependency targets
+        * Global Make Targets
+        * Makefile structures
+        * Shared and Static Libraries
+        * ELF/COFF/PYC executables
+        * Disk Dump (dd) and Final image
+
+    * Source File Types
+
+        * Source: C, Cpp, py
+        * header: h, inc, 
+        * config: conf, json, yml
+        * schema: sql, mongodb
+        * Document: doc, txt
+
+    * Data Definition and Structures
+
+        * Header files
+        * Global data arrays
+        * Struture Definitions
+        * Class Hierarchy
+        * Member Resolution order
+        * Interfaces, Meta and Abstract Classes
+        * Security and Encryption
+        
+
+    * Caller Callee
+
+        * Functions and depedency graph
+        * Call tree of a function
+       
+
+    *  API and API Groups
+
+        * List APIs and APIs groups
+        * processes - fork, clone
+        * memory - calloc, malloc
+       
+
+    * Useful opensource reading links
+        
+        * 'open source design book <http://www.aosabook.org/en/index.html>'_
+        * 'open source code browser <https://sourcecodebrowser.com/>'_
+        
+
+Tools for open source reading
+--------------------------------------------------------------------
+
+Required tools and Python Packages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  
+
+Python packages:
+
+    * peekextn
+	* apiparse
+	* calltree
+
+Analysis tools:
+
+    * strace
+	* doxygen
+
+Understand HighLevel Source Integration
+--------------------------------------------------------------------
+
+    * Get Source
+	    * git clone <repository>
+			* Git clone/pull
+			* Download Tar file
+			* Rpm package
+
+    * List File Types
+	    
+        * python -m peekextn
+	    * python -m peekextn -t
+
+    * Know build Struture
+
+        * python -m peekextn -g make 
+	    * python -m peekextn -g make -t
+
+    * Generate Doxygen header paths
+
+	    * python -m peekextn --doxy
+
+
+Understand HighLevel Function and Call Tree 
+--------------------------------------------------------------------
+
+    * List all APIs
+
+	    * python -m apiparse
+	    * python -m apiparse -f <<filename>>
+
+    * Call tree of an API
+
+	    * python -m calltree <<function>
+
+
+    * list APIs and API groups
+
+	    * python -m apiparse -s -f <<filename>>
+
+	    * python -m apiparse -g unix -f <<filename>>
+
+
+Understand Data Structures and Hierarchy
+--------------------------------------------------------------------
+
+	* Doxygen
+
+        * python -m peekextn --doxy > project.defines
+        * doxygen -g project.doxy
+        * cat doxy.config >> project.doxy
+        * cat project.defines >> project.doxy

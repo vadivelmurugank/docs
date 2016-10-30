@@ -1,5 +1,5 @@
 ===========================================
-            BASIC PYTHON MODULES
+            Basic Python Modules
 ===========================================
 
 re - simple regular expression (sre)

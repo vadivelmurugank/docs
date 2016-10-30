@@ -1,5 +1,5 @@
 ===========================================
-PYTHON Disassembly, Debugger and Byte Code
+Python Disassembly
 ===========================================
 
 .. sectnum
