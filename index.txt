@@ -5,6 +5,7 @@
 
     design/index
     tools/python/index
+    tools/GIT/index
     tools/ReST/template/index
 
 Indices and tables
