@@ -1,0 +1,10 @@
+.. docs
+
+
+Git Internals
+==============
+
+.. toctree::
+    :maxdepth: 2
+
+    GIT_INTERNALS
