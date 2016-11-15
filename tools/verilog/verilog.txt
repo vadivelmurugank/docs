@@ -1,0 +1,87 @@
+
+###########################################
+# Verilog File Structure
+##########################################
+  
+*.v : Verilog file
+*.xco : configuration parameters for Xilinx CORE Generator IP GUI
+*.ngc : XILINX-XDB 0.1 STUB 0.1 - debugger image.
+
+
+fpgaDevice.inc
+  ../src/fpgaDevice.v
+  ../src/fpgaDevice_core.v
+  << Include all verilog files>
+
+
+sim/envsrc/build.cfg : include fpgaDevice.inc
+	+module fpgaDevice
+	  +rtl
+	  -f ../../../fpgaDevice/src/top/fpgaDevice.inc
+	  +gate
+	  -f ../../../fpgaDevice/syn/fpgaDevice_gate.inc
+
+sim/work/csrc/vcs_rebuild :
+vcs '-sverilog' '+lint=all,noPORTFRC,noVCDE' '-lca' '-C' '-V' '+vcs+lic+wait' '+v2k' '-notice' '-line' '-I' '-f' '../../src/top/fpgaDevice.inc' 2>&1
+
+sim/work/csrc/build_db:
+vcs '-sverilog' '+lint=all,noPORTFRC,noVCDE' '-lca' '-C' '-V' '+vcs+lic+wait' '+v2k' '-notice' '-line' '-I' '-f' '../../src/top/fpgaDevice.inc'  -static_dbgen_only -daidir=$1 2>&1
+
+###########################################
+# Verilog code
+##########################################
+
+ 
+ module fpgaDevice (
+
+//////////////////////////////////////
+//// Input and Output wire bindings
+/////////////////////////////////////
+    // PCIE Bus
+    //
+    input wire PCIE_REFCLK_N,    //
+    input wire PCIE_REFCLK_P,    //
+    input	wire PCIE_RX_N,		  // 
+    input	wire PCIE_RX_P,		  //
+    output wire PCIE_TX_N,		  // 
+    output wire PCIE_TX_P,		  //
+
+    // I2C Temperature Sensors
+    //
+    inout tri	I2C_2_SCL,		      // 
+    inout	tri I2C_2_SDA,		      // 
+    input wire TEMP_ALRM_L,     //
+
+//////////////////////////////////////
+//// On Pos and Neg Edge cycles of signals
+//////////////////////////////////////
+    always @(posedge core_clk)
+
+    if (core_reset) begin
+            lpc_reg_addr_pipe	<= 16'h 0;
+            lpc_reg_dir_pipe	<= 1'b 0;
+            lpc_reg_mem_pipe	<= 1'b 0;
+            lpc_reg_req_pipe	<= 2'h 0;
+            lpc_reg_wdata_pipe	<= 8'h 0;
+        end
+        else begin
+            lpc_reg_addr_pipe	<= lpc_reg_addr[15:0];
+            lpc_reg_dir_pipe	<= lpc_reg_dir;
+            lpc_reg_mem_pipe	<= lpc_reg_mem;
+            lpc_reg_req_pipe	<= {lpc_reg_req_pipe[0], lpc_reg_req};
+            lpc_reg_wdata_pipe	<= lpc_reg_wdata[7:0];
+        end
+
+    /// ASSIGN SIGNAL
+    assign	reg_req		= lpc_reg_req_pipe[0] && ~lpc_reg_req_pipe[1],
+
+    //// ON NEGATIVE EDGE
+    always @(negedge PWR_GOOD or posedge lpc_reset_cause_pcie_wr)
+
+        if (lpc_reset_cause_pcie_wr)
+            lpc_reset_cause_pcie[3]	<= 1'b 0;
+        else
+            lpc_reset_cause_pcie[3]	<= pcie_arm;
+
+
+);

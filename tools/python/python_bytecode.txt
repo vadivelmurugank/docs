@@ -47,7 +47,12 @@ Python Help
 
             inspect.getmembers(<module>)
 
+    trace
 
+        .. code-block:: python
+        
+            python -m trace < --trace, --tracecalls, --listfuns, --count>
+<file.py>  
 
 
 inspect
@@ -61,6 +66,25 @@ The inspect module provides several useful functions to help get information abo
     import inspect
     inspect.getmembers(<module>
 
+trace
+-------------------------------------------
+
+Trace program execution and print callee/caller relationships.
+
+
+    .. code-block:: python
+
+            # Display calling relationships  
+            python3 -m trace -T  <file.py>
+
+            # List Functions
+            python -m trace -l <file.py>
+
+            # Trace lines executed
+            python -m trace -t <file.py>
+
+            # Count no. of statement executions
+            python -m trace -c <file.py>
 
 
 dis - disassembler
@@ -813,6 +837,164 @@ inspect
                          |--  inspect._flag_names
                          |--  inspect.mod_dict
                          |--  inspect.modulesbyfile
+
+dis
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    .. code-block:: trace
+
+        trace
+         |--  trace
+         |--  ===> /usr/lib/python3.2/trace.py
+                 @@doc : " trace : program/module to trace Python program or function execution "
+
+          [@SUBMODULES ]
+             |--  trace
+                 |--  dis
+                     |--  sys
+                     |--  types
+                 |--  gc
+                 |--  inspect
+                     |--  imp
+                     |--  itertools
+                     |--  linecache
+                         |--  os
+                             |--  _copyreg
+                             |--  errno
+                             |--  path
+                                 |--  genericpath
+                                     |--  os
+                                     |--  stat
+                                 |--  os
+                                 |--  stat
+                                 |--  sys
+                             |--  sys
+                         |--  sys
+                         |--  tokenize
+                             |--  builtins
+                             |--  collections
+                                 |--  _abcoll
+                                     |--  sys
+                                 |--  _heapq
+                                     |--  bisect
+                                 |--  _sys
+                             |--  re
+                                 |--  copyreg
+                                 |--  functools
+                                 |--  sre_compile
+                                     |--  _sre
+                                     |--  sre_parse
+                                         |--  sys
+                                     |--  sys
+                                 |--  sre_parse
+                                 |--  sys
+                             |--  sys
+                     |--  os
+                     |--  re
+                     |--  string
+                         |--  _re
+                             |--  copyreg
+                             |--  functools
+                             |--  sre_compile
+                             |--  sre_parse
+                             |--  sys
+                         |--  _string
+                     |--  sys
+                     |--  tokenize
+                     |--  types
+                 |--  io
+                     |--  _io
+                     |--  abc
+                 |--  linecache
+                 |--  os
+                 |--  pickle
+                     |--  _compat_pickle
+                     |--  codecs
+                         |--  builtins
+                         |--  sys
+                     |--  io
+                     |--  marshal
+                     |--  re
+                     |--  struct
+                     |--  sys
+                 |--  re
+                 |--  sys
+                 |--  threading
+                     |--  _sys
+                 |--  time
+                 |--  token
+                 |--  tokenize
+
+
+          [@CLASS        ]
+              @@doc : - Classes and Method Resolution Order
+             |--  [Class CoverageResults]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'trace.CoverageResults'>
+                             |--  <class 'object'>
+                     |--  [  function  ]:
+                             |--  is_ignored_filename (['self', 'filename'])
+                             |--  update (['self', 'other'])
+                             |--  write_results (['self', 'show_missing', 'summary', 'coverdir'])
+                             |--  write_results_file (['self', 'path', 'lines', 'lnotab', 'lines_hit', 'encoding'])
+             |--  [Class Ignore]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'trace.Ignore'>
+                             |--  <class 'trace._Ignore'>
+                             |--  <class 'object'>
+                     |--  [  function  ]:
+                             |--  names (['self', 'filename', 'modulename'])
+             |--  [Class Trace]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'trace.Trace'>
+                             |--  <class 'object'>
+                     |--  [  function  ]:
+                             |--  file_module_function_of (['self', 'frame'])
+                             |--  globaltrace_countfuncs (['self', 'frame', 'why', 'arg'])
+                             |--  globaltrace_lt (['self', 'frame', 'why', 'arg'])
+                             |--  globaltrace_trackcallers (['self', 'frame', 'why', 'arg'])
+                             |--  localtrace_count (['self', 'frame', 'why', 'arg'])
+                             |--  localtrace_trace (['self', 'frame', 'why', 'arg'])
+                             |--  localtrace_trace_and_count (['self', 'frame', 'why', 'arg'])
+                             |--  results (['self'])
+                             |--  run (['self', 'cmd'])
+                             |--  runctx (['self', 'cmd', 'globals', 'locals'])
+                             |--  runfunc (['self', 'func'])
+             |--  [Class _Ignore]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'trace._Ignore'>
+                             |--  <class 'object'>
+                     |--  [  function  ]:
+                             |--  names (['self', 'filename', 'modulename'])
+
+
+          [@ FUNCTION  ]
+              @@doc :  - Function including "lambda" anonymous functions
+             |--  _err_exit (['msg'])
+             |--  _find_executable_linenos (['filename'])
+             |--  _find_lines (['code', 'strs'])
+             |--  _find_lines_from_code (['code', 'strs'])
+             |--  _find_strings (['filename', 'encoding'])
+             |--  _fullmodname (['path'])
+             |--  _modname (['path'])
+             |--  _settrace (['func'])
+             |--  _unsettrace ([])
+             |--  _usage (['outfile'])
+             |--  find_executable_linenos (['filename'])
+             |--  find_lines (['code', 'strs'])
+             |--  find_lines_from_code (['code', 'strs'])
+             |--  find_strings (['filename', 'encoding'])
+             |--  fullmodname (['path'])
+             |--  main (['argv'])
+             |--  modname (['path'])
+             |--  usage (['outfile'])
+
+          [@ str ]
+                 |--  trace.PRAGMA_NOCOVER
+
+          [@ list ]
+                 |--  trace.__all__
+
     
 dis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
