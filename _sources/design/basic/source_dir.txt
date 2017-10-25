@@ -1,5 +1,5 @@
 ===========================================
-        SOURCE DIRECTORY
+        Source Directories
 ===========================================
 
 .. csv-table:: SOURCE CODE CONTENTS
