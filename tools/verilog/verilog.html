@@ -1,0 +1,269 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>//// On Pos and Neg Edge cycles of signals &mdash;   documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="  documentation" href="../../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">PYTHON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GIT/index.html">Git Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ReST/template/template.html">Template for reStructured Text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ReST/template/slides.html">MY SLIDE TITLE</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html"></a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+    <li>//// On Pos and Neg Edge cycles of signals</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/tools/verilog/verilog.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <p><a href="#id1"><span class="problematic" id="id2">*</span></a>.v : Verilog file
+<a href="#id3"><span class="problematic" id="id4">*</span></a>.xco : configuration parameters for Xilinx CORE Generator IP GUI
+<a href="#id5"><span class="problematic" id="id6">*</span></a>.ngc : XILINX-XDB 0.1 STUB 0.1 - debugger image.</p>
+<dl class="docutils">
+<dt>fpgaDevice.inc</dt>
+<dd>../src/fpgaDevice.v
+../src/fpgaDevice_core.v
+&lt;&lt; Include all verilog files&gt;</dd>
+<dt>sim/envsrc/build.cfg</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">include fpgaDevice.inc</span><dd><dl class="first last docutils">
+<dt>+module fpgaDevice</dt>
+<dd>+rtl
+-f ../../../fpgaDevice/src/top/fpgaDevice.inc
++gate
+-f ../../../fpgaDevice/syn/fpgaDevice_gate.inc</dd>
+</dl>
+</dd>
+</dl>
+<p>sim/work/csrc/vcs_rebuild :
+vcs &#8216;-sverilog&#8217; &#8216;+lint=all,noPORTFRC,noVCDE&#8217; &#8216;-lca&#8217; &#8216;-C&#8217; &#8216;-V&#8217; &#8216;+vcs+lic+wait&#8217; &#8216;+v2k&#8217; &#8216;-notice&#8217; &#8216;-line&#8217; &#8216;-I&#8217; &#8216;-f&#8217; &#8216;../../src/top/fpgaDevice.inc&#8217; 2&gt;&amp;1</p>
+<p>sim/work/csrc/build_db:
+vcs &#8216;-sverilog&#8217; &#8216;+lint=all,noPORTFRC,noVCDE&#8217; &#8216;-lca&#8217; &#8216;-C&#8217; &#8216;-V&#8217; &#8216;+vcs+lic+wait&#8217; &#8216;+v2k&#8217; &#8216;-notice&#8217; &#8216;-line&#8217; &#8216;-I&#8217; &#8216;-f&#8217; &#8216;../../src/top/fpgaDevice.inc&#8217;  -static_dbgen_only -daidir=$1 2&gt;&amp;1</p>
+<blockquote>
+<div>module fpgaDevice (</div></blockquote>
+<blockquote>
+<div><p>// PCIE Bus
+//
+input wire PCIE_REFCLK_N,    //
+input wire PCIE_REFCLK_P,    //
+input       wire PCIE_RX_N,           //
+input       wire PCIE_RX_P,           //
+output wire PCIE_TX_N,                //
+output wire PCIE_TX_P,                //</p>
+<p>// I2C Temperature Sensors
+//
+inout tri   I2C_2_SCL,                    //
+inout       tri I2C_2_SDA,                //
+input wire TEMP_ALRM_L,     //</p>
+</div></blockquote>
+<div class="section" id="on-pos-and-neg-edge-cycles-of-signals">
+<h1>//// On Pos and Neg Edge cycles of signals<a class="headerlink" href="#on-pos-and-neg-edge-cycles-of-signals" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><p>always &#64;(posedge core_clk)</p>
+<dl class="docutils">
+<dt>if (core_reset) begin</dt>
+<dd><blockquote class="first">
+<div>lpc_reg_addr_pipe   &lt;= 16&#8217;h 0;
+lpc_reg_dir_pipe    &lt;= 1&#8217;b 0;
+lpc_reg_mem_pipe    &lt;= 1&#8217;b 0;
+lpc_reg_req_pipe    &lt;= 2&#8217;h 0;
+lpc_reg_wdata_pipe  &lt;= 8&#8217;h 0;</div></blockquote>
+<p>end
+else begin</p>
+<blockquote>
+<div>lpc_reg_addr_pipe   &lt;= lpc_reg_addr[15:0];
+lpc_reg_dir_pipe    &lt;= lpc_reg_dir;
+lpc_reg_mem_pipe    &lt;= lpc_reg_mem;
+lpc_reg_req_pipe    &lt;= {lpc_reg_req_pipe[0], lpc_reg_req};
+lpc_reg_wdata_pipe  &lt;= lpc_reg_wdata[7:0];</div></blockquote>
+<p class="last">end</p>
+</dd>
+</dl>
+<p>/// ASSIGN SIGNAL
+assign      reg_req         = lpc_reg_req_pipe[0] &amp;&amp; ~lpc_reg_req_pipe[1],</p>
+<p>//// ON NEGATIVE EDGE
+always &#64;(negedge PWR_GOOD or posedge lpc_reset_cause_pcie_wr)</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>if (lpc_reset_cause_pcie_wr)</dt>
+<dd>lpc_reset_cause_pcie[3]     &lt;= 1&#8217;b 0;</dd>
+<dt>else</dt>
+<dd>lpc_reset_cause_pcie[3]     &lt;= pcie_arm;</dd>
+</dl>
+</div></blockquote>
+</div></blockquote>
+<p>);</p>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

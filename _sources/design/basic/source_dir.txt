@@ -1,0 +1,20 @@
+===========================================
+        SOURCE DIRECTORY
+===========================================
+
+.. csv-table:: SOURCE CODE CONTENTS
+    :header: "FILES", "CONTENTS"
+    :widths: 15, 60
+
+    README, "Start file"
+    Makefile, "Makefile rules"
+    src/, "Source files"
+    h/, "header files"
+    test/, "Unit test files"
+    doc/, "Document generation - doxygen, sphinx, cscope"
+    objdump/,  "Object dump, strace, disassembly, bytecode"
+    obj/,  "Generated Object Files"
+    bin/, "Final executabe library"
+    config/,  "Config files xml, yaml, json"
+    gen/, "generated code"
+

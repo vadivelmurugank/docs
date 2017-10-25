@@ -88,6 +88,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Python Disassembly</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#python-help">Python Help</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#inspect">inspect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#trace">trace</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dis-disassembler">dis - disassembler</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#disassembler-format">Disassembler Format</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#python-disassembly-and-byte-code">Python Disassembly and byte code</a></li>
@@ -100,6 +101,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#python-debug-modules">Python Debug Modules</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id1">inspect</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#dis">dis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">dis</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pdb">pdb</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#gdb">gdb</a></li>
 </ul>
@@ -110,6 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="python_oneliner.html">Python Code Snippets</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../GIT/index.html">Git Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ReST/template/template.html">Template for reStructured Text</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ReST/template/slides.html">MY SLIDE TITLE</a></li>
 </ul>
@@ -201,7 +204,14 @@
 </pre></div>
 </div>
 </div></blockquote>
+<p>trace</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">trace</span> <span class="o">&lt;</span> <span class="o">--</span><span class="n">trace</span><span class="p">,</span> <span class="o">--</span><span class="n">tracecalls</span><span class="p">,</span> <span class="o">--</span><span class="n">listfuns</span><span class="p">,</span> <span class="o">--</span><span class="n">count</span><span class="o">&gt;</span>
+</pre></div>
+</div>
 </div></blockquote>
+</div></blockquote>
+<p>&lt;file.py&gt;</p>
 </div>
 <div class="section" id="inspect">
 <h2>inspect<a class="headerlink" href="#inspect" title="Permalink to this headline">¶</a></h2>
@@ -210,6 +220,25 @@
 <span class="n">inspect</span><span class="o">.</span><span class="n">getmembers</span><span class="p">(</span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="trace">
+<h2>trace<a class="headerlink" href="#trace" title="Permalink to this headline">¶</a></h2>
+<p>Trace program execution and print callee/caller relationships.</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Display calling relationships</span>
+<span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">trace</span> <span class="o">-</span><span class="n">T</span>  <span class="o">&lt;</span><span class="nb">file</span><span class="o">.</span><span class="n">py</span><span class="o">&gt;</span>
+
+<span class="c1"># List Functions</span>
+<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">trace</span> <span class="o">-</span><span class="n">l</span> <span class="o">&lt;</span><span class="nb">file</span><span class="o">.</span><span class="n">py</span><span class="o">&gt;</span>
+
+<span class="c1"># Trace lines executed</span>
+<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">trace</span> <span class="o">-</span><span class="n">t</span> <span class="o">&lt;</span><span class="nb">file</span><span class="o">.</span><span class="n">py</span><span class="o">&gt;</span>
+
+<span class="c1"># Count no. of statement executions</span>
+<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">trace</span> <span class="o">-</span><span class="n">c</span> <span class="o">&lt;</span><span class="nb">file</span><span class="o">.</span><span class="n">py</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
 </div>
 <div class="section" id="dis-disassembler">
 <h2>dis - disassembler<a class="headerlink" href="#dis-disassembler" title="Permalink to this headline">¶</a></h2>
@@ -970,6 +999,164 @@ inspect
 </div>
 <div class="section" id="dis">
 <h3>dis<a class="headerlink" href="#dis" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-trace"><div class="highlight"><pre><span></span>trace
+ |--  trace
+ |--  ===&gt; /usr/lib/python3.2/trace.py
+         @@doc : &quot; trace : program/module to trace Python program or function execution &quot;
+
+  [@SUBMODULES ]
+     |--  trace
+         |--  dis
+             |--  sys
+             |--  types
+         |--  gc
+         |--  inspect
+             |--  imp
+             |--  itertools
+             |--  linecache
+                 |--  os
+                     |--  _copyreg
+                     |--  errno
+                     |--  path
+                         |--  genericpath
+                             |--  os
+                             |--  stat
+                         |--  os
+                         |--  stat
+                         |--  sys
+                     |--  sys
+                 |--  sys
+                 |--  tokenize
+                     |--  builtins
+                     |--  collections
+                         |--  _abcoll
+                             |--  sys
+                         |--  _heapq
+                             |--  bisect
+                         |--  _sys
+                     |--  re
+                         |--  copyreg
+                         |--  functools
+                         |--  sre_compile
+                             |--  _sre
+                             |--  sre_parse
+                                 |--  sys
+                             |--  sys
+                         |--  sre_parse
+                         |--  sys
+                     |--  sys
+             |--  os
+             |--  re
+             |--  string
+                 |--  _re
+                     |--  copyreg
+                     |--  functools
+                     |--  sre_compile
+                     |--  sre_parse
+                     |--  sys
+                 |--  _string
+             |--  sys
+             |--  tokenize
+             |--  types
+         |--  io
+             |--  _io
+             |--  abc
+         |--  linecache
+         |--  os
+         |--  pickle
+             |--  _compat_pickle
+             |--  codecs
+                 |--  builtins
+                 |--  sys
+             |--  io
+             |--  marshal
+             |--  re
+             |--  struct
+             |--  sys
+         |--  re
+         |--  sys
+         |--  threading
+             |--  _sys
+         |--  time
+         |--  token
+         |--  tokenize
+
+
+  [@CLASS        ]
+      @@doc : - Classes and Method Resolution Order
+     |--  [Class CoverageResults]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;trace.CoverageResults&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  function  ]:
+                     |--  is_ignored_filename ([&#39;self&#39;, &#39;filename&#39;])
+                     |--  update ([&#39;self&#39;, &#39;other&#39;])
+                     |--  write_results ([&#39;self&#39;, &#39;show_missing&#39;, &#39;summary&#39;, &#39;coverdir&#39;])
+                     |--  write_results_file ([&#39;self&#39;, &#39;path&#39;, &#39;lines&#39;, &#39;lnotab&#39;, &#39;lines_hit&#39;, &#39;encoding&#39;])
+     |--  [Class Ignore]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;trace.Ignore&#39;&gt;
+                     |--  &lt;class &#39;trace._Ignore&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  function  ]:
+                     |--  names ([&#39;self&#39;, &#39;filename&#39;, &#39;modulename&#39;])
+     |--  [Class Trace]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;trace.Trace&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  function  ]:
+                     |--  file_module_function_of ([&#39;self&#39;, &#39;frame&#39;])
+                     |--  globaltrace_countfuncs ([&#39;self&#39;, &#39;frame&#39;, &#39;why&#39;, &#39;arg&#39;])
+                     |--  globaltrace_lt ([&#39;self&#39;, &#39;frame&#39;, &#39;why&#39;, &#39;arg&#39;])
+                     |--  globaltrace_trackcallers ([&#39;self&#39;, &#39;frame&#39;, &#39;why&#39;, &#39;arg&#39;])
+                     |--  localtrace_count ([&#39;self&#39;, &#39;frame&#39;, &#39;why&#39;, &#39;arg&#39;])
+                     |--  localtrace_trace ([&#39;self&#39;, &#39;frame&#39;, &#39;why&#39;, &#39;arg&#39;])
+                     |--  localtrace_trace_and_count ([&#39;self&#39;, &#39;frame&#39;, &#39;why&#39;, &#39;arg&#39;])
+                     |--  results ([&#39;self&#39;])
+                     |--  run ([&#39;self&#39;, &#39;cmd&#39;])
+                     |--  runctx ([&#39;self&#39;, &#39;cmd&#39;, &#39;globals&#39;, &#39;locals&#39;])
+                     |--  runfunc ([&#39;self&#39;, &#39;func&#39;])
+     |--  [Class _Ignore]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;trace._Ignore&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  function  ]:
+                     |--  names ([&#39;self&#39;, &#39;filename&#39;, &#39;modulename&#39;])
+
+
+  [@ FUNCTION  ]
+      @@doc :  - Function including &quot;lambda&quot; anonymous functions
+     |--  _err_exit ([&#39;msg&#39;])
+     |--  _find_executable_linenos ([&#39;filename&#39;])
+     |--  _find_lines ([&#39;code&#39;, &#39;strs&#39;])
+     |--  _find_lines_from_code ([&#39;code&#39;, &#39;strs&#39;])
+     |--  _find_strings ([&#39;filename&#39;, &#39;encoding&#39;])
+     |--  _fullmodname ([&#39;path&#39;])
+     |--  _modname ([&#39;path&#39;])
+     |--  _settrace ([&#39;func&#39;])
+     |--  _unsettrace ([])
+     |--  _usage ([&#39;outfile&#39;])
+     |--  find_executable_linenos ([&#39;filename&#39;])
+     |--  find_lines ([&#39;code&#39;, &#39;strs&#39;])
+     |--  find_lines_from_code ([&#39;code&#39;, &#39;strs&#39;])
+     |--  find_strings ([&#39;filename&#39;, &#39;encoding&#39;])
+     |--  fullmodname ([&#39;path&#39;])
+     |--  main ([&#39;argv&#39;])
+     |--  modname ([&#39;path&#39;])
+     |--  usage ([&#39;outfile&#39;])
+
+  [@ str ]
+         |--  trace.PRAGMA_NOCOVER
+
+  [@ list ]
+         |--  trace.__all__
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id2">
+<h3>dis<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><div class="highlight-python"><div class="highlight"><pre><span></span>dis
  |--  dis
