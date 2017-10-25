@@ -8,4 +8,5 @@ Design
     :maxdepth: 2
 
     basic/project_design.txt
+    basic/source_dir.txt
     opensrc/OPENSOURCE_READING.txt
