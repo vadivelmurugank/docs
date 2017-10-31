@@ -2,7 +2,7 @@
 .. /project/pcb/evadkan/python/anaconda3/bin/rst2html.py
 
 ===========================================
-Template for reStructured Text
+Rst Syntax
 ===========================================
 
 .. Include other  txt/rst files here
@@ -72,6 +72,11 @@ LINK DESCRIPTION
 #################
 
     Here is my `github link <https://github.com/vadivelmurugank/picothing>`_
+        
+.. _'github link' : https://github.com/vadivelmurugank/picothing
+
+Here is github link: 'github link'_
+
 
 MODULE 3
 *********

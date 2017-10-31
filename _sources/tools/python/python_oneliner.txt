@@ -2,194 +2,187 @@
  Python Code Snippets
 ===========================================
 
-.. sectnum
-.. contents
-
 Transpose
--------------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-assignments
+* Assignments
 
-# multiple variable assignments
-a = [ 1, 2, 3]
-x = a[0]
-x , y , z = a
+.. code-block:: python
 
-# swap
-a = 10
-b = 20
-a, b = b, a
+    # multiple variable assignments
+    a = [ 1, 2, 3]
+    x = a[0]
+    x , y , z = a
 
+    # swap
+    a = 10
+    b = 20
+    a, b = b, a
 
+* list to/from tuple,dict, string
 
+.. code-block:: python
 
-list to/from tuple
-list to/from dict
+    list to/from tuple
+    list to/from dict
 
-list to/from string
+    list to/from string
 
-    >>> a = ['c', 'o', 'd', 'e']
-    >>> "".join(a)
-    'code'
-
-
-
+        >>> a = ['c', 'o', 'd', 'e']
+        >>> "".join(a)
+        'code'
 
 Reverse, Slice, substring
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Reverse/slice:
+* Reverse/slice
 
-# Reverse list
+.. code-block:: python
 
-        a="codedoom
-        a[::-1]
-        'moodedoc'
+    # Reverse list
 
-        a=[1,2,3,4]
-        a[::-1]
-        [4, 3, 2, 1]
+    a="codedoom
+    a[::-1]
+    'moodedoc'
 
-        a=(1,2,3,4)
-        a[::-1]
-        (4, 3, 2, 1)
+    a=[1,2,3,4]
+    a[::-1]
+    [4, 3, 2, 1]
 
-
-
-
-
-
-
-
-
-
-
-        
-
-oneliners
---------------------------------------------------------------
+    a=(1,2,3,4)
+    a[::-1]
+    (4, 3, 2, 1)
 
 lambda functions
-++++++++++++++++++++++++++++++++
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- 
-# Multiple each item in a list
-# lambda - higher order functions (input function and output is also a function)
-# lambda [function: <function statements>, input lists ]
- 
-$ python -c "print map(lambda x: x * 2, range(1,11))"
-[2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+.. code-block:: text
 
-Happy Birthday to You!
->>> print map(lambda x: "Happy Birthday to " + ("you" if x != 2 else "dear Name"),range(4))
-['Happy Birthday to you', 'Happy Birthday to you', 'Happy Birthday to dear Name', 'Happy Birthday to you']
->>> 
+    # Multiple each item in a list
+    # lambda - higher order functions (input function and output is also a function)
+    # lambda [function: <function statements>, input lists ]
+     
+    $ python -c "print map(lambda x: x * 2, range(1,11))"
+    [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+
+.. code-block:: text
+
+    Happy Birthday to You!
+    >>> print map(lambda x: "Happy Birthday to " + ("you" if x != 2 else "dear Name"),range(4))
+    ['Happy Birthday to you', 'Happy Birthday to you', 'Happy Birthday to dear Name', 'Happy Birthday to you']
+    >>> 
 
 
 String Operations
-++++++++++++++++++++++++++++++++
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Verify if Exists in a String
-# string split
->>> wordlist = ["scala", "akka", "play framework", "sbt", "typesafe"]
->>> tweet = "This is an example tweet talking about scala and sbt."
->>>
->>> print map(lambda x: x in tweet.split(),wordlist)
-[True, False, False, False, False]
+* Verify if Exists in a String
 
+.. code-block:: python
 
-
+    # string split
+    >>> wordlist = ["scala", "akka", "play framework", "sbt", "typesafe"]
+    >>> tweet = "This is an example tweet talking about scala and sbt."
+    >>>
+    >>> print map(lambda x: x in tweet.split(),wordlist)
+    [True, False, False, False, False]
 
 Numerical
-++++++++++++++++++++++++++++++
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. code-block:: text
 
-# Print sum of numbers.
-$ python -c "print sum(range(1,1001))"
-500500
+    # Print sum of numbers.
+    $ python -c "print sum(range(1,1001))"
+    500500
 
-Find minimum (or maximum) in a List
->>> print min([14, 35, -7, 46, 98])
--7
->>> print max([14, 35, -7, 46, 98])
-98
->>> 
+    Find minimum (or maximum) in a List
+    >>> print min([14, 35, -7, 46, 98])
+    -7
+    >>> print max([14, 35, -7, 46, 98])
+    98
+    >>> 
 
-Prime numbers between 2 and 50
->>> n = 50 # We want to find prime numbers between 2 and 50
->>>
->>> print sorted(set(range(2,n+1)).difference(set((p * f) for p in range(2,int(n**0.5) + 2) for f in range(2,(n/p)+1))))
-[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
->>> 
+    Prime numbers between 2 and 50
+    >>> n = 50 # We want to find prime numbers between 2 and 50
+    >>>
+    >>> print sorted(set(range(2,n+1)).difference(set((p * f) for p in range(2,int(n**0.5) + 2) for f in range(2,(n/p)+1))))
+    [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
+    >>> 
 
 
 File Operations
-++++++++++++++++++++++++++++++++++++
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  
-Read in a File
->>> print open("hello.py").readlines()
-['#! /usr/bin/python\r\n', 'print "Hello"\r\n']
+.. code-block:: python
+
+    Read in a File
+    >>> print open("hello.py").readlines()
+    ['#! /usr/bin/python\r\n', 'print "Hello"\r\n']
 
 
 Web Service
-++++++++++++++++++++++++++++++++++++++++
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Fetch and Parse an XML web service
->>> from xml.dom.minidom import parse, parseString
->>> import urllib2
->>> # note - i convert it back into xml to pretty print it
-... print parse(urllib2.urlopen("http://search.twitter.com/search.atom?&q=python")).toprettyxml(encoding="utf-8")
-<?xml version="1.0" encoding="utf-8"?>
-<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom" xmlns:georss="http://www.georss.org/georss" xmlns:google="http://base.google.com/ns/1 0" xmlns:openSearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:twitter="http://api.twitter.com/">
+.. code-block:: text
+
+    Fetch and Parse an XML web service
+    >>> from xml.dom.minidom import parse, parseString
+    >>> import urllib2
+    >>> # note - i convert it back into xml to pretty print it
+    ... print parse(urllib2.urlopen("http://search.twitter.com/search.atom?&q=python")).toprettyxml(encoding="utf-8")
+    <?xml version="1.0" encoding="utf-8"?>
+    <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom" xmlns:georss="http://www.georss.org/georss" xmlns:google="http://base.google.com/ns/1 0" xmlns:openSearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:twitter="http://api.twitter.com/">
 
 
 OS Services
-++++++++++++++++++++++++++++++++++++++++++++++++
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Parallel Processing
->>> import multiprocessing
->>> import math
->>>
->>> print list(multiprocessing.Pool(processes=4).map(math.exp,range(1,11)))
+* Parallel Processing
+
+.. code-block:: python
+
+    >>> import multiprocessing
+    >>> import math
+    >>>
+    >>> print list(multiprocessing.Pool(processes=4).map(math.exp,range(1,11)))
 
 
 re - regular expression  
---------------------------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    .. code-block:: python
+.. code-block:: text
 
-        s = "'log(x[, base])\n
+    s = "'log(x[, base])\n
 
-        s = 'Merge multiple sorted inputs into a single sorted             
-            output.\n\n    Similar to sorted(itertools.chain(*iterables))
-            but returns a generator,\n    does not pull the data into 
-            memory all at once, and assumes that each of\n    the 
-            input streams is already sorted (smallest to largest).\n\n'
+    s = 'Merge multiple sorted inputs into a single sorted             
+        output.\n\n    Similar to sorted(itertools.chain(*iterables))
+        but returns a generator,\n    does not pull the data into 
+        memory all at once, and assumes that each of\n    the 
+        input streams is already sorted (smallest to largest).\n\n'
 
-        p = r'([\w\d]*[^\(])\( ?([^\)]*)'
+    p = r'([\w\d]*[^\(])\( ?([^\)]*)'
 
-            Group 1:
-              [\w\d]*     :[A-Za-z0-9_]*
-              [^\(]       : [any of start of string or '\' or '(']
+        Group 1:
+          [\w\d]*     :[A-Za-z0-9_]*
+          [^\(]       : [any of start of string or '\' or '(']
 
-            Group 2:    
-                \(        : Start of '('
+        Group 2:    
+            \(        : Start of '('
 
-                \s?       : zero or 1 spaces
-                ([^\)]*   : start of string or '\' or '('
+            \s?       : zero or 1 spaces
+            ([^\)]*   : start of string or '\' or '('
 
 
-        >>> re.findall(p, s)
-        [('sorted', 'itertools.chain(*iterables'), ('sorted ', 'smallest to largest')]
-
-    
-
-import re
-p = r'([\w\d]*[^\(])\( ?([^\)]*)'
-
-for obj in dir(__builtins__): s=eval(obj).__doc__; list(filter(lambda ob : 
-bool(ob) and (ob[0] == obj) , re.findall(p,s) if bool(s) else " "))
+    >>> re.findall(p, s)
+    [('sorted', 'itertools.chain(*iterables'), ('sorted ', 'smallest to largest')]
 
 
 
+.. code-block:: python
 
+    import re
+    p = r'([\w\d]*[^\(])\( ?([^\)]*)'
 
+    for obj in dir(__builtins__): s=eval(obj).__doc__; list(filter(lambda ob : 
+    bool(ob) and (ob[0] == obj) , re.findall(p,s) if bool(s) else " "))

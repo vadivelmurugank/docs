@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>environment Variables &mdash;   documentation</title>
+  <title>Cross Compiler &mdash;   documentation</title>
   
 
   
@@ -33,7 +33,10 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="  documentation" href="../../index.html"/> 
+    <link rel="top" title="  documentation" href="../../index.html"/>
+        <link rel="up" title="Tools" href="../index.html"/>
+        <link rel="next" title="Yocto Install" href="yocto.html"/>
+        <link rel="prev" title="Yocto poky cross compiler" href="../compiler/yocto_cross_compiler.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -78,12 +81,19 @@
           
             
             
-                <ul>
+                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Design</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python/index.html">PYTHON</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../GIT/index.html">Git Internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ReST/template/template.html">Template for reStructured Text</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ReST/template/slides.html">MY SLIDE TITLE</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tools</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../compiler/index.html">compiler</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Cross Compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="yocto.html">Yocto Install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GIT/index.html">Git Internals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ReST/template/index.html">Restructured Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../verilog/verilog.html">Verilog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssh/ssh.html">SSH</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -114,7 +124,9 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-    <li>environment Variables</li>
+          <li><a href="../index.html">Tools</a> &raquo;</li>
+      
+    <li>Cross Compiler</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -128,78 +140,93 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <hr class="docutils" />
-<blockquote>
-<div>Cross Compiler toolchain Install</div></blockquote>
-<hr class="docutils" />
-<p>Yocto Releases:
-1.8</p>
-<p><a class="reference external" href="http://adtrepo.yoctoproject.org//1.8">http://adtrepo.yoctoproject.org//1.8</a></p>
-<dl class="docutils">
-<dt>Download:</dt>
-<dd><a class="reference external" href="http://downloads.yoctoproject.org/releases/yocto/yocto-1.8/adt-installer">http://downloads.yoctoproject.org/releases/yocto/yocto-1.8/adt-installer</a></dd>
-</dl>
-<p>Download adt-installer to $HOME/adt_installer.tar.bz2
-tar -xjf adt_installer.tar.bz2</p>
-<p>cd adt-installer</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>Edit adt-installer.conf file:</dt>
-<dd>YOCTOADT_TARGETS = arm ppc x86
-YOCTOADT_TARGET_SYSROOT_LOC</dd>
-</dl>
-</div></blockquote>
-<p>./adt_installer</p>
-<blockquote>
-<div>Tool chain installed in /opt/poky/1.8/..</div></blockquote>
+  <div class="section" id="cross-compiler">
+<h1>Cross Compiler<a class="headerlink" href="#cross-compiler" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>Yocto Releases:
+1.8
+
+http://adtrepo.yoctoproject.org//1.8
+
+
+Download:
+ http://downloads.yoctoproject.org/releases/yocto/yocto-1.8/adt-installer
+
+
+Download adt-installer to <span class="nv">$HOME</span>/adt_installer.tar.bz2
+tar -xjf adt_installer.tar.bz2
+
+<span class="nb">cd</span> adt-installer
+
+    Edit adt-installer.conf file:
+        <span class="nv">YOCTOADT_TARGETS</span> <span class="o">=</span> arm ppc x86
+        YOCTOADT_TARGET_SYSROOT_LOC
+
+./adt_installer
+
+    Tool chain installed in /opt/poky/1.8/..
+</pre></div>
+</div>
 <div class="section" id="environment-variables">
-<h1>environment Variables<a class="headerlink" href="#environment-variables" title="Permalink to this headline">¶</a></h1>
-<p>/opt/poky/1.8/environment-setup-i586-poky-linux</p>
-<p>export SDKTARGETSYSROOT=/home/pico/tools/yocto-sysroot/qemux86
-export PATH=/opt/poky/1.8/sysroots/x86_64-pokysdk-linux/usr/bin:/opt/poky/1.8/sy
-sroots/x86_64-pokysdk-linux/usr/bin/i586-poky-linux:$PATH
-export CCACHE_PATH=$sdkpathnative$bindir:$sdkpathnative$bindir/i586-poky-linux:$
+<h2>environment Variables<a class="headerlink" href="#environment-variables" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>/opt/poky/1.8/environment-setup-i586-poky-linux
+
+<span class="nb">export</span> <span class="nv">SDKTARGETSYSROOT</span><span class="o">=</span>/home/pico/tools/yocto-sysroot/qemux86
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/opt/poky/1.8/sysroots/x86_64-pokysdk-linux/usr/bin:/opt/poky/1.8/sy
+sroots/x86_64-pokysdk-linux/usr/bin/i586-poky-linux:<span class="nv">$PATH</span>
+<span class="nb">export</span> <span class="nv">CCACHE_PATH</span><span class="o">=</span><span class="nv">$sdkpathnative$bindir</span>:<span class="nv">$sdkpathnative$bindir</span>/i586-poky-linux:$
 CCACHE_PATH
-export PKG_CONFIG_SYSROOT_DIR=$SDKTARGETSYSROOT
-export PKG_CONFIG_PATH=$SDKTARGETSYSROOT/usr/lib/pkgconfig
-export CONFIG_SITE=/opt/poky/1.8/site-config-i586-poky-linux
-export OECORE_NATIVE_SYSROOT=&#8221;/opt/poky/1.8/sysroots/x86_64-pokysdk-linux&#8221;
-export OECORE_TARGET_SYSROOT=&#8221;$SDKTARGETSYSROOT&#8221;
-export OECORE_ACLOCAL_OPTS=&#8221;-I /opt/poky/1.8/sysroots/x86_64-pokysdk-linux/usr/s
-hare/aclocal&#8221;
-export PYTHONHOME=/opt/poky/1.8/sysroots/x86_64-pokysdk-linux/usr
-export CC=&#8221;i586-poky-linux-gcc  -m32 -march=i586 &#8211;sysroot=$SDKTARGETSYSROOT&#8221;
-export CXX=&#8221;i586-poky-linux-g++  -m32 -march=i586 &#8211;sysroot=$SDKTARGETSYSROOT&#8221;
-export CPP=&#8221;i586-poky-linux-gcc -E  -m32 -march=i586 &#8211;sysroot=$SDKTARGETSYSROOT
-&#8221;
-export AS=&#8221;i586-poky-linux-as  &#8221;
-export LD=&#8221;i586-poky-linux-ld   &#8211;sysroot=$SDKTARGETSYSROOT&#8221;
-export GDB=i586-poky-linux-gdb
-export STRIP=i586-poky-linux-strip
-export RANLIB=i586-poky-linux-ranlib
-export OBJCOPY=i586-poky-linux-objcopy
-export OBJDUMP=i586-poky-linux-objdump
-export AR=i586-poky-linux-ar
-export NM=i586-poky-linux-nm
-export M4=m4
-export TARGET_PREFIX=i586-poky-linux-
-export CONFIGURE_FLAGS=&#8221;&#8211;target=i586-poky-linux &#8211;host=i586-poky-linux &#8211;build=
-x86_64-linux &#8211;with-libtool-sysroot=$SDKTARGETSYSROOT&#8221;
-export CFLAGS=&#8221; -O2 -pipe -g -feliminate-unused-debug-types&#8221;
-export CXXFLAGS=&#8221; -O2 -pipe -g -feliminate-unused-debug-types&#8221;
-export LDFLAGS=&#8221;-Wl,-O1 -Wl,&#8211;hash-style=gnu -Wl,&#8211;as-needed&#8221;
-export CPPFLAGS=&#8221;&#8221;
-export KCFLAGS=&#8221;&#8211;sysroot=$SDKTARGETSYSROOT&#8221;
-export OECORE_DISTRO_VERSION=&#8221;1.8&#8221;
-export OECORE_SDK_VERSION=&#8221;1.8&#8221;
-export ARCH=x86
-export CROSS_COMPILE=i586-poky-linux-</p>
+<span class="nb">export</span> <span class="nv">PKG_CONFIG_SYSROOT_DIR</span><span class="o">=</span><span class="nv">$SDKTARGETSYSROOT</span>
+<span class="nb">export</span> <span class="nv">PKG_CONFIG_PATH</span><span class="o">=</span><span class="nv">$SDKTARGETSYSROOT</span>/usr/lib/pkgconfig
+<span class="nb">export</span> <span class="nv">CONFIG_SITE</span><span class="o">=</span>/opt/poky/1.8/site-config-i586-poky-linux
+<span class="nb">export</span> <span class="nv">OECORE_NATIVE_SYSROOT</span><span class="o">=</span><span class="s2">&quot;/opt/poky/1.8/sysroots/x86_64-pokysdk-linux&quot;</span>
+<span class="nb">export</span> <span class="nv">OECORE_TARGET_SYSROOT</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$SDKTARGETSYSROOT</span><span class="s2">&quot;</span>
+<span class="nb">export</span> <span class="nv">OECORE_ACLOCAL_OPTS</span><span class="o">=</span><span class="s2">&quot;-I /opt/poky/1.8/sysroots/x86_64-pokysdk-linux/usr/s</span>
+<span class="s2">hare/aclocal&quot;</span>
+<span class="nb">export</span> <span class="nv">PYTHONHOME</span><span class="o">=</span>/opt/poky/1.8/sysroots/x86_64-pokysdk-linux/usr
+<span class="nb">export</span> <span class="nv">CC</span><span class="o">=</span><span class="s2">&quot;i586-poky-linux-gcc  -m32 -march=i586 --sysroot=</span><span class="nv">$SDKTARGETSYSROOT</span><span class="s2">&quot;</span>
+<span class="nb">export</span> <span class="nv">CXX</span><span class="o">=</span><span class="s2">&quot;i586-poky-linux-g++  -m32 -march=i586 --sysroot=</span><span class="nv">$SDKTARGETSYSROOT</span><span class="s2">&quot;</span>
+<span class="nb">export</span> <span class="nv">CPP</span><span class="o">=</span><span class="s2">&quot;i586-poky-linux-gcc -E  -m32 -march=i586 --sysroot=</span><span class="nv">$SDKTARGETSYSROOT</span><span class="s2"></span>
+<span class="s2">&quot;</span>
+<span class="nb">export</span> <span class="nv">AS</span><span class="o">=</span><span class="s2">&quot;i586-poky-linux-as  &quot;</span>
+<span class="nb">export</span> <span class="nv">LD</span><span class="o">=</span><span class="s2">&quot;i586-poky-linux-ld   --sysroot=</span><span class="nv">$SDKTARGETSYSROOT</span><span class="s2">&quot;</span>
+<span class="nb">export</span> <span class="nv">GDB</span><span class="o">=</span>i586-poky-linux-gdb
+<span class="nb">export</span> <span class="nv">STRIP</span><span class="o">=</span>i586-poky-linux-strip
+<span class="nb">export</span> <span class="nv">RANLIB</span><span class="o">=</span>i586-poky-linux-ranlib
+<span class="nb">export</span> <span class="nv">OBJCOPY</span><span class="o">=</span>i586-poky-linux-objcopy
+<span class="nb">export</span> <span class="nv">OBJDUMP</span><span class="o">=</span>i586-poky-linux-objdump
+<span class="nb">export</span> <span class="nv">AR</span><span class="o">=</span>i586-poky-linux-ar
+<span class="nb">export</span> <span class="nv">NM</span><span class="o">=</span>i586-poky-linux-nm
+<span class="nb">export</span> <span class="nv">M4</span><span class="o">=</span>m4
+<span class="nb">export</span> <span class="nv">TARGET_PREFIX</span><span class="o">=</span>i586-poky-linux-
+<span class="nb">export</span> <span class="nv">CONFIGURE_FLAGS</span><span class="o">=</span><span class="s2">&quot;--target=i586-poky-linux --host=i586-poky-linux --build=</span>
+<span class="s2">x86_64-linux --with-libtool-sysroot=</span><span class="nv">$SDKTARGETSYSROOT</span><span class="s2">&quot;</span>
+<span class="nb">export</span> <span class="nv">CFLAGS</span><span class="o">=</span><span class="s2">&quot; -O2 -pipe -g -feliminate-unused-debug-types&quot;</span>
+<span class="nb">export</span> <span class="nv">CXXFLAGS</span><span class="o">=</span><span class="s2">&quot; -O2 -pipe -g -feliminate-unused-debug-types&quot;</span>
+<span class="nb">export</span> <span class="nv">LDFLAGS</span><span class="o">=</span><span class="s2">&quot;-Wl,-O1 -Wl,--hash-style=gnu -Wl,--as-needed&quot;</span>
+<span class="nb">export</span> <span class="nv">CPPFLAGS</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="nb">export</span> <span class="nv">KCFLAGS</span><span class="o">=</span><span class="s2">&quot;--sysroot=</span><span class="nv">$SDKTARGETSYSROOT</span><span class="s2">&quot;</span>
+<span class="nb">export</span> <span class="nv">OECORE_DISTRO_VERSION</span><span class="o">=</span><span class="s2">&quot;1.8&quot;</span>
+<span class="nb">export</span> <span class="nv">OECORE_SDK_VERSION</span><span class="o">=</span><span class="s2">&quot;1.8&quot;</span>
+<span class="nb">export</span> <span class="nv">ARCH</span><span class="o">=</span>x86
+<span class="nb">export</span> <span class="nv">CROSS_COMPILE</span><span class="o">=</span>i586-poky-linux-
+</pre></div>
+</div>
+</div>
 </div>
 
 
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="yocto.html" class="btn btn-neutral float-right" title="Yocto Install" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../compiler/yocto_cross_compiler.html" class="btn btn-neutral" title="Yocto poky cross compiler" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

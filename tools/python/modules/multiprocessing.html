@@ -1,0 +1,689 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>multiprocessing &mdash;   documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="  documentation" href="../../../index.html"/>
+        <link rel="up" title="Python Modules" href="index.html"/>
+        <link rel="next" title="yaml" href="yaml.html"/>
+        <link rel="prev" title="itertools" href="itertools.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> 
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../design/index.html">Design</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Tools</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../compiler/index.html">compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../yocto/adt-toolchain-install.html">Cross Compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../yocto/yocto.html">Yocto Install</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Python</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../python_doc.html">Python Doc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../python_module_structure.html">Python Module Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../builtin_modules.html">Builtin Python Modules</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Python Modules</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="math.html">math</a></li>
+<li class="toctree-l4"><a class="reference internal" href="os.html">os</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sre.html">re - simple regular expression (sre)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="collections.html">collections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="itertools.html">itertools</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">multiprocessing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="yaml.html">yaml</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../python_bytecode.html">Python Disassembly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../python_oneliner.html">Python Code Snippets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../python_pytest.html">Python PyTest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../python_start.html">Python Start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../python-install.html">python install packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../python-internals.html">Python Internals</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../GIT/index.html">Git Internals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReST/template/index.html">Restructured Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../verilog/verilog.html">Verilog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ssh/ssh.html">SSH</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html"></a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Tools</a> &raquo;</li>
+      
+          <li><a href="../index.html">Python</a> &raquo;</li>
+      
+          <li><a href="index.html">Python Modules</a> &raquo;</li>
+      
+    <li>multiprocessing</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../_sources/tools/python/modules/multiprocessing.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="multiprocessing">
+<h1>multiprocessing<a class="headerlink" href="#multiprocessing" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><div class="highlight-text"><div class="highlight"><pre><span></span>multiprocessing
+ |--  multiprocessing
+ |--  ===&gt; /usr/lib/python3.2/multiprocessing/__init__.py
+
+
+  [@SUBPACKAGES]
+     |--  multiprocessing.dummy
+
+
+  [@SUBMODULES ]
+     |--  multiprocessing
+         |--  _multiprocessing
+         |--  dummy
+             |--  array
+             |--  connection
+             |--  itertools
+             |--  sys
+             |--  threading
+                 |--  _sys
+             |--  weakref
+                 |--  collections
+                     |--  _abcoll
+                         |--  sys
+                     |--  _heapq
+                         |--  bisect
+                     |--  _sys
+         |--  os
+             |--  _copyreg
+             |--  errno
+             |--  path
+                 |--  genericpath
+                     |--  os
+                     |--  stat
+                 |--  os
+                 |--  stat
+                 |--  sys
+             |--  sys
+         |--  process
+             |--  itertools
+             |--  os
+             |--  signal
+             |--  sys
+         |--  sys
+         |--  util
+             |--  atexit
+             |--  itertools
+             |--  threading
+             |--  weakref
+     |--  multiprocessing.dummy
+         |--  array
+         |--  connection
+         |--  itertools
+         |--  sys
+         |--  threading
+             |--  _sys
+         |--  weakref
+             |--  collections
+                 |--  _abcoll
+                     |--  sys
+                 |--  _heapq
+                     |--  bisect
+                 |--  _sys
+
+
+  [@CLASS        ]
+      @@doc : - Classes and Method Resolution Order
+     |--  [Class AuthenticationError]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;multiprocessing.AuthenticationError&#39;&gt;
+                     |--  &lt;class &#39;multiprocessing.ProcessError&#39;&gt;
+                     |--  &lt;class &#39;Exception&#39;&gt;
+                     |--  &lt;class &#39;BaseException&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  method_descriptor  ]:
+                     |--  with_traceback
+             |--  [  getset_descriptor  ]:
+                     |--  args
+     |--  [Class BufferTooShort]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;multiprocessing.BufferTooShort&#39;&gt;
+                     |--  &lt;class &#39;multiprocessing.ProcessError&#39;&gt;
+                     |--  &lt;class &#39;Exception&#39;&gt;
+                     |--  &lt;class &#39;BaseException&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  method_descriptor  ]:
+                     |--  with_traceback
+             |--  [  getset_descriptor  ]:
+                     |--  args
+     |--  [Class Process]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;multiprocessing.process.Process&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  property  ]:
+                     |--  authkey
+                     |--  daemon
+                     |--  exitcode
+                     |--  ident
+                     |--  name
+                     |--  pid
+             |--  [  function  ]:
+                     |--  _bootstrap ([&#39;self&#39;])
+                     |--  is_alive ([&#39;self&#39;])
+                     |--  join ([&#39;self&#39;, &#39;timeout&#39;])
+                     |--  run ([&#39;self&#39;])
+                     |--  start ([&#39;self&#39;])
+                     |--  terminate ([&#39;self&#39;])
+             |--  [  NoneType  ]:
+                     |--  _Popen
+     |--  [Class ProcessError]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;multiprocessing.ProcessError&#39;&gt;
+                     |--  &lt;class &#39;Exception&#39;&gt;
+                     |--  &lt;class &#39;BaseException&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  method_descriptor  ]:
+                     |--  with_traceback
+             |--  [  getset_descriptor  ]:
+                     |--  args
+     |--  [Class TimeoutError]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;multiprocessing.TimeoutError&#39;&gt;
+                     |--  &lt;class &#39;multiprocessing.ProcessError&#39;&gt;
+                     |--  &lt;class &#39;Exception&#39;&gt;
+                     |--  &lt;class &#39;BaseException&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  method_descriptor  ]:
+                     |--  with_traceback
+             |--  [  getset_descriptor  ]:
+                     |--  args
+     |--  [Class Condition]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;multiprocessing.dummy.Condition&#39;&gt;
+                     |--  &lt;class &#39;threading._Condition&#39;&gt;
+                     |--  &lt;class &#39;threading._Verbose&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  function  ]:
+                     |--  _acquire_restore ([&#39;self&#39;, &#39;x&#39;])
+                     |--  _is_owned ([&#39;self&#39;])
+                     |--  _note ([&#39;self&#39;, &#39;format&#39;])
+                     |--  _release_save ([&#39;self&#39;])
+                     |--  notify ([&#39;self&#39;, &#39;n&#39;])
+                     |--  notifyAll ([&#39;self&#39;])
+                     |--  notify_all ([&#39;self&#39;])
+                     |--  wait ([&#39;self&#39;, &#39;timeout&#39;])
+                     |--  wait_for ([&#39;self&#39;, &#39;predicate&#39;, &#39;timeout&#39;])
+     |--  [Class DummyProcess]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;multiprocessing.dummy.DummyProcess&#39;&gt;
+                     |--  &lt;class &#39;threading.Thread&#39;&gt;
+                     |--  &lt;class &#39;threading._Verbose&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  bool  ]:
+                     |--  _Thread__initialized
+             |--  [  function  ]:
+                     |--  _bootstrap ([&#39;self&#39;])
+                     |--  _bootstrap_inner ([&#39;self&#39;])
+                     |--  _delete ([&#39;self&#39;])
+                     |--  _note ([&#39;self&#39;, &#39;format&#39;])
+                     |--  _reset_internal_locks ([&#39;self&#39;])
+                     |--  _set_daemon ([&#39;self&#39;])
+                     |--  _set_ident ([&#39;self&#39;])
+                     |--  _stop ([&#39;self&#39;])
+                     |--  getName ([&#39;self&#39;])
+                     |--  isAlive ([&#39;self&#39;])
+                     |--  isDaemon ([&#39;self&#39;])
+                     |--  is_alive ([&#39;self&#39;])
+                     |--  join ([&#39;self&#39;, &#39;timeout&#39;])
+                     |--  run ([&#39;self&#39;])
+                     |--  setDaemon ([&#39;self&#39;, &#39;daemonic&#39;])
+                     |--  setName ([&#39;self&#39;, &#39;name&#39;])
+                     |--  start ([&#39;self&#39;])
+             |--  [  property  ]:
+                     |--  daemon
+                     |--  exitcode
+                     |--  ident
+                     |--  name
+             |--  [  builtin_function_or_method  ]:
+                     |--  _Thread__exc_info
+     |--  [Class JoinableQueue]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;queue.Queue&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  function  ]:
+                     |--  _get ([&#39;self&#39;])
+                     |--  _init ([&#39;self&#39;, &#39;maxsize&#39;])
+                     |--  _put ([&#39;self&#39;, &#39;item&#39;])
+                     |--  _qsize ([&#39;self&#39;, &#39;len&#39;])
+                     |--  empty ([&#39;self&#39;])
+                     |--  full ([&#39;self&#39;])
+                     |--  get ([&#39;self&#39;, &#39;block&#39;, &#39;timeout&#39;])
+                     |--  get_nowait ([&#39;self&#39;])
+                     |--  join ([&#39;self&#39;])
+                     |--  put ([&#39;self&#39;, &#39;item&#39;, &#39;block&#39;, &#39;timeout&#39;])
+                     |--  put_nowait ([&#39;self&#39;, &#39;item&#39;])
+                     |--  qsize ([&#39;self&#39;])
+                     |--  task_done ([&#39;self&#39;])
+     |--  [Class Namespace]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;multiprocessing.dummy.Namespace&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+     |--  [Class Process]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;multiprocessing.dummy.DummyProcess&#39;&gt;
+                     |--  &lt;class &#39;threading.Thread&#39;&gt;
+                     |--  &lt;class &#39;threading._Verbose&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  bool  ]:
+                     |--  _Thread__initialized
+             |--  [  function  ]:
+                     |--  _bootstrap ([&#39;self&#39;])
+                     |--  _bootstrap_inner ([&#39;self&#39;])
+                     |--  _delete ([&#39;self&#39;])
+                     |--  _note ([&#39;self&#39;, &#39;format&#39;])
+                     |--  _reset_internal_locks ([&#39;self&#39;])
+                     |--  _set_daemon ([&#39;self&#39;])
+                     |--  _set_ident ([&#39;self&#39;])
+                     |--  _stop ([&#39;self&#39;])
+                     |--  getName ([&#39;self&#39;])
+                     |--  isAlive ([&#39;self&#39;])
+                     |--  isDaemon ([&#39;self&#39;])
+                     |--  is_alive ([&#39;self&#39;])
+                     |--  join ([&#39;self&#39;, &#39;timeout&#39;])
+                     |--  run ([&#39;self&#39;])
+                     |--  setDaemon ([&#39;self&#39;, &#39;daemonic&#39;])
+                     |--  setName ([&#39;self&#39;, &#39;name&#39;])
+                     |--  start ([&#39;self&#39;])
+             |--  [  property  ]:
+                     |--  daemon
+                     |--  exitcode
+                     |--  ident
+                     |--  name
+             |--  [  builtin_function_or_method  ]:
+                     |--  _Thread__exc_info
+     |--  [Class Queue]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;queue.Queue&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  function  ]:
+                     |--  _get ([&#39;self&#39;])
+                     |--  _init ([&#39;self&#39;, &#39;maxsize&#39;])
+                     |--  _put ([&#39;self&#39;, &#39;item&#39;])
+                     |--  _qsize ([&#39;self&#39;, &#39;len&#39;])
+                     |--  empty ([&#39;self&#39;])
+                     |--  full ([&#39;self&#39;])
+                     |--  get ([&#39;self&#39;, &#39;block&#39;, &#39;timeout&#39;])
+                     |--  get_nowait ([&#39;self&#39;])
+                     |--  join ([&#39;self&#39;])
+                     |--  put ([&#39;self&#39;, &#39;item&#39;, &#39;block&#39;, &#39;timeout&#39;])
+                     |--  put_nowait ([&#39;self&#39;, &#39;item&#39;])
+                     |--  qsize ([&#39;self&#39;])
+                     |--  task_done ([&#39;self&#39;])
+     |--  [Class TimeoutError]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;multiprocessing.TimeoutError&#39;&gt;
+                     |--  &lt;class &#39;multiprocessing.ProcessError&#39;&gt;
+                     |--  &lt;class &#39;Exception&#39;&gt;
+                     |--  &lt;class &#39;BaseException&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  method_descriptor  ]:
+                     |--  with_traceback
+             |--  [  getset_descriptor  ]:
+                     |--  args
+     |--  [Class Value]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;multiprocessing.dummy.Value&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  property  ]:
+                     |--  value
+             |--  [  function  ]:
+                     |--  _get ([&#39;self&#39;])
+                     |--  _set ([&#39;self&#39;, &#39;value&#39;])
+     |--  [Class dict]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;dict&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  method_descriptor  ]:
+                     |--  clear
+                     |--  copy
+                     |--  get
+                     |--  items
+                     |--  keys
+                     |--  pop
+                     |--  popitem
+                     |--  setdefault
+                     |--  update
+                     |--  values
+             |--  [  builtin_function_or_method  ]:
+                     |--  fromkeys
+     |--  [Class list]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;list&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  method_descriptor  ]:
+                     |--  append
+                     |--  count
+                     |--  extend
+                     |--  index
+                     |--  insert
+                     |--  pop
+                     |--  remove
+                     |--  reverse
+                     |--  sort
+
+
+  [@ FUNCTION  ]
+      @@doc :  - Function including &quot;lambda&quot; anonymous functions
+     |--  Array ([&#39;typecode_or_type&#39;, &#39;size_or_initializer&#39;])
+     |--  BoundedSemaphore ([&#39;value&#39;])
+     |--  Condition ([&#39;lock&#39;])
+     |--  Event ([])
+     |--  JoinableQueue ([&#39;maxsize&#39;])
+     |--  Lock ([])
+     |--  Manager ([])
+     |--  Pipe ([&#39;duplex&#39;])
+     |--  Pool ([&#39;processes&#39;, &#39;initializer&#39;, &#39;initargs&#39;, &#39;maxtasksperchild&#39;])
+     |--  Queue ([&#39;maxsize&#39;])
+     |--  RLock ([])
+     |--  RawArray ([&#39;typecode_or_type&#39;, &#39;size_or_initializer&#39;])
+     |--  RawValue ([&#39;typecode_or_type&#39;])
+     |--  Semaphore ([&#39;value&#39;])
+     |--  Value ([&#39;typecode_or_type&#39;])
+     |--  active_children ([])
+     |--  allow_connection_pickling ([])
+     |--  cpu_count ([])
+     |--  current_process ([])
+     |--  freeze_support ([])
+     |--  get_logger ([])
+     |--  log_to_stderr ([&#39;level&#39;])
+     |--  Array ([&#39;typecode&#39;, &#39;sequence&#39;, &#39;lock&#39;])
+     |--  BoundedSemaphore ([])
+     |--  Event ([])
+     |--  Manager ([])
+     |--  Pipe ([&#39;duplex&#39;])
+     |--  Pool ([&#39;processes&#39;, &#39;initializer&#39;, &#39;initargs&#39;])
+     |--  RLock ([&#39;verbose&#39;])
+     |--  Semaphore ([])
+     |--  active_children ([])
+     |--  cpu_count ([])
+     |--  current_process ([])
+     |--  freeze_support ([])
+     |--  shutdown ([])
+
+
+  [@ METHOD ]
+      @@doc ::   - bound method
+
+
+  [@ GENERATOR ]
+      @@doc :   - object is a generator with &quot;yield&quot; expressions
+
+
+  [@ GENERATOR FUNCTION ]
+      @@doc :     - object is a generator function
+
+
+  [@ TRACEBACK ]
+      @@doc :  - Traceback object
+
+
+  [@ FRAME ]
+      @@doc : - Frame Object
+
+
+  [@ CODE ]
+      @@doc : - Code Object
+
+
+  [@ BUILTIN ]
+      @@doc : - built-in function or bound built-in method
+     |--  Lock()
+
+
+  [@ ABSTRACT ]
+      @@doc : - object is abstract base class
+
+
+  [@ METHOD DESCRIPTOR ]
+      @@doc :  - Object has __get__ attribute but NOT __set__ attribute
+
+
+  [@ DATA DESCRIPTOR ]
+      @@doc :  - Object has __get__, __set__, __delete__ attributes
+
+
+  [@ GETSET DESCRIPTOR ]
+
+
+  [@ MEMBER DESCRIPTOR ]
+
+
+  [@ VARIABLES ]
+
+
+      [@ GLOBALS ]
+
+
+          [@ bool ]
+
+
+          [@ int ]
+                 |--  multiprocessing.SUBDEBUG
+                 |--  multiprocessing.SUBWARNING
+
+
+          [@ float ]
+
+
+          [@ complex ]
+
+
+      [@ IMMUTABLE SEQUENCES ]
+
+
+          [@ str ]
+                 |--  multiprocessing.__author__
+
+
+          [@ slice ]
+
+
+          [@ tuple ]
+
+
+          [@ frozenset ]
+
+
+      [@ MUTABLE SEQUENCES ]
+
+
+          [@ list ]
+                 |--  multiprocessing.__all__
+                 |--  multiprocessing.dummy.__all__
+
+
+          [@ bytearray ]
+
+
+          [@ set ]
+
+
+      [@ MAPPING ]
+
+
+          [@ dict ]
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="yaml.html" class="btn btn-neutral float-right" title="yaml" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="itertools.html" class="btn btn-neutral" title="itertools" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

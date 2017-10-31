@@ -1,0 +1,451 @@
+===========================================
+multiprocessing
+===========================================
+
+    .. code-block:: text
+
+        multiprocessing
+         |--  multiprocessing
+         |--  ===> /usr/lib/python3.2/multiprocessing/__init__.py
+
+
+          [@SUBPACKAGES]
+             |--  multiprocessing.dummy
+
+
+          [@SUBMODULES ]
+             |--  multiprocessing
+                 |--  _multiprocessing
+                 |--  dummy
+                     |--  array
+                     |--  connection
+                     |--  itertools
+                     |--  sys
+                     |--  threading
+                         |--  _sys
+                     |--  weakref
+                         |--  collections
+                             |--  _abcoll
+                                 |--  sys
+                             |--  _heapq
+                                 |--  bisect
+                             |--  _sys
+                 |--  os
+                     |--  _copyreg
+                     |--  errno
+                     |--  path
+                         |--  genericpath
+                             |--  os
+                             |--  stat
+                         |--  os
+                         |--  stat
+                         |--  sys
+                     |--  sys
+                 |--  process
+                     |--  itertools
+                     |--  os
+                     |--  signal
+                     |--  sys
+                 |--  sys
+                 |--  util
+                     |--  atexit
+                     |--  itertools
+                     |--  threading
+                     |--  weakref
+             |--  multiprocessing.dummy
+                 |--  array
+                 |--  connection
+                 |--  itertools
+                 |--  sys
+                 |--  threading
+                     |--  _sys
+                 |--  weakref
+                     |--  collections
+                         |--  _abcoll
+                             |--  sys
+                         |--  _heapq
+                             |--  bisect
+                         |--  _sys
+
+
+          [@CLASS        ]
+              @@doc : - Classes and Method Resolution Order
+             |--  [Class AuthenticationError]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'multiprocessing.AuthenticationError'>
+                             |--  <class 'multiprocessing.ProcessError'>
+                             |--  <class 'Exception'>
+                             |--  <class 'BaseException'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  with_traceback
+                     |--  [  getset_descriptor  ]:
+                             |--  args
+             |--  [Class BufferTooShort]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'multiprocessing.BufferTooShort'>
+                             |--  <class 'multiprocessing.ProcessError'>
+                             |--  <class 'Exception'>
+                             |--  <class 'BaseException'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  with_traceback
+                     |--  [  getset_descriptor  ]:
+                             |--  args
+             |--  [Class Process]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'multiprocessing.process.Process'>
+                             |--  <class 'object'>
+                     |--  [  property  ]:
+                             |--  authkey
+                             |--  daemon
+                             |--  exitcode
+                             |--  ident
+                             |--  name
+                             |--  pid
+                     |--  [  function  ]:
+                             |--  _bootstrap (['self'])
+                             |--  is_alive (['self'])
+                             |--  join (['self', 'timeout'])
+                             |--  run (['self'])
+                             |--  start (['self'])
+                             |--  terminate (['self'])
+                     |--  [  NoneType  ]:
+                             |--  _Popen
+             |--  [Class ProcessError]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'multiprocessing.ProcessError'>
+                             |--  <class 'Exception'>
+                             |--  <class 'BaseException'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  with_traceback
+                     |--  [  getset_descriptor  ]:
+                             |--  args
+             |--  [Class TimeoutError]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'multiprocessing.TimeoutError'>
+                             |--  <class 'multiprocessing.ProcessError'>
+                             |--  <class 'Exception'>
+                             |--  <class 'BaseException'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  with_traceback
+                     |--  [  getset_descriptor  ]:
+                             |--  args
+             |--  [Class Condition]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'multiprocessing.dummy.Condition'>
+                             |--  <class 'threading._Condition'>
+                             |--  <class 'threading._Verbose'>
+                             |--  <class 'object'>
+                     |--  [  function  ]:
+                             |--  _acquire_restore (['self', 'x'])
+                             |--  _is_owned (['self'])
+                             |--  _note (['self', 'format'])
+                             |--  _release_save (['self'])
+                             |--  notify (['self', 'n'])
+                             |--  notifyAll (['self'])
+                             |--  notify_all (['self'])
+                             |--  wait (['self', 'timeout'])
+                             |--  wait_for (['self', 'predicate', 'timeout'])
+             |--  [Class DummyProcess]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'multiprocessing.dummy.DummyProcess'>
+                             |--  <class 'threading.Thread'>
+                             |--  <class 'threading._Verbose'>
+                             |--  <class 'object'>
+                     |--  [  bool  ]:
+                             |--  _Thread__initialized
+                     |--  [  function  ]:
+                             |--  _bootstrap (['self'])
+                             |--  _bootstrap_inner (['self'])
+                             |--  _delete (['self'])
+                             |--  _note (['self', 'format'])
+                             |--  _reset_internal_locks (['self'])
+                             |--  _set_daemon (['self'])
+                             |--  _set_ident (['self'])
+                             |--  _stop (['self'])
+                             |--  getName (['self'])
+                             |--  isAlive (['self'])
+                             |--  isDaemon (['self'])
+                             |--  is_alive (['self'])
+                             |--  join (['self', 'timeout'])
+                             |--  run (['self'])
+                             |--  setDaemon (['self', 'daemonic'])
+                             |--  setName (['self', 'name'])
+                             |--  start (['self'])
+                     |--  [  property  ]:
+                             |--  daemon
+                             |--  exitcode
+                             |--  ident
+                             |--  name
+                     |--  [  builtin_function_or_method  ]:
+                             |--  _Thread__exc_info
+             |--  [Class JoinableQueue]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'queue.Queue'>
+                             |--  <class 'object'>
+                     |--  [  function  ]:
+                             |--  _get (['self'])
+                             |--  _init (['self', 'maxsize'])
+                             |--  _put (['self', 'item'])
+                             |--  _qsize (['self', 'len'])
+                             |--  empty (['self'])
+                             |--  full (['self'])
+                             |--  get (['self', 'block', 'timeout'])
+                             |--  get_nowait (['self'])
+                             |--  join (['self'])
+                             |--  put (['self', 'item', 'block', 'timeout'])
+                             |--  put_nowait (['self', 'item'])
+                             |--  qsize (['self'])
+                             |--  task_done (['self'])
+             |--  [Class Namespace]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'multiprocessing.dummy.Namespace'>
+                             |--  <class 'object'>
+             |--  [Class Process]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'multiprocessing.dummy.DummyProcess'>
+                             |--  <class 'threading.Thread'>
+                             |--  <class 'threading._Verbose'>
+                             |--  <class 'object'>
+                     |--  [  bool  ]:
+                             |--  _Thread__initialized
+                     |--  [  function  ]:
+                             |--  _bootstrap (['self'])
+                             |--  _bootstrap_inner (['self'])
+                             |--  _delete (['self'])
+                             |--  _note (['self', 'format'])
+                             |--  _reset_internal_locks (['self'])
+                             |--  _set_daemon (['self'])
+                             |--  _set_ident (['self'])
+                             |--  _stop (['self'])
+                             |--  getName (['self'])
+                             |--  isAlive (['self'])
+                             |--  isDaemon (['self'])
+                             |--  is_alive (['self'])
+                             |--  join (['self', 'timeout'])
+                             |--  run (['self'])
+                             |--  setDaemon (['self', 'daemonic'])
+                             |--  setName (['self', 'name'])
+                             |--  start (['self'])
+                     |--  [  property  ]:
+                             |--  daemon
+                             |--  exitcode
+                             |--  ident
+                             |--  name
+                     |--  [  builtin_function_or_method  ]:
+                             |--  _Thread__exc_info
+             |--  [Class Queue]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'queue.Queue'>
+                             |--  <class 'object'>
+                     |--  [  function  ]:
+                             |--  _get (['self'])
+                             |--  _init (['self', 'maxsize'])
+                             |--  _put (['self', 'item'])
+                             |--  _qsize (['self', 'len'])
+                             |--  empty (['self'])
+                             |--  full (['self'])
+                             |--  get (['self', 'block', 'timeout'])
+                             |--  get_nowait (['self'])
+                             |--  join (['self'])
+                             |--  put (['self', 'item', 'block', 'timeout'])
+                             |--  put_nowait (['self', 'item'])
+                             |--  qsize (['self'])
+                             |--  task_done (['self'])
+             |--  [Class TimeoutError]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'multiprocessing.TimeoutError'>
+                             |--  <class 'multiprocessing.ProcessError'>
+                             |--  <class 'Exception'>
+                             |--  <class 'BaseException'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  with_traceback
+                     |--  [  getset_descriptor  ]:
+                             |--  args
+             |--  [Class Value]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'multiprocessing.dummy.Value'>
+                             |--  <class 'object'>
+                     |--  [  property  ]:
+                             |--  value
+                     |--  [  function  ]:
+                             |--  _get (['self'])
+                             |--  _set (['self', 'value'])
+             |--  [Class dict]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'dict'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  clear
+                             |--  copy
+                             |--  get
+                             |--  items
+                             |--  keys
+                             |--  pop
+                             |--  popitem
+                             |--  setdefault
+                             |--  update
+                             |--  values
+                     |--  [  builtin_function_or_method  ]:
+                             |--  fromkeys
+             |--  [Class list]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'list'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  append
+                             |--  count
+                             |--  extend
+                             |--  index
+                             |--  insert
+                             |--  pop
+                             |--  remove
+                             |--  reverse
+                             |--  sort
+
+
+          [@ FUNCTION  ]
+              @@doc :  - Function including "lambda" anonymous functions
+             |--  Array (['typecode_or_type', 'size_or_initializer'])
+             |--  BoundedSemaphore (['value'])
+             |--  Condition (['lock'])
+             |--  Event ([])
+             |--  JoinableQueue (['maxsize'])
+             |--  Lock ([])
+             |--  Manager ([])
+             |--  Pipe (['duplex'])
+             |--  Pool (['processes', 'initializer', 'initargs', 'maxtasksperchild'])
+             |--  Queue (['maxsize'])
+             |--  RLock ([])
+             |--  RawArray (['typecode_or_type', 'size_or_initializer'])
+             |--  RawValue (['typecode_or_type'])
+             |--  Semaphore (['value'])
+             |--  Value (['typecode_or_type'])
+             |--  active_children ([])
+             |--  allow_connection_pickling ([])
+             |--  cpu_count ([])
+             |--  current_process ([])
+             |--  freeze_support ([])
+             |--  get_logger ([])
+             |--  log_to_stderr (['level'])
+             |--  Array (['typecode', 'sequence', 'lock'])
+             |--  BoundedSemaphore ([])
+             |--  Event ([])
+             |--  Manager ([])
+             |--  Pipe (['duplex'])
+             |--  Pool (['processes', 'initializer', 'initargs'])
+             |--  RLock (['verbose'])
+             |--  Semaphore ([])
+             |--  active_children ([])
+             |--  cpu_count ([])
+             |--  current_process ([])
+             |--  freeze_support ([])
+             |--  shutdown ([])
+
+
+          [@ METHOD ]
+              @@doc ::   - bound method
+
+
+          [@ GENERATOR ]
+              @@doc :   - object is a generator with "yield" expressions
+
+
+          [@ GENERATOR FUNCTION ]
+              @@doc :     - object is a generator function
+
+
+          [@ TRACEBACK ]
+              @@doc :  - Traceback object
+
+
+          [@ FRAME ]
+              @@doc : - Frame Object
+
+
+          [@ CODE ]
+              @@doc : - Code Object
+
+
+          [@ BUILTIN ]
+              @@doc : - built-in function or bound built-in method
+             |--  Lock() 
+
+
+          [@ ABSTRACT ]
+              @@doc : - object is abstract base class
+
+
+          [@ METHOD DESCRIPTOR ]
+              @@doc :  - Object has __get__ attribute but NOT __set__ attribute
+
+
+          [@ DATA DESCRIPTOR ]
+              @@doc :  - Object has __get__, __set__, __delete__ attributes
+
+
+          [@ GETSET DESCRIPTOR ]
+
+
+          [@ MEMBER DESCRIPTOR ]
+
+
+          [@ VARIABLES ]
+
+
+              [@ GLOBALS ]
+
+
+                  [@ bool ]
+
+
+                  [@ int ]
+                         |--  multiprocessing.SUBDEBUG
+                         |--  multiprocessing.SUBWARNING
+
+
+                  [@ float ]
+
+
+                  [@ complex ]
+
+
+              [@ IMMUTABLE SEQUENCES ]
+
+
+                  [@ str ]
+                         |--  multiprocessing.__author__
+
+
+                  [@ slice ]
+
+
+                  [@ tuple ]
+
+
+                  [@ frozenset ]
+
+
+              [@ MUTABLE SEQUENCES ]
+
+
+                  [@ list ]
+                         |--  multiprocessing.__all__
+                         |--  multiprocessing.dummy.__all__
+
+
+                  [@ bytearray ]
+
+
+                  [@ set ]
+
+
+              [@ MAPPING ]
+
+
+                  [@ dict ]
+

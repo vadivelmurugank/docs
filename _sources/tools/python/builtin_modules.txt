@@ -2,9 +2,6 @@
 Builtin Python Modules
 ===========================================
 
-.. sectnum
-.. contents
-
 Python Help
 --------------------------------------------------------------------
 
@@ -352,7 +349,7 @@ Builtins Classes and Modules
 builtins
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    .. code-block:: python
+    .. code-block:: text
 
          |--  builtins
          |--  ===> Builtin Module
@@ -1432,7 +1429,7 @@ builtins
 __main__
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    .. code-block:: python
+    .. code-block:: text
 
          |--  __main__
          |--  ===> Builtin Module
@@ -1731,7 +1728,7 @@ __main__
 _ast
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    .. code-block:: python
+    .. code-block:: text
 
          |--  _ast
          |--  ===> Builtin Module
@@ -2781,7 +2778,7 @@ _ast
 _codecs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    .. code-block:: python
+    .. code-block:: text
 
          |--  _codecs
          |--  ===> Builtin Module
@@ -2941,7 +2938,7 @@ _codecs
 _collections
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    .. code-block:: python
+    .. code-block:: text
 
          |--  _collections
          |--  ===> Builtin Module
@@ -3101,7 +3098,7 @@ _collections
 _functools
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    .. code-block:: python
+    .. code-block:: text
 
          |--  _functools
          |--  ===> Builtin Module
@@ -3231,7 +3228,7 @@ _functools
 _io
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    .. code-block:: python
+    .. code-block:: text
 
          |--  io
          |--   + ==> Error Attribute not found. : io
@@ -3440,7 +3437,7 @@ _io
 _sre
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    .. code-block:: python
+    .. code-block:: text
 
          |--  _sre
          |--  ===> Builtin Module
@@ -3567,7 +3564,7 @@ _sre
 _string
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    .. code-block:: python
+    .. code-block:: text
 
          |--  _string
          |--  ===> Builtin Module
@@ -3690,7 +3687,7 @@ _string
 _symtable
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    .. code-block:: python
+    .. code-block:: text
 
          |--  _symtable
          |--  ===> Builtin Module
@@ -3841,7 +3838,7 @@ _symtable
 _thread
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    .. code-block:: python
+    .. code-block:: text
 
          |--  _thread
          |--  ===> Builtin Module
@@ -4008,7 +4005,7 @@ _thread
 _warnings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    .. code-block:: python
+    .. code-block:: text
 
          |--  _warnings
          |--  ===> Builtin Module
@@ -4134,7 +4131,7 @@ _warnings
 _weakref
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    .. code-block:: python
+    .. code-block:: text
 
          |--  _weakref
          |--  ===> Builtin Module
@@ -4274,7 +4271,7 @@ _weakref
 builtins
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    .. code-block:: python
+    .. code-block:: text
 
          |--  builtins
          |--  ===> Builtin Module
@@ -5353,7 +5350,7 @@ builtins
 errno
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    .. code-block:: python
+    .. code-block:: text
 
          |--  errno
          |--  ===> Builtin Module
@@ -5596,7 +5593,7 @@ errno
 gc
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    .. code-block:: python
+    .. code-block:: text
 
          |--  gc
          |--  ===> Builtin Module
@@ -5736,7 +5733,7 @@ gc
 imp
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    .. code-block:: python
+    .. code-block:: text
 
          |--  imp
          |--  ===> Builtin Module
@@ -5895,7 +5892,7 @@ imp
 itertools
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    .. code-block:: python
+    .. code-block:: text
 
          |--  itertools
          |--  ===> Builtin Module
@@ -6087,7 +6084,7 @@ itertools
 marshal
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    .. code-block:: python
+    .. code-block:: text
 
          |--  marshal
          |--  ===> Builtin Module
@@ -6216,7 +6213,7 @@ marshal
 operator
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    .. code-block:: python
+    .. code-block:: text
 
          |--  operator
          |--  ===> Builtin Module
@@ -6440,7 +6437,7 @@ operator
 posix
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    .. code-block:: python
+    .. code-block:: text
 
          |--  posix
          |--  ===> Builtin Module
@@ -6782,7 +6779,7 @@ posix
 pwd
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    .. code-block:: python
+    .. code-block:: text
 
          |--  pwd
          |--  ===> Builtin Module
@@ -6936,7 +6933,7 @@ pwd
 signal
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    .. code-block:: python
+    .. code-block:: text
 
          |--  signal
          |--  ===> Builtin Module
@@ -7123,7 +7120,7 @@ signal
 sys
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    .. code-block:: python
+    .. code-block:: text
 
          |--  sys
          |--  ===> Builtin Module
@@ -7301,7 +7298,7 @@ sys
 xxsubtype
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    .. code-block:: python
+    .. code-block:: text
 
          |--  xxsubtype
          |--  ===> Builtin Module
@@ -7477,7 +7474,7 @@ xxsubtype
 zipimport
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    .. code-block:: python
+    .. code-block:: text
 
          |--  zipimport
          |--  ===> Builtin Module
@@ -7626,7 +7623,7 @@ zipimport
 All Modules
 --------------------------------------------------------------------
 
-    .. code-block:: python
+    .. code-block:: text
 
         >>> help('modules')
 

@@ -1,13 +1,19 @@
 .. docs
 
 
-PYTHON
+Python
 ==============
 
 .. toctree::
     :maxdepth: 2
 
+    python_doc
+    python_module_structure
     builtin_modules
+    modules/index
     python_bytecode
-    modules
     python_oneliner
+    python_pytest
+    python_start
+    python-install
+    python-internals

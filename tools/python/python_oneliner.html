@@ -34,9 +34,9 @@
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="  documentation" href="../../index.html"/>
-        <link rel="up" title="PYTHON" href="index.html"/>
-        <link rel="next" title="Git Internals" href="../GIT/index.html"/>
-        <link rel="prev" title="Basic Python Modules" href="modules.html"/> 
+        <link rel="up" title="Python" href="index.html"/>
+        <link rel="next" title="Python PyTest" href="python_pytest.html"/>
+        <link rel="prev" title="Python Disassembly" href="python_bytecode.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -83,29 +83,29 @@
             
                 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Design</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">PYTHON</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="builtin_modules.html">Builtin Python Modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python_bytecode.html">Python Disassembly</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules.html">Basic Python Modules</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Python Code Snippets</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#transpose">Transpose</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#oneliners">oneliners</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#lambda-functions">lambda functions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#string-operations">String Operations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#numerical">Numerical</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#file-operations">File Operations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#web-service">Web Service</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#os-services">OS Services</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tools</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../compiler/index.html">compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../yocto/adt-toolchain-install.html">Cross Compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../yocto/yocto.html">Yocto Install</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Python</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="python_doc.html">Python Doc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python_module_structure.html">Python Module Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="builtin_modules.html">Builtin Python Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/index.html">Python Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python_bytecode.html">Python Disassembly</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Python Code Snippets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python_pytest.html">Python PyTest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python_start.html">Python Start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python-install.html">python install packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python-internals.html">Python Internals</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#re-regular-expression">re - regular expression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GIT/index.html">Git Internals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ReST/template/index.html">Restructured Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../verilog/verilog.html">Verilog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssh/ssh.html">SSH</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../GIT/index.html">Git Internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ReST/template/template.html">Template for reStructured Text</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ReST/template/slides.html">MY SLIDE TITLE</a></li>
 </ul>
 
             
@@ -136,7 +136,9 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-          <li><a href="index.html">PYTHON</a> &raquo;</li>
+          <li><a href="../index.html">Tools</a> &raquo;</li>
+      
+          <li><a href="index.html">Python</a> &raquo;</li>
       
     <li>Python Code Snippets</li>
       <li class="wy-breadcrumbs-aside">
@@ -156,109 +158,143 @@
 <h1>Python Code Snippets<a class="headerlink" href="#python-code-snippets" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="transpose">
 <h2>Transpose<a class="headerlink" href="#transpose" title="Permalink to this headline">¶</a></h2>
-<p>assignments</p>
-<p># multiple variable assignments
-a = [ 1, 2, 3]
-x = a[0]
-x , y , z = a</p>
-<p># swap
-a = 10
-b = 20
-a, b = b, a</p>
-<p>list to/from tuple
-list to/from dict</p>
-<p>list to/from string</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="go">&#39;code&#39;</span>
+<ul class="simple">
+<li>Assignments</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># multiple variable assignments</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">x</span> <span class="p">,</span> <span class="n">y</span> <span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">a</span>
+
+<span class="c1"># swap</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
 </pre></div>
 </div>
-<p>Reverse, Slice, substring</p>
-<p>Reverse/slice:</p>
-<p># Reverse list</p>
-<blockquote>
-<div><p>a=&#8221;codedoom
-a[::-1]
-&#8216;moodedoc&#8217;</p>
-<p>a=[1,2,3,4]
-a[::-1]
-[4, 3, 2, 1]</p>
-<p>a=(1,2,3,4)
-a[::-1]
-(4, 3, 2, 1)</p>
-</div></blockquote>
+<ul class="simple">
+<li>list to/from tuple,dict, string</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nb">list</span> <span class="n">to</span><span class="o">/</span><span class="kn">from</span> <span class="nn">tuple</span>
+<span class="nb">list</span> <span class="n">to</span><span class="o">/</span><span class="kn">from</span> <span class="nn">dict</span>
+
+<span class="nb">list</span> <span class="n">to</span><span class="o">/</span><span class="kn">from</span> <span class="nn">string</span>
+
+    <span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">]</span>
+    <span class="o">&gt;&gt;&gt;</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="s1">&#39;code&#39;</span>
+</pre></div>
 </div>
-<div class="section" id="oneliners">
-<h2>oneliners<a class="headerlink" href="#oneliners" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="reverse-slice-substring">
+<h2>Reverse, Slice, substring<a class="headerlink" href="#reverse-slice-substring" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Reverse/slice</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Reverse list</span>
+
+<span class="n">a</span><span class="o">=</span><span class="s2">&quot;codedoom</span>
+<span class="n">a</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="s1">&#39;moodedoc&#39;</span>
+
+<span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">a</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="n">a</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="lambda-functions">
-<h3>lambda functions<a class="headerlink" href="#lambda-functions" title="Permalink to this headline">¶</a></h3>
-<p># Multiple each item in a list
+<h2>lambda functions<a class="headerlink" href="#lambda-functions" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-text"><div class="highlight"><pre><span></span># Multiple each item in a list
 # lambda - higher order functions (input function and output is also a function)
-# lambda [function: &lt;function statements&gt;, input lists ]</p>
-<p>$ python -c &#8220;print map(lambda x: x * 2, range(1,11))&#8221;
-[2, 4, 6, 8, 10, 12, 14, 16, 18, 20]</p>
-<p>Happy Birthday to You!
-&gt;&gt;&gt; print map(lambda x: &#8220;Happy Birthday to &#8221; + (&#8220;you&#8221; if x != 2 else &#8220;dear Name&#8221;),range(4))
-[&#8216;Happy Birthday to you&#8217;, &#8216;Happy Birthday to you&#8217;, &#8216;Happy Birthday to dear Name&#8217;, &#8216;Happy Birthday to you&#8217;]
-&gt;&gt;&gt;</p>
+# lambda [function: &lt;function statements&gt;, input lists ]
+
+$ python -c &quot;print map(lambda x: x * 2, range(1,11))&quot;
+[2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+</pre></div>
+</div>
+<div class="highlight-text"><div class="highlight"><pre><span></span>Happy Birthday to You!
+&gt;&gt;&gt; print map(lambda x: &quot;Happy Birthday to &quot; + (&quot;you&quot; if x != 2 else &quot;dear Name&quot;),range(4))
+[&#39;Happy Birthday to you&#39;, &#39;Happy Birthday to you&#39;, &#39;Happy Birthday to dear Name&#39;, &#39;Happy Birthday to you&#39;]
+&gt;&gt;&gt;
+</pre></div>
+</div>
 </div>
 <div class="section" id="string-operations">
-<h3>String Operations<a class="headerlink" href="#string-operations" title="Permalink to this headline">¶</a></h3>
-<p>Verify if Exists in a String
-# string split
-&gt;&gt;&gt; wordlist = [&#8220;scala&#8221;, &#8220;akka&#8221;, &#8220;play framework&#8221;, &#8220;sbt&#8221;, &#8220;typesafe&#8221;]
-&gt;&gt;&gt; tweet = &#8220;This is an example tweet talking about scala and sbt.&#8221;
-&gt;&gt;&gt;
-&gt;&gt;&gt; print map(lambda x: x in tweet.split(),wordlist)
-[True, False, False, False, False]</p>
+<h2>String Operations<a class="headerlink" href="#string-operations" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Verify if Exists in a String</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># string split</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">wordlist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;scala&quot;</span><span class="p">,</span> <span class="s2">&quot;akka&quot;</span><span class="p">,</span> <span class="s2">&quot;play framework&quot;</span><span class="p">,</span> <span class="s2">&quot;sbt&quot;</span><span class="p">,</span> <span class="s2">&quot;typesafe&quot;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">tweet</span> <span class="o">=</span> <span class="s2">&quot;This is an example tweet talking about scala and sbt.&quot;</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tweet</span><span class="o">.</span><span class="n">split</span><span class="p">(),</span><span class="n">wordlist</span><span class="p">)</span>
+<span class="p">[</span><span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="bp">False</span><span class="p">]</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="numerical">
-<h3>Numerical<a class="headerlink" href="#numerical" title="Permalink to this headline">¶</a></h3>
-<p># Print sum of numbers.
-$ python -c &#8220;print sum(range(1,1001))&#8221;
-500500</p>
-<p>Find minimum (or maximum) in a List
+<h2>Numerical<a class="headerlink" href="#numerical" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-text"><div class="highlight"><pre><span></span># Print sum of numbers.
+$ python -c &quot;print sum(range(1,1001))&quot;
+500500
+
+Find minimum (or maximum) in a List
 &gt;&gt;&gt; print min([14, 35, -7, 46, 98])
 -7
 &gt;&gt;&gt; print max([14, 35, -7, 46, 98])
 98
-&gt;&gt;&gt;</p>
-<p>Prime numbers between 2 and 50
+&gt;&gt;&gt;
+
+Prime numbers between 2 and 50
 &gt;&gt;&gt; n = 50 # We want to find prime numbers between 2 and 50
 &gt;&gt;&gt;
 &gt;&gt;&gt; print sorted(set(range(2,n+1)).difference(set((p * f) for p in range(2,int(n**0.5) + 2) for f in range(2,(n/p)+1))))
 [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
-&gt;&gt;&gt;</p>
+&gt;&gt;&gt;
+</pre></div>
+</div>
 </div>
 <div class="section" id="file-operations">
-<h3>File Operations<a class="headerlink" href="#file-operations" title="Permalink to this headline">¶</a></h3>
-<p>Read in a File
-&gt;&gt;&gt; print open(&#8220;hello.py&#8221;).readlines()
-[&#8216;#! /usr/bin/pythonrn&#8217;, &#8216;print &#8220;Hello&#8221;rn&#8217;]</p>
+<h2>File Operations<a class="headerlink" href="#file-operations" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Read</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">File</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;hello.py&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+<span class="p">[</span><span class="s1">&#39;#! /usr/bin/python</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;print &quot;Hello&quot;</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="web-service">
-<h3>Web Service<a class="headerlink" href="#web-service" title="Permalink to this headline">¶</a></h3>
-<p>Fetch and Parse an XML web service
+<h2>Web Service<a class="headerlink" href="#web-service" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-text"><div class="highlight"><pre><span></span>Fetch and Parse an XML web service
 &gt;&gt;&gt; from xml.dom.minidom import parse, parseString
 &gt;&gt;&gt; import urllib2
 &gt;&gt;&gt; # note - i convert it back into xml to pretty print it
-... print parse(urllib2.urlopen(&#8220;<a class="reference external" href="http://search.twitter.com/search.atom?&amp;q=python">http://search.twitter.com/search.atom?&amp;q=python</a>&#8221;)).toprettyxml(encoding=&#8221;utf-8&#8221;)
-&lt;?xml version=&#8221;1.0&#8221; encoding=&#8221;utf-8&#8221;?&gt;
-&lt;feed xml:lang=&#8221;en-US&#8221; xmlns=&#8221;http://www.w3.org/2005/Atom&#8221; xmlns:georss=&#8221;http://www.georss.org/georss&#8221; xmlns:google=&#8221;http://base.google.com/ns/1 0&#8221; xmlns:openSearch=&#8221;http://a9.com/-/spec/opensearch/1.1/&#8221; xmlns:twitter=&#8221;http://api.twitter.com/&#8221;&gt;</p>
+... print parse(urllib2.urlopen(&quot;http://search.twitter.com/search.atom?&amp;q=python&quot;)).toprettyxml(encoding=&quot;utf-8&quot;)
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;feed xml:lang=&quot;en-US&quot; xmlns=&quot;http://www.w3.org/2005/Atom&quot; xmlns:georss=&quot;http://www.georss.org/georss&quot; xmlns:google=&quot;http://base.google.com/ns/1 0&quot; xmlns:openSearch=&quot;http://a9.com/-/spec/opensearch/1.1/&quot; xmlns:twitter=&quot;http://api.twitter.com/&quot;&gt;
+</pre></div>
+</div>
 </div>
 <div class="section" id="os-services">
-<h3>OS Services<a class="headerlink" href="#os-services" title="Permalink to this headline">¶</a></h3>
-<p>Parallel Processing
-&gt;&gt;&gt; import multiprocessing
-&gt;&gt;&gt; import math
-&gt;&gt;&gt;
-&gt;&gt;&gt; print list(multiprocessing.Pool(processes=4).map(math.exp,range(1,11)))</p>
+<h2>OS Services<a class="headerlink" href="#os-services" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Parallel Processing</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">multiprocessing</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">math</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="nb">list</span><span class="p">(</span><span class="n">multiprocessing</span><span class="o">.</span><span class="n">Pool</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">,</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">)))</span>
+</pre></div>
 </div>
 </div>
 <div class="section" id="re-regular-expression">
 <h2>re - regular expression<a class="headerlink" href="#re-regular-expression" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span>s = &quot;&#39;log(x[, base])\n
+<div class="highlight-text"><div class="highlight"><pre><span></span>s = &quot;&#39;log(x[, base])\n
 
 s = &#39;Merge multiple sorted inputs into a single sorted
     output.\n\n    Similar to sorted(itertools.chain(*iterables))
@@ -283,11 +319,13 @@ p = r&#39;([\w\d]*[^\(])\( ?([^\)]*)&#39;
 [(&#39;sorted&#39;, &#39;itertools.chain(*iterables&#39;), (&#39;sorted &#39;, &#39;smallest to largest&#39;)]
 </pre></div>
 </div>
-</div></blockquote>
-<p>import re
-p = r&#8217;([wd]*[^(])( ?([^)]*)&#8217;</p>
-<p>for obj in dir(__builtins__): s=eval(obj).__doc__; list(filter(lambda ob :
-bool(ob) and (ob[0] == obj) , re.findall(p,s) if bool(s) else &#8221; &#8221;))</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="n">p</span> <span class="o">=</span> <span class="s1">r&#39;([\w\d]*[^\(])\( ?([^\)]*)&#39;</span>
+
+<span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">__builtins__</span><span class="p">):</span> <span class="n">s</span><span class="o">=</span><span class="nb">eval</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="o">.</span><span class="n">__doc__</span><span class="p">;</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">ob</span> <span class="p">:</span>
+<span class="nb">bool</span><span class="p">(</span><span class="n">ob</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">ob</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">obj</span><span class="p">)</span> <span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">s</span><span class="p">)</span> <span class="k">if</span> <span class="nb">bool</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot; &quot;</span><span class="p">))</span>
+</pre></div>
+</div>
 </div>
 </div>
 
@@ -298,10 +336,10 @@ bool(ob) and (ob[0] == obj) , re.findall(p,s) if bool(s) else &#8221; &#8221;))<
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../GIT/index.html" class="btn btn-neutral float-right" title="Git Internals" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="python_pytest.html" class="btn btn-neutral float-right" title="Python PyTest" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="modules.html" class="btn btn-neutral" title="Basic Python Modules" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="python_bytecode.html" class="btn btn-neutral" title="Python Disassembly" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

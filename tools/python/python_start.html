@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title># Python Start &mdash;   documentation</title>
+  <title>Python Start &mdash;   documentation</title>
   
 
   
@@ -33,7 +33,10 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="  documentation" href="../../index.html"/> 
+    <link rel="top" title="  documentation" href="../../index.html"/>
+        <link rel="up" title="Python" href="index.html"/>
+        <link rel="next" title="python install packages" href="python-install.html"/>
+        <link rel="prev" title="Python PyTest" href="python_pytest.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -78,12 +81,31 @@
           
             
             
-                <ul>
+                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Design</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html">PYTHON</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../GIT/index.html">Git Internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ReST/template/template.html">Template for reStructured Text</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ReST/template/slides.html">MY SLIDE TITLE</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tools</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../compiler/index.html">compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../yocto/adt-toolchain-install.html">Cross Compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../yocto/yocto.html">Yocto Install</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Python</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="python_doc.html">Python Doc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python_module_structure.html">Python Module Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="builtin_modules.html">Builtin Python Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/index.html">Python Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python_bytecode.html">Python Disassembly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python_oneliner.html">Python Code Snippets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python_pytest.html">Python PyTest</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Python Start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python-install.html">python install packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python-internals.html">Python Internals</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../GIT/index.html">Git Internals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ReST/template/index.html">Restructured Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../verilog/verilog.html">Verilog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssh/ssh.html">SSH</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -114,7 +136,11 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-    <li># Python Start</li>
+          <li><a href="../index.html">Tools</a> &raquo;</li>
+      
+          <li><a href="index.html">Python</a> &raquo;</li>
+      
+    <li>Python Start</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -128,54 +154,65 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <p>import mymodule
-help(mymodule)</p>
-<p>pydoc3 &lt;mymodule&gt;
-pydoc3 -k  &lt;keyword&gt;
-pydoc3 -m pydoc  &lt;mymodule&gt;</p>
-<p>import pdb
-import mymodule
-pdb.run(&#8216;mymodule.run())</p>
-<p>python -m pdb myscript.py.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pdb</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">=</span><span class="s2">&quot;a string&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
-<span class="go">--Return--</span>
-<span class="go">&gt; &lt;stdin&gt;(1)&lt;module&gt;()-&gt;None</span>
-<span class="go">(Pdb) p a</span>
-<span class="go">&#39;a string&#39;</span>
-<span class="go">(Pdb) c</span>
+  <div class="section" id="python-start">
+<h1>Python Start<a class="headerlink" href="#python-start" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="help">
+<h2>help<a class="headerlink" href="#help" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mymodule</span>
+<span class="n">help</span><span class="p">(</span><span class="n">mymodule</span><span class="p">)</span>
+
+<span class="n">pydoc3</span> <span class="o">&lt;</span><span class="n">mymodule</span><span class="o">&gt;</span>
+<span class="n">pydoc3</span> <span class="o">-</span><span class="n">k</span>  <span class="o">&lt;</span><span class="n">keyword</span><span class="o">&gt;</span>
+<span class="n">pydoc3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pydoc</span>  <span class="o">&lt;</span><span class="n">mymodule</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<dl class="docutils">
-<dt>python</dt>
-<dd><p class="first">-c &#8220;command&#8221;
--m &#8220;import modules&#8221;
--i &#8220;interactive for variable inspection&#8221;</p>
-<blockquote class="last">
-<div><table class="docutils option-list" frame="void" rules="none">
-<col class="option" />
-<col class="description" />
-<tbody valign="top">
-<tr><td class="option-group">
-<kbd><span class="option">-d</span></kbd></td>
-<td>&#8220;parser logs&#8221;</td></tr>
-</tbody>
-</table>
-</div></blockquote>
-</dd>
-</dl>
-<div class="section" id="python-start">
-<h1># Python Start<a class="headerlink" href="#python-start" title="Permalink to this headline">¶</a></h1>
-<dl class="docutils">
-<dt>Order of python files:</dt>
-<dd><a href="#id1"><span class="problematic" id="id2">*</span></a>&lt;MODULE&gt;.so
-<a href="#id3"><span class="problematic" id="id4">*</span></a>&lt;MODULE&gt;module.so
-<a href="#id5"><span class="problematic" id="id6">*</span></a>&lt;MODULE&gt;.py
-<a href="#id7"><span class="problematic" id="id8">*</span></a>&lt;MODULE&gt;.pyc</dd>
-</dl>
-<p>root&gt; echo $PYTHONPATH</p>
-<p>root&gt; export PYTHONPATH=/root/</p>
+</div>
+<div class="section" id="python-debugger">
+<h2>python debugger<a class="headerlink" href="#python-debugger" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pdb</span>
+<span class="kn">import</span> <span class="nn">mymodule</span>
+<span class="n">pdb</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">&#39;mymodule.run())</span>
+
+
+<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pdb</span> <span class="n">myscript</span><span class="o">.</span><span class="n">py</span><span class="o">.</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">pdb</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">=</span><span class="s2">&quot;a string&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">pdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
+<span class="o">--</span><span class="n">Return</span><span class="o">--</span>
+<span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">stdin</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">()</span><span class="o">-&gt;</span><span class="bp">None</span>
+<span class="p">(</span><span class="n">Pdb</span><span class="p">)</span> <span class="n">p</span> <span class="n">a</span>
+<span class="s1">&#39;a string&#39;</span>
+<span class="p">(</span><span class="n">Pdb</span><span class="p">)</span> <span class="n">c</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="command">
+<h2>command<a class="headerlink" href="#command" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>python
+       -c <span class="s2">&quot;command&quot;</span>
+       -m <span class="s2">&quot;import modules&quot;</span>
+       -i <span class="s2">&quot;interactive for variable inspection&quot;</span>
+       -d <span class="s2">&quot;parser logs&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>Python Start<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>Order of python files:
+    *&lt;MODULE&gt;.so
+    *&lt;MODULE&gt;module.so
+    *&lt;MODULE&gt;.py
+    *&lt;MODULE&gt;.pyc
+
+root&gt; <span class="nb">echo</span> <span class="nv">$PYTHONPATH</span>
+
+root&gt; <span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span>/root/
+</pre></div>
+</div>
+</div>
+<div class="section" id="python-packages">
+<h2>Python Packages<a class="headerlink" href="#python-packages" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul>
 <li><p class="first"><a class="reference external" href="https://www.python.org/downloads/release/python-343/">https://www.python.org/downloads/release/python-343/</a></p>
@@ -235,78 +272,85 @@ pdb.run(&#8216;mymodule.run())</p>
 </li>
 </ul>
 </div></blockquote>
-<p>tar -xf pip-7.1.0.tar.gz
-cd pip-7.1.0
-python3 setup.py install</p>
-<p>pip3.4  search &lt;package&gt;</p>
-<p>pip3.4  install  &lt;Package&gt;</p>
-<p>blockdiag   - blockdiag generates block-diagram image from text
-seqdiag     - seqdiag generates sequence-diagram image from text
-actdiag     - actdiag generates activity-diagram image from text
-nwdiag      - nwdiag generates network-diagram image from text
-classgraph  - Generate a Graphviz diagram of Python classes
-bdp         - Block Diagrams in Python
-daflsim     - Simulate a data-flow described by a graphviz diagram
-diagram     - Text mode diagrams using UTF-8 characters and fancy colors
-quickdiagrams - A text-to-class_diagram conversion tool.</p>
-<p>mekk     - xmind data files reading library</p>
-<p># Multiple each item in a list
-# lambda - higher order functions (input function and output is also a function)
-# lambda [function: &lt;function statements&gt;, input lists ]</p>
-<p>$ python -c &#8220;print map(lambda x: x * 2, range(1,11))&#8221;
-[2, 4, 6, 8, 10, 12, 14, 16, 18, 20]</p>
-<p># Print sum of numbers.
-$ python -c &#8220;print sum(range(1,1001))&#8221;
-500500</p>
-<p>Read in a File
-&gt;&gt;&gt; print open(&#8220;hello.py&#8221;).readlines()
-[&#8216;#! /usr/bin/pythonrn&#8217;, &#8216;print &#8220;Hello&#8221;rn&#8217;]</p>
-<p>Happy Birthday to You!
-&gt;&gt;&gt; print map(lambda x: &#8220;Happy Birthday to &#8221; + (&#8220;you&#8221; if x != 2 else &#8220;dear Name&#8221;),range(4))
-[&#8216;Happy Birthday to you&#8217;, &#8216;Happy Birthday to you&#8217;, &#8216;Happy Birthday to dear Name&#8217;, &#8216;Happy Birthday to you&#8217;]
-&gt;&gt;&gt;</p>
-<p>Verify if Exists in a String
-# string split
-&gt;&gt;&gt; wordlist = [&#8220;scala&#8221;, &#8220;akka&#8221;, &#8220;play framework&#8221;, &#8220;sbt&#8221;, &#8220;typesafe&#8221;]
-&gt;&gt;&gt; tweet = &#8220;This is an example tweet talking about scala and sbt.&#8221;
-&gt;&gt;&gt;
-&gt;&gt;&gt; print map(lambda x: x in tweet.split(),wordlist)
-[True, False, False, False, False]</p>
-<p>6. Filter list of numbers
-#reduce
-&gt;&gt;&gt; print reduce(lambda(a,b),c: (a+[c],b) if c &gt; 60 else (a,b + [c]), [49, 58, 76, 82, 88, 90],([],[]))
-([76, 82, 88, 90], [49, 58])
-&gt;&gt;&gt;</p>
-<p>Fetch and Parse an XML web service
-&gt;&gt;&gt; from xml.dom.minidom import parse, parseString
-&gt;&gt;&gt; import urllib2
-&gt;&gt;&gt; # note - i convert it back into xml to pretty print it
-... print parse(urllib2.urlopen(&#8220;<a class="reference external" href="http://search.twitter.com/search.atom?&amp;q=python">http://search.twitter.com/search.atom?&amp;q=python</a>&#8221;)).toprettyxml(encoding=&#8221;utf-8&#8221;)
-&lt;?xml version=&#8221;1.0&#8221; encoding=&#8221;utf-8&#8221;?&gt;
-&lt;feed xml:lang=&#8221;en-US&#8221; xmlns=&#8221;http://www.w3.org/2005/Atom&#8221; xmlns:georss=&#8221;http://www.georss.org/georss&#8221; xmlns:google=&#8221;http://base.google.com/ns/1 0&#8221; xmlns:openSearch=&#8221;http://a9.com/-/spec/opensearch/1.1/&#8221; xmlns:twitter=&#8221;http://api.twitter.com/&#8221;&gt;</p>
-<p>Find minimum (or maximum) in a List
-&gt;&gt;&gt; print min([14, 35, -7, 46, 98])
--7
-&gt;&gt;&gt; print max([14, 35, -7, 46, 98])
-98
-&gt;&gt;&gt;</p>
-<p>Parallel Processing
-&gt;&gt;&gt; import multiprocessing
-&gt;&gt;&gt; import math
-&gt;&gt;&gt;
-&gt;&gt;&gt; print list(multiprocessing.Pool(processes=4).map(math.exp,range(1,11)))</p>
-<p>Prime numbers between 2 and 50
-&gt;&gt;&gt; n = 50 # We want to find prime numbers between 2 and 50
-&gt;&gt;&gt;
-&gt;&gt;&gt; print sorted(set(range(2,n+1)).difference(set((p * f) for p in range(2,int(n**0.5) + 2) for f in range(2,(n/p)+1))))
-[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
-&gt;&gt;&gt;</p>
+</div>
+<div class="section" id="pip-and-setup-tools">
+<h2>PIP and SETUP TOOLS<a class="headerlink" href="#pip-and-setup-tools" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>tar -xf pip-7.1.0.tar.gz
+<span class="nb">cd</span> pip-7.1.0
+python3 setup.py install
+</pre></div>
+</div>
+</div>
+<div class="section" id="python-search-and-install">
+<h2>Python search and Install<a class="headerlink" href="#python-search-and-install" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>pip3.4  search &lt;package&gt;
+
+pip3.4  install  &lt;Package&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="required-packages">
+<h2>Required Packages<a class="headerlink" href="#required-packages" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils" id="id2">
+<caption><span class="caption-text">SOURCE CODE CONTENTS</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">MODULES</th>
+<th class="head">DESCRIPTION</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>blockdiag</td>
+<td>blockdiag generates block-diagram image from text</td>
+</tr>
+<tr class="row-odd"><td>seqdiag</td>
+<td>seqdiag generates sequence-diagram image from text</td>
+</tr>
+<tr class="row-even"><td>actdiag</td>
+<td>actdiag generates activity-diagram image from text</td>
+</tr>
+<tr class="row-odd"><td>nwdiag</td>
+<td>nwdiag generates network-diagram image from text</td>
+</tr>
+<tr class="row-even"><td>classgraph</td>
+<td>Generate a Graphviz diagram of Python classes</td>
+</tr>
+<tr class="row-odd"><td>bdp</td>
+<td>Block Diagrams in Python</td>
+</tr>
+<tr class="row-even"><td>daflsim</td>
+<td>Simulate a data-flow described by a graphviz diagram</td>
+</tr>
+<tr class="row-odd"><td>diagram</td>
+<td>Text mode diagrams using UTF-8 characters and fancy colors</td>
+</tr>
+<tr class="row-even"><td>quickdiagrams</td>
+<td>A text-to-class_diagram conversion tool.</td>
+</tr>
+<tr class="row-odd"><td>mekk</td>
+<td>xmind data files reading library</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 
 
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="python-install.html" class="btn btn-neutral float-right" title="python install packages" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="python_pytest.html" class="btn btn-neutral" title="Python PyTest" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

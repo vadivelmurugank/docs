@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>SSH SERVER SETUP &mdash;   documentation</title>
+  <title>SSH &mdash;   documentation</title>
   
 
   
@@ -33,7 +33,9 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="  documentation" href="../../index.html"/> 
+    <link rel="top" title="  documentation" href="../../index.html"/>
+        <link rel="up" title="Tools" href="../index.html"/>
+        <link rel="prev" title="Verilog" href="../verilog/verilog.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -78,12 +80,19 @@
           
             
             
-                <ul>
+                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Design</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python/index.html">PYTHON</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../GIT/index.html">Git Internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ReST/template/template.html">Template for reStructured Text</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ReST/template/slides.html">MY SLIDE TITLE</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tools</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../compiler/index.html">compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../yocto/adt-toolchain-install.html">Cross Compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../yocto/yocto.html">Yocto Install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GIT/index.html">Git Internals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ReST/template/index.html">Restructured Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../verilog/verilog.html">Verilog</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">SSH</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -114,7 +123,9 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-    <li>SSH SERVER SETUP</li>
+          <li><a href="../index.html">Tools</a> &raquo;</li>
+      
+    <li>SSH</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -128,66 +139,94 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="ssh-server-setup">
-<h1>SSH SERVER SETUP<a class="headerlink" href="#ssh-server-setup" title="Permalink to this headline">¶</a></h1>
-<blockquote>
-<div><p>sed -i  -e  &#8220;s/PermitRootLogin [Nn]o/PermitRootLogin yes/&#8221;  /etc/ssh/sshd_config
-sed -i  -e  &#8220;s/[#]*ClientAliveInterval.*[0-9]*/ClientAliveInterval 10/&#8221; /etc/ssh/sshd_config
-sed -i  -e  &#8220;s/[#]*ClientAliveCountMax.*[0-9]*/ClientAliveCountMax 6/&#8221; /etc/ssh/sshd_config
-sed -i -e  &#8220;s/[#]*StrictModes.*[a-z]*/StrictModes no/&#8221;  /etc/ssh/sshd_config
-killall sshd</p>
-<p>rm -rf /root/.ssh
+  <div class="section" id="ssh">
+<h1>SSH<a class="headerlink" href="#ssh" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-shell"><div class="highlight"><pre><span></span><span class="c1"># Configure sshd_config</span>
+sed -i  -e  <span class="s2">&quot;s/PermitRootLogin [Nn]o/PermitRootLogin yes/&quot;</span>  /etc/ssh/sshd_config
+sed -i  -e  <span class="s2">&quot;s/[\#]*ClientAliveInterval.*[0-9]*/ClientAliveInterval 10/&quot;</span> /etc/ssh/sshd_config
+sed -i  -e  <span class="s2">&quot;s/[\#]*ClientAliveCountMax.*[0-9]*/ClientAliveCountMax 6/&quot;</span> /etc/ssh/sshd_config
+sed -i -e  <span class="s2">&quot;s/[\#]*StrictModes.*[a-z]*/StrictModes no/&quot;</span>  /etc/ssh/sshd_config
+killall sshd
+</pre></div>
+</div>
+<div class="highlight-shell"><div class="highlight"><pre><span></span><span class="c1"># Generate Server Private keys and public keys</span>
+rm -rf /root/.ssh
 mkdir -p /root/.ssh
-ssh-keygen -v -N &#8220;&#8221;   -f /root/.ssh/id_rsa
+ssh-keygen -v -N <span class="s2">&quot;&quot;</span>   -f /root/.ssh/id_rsa
 touch /root/.ssh/authorized_keys
-chmod 640 /root/.ssh/authorized_keys
-chmod 700 /root/.ssh
-chmod 600 /root/.ssh/id_rsa
-chmod 640 /root/.ssh/id_rsa.pub</p>
-</div></blockquote>
+chmod <span class="m">640</span> /root/.ssh/authorized_keys
+chmod <span class="m">700</span> /root/.ssh
+chmod <span class="m">600</span> /root/.ssh/id_rsa
+chmod <span class="m">640</span> /root/.ssh/id_rsa.pub
+</pre></div>
 </div>
 <div class="section" id="server-keygen">
-<h1>SERVER KEYGEN<a class="headerlink" href="#server-keygen" title="Permalink to this headline">¶</a></h1>
-<p># Remove Existing key entry for the linecard
-ssh-keygen -R  127.3.12.1</p>
-<dl class="docutils">
-<dt># Verify ssh connection to the linecard</dt>
-<dd>ssh -v -o PreferredAuthentications=password -o ServerAliveInterval=10 -o ServerAliveCountMax=20 127.3.12.1 cat /release.inf</dd>
-<dt># ssh to linecard</dt>
-<dd>ssh -v -o ServerAliveInterval=10 -o ServerAliveCountMax=20 127.3.12.1</dd>
-</dl>
-<p>&lt;&lt;&lt; Initial test setup operations&gt;&gt;&gt;</p>
-<hr class="docutils" />
-<dl class="docutils">
-<dt>LOOP_ENTRY:</dt>
-<dd><p class="first"># Remove authorized key entry for line card in RP authorized keys.
-sed -i &#8220;/lc-13$/d&#8221; /root/.ssh/authorized_keys</p>
-<p># Verify SSH connection
-ssh -v -o -o ServerAliveInterval=10 -o ServerAliveCountMax=20 127.3.12.1 cat /release.inf</p>
-<p>ssh <a class="reference external" href="mailto:root&#37;&#52;&#48;lc-3">root<span>&#64;</span>lc-3</a> &#8220;echo &#8220;ClientAliveInterval 10&#8221; &gt;&gt; /etc/ssh/sshd_config&#8221;
-ssh <a class="reference external" href="mailto:root&#37;&#52;&#48;lc-3">root<span>&#64;</span>lc-3</a> &#8220;echo &#8220;ClientAliveCountMax 6&#8221; &gt;&gt; /etc/ssh/sshd_config&#8221;
-ssh <a class="reference external" href="mailto:root&#37;&#52;&#48;lc-3">root<span>&#64;</span>lc-3</a> &#8220;echo &#8220;StrictModes no&#8221; &gt;&gt; /etc/ssh/sshd_config&#8221;
-ssh <a class="reference external" href="mailto:root&#37;&#52;&#48;lc-3">root<span>&#64;</span>lc-3</a> killall sshd</p>
-<p>ssh <a class="reference external" href="mailto:root&#37;&#52;&#48;lc-3">root<span>&#64;</span>lc-3</a> &#8216;rm -rf /root/.ssh; mkdir -p /root/.ssh&#8217;
-ssh-copy-id -i /root/.ssh/id_rsa.pub lc-3
-ssh <a class="reference external" href="mailto:root&#37;&#52;&#48;lc-3">root<span>&#64;</span>lc-3</a> hostname</p>
-<p class="last"># Do ssh connection to line card
-ssh -v -e ServerAliveInterval=10 -o ServerAliveCountMax=20 127.3.12.1</p>
-</dd>
-</dl>
-<p>ssh -v -o ServerAliveInterval=10 -o ServerAliveCountMax=20 lc-3</p>
-<p>rm /root/.ssh/known_hosts
+<h2>SERVER KEYGEN<a class="headerlink" href="#server-keygen" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-shell"><div class="highlight"><pre><span></span><span class="c1"># Remove Existing key entry for the linecard</span>
+ssh-keygen -R  127.3.12.1
+
+<span class="c1"># Verify ssh connection to the linecard</span>
+ ssh -v -o <span class="nv">PreferredAuthentications</span><span class="o">=</span>password -o <span class="nv">ServerAliveInterval</span><span class="o">=</span><span class="m">10</span> -o <span class="nv">ServerAliveCountMax</span><span class="o">=</span><span class="m">20</span> 127.3.12.1 cat /release.inf
+
+<span class="c1"># ssh to linecard</span>
+ ssh -v -o <span class="nv">ServerAliveInterval</span><span class="o">=</span><span class="m">10</span> -o <span class="nv">ServerAliveCountMax</span><span class="o">=</span><span class="m">20</span> 127.3.12.1
+
+<span class="o">&lt;&lt;&lt;</span> Initial <span class="nb">test</span> setup operations&gt;&gt;&gt;
+</pre></div>
+</div>
+<div class="highlight-shell"><div class="highlight"><pre><span></span><span class="c1">## Initial SSH setup operations</span>
+<span class="c1">## for every test loop.</span>
+
+LOOP_ENTRY:
+    <span class="c1"># Remove authorized key entry for line card in Server authorized keys.</span>
+    sed -i <span class="s2">&quot;/Client-13</span>$<span class="s2">/d&quot;</span> /root/.ssh/authorized_keys
+
+    <span class="c1"># Verify SSH connection</span>
+    ssh -v -o -o <span class="nv">ServerAliveInterval</span><span class="o">=</span><span class="m">10</span> -o <span class="nv">ServerAliveCountMax</span><span class="o">=</span><span class="m">20</span> 127.3.12.1 cat /release.inf
+
+    <span class="c1"># Configure line card sshd_config</span>
+    ssh root@Client-3 <span class="s2">&quot;echo &quot;</span>ClientAliveInterval 10<span class="s2">&quot; &gt;&gt; /etc/ssh/sshd_config&quot;</span>
+    ssh root@Client-3 <span class="s2">&quot;echo &quot;</span>ClientAliveCountMax 6<span class="s2">&quot; &gt;&gt; /etc/ssh/sshd_config&quot;</span>
+    ssh root@Client-3 <span class="s2">&quot;echo &quot;</span>StrictModes no<span class="s2">&quot; &gt;&gt; /etc/ssh/sshd_config&quot;</span>
+    ssh root@Client-3 killall sshd
+
+    <span class="c1"># copy Public keys to Line card</span>
+    ssh root@Client-3 <span class="s1">&#39;rm -rf /root/.ssh; mkdir -p /root/.ssh&#39;</span>
+    ssh-copy-id -i /root/.ssh/id_rsa.pub Client-3
+    ssh root@Client-3 hostname
+
+    <span class="c1"># Do ssh connection to line card</span>
+    ssh -v -e <span class="nv">ServerAliveInterval</span><span class="o">=</span><span class="m">10</span> -o <span class="nv">ServerAliveCountMax</span><span class="o">=</span><span class="m">20</span> 127.3.12.1
+</pre></div>
+</div>
+</div>
+<div class="section" id="ssh-client">
+<h2>SSH Client<a class="headerlink" href="#ssh-client" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>ssh -v -o <span class="nv">ServerAliveInterval</span><span class="o">=</span><span class="m">10</span> -o <span class="nv">ServerAliveCountMax</span><span class="o">=</span><span class="m">20</span> Client-3
+
+rm /root/.ssh/known_hosts
 rm -f /root/.ssh/id_rsa
-ssh-keygen -v -N &#8220;&#8221;   -f /root/.ssh/id_rsa
+ssh-keygen -v -N <span class="s2">&quot;&quot;</span>   -f /root/.ssh/id_rsa
 ssh-copy-id -i /root/.ssh/id_rsa.pub 127.3.254.1
-ssh <a class="reference external" href="mailto:root&#37;&#52;&#48;127&#46;3&#46;254&#46;1">root<span>&#64;</span>127<span>&#46;</span>3<span>&#46;</span>254<span>&#46;</span>1</a> hostname</p>
-<p>&lt;&lt;&lt;LC Test Operations&gt;&gt;&gt;</p>
+ssh root@127.3.254.1 hostname
+
+<span class="o">&lt;&lt;&lt;</span>Client Test Operations&gt;&gt;&gt;
+</pre></div>
+</div>
+</div>
 </div>
 
 
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../verilog/verilog.html" class="btn btn-neutral" title="Verilog" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>PYTHON &mdash;   documentation</title>
+  <title>Python &mdash;   documentation</title>
   
 
   
@@ -34,8 +34,9 @@
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="  documentation" href="../../index.html"/>
-        <link rel="next" title="Builtin Python Modules" href="builtin_modules.html"/>
-        <link rel="prev" title="Open Source Reading" href="../../design/opensrc/opensource_reading.html"/> 
+        <link rel="up" title="Tools" href="../index.html"/>
+        <link rel="next" title="Python Doc" href="python_doc.html"/>
+        <link rel="prev" title="Yocto Install" href="../yocto/yocto.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -82,16 +83,29 @@
             
                 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Design</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">PYTHON</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="builtin_modules.html">Builtin Python Modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python_bytecode.html">Python Disassembly</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules.html">Basic Python Modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python_oneliner.html">Python Code Snippets</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tools</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../compiler/index.html">compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../yocto/adt-toolchain-install.html">Cross Compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../yocto/yocto.html">Yocto Install</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="python_doc.html">Python Doc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python_module_structure.html">Python Module Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="builtin_modules.html">Builtin Python Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/index.html">Python Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python_bytecode.html">Python Disassembly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python_oneliner.html">Python Code Snippets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python_pytest.html">Python PyTest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python_start.html">Python Start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python-install.html">python install packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python-internals.html">Python Internals</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../GIT/index.html">Git Internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ReST/template/template.html">Template for reStructured Text</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ReST/template/slides.html">MY SLIDE TITLE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GIT/index.html">Git Internals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ReST/template/index.html">Restructured Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../verilog/verilog.html">Verilog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssh/ssh.html">SSH</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -122,7 +136,9 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-    <li>PYTHON</li>
+          <li><a href="../index.html">Tools</a> &raquo;</li>
+      
+    <li>Python</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -137,9 +153,26 @@
            <div itemprop="articleBody">
             
   <div class="section" id="python">
-<h1>PYTHON<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h1>
+<h1>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="python_doc.html">Python Doc</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="python_doc.html#doc">Doc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_doc.html#help">help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_doc.html#id1">__doc__</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_doc.html#dir">dir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_doc.html#inspect">inspect</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="python_module_structure.html">Python Module Structure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="python_module_structure.html#project-directory">Project Directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_module_structure.html#package">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_module_structure.html#init-py">__init__.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_module_structure.html#main-py">__main__.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_module_structure.html#setup-py">setup.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_module_structure.html#pytest">pytest</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="builtin_modules.html">Builtin Python Modules</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="builtin_modules.html#python-help">Python Help</a></li>
 <li class="toctree-l2"><a class="reference internal" href="builtin_modules.html#builtin-functions">Builtin Functions</a></li>
@@ -147,6 +180,16 @@
 <li class="toctree-l2"><a class="reference internal" href="builtin_modules.html#python-inbuilt-functions">python inbuilt functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="builtin_modules.html#builtins-classes-and-modules">Builtins Classes and Modules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="builtin_modules.html#all-modules">All Modules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules/index.html">Python Modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules/math.html">math</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/os.html">os</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/sre.html">re - simple regular expression (sre)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/collections.html">collections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/itertools.html">itertools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/multiprocessing.html">multiprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/yaml.html">yaml</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="python_bytecode.html">Python Disassembly</a><ul>
@@ -161,20 +204,41 @@
 <li class="toctree-l2"><a class="reference internal" href="python_bytecode.html#python-debug-modules">Python Debug Modules</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">Basic Python Modules</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="modules.html#re-simple-regular-expression-sre">re - simple regular expression (sre)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules.html#os">os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules.html#multiprocessing">multiprocessing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules.html#math">math</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules.html#collections">collections</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules.html#itertools">itertools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules.html#yaml">yaml</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="python_oneliner.html">Python Code Snippets</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="python_oneliner.html#transpose">Transpose</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python_oneliner.html#oneliners">oneliners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_oneliner.html#reverse-slice-substring">Reverse, Slice, substring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_oneliner.html#lambda-functions">lambda functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_oneliner.html#string-operations">String Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_oneliner.html#numerical">Numerical</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_oneliner.html#file-operations">File Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_oneliner.html#web-service">Web Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_oneliner.html#os-services">OS Services</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_oneliner.html#re-regular-expression">re - regular expression</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="python_pytest.html">Python PyTest</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="python_pytest.html#module-structure">Module Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_pytest.html#run-pytest">Run Pytest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_pytest.html#conftest-py">conftest.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_pytest.html#tests">tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="python_start.html">Python Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="python_start.html#help">help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_start.html#python-debugger">python debugger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_start.html#command">command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_start.html#id1">Python Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_start.html#python-packages">Python Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_start.html#pip-and-setup-tools">PIP and SETUP TOOLS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_start.html#python-search-and-install">Python search and Install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_start.html#required-packages">Required Packages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="python-install.html">python install packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python-internals.html">Python Internals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="python-internals.html#metaclasses">Metaclasses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python-internals.html#staticmethods">staticmethods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python-internals.html#decorators">decorators</a></li>
 </ul>
 </li>
 </ul>
@@ -188,10 +252,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="builtin_modules.html" class="btn btn-neutral float-right" title="Builtin Python Modules" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="python_doc.html" class="btn btn-neutral float-right" title="Python Doc" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../../design/opensrc/opensource_reading.html" class="btn btn-neutral" title="Open Source Reading" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../yocto/yocto.html" class="btn btn-neutral" title="Yocto Install" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

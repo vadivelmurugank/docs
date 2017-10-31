@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>1   GIT INTERNALS &mdash;   documentation</title>
+  <title>GIT INTERNALS &mdash;   documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="  documentation" href="../../index.html"/>
         <link rel="up" title="Git Internals" href="index.html"/>
-        <link rel="next" title="&lt;no title&gt;" href="../ReST/template/index.html"/>
+        <link rel="next" title="Restructured Text" href="../ReST/template/index.html"/>
         <link rel="prev" title="Git Internals" href="index.html"/> 
 
   
@@ -83,40 +83,20 @@
             
                 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Design</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python/index.html">PYTHON</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Git Internals</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">1&nbsp;&nbsp;&nbsp;GIT INTERNALS</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#the-name-git">1.1&nbsp;&nbsp;&nbsp;The name &#8220;git&#8221;</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#database-vs-repository">1.2&nbsp;&nbsp;&nbsp;Database vs Repository</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#meta-data">1.3&nbsp;&nbsp;&nbsp;Meta-Data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#hashing">1.4&nbsp;&nbsp;&nbsp;Hashing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#sha1">1.5&nbsp;&nbsp;&nbsp;SHA1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#git-objects">1.6&nbsp;&nbsp;&nbsp;Git Objects</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#hash-object">1.6.1&nbsp;&nbsp;&nbsp;Hash-Object</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#commit-object">1.6.2&nbsp;&nbsp;&nbsp;Commit Object</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tools</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../compiler/index.html">compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../yocto/adt-toolchain-install.html">Cross Compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../yocto/yocto.html">Yocto Install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Git Internals</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">GIT INTERNALS</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#git-terminologies-or-vernaculars">1.7&nbsp;&nbsp;&nbsp;git Terminologies or vernaculars</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#git-init">1.8&nbsp;&nbsp;&nbsp;git init</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#file-blobs">1.9&nbsp;&nbsp;&nbsp;File blobs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#directory-trees">1.10&nbsp;&nbsp;&nbsp;Directory Trees</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#finding-object-types">1.11&nbsp;&nbsp;&nbsp;Finding Object Types</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#creating-commit-object">1.12&nbsp;&nbsp;&nbsp;Creating Commit Object</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#commit-object-and-parent-relationship">1.13&nbsp;&nbsp;&nbsp;Commit object and Parent Relationship</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#branching">1.14&nbsp;&nbsp;&nbsp;Branching</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#merge-and-rebase">1.15&nbsp;&nbsp;&nbsp;Merge and Rebase</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#git-plumbing-and-porcelain-commands">1.16&nbsp;&nbsp;&nbsp;Git Plumbing and Porcelain commands</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#plumbing-or-low-level-commands">1.16.1&nbsp;&nbsp;&nbsp;Plumbing or low level commands</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#porcelain-or-user-interface-commands">1.16.2&nbsp;&nbsp;&nbsp;Porcelain or user interface commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ReST/template/index.html">Restructured Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../verilog/verilog.html">Verilog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssh/ssh.html">SSH</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#git-directory">1.17&nbsp;&nbsp;&nbsp;&#8221;.git&#8221; directory</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../ReST/template/template.html">Template for reStructured Text</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ReST/template/slides.html">MY SLIDE TITLE</a></li>
 </ul>
 
             
@@ -147,9 +127,11 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
+          <li><a href="../index.html">Tools</a> &raquo;</li>
+      
           <li><a href="index.html">Git Internals</a> &raquo;</li>
       
-    <li>1&nbsp;&nbsp;&nbsp;GIT INTERNALS</li>
+    <li>GIT INTERNALS</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -164,42 +146,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="git-internals">
-<h1><a class="toc-backref" href="#id1">1&nbsp;&nbsp;&nbsp;GIT INTERNALS</a><a class="headerlink" href="#git-internals" title="Permalink to this headline">¶</a></h1>
-<div class="contents topic" id="table-of-contents">
-<p class="topic-title first">Table of Contents</p>
-<ul class="auto-toc simple">
-<li><a class="reference internal" href="#git-internals" id="id1">1&nbsp;&nbsp;&nbsp;GIT INTERNALS</a><ul class="auto-toc">
-<li><a class="reference internal" href="#the-name-git" id="id2">1.1&nbsp;&nbsp;&nbsp;The name &#8220;git&#8221;</a></li>
-<li><a class="reference internal" href="#database-vs-repository" id="id3">1.2&nbsp;&nbsp;&nbsp;Database vs Repository</a></li>
-<li><a class="reference internal" href="#meta-data" id="id4">1.3&nbsp;&nbsp;&nbsp;Meta-Data</a></li>
-<li><a class="reference internal" href="#hashing" id="id5">1.4&nbsp;&nbsp;&nbsp;Hashing</a></li>
-<li><a class="reference internal" href="#sha1" id="id6">1.5&nbsp;&nbsp;&nbsp;SHA1</a></li>
-<li><a class="reference internal" href="#git-objects" id="id7">1.6&nbsp;&nbsp;&nbsp;Git Objects</a><ul class="auto-toc">
-<li><a class="reference internal" href="#hash-object" id="id8">1.6.1&nbsp;&nbsp;&nbsp;Hash-Object</a></li>
-<li><a class="reference internal" href="#commit-object" id="id9">1.6.2&nbsp;&nbsp;&nbsp;Commit Object</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#git-terminologies-or-vernaculars" id="id10">1.7&nbsp;&nbsp;&nbsp;git Terminologies or vernaculars</a></li>
-<li><a class="reference internal" href="#git-init" id="id11">1.8&nbsp;&nbsp;&nbsp;git init</a></li>
-<li><a class="reference internal" href="#file-blobs" id="id12">1.9&nbsp;&nbsp;&nbsp;File blobs</a></li>
-<li><a class="reference internal" href="#directory-trees" id="id13">1.10&nbsp;&nbsp;&nbsp;Directory Trees</a></li>
-<li><a class="reference internal" href="#finding-object-types" id="id14">1.11&nbsp;&nbsp;&nbsp;Finding Object Types</a></li>
-<li><a class="reference internal" href="#creating-commit-object" id="id15">1.12&nbsp;&nbsp;&nbsp;Creating Commit Object</a></li>
-<li><a class="reference internal" href="#commit-object-and-parent-relationship" id="id16">1.13&nbsp;&nbsp;&nbsp;Commit object and Parent Relationship</a></li>
-<li><a class="reference internal" href="#branching" id="id17">1.14&nbsp;&nbsp;&nbsp;Branching</a></li>
-<li><a class="reference internal" href="#merge-and-rebase" id="id18">1.15&nbsp;&nbsp;&nbsp;Merge and Rebase</a></li>
-<li><a class="reference internal" href="#git-plumbing-and-porcelain-commands" id="id19">1.16&nbsp;&nbsp;&nbsp;Git Plumbing and Porcelain commands</a><ul class="auto-toc">
-<li><a class="reference internal" href="#plumbing-or-low-level-commands" id="id20">1.16.1&nbsp;&nbsp;&nbsp;Plumbing or low level commands</a></li>
-<li><a class="reference internal" href="#porcelain-or-user-interface-commands" id="id21">1.16.2&nbsp;&nbsp;&nbsp;Porcelain or user interface commands</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#git-directory" id="id22">1.17&nbsp;&nbsp;&nbsp;&#8221;.git&#8221; directory</a></li>
-</ul>
-</li>
-</ul>
-</div>
+<h1>GIT INTERNALS<a class="headerlink" href="#git-internals" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="the-name-git">
-<h2><a class="toc-backref" href="#id2">1.1&nbsp;&nbsp;&nbsp;The name &#8220;git&#8221;</a><a class="headerlink" href="#the-name-git" title="Permalink to this headline">¶</a></h2>
+<h2>The name &#8220;git&#8221;<a class="headerlink" href="#the-name-git" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li>Stupid. Contemptible and despicable. Simple. Take your pick from the
@@ -209,7 +158,7 @@ dictionary of slang.</li>
 </div></blockquote>
 </div>
 <div class="section" id="database-vs-repository">
-<h2><a class="toc-backref" href="#id3">1.2&nbsp;&nbsp;&nbsp;Database vs Repository</a><a class="headerlink" href="#database-vs-repository" title="Permalink to this headline">¶</a></h2>
+<h2>Database vs Repository<a class="headerlink" href="#database-vs-repository" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul>
 <li><dl class="first docutils">
@@ -244,7 +193,7 @@ dictionary of slang.</li>
 </div></blockquote>
 </div>
 <div class="section" id="meta-data">
-<h2><a class="toc-backref" href="#id4">1.3&nbsp;&nbsp;&nbsp;Meta-Data</a><a class="headerlink" href="#meta-data" title="Permalink to this headline">¶</a></h2>
+<h2>Meta-Data<a class="headerlink" href="#meta-data" title="Permalink to this headline">¶</a></h2>
 <p>Metadata is information about data, and describes basic characteristics of the
 data</p>
 <blockquote>
@@ -261,7 +210,7 @@ data</p>
 </div></blockquote>
 </div>
 <div class="section" id="hashing">
-<h2><a class="toc-backref" href="#id5">1.4&nbsp;&nbsp;&nbsp;Hashing</a><a class="headerlink" href="#hashing" title="Permalink to this headline">¶</a></h2>
+<h2>Hashing<a class="headerlink" href="#hashing" title="Permalink to this headline">¶</a></h2>
 <p>Hashing is a mathematical process, which is based on substitution and
 transposition of data to generate a unique alphanumeric value.  The unique
 alphanumeric of a computer file is called its hash value</p>
@@ -292,7 +241,7 @@ alphanumeric of a computer file is called its hash value</p>
 </ul>
 </div>
 <div class="section" id="sha1">
-<h2><a class="toc-backref" href="#id6">1.5&nbsp;&nbsp;&nbsp;SHA1</a><a class="headerlink" href="#sha1" title="Permalink to this headline">¶</a></h2>
+<h2>SHA1<a class="headerlink" href="#sha1" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li>SHA-1 produces a 160-bit (20-byte) hash value known as a message digest. A</li>
@@ -332,13 +281,13 @@ git cat-file -p 7159f
 </div></blockquote>
 </div>
 <div class="section" id="git-objects">
-<h2><a class="toc-backref" href="#id7">1.6&nbsp;&nbsp;&nbsp;Git Objects</a><a class="headerlink" href="#git-objects" title="Permalink to this headline">¶</a></h2>
+<h2>Git Objects<a class="headerlink" href="#git-objects" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div>Blob           - Content/data of source
 Tree object    - Source and Subdirectories
 Commit Object  - Commit meta-data and source/directory.</div></blockquote>
 <div class="section" id="hash-object">
-<h3><a class="toc-backref" href="#id8">1.6.1&nbsp;&nbsp;&nbsp;Hash-Object</a><a class="headerlink" href="#hash-object" title="Permalink to this headline">¶</a></h3>
+<h3>Hash-Object<a class="headerlink" href="#hash-object" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>hash of &#8220;dictionary of hashes&#8221;</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">sha1</span><span class="p">(</span>
@@ -354,7 +303,7 @@ Commit Object  - Commit meta-data and source/directory.</div></blockquote>
 </div></blockquote>
 </div>
 <div class="section" id="commit-object">
-<h3><a class="toc-backref" href="#id9">1.6.2&nbsp;&nbsp;&nbsp;Commit Object</a><a class="headerlink" href="#commit-object" title="Permalink to this headline">¶</a></h3>
+<h3>Commit Object<a class="headerlink" href="#commit-object" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">sha1</span><span class="p">(</span>
     <span class="n">commit</span> <span class="n">message</span>  <span class="o">=&gt;</span> <span class="o">&lt;&lt;</span><span class="nb">hash</span><span class="o">&gt;&gt;</span> <span class="s2">&quot;Makefile initial commit&quot;</span>
@@ -371,7 +320,7 @@ Commit Object  - Commit meta-data and source/directory.</div></blockquote>
 </div>
 </div>
 <div class="section" id="git-terminologies-or-vernaculars">
-<h2><a class="toc-backref" href="#id10">1.7&nbsp;&nbsp;&nbsp;git Terminologies or vernaculars</a><a class="headerlink" href="#git-terminologies-or-vernaculars" title="Permalink to this headline">¶</a></h2>
+<h2>git Terminologies or vernaculars<a class="headerlink" href="#git-terminologies-or-vernaculars" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>Working (User) Tree    &#8211;&gt;  Index (Staging) &#8212;&gt; Repository</p>
 <p>HEAD   : Pointer to Top of Index</p>
@@ -385,7 +334,7 @@ Directories   - tree</p>
 </div></blockquote>
 </div>
 <div class="section" id="git-init">
-<h2><a class="toc-backref" href="#id11">1.8&nbsp;&nbsp;&nbsp;git init</a><a class="headerlink" href="#git-init" title="Permalink to this headline">¶</a></h2>
+<h2>git init<a class="headerlink" href="#git-init" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><div class="highlight-text"><div class="highlight"><pre><span></span>.git
 |
@@ -415,7 +364,7 @@ Directories   - tree</p>
 </div></blockquote>
 </div>
 <div class="section" id="file-blobs">
-<h2><a class="toc-backref" href="#id12">1.9&nbsp;&nbsp;&nbsp;File blobs</a><a class="headerlink" href="#file-blobs" title="Permalink to this headline">¶</a></h2>
+<h2>File blobs<a class="headerlink" href="#file-blobs" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">echo</span> -n <span class="s2">&quot;Hash of Dictionary of hashes&quot;</span> &gt; hash.info
 git hash-object hash.info
@@ -448,7 +397,7 @@ Hash of Dictionary of hashes
 </div></blockquote>
 </div>
 <div class="section" id="directory-trees">
-<h2><a class="toc-backref" href="#id13">1.10&nbsp;&nbsp;&nbsp;Directory Trees</a><a class="headerlink" href="#directory-trees" title="Permalink to this headline">¶</a></h2>
+<h2>Directory Trees<a class="headerlink" href="#directory-trees" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">$git</span> ls-tree HEAD
 <span class="m">100644</span> blob 89ac35eb8a1a6dd61cb86e9e9102cdf2dafc0811    hash.info
@@ -480,7 +429,7 @@ git ls-tree -r f31720a71b30d7c8b6fb5eb565ab941ebc075056
 </div></blockquote>
 </div>
 <div class="section" id="finding-object-types">
-<h2><a class="toc-backref" href="#id14">1.11&nbsp;&nbsp;&nbsp;Finding Object Types</a><a class="headerlink" href="#finding-object-types" title="Permalink to this headline">¶</a></h2>
+<h2>Finding Object Types<a class="headerlink" href="#finding-object-types" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># find Object types</span>
 find .git/objects/ -type f -exec sh -c <span class="se">\</span>
@@ -499,7 +448,7 @@ tree : .git/objects/f3/1720a71b30d7c8b6fb5eb565ab941ebc075056</p>
 </div></blockquote>
 </div>
 <div class="section" id="creating-commit-object">
-<h2><a class="toc-backref" href="#id15">1.12&nbsp;&nbsp;&nbsp;Creating Commit Object</a><a class="headerlink" href="#creating-commit-object" title="Permalink to this headline">¶</a></h2>
+<h2>Creating Commit Object<a class="headerlink" href="#creating-commit-object" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>The blob is not referenced by blob yet. Currently reference with .git/index</p>
 <blockquote>
@@ -539,7 +488,7 @@ Date:   Mon Sep <span class="m">12</span> 15:39:00 <span class="m">2016</span> -
 </div></blockquote>
 </div>
 <div class="section" id="commit-object-and-parent-relationship">
-<h2><a class="toc-backref" href="#id16">1.13&nbsp;&nbsp;&nbsp;Commit object and Parent Relationship</a><a class="headerlink" href="#commit-object-and-parent-relationship" title="Permalink to this headline">¶</a></h2>
+<h2>Commit object and Parent Relationship<a class="headerlink" href="#commit-object-and-parent-relationship" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>Every Commit holds a tree and every tree may contain any number of other
 trees and blobs in its leaves.</p>
@@ -587,7 +536,7 @@ git shortlog --author<span class="o">=</span><span class="s2">&quot;vadivel&quot
 </div></blockquote>
 </div>
 <div class="section" id="branching">
-<h2><a class="toc-backref" href="#id17">1.14&nbsp;&nbsp;&nbsp;Branching</a><a class="headerlink" href="#branching" title="Permalink to this headline">¶</a></h2>
+<h2>Branching<a class="headerlink" href="#branching" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>Branch is a named reference to a commit object. Commit objects has complete
 tree object of sources.</p>
@@ -602,7 +551,7 @@ never change and references the same hash-id.</p>
 </div></blockquote>
 </div>
 <div class="section" id="merge-and-rebase">
-<h2><a class="toc-backref" href="#id18">1.15&nbsp;&nbsp;&nbsp;Merge and Rebase</a><a class="headerlink" href="#merge-and-rebase" title="Permalink to this headline">¶</a></h2>
+<h2>Merge and Rebase<a class="headerlink" href="#merge-and-rebase" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><div class="highlight-text"><div class="highlight"><pre><span></span>O &lt;-- A &lt;-- B &lt;-- C &lt;-- D (HEAD)       &lt;&lt;-- Branch D
        \
@@ -695,9 +644,9 @@ git reflog show stash</p>
 </div></blockquote>
 </div>
 <div class="section" id="git-plumbing-and-porcelain-commands">
-<h2><a class="toc-backref" href="#id19">1.16&nbsp;&nbsp;&nbsp;Git Plumbing and Porcelain commands</a><a class="headerlink" href="#git-plumbing-and-porcelain-commands" title="Permalink to this headline">¶</a></h2>
+<h2>Git Plumbing and Porcelain commands<a class="headerlink" href="#git-plumbing-and-porcelain-commands" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="plumbing-or-low-level-commands">
-<h3><a class="toc-backref" href="#id20">1.16.1&nbsp;&nbsp;&nbsp;Plumbing or low level commands</a><a class="headerlink" href="#plumbing-or-low-level-commands" title="Permalink to this headline">¶</a></h3>
+<h3>Plumbing or low level commands<a class="headerlink" href="#plumbing-or-low-level-commands" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p># the plumbing commands #</p>
 <ul>
@@ -788,7 +737,7 @@ git reflog show stash</p>
 </div></blockquote>
 </div>
 <div class="section" id="porcelain-or-user-interface-commands">
-<h3><a class="toc-backref" href="#id21">1.16.2&nbsp;&nbsp;&nbsp;Porcelain or user interface commands</a><a class="headerlink" href="#porcelain-or-user-interface-commands" title="Permalink to this headline">¶</a></h3>
+<h3>Porcelain or user interface commands<a class="headerlink" href="#porcelain-or-user-interface-commands" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul>
 <li><p class="first">MAKE CHANGES</p>
@@ -867,7 +816,7 @@ git reflog show stash</p>
 directory</p>
 </dd>
 <dt>$ git merge [branch]</dt>
-<dd><p class="first last">Combines the specified branch?s history into the current branch</p>
+<dd><p class="first last">Combines the specified branchs history into the current branch</p>
 </dd>
 <dt>$ git branch -d [branch-name]</dt>
 <dd><p class="first last">Deletes the specified branch</p>
@@ -885,7 +834,7 @@ directory</p>
 <dd><p class="first last">Downloads all history from the repository bookmark</p>
 </dd>
 <dt>$ git merge [bookmark]/[branch]</dt>
-<dd><p class="first last">Combines bookmark?s branch into current local branch</p>
+<dd><p class="first last">Combines bookmarks branch into current local branch</p>
 </dd>
 <dt>$ git push [alias] [branch]</dt>
 <dd><p class="first last">Uploads all local branch commits to GitHub</p>
@@ -1031,7 +980,7 @@ reachable branch.</p>
 </div>
 </div>
 <div class="section" id="git-directory">
-<h2><a class="toc-backref" href="#id22">1.17&nbsp;&nbsp;&nbsp;&#8221;.git&#8221; directory</a><a class="headerlink" href="#git-directory" title="Permalink to this headline">¶</a></h2>
+<h2>&#8221;.git&#8221; directory<a class="headerlink" href="#git-directory" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul>
 <li><p class="first">The .git directory</p>
@@ -1172,7 +1121,7 @@ TMP_ALT (used by git-fetch)</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../ReST/template/index.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../ReST/template/index.html" class="btn btn-neutral float-right" title="Restructured Text" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral" title="Git Internals" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>

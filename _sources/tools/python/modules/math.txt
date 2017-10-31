@@ -1,0 +1,167 @@
+===========================================
+math
+===========================================
+  
+
+    .. code-block:: text
+
+        math
+         |--  math
+         |--  ===> /usr/lib/python3.2/lib-dynload/math.cpython-32m.dll
+                 @@doc : " math : This module is always available.  It provides access to the "
+
+
+          [@SUBPACKAGES]
+
+
+          [@SUBMODULES ]
+             |--  math
+
+
+          [@CLASS        ]
+              @@doc : - Classes and Method Resolution Order
+
+
+          [@ FUNCTION  ]
+              @@doc :  - Function including "lambda" anonymous functions
+
+
+          [@ METHOD ]
+              @@doc ::   - bound method
+
+
+          [@ GENERATOR ]
+              @@doc :   - object is a generator with "yield" expressions
+
+
+          [@ GENERATOR FUNCTION ]
+              @@doc :     - object is a generator function
+
+
+          [@ TRACEBACK ]
+              @@doc :  - Traceback object
+
+
+          [@ FRAME ]
+              @@doc : - Frame Object
+
+
+          [@ CODE ]
+              @@doc : - Code Object
+
+
+          [@ BUILTIN ]
+              @@doc : - built-in function or bound built-in method
+             |--  acos (x)   
+             |--  acosh (x)   
+             |--  asin (x)   
+             |--  asinh (x)   
+             |--  atan (x)   
+             |--  atan2 (y, x)   
+             |--  atanh (x)   
+             |--  ceil (x)   
+             |--  copysign (x, y)   
+             |--  cos (x)   
+             |--  cosh (x)   
+             |--  degrees (x)   
+             |--  erf (x)   
+             |--  erfc (x)   
+             |--  exp (x)   
+             |--  expm1 (x)   
+             |--  fabs (x)   
+             |--  factorial (x)   
+             |--  floor (x)   
+             |--  fmod (x, y)  fmod (x, y)   
+             |--  frexp (x)   
+             |--  fsum (iterable)   
+             |--  gamma (x)   
+             |--  hypot (x, y)   
+             |--  isfinite (x)   
+             |--  isinf (x)   
+             |--  isnan (x)   
+             |--  ldexp (x, i)   
+             |--  lgamma (x)   
+             |--  log (x[, base])   
+             |--  log10 (x)   
+             |--  log1p (x)   
+             |--  modf (x)   
+             |--  pow (x, y)   
+             |--  radians (x)   
+             |--  sin (x)   
+             |--  sinh (x)   
+             |--  sqrt (x)   
+             |--  tan (x)   
+             |--  tanh (x)   
+             |--  trunc (x:Real)   
+
+
+          [@ ABSTRACT ]
+              @@doc : - object is abstract base class
+
+
+          [@ METHOD DESCRIPTOR ]
+              @@doc :  - Object has __get__ attribute but NOT __set__ attribute
+
+
+          [@ DATA DESCRIPTOR ]
+              @@doc :  - Object has __get__, __set__, __delete__ attributes
+
+
+          [@ GETSET DESCRIPTOR ]
+
+
+          [@ MEMBER DESCRIPTOR ]
+
+
+          [@ VARIABLES ]
+
+
+              [@ GLOBALS ]
+
+
+                  [@ bool ]
+
+
+                  [@ int ]
+
+
+                  [@ float ]
+                         |--  math.e
+                         |--  math.pi
+
+
+                  [@ complex ]
+
+
+              [@ IMMUTABLE SEQUENCES ]
+
+
+                  [@ str ]
+
+
+                  [@ slice ]
+
+
+                  [@ tuple ]
+
+
+                  [@ frozenset ]
+
+
+              [@ MUTABLE SEQUENCES ]
+
+
+                  [@ list ]
+
+
+                  [@ bytearray ]
+
+
+                  [@ set ]
+
+
+              [@ MAPPING ]
+
+
+                  [@ dict ]
+

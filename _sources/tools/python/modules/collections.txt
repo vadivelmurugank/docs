@@ -1,0 +1,726 @@
+===========================================
+collections
+===========================================
+  
+    .. code-block:: text
+
+        collections
+         |--  collections
+         |--  ===> /usr/lib/python3.2/collections.py
+
+
+          [@SUBPACKAGES]
+
+
+          [@SUBMODULES ]
+             |--  collections
+                 |--  _abcoll
+                     |--  sys
+                 |--  _heapq
+                     |--  bisect
+                 |--  _sys
+
+
+          [@CLASS        ]
+              @@doc : - Classes and Method Resolution Order
+             |--  [Class ByteString]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class '_abcoll.ByteString'>
+                             |--  <class '_abcoll.Sequence'>
+                             |--  <class '_abcoll.Sized'>
+                             |--  <class '_abcoll.Iterable'>
+                             |--  <class '_abcoll.Container'>
+                             |--  <class 'object'>
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+                     |--  [  function  ]:
+                             |--  count (['self', 'value'])
+                             |--  index (['self', 'value'])
+             |--  [Class Callable]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class '_abcoll.Callable'>
+                             |--  <class 'object'>
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+             |--  [Class Container]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class '_abcoll.Container'>
+                             |--  <class 'object'>
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+             |--  [Class Counter]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'collections.Counter'>
+                             |--  <class 'dict'>
+                             |--  <class 'object'>
+                     |--  [  method  ]:
+                             |--  fromkeys
+                     |--  [  method_descriptor  ]:
+                             |--  clear
+                             |--  get
+                             |--  items
+                             |--  keys
+                             |--  pop
+                             |--  popitem
+                             |--  setdefault
+                             |--  values
+                     |--  [  function  ]:
+                             |--  copy (['self'])
+                             |--  elements (['self'])
+                             |--  most_common (['self', 'n'])
+                             |--  subtract (['self', 'iterable'])
+                             |--  update (['self', 'iterable'])
+             |--  [Class Hashable]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class '_abcoll.Hashable'>
+                             |--  <class 'object'>
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+             |--  [Class ItemsView]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class '_abcoll.ItemsView'>
+                             |--  <class '_abcoll.MappingView'>
+                             |--  <class '_abcoll.Set'>
+                             |--  <class '_abcoll.Sized'>
+                             |--  <class '_abcoll.Iterable'>
+                             |--  <class '_abcoll.Container'>
+                             |--  <class 'object'>
+                     |--  [  method  ]:
+                             |--  _from_iterable
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+                     |--  [  function  ]:
+                             |--  _hash (['self'])
+                             |--  isdisjoint (['self', 'other'])
+             |--  [Class Iterable]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class '_abcoll.Iterable'>
+                             |--  <class 'object'>
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+             |--  [Class Iterator]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class '_abcoll.Iterator'>
+                             |--  <class '_abcoll.Iterable'>
+                             |--  <class 'object'>
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+             |--  [Class KeysView]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class '_abcoll.KeysView'>
+                             |--  <class '_abcoll.MappingView'>
+                             |--  <class '_abcoll.Set'>
+                             |--  <class '_abcoll.Sized'>
+                             |--  <class '_abcoll.Iterable'>
+                             |--  <class '_abcoll.Container'>
+                             |--  <class 'object'>
+                     |--  [  method  ]:
+                             |--  _from_iterable
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+                     |--  [  function  ]:
+                             |--  _hash (['self'])
+                             |--  isdisjoint (['self', 'other'])
+             |--  [Class Mapping]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class '_abcoll.Mapping'>
+                             |--  <class '_abcoll.Sized'>
+                             |--  <class '_abcoll.Iterable'>
+                             |--  <class '_abcoll.Container'>
+                             |--  <class 'object'>
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+                     |--  [  function  ]:
+                             |--  get (['self', 'key', 'default'])
+                             |--  items (['self'])
+                             |--  keys (['self'])
+                             |--  values (['self'])
+             |--  [Class MappingView]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class '_abcoll.MappingView'>
+                             |--  <class '_abcoll.Sized'>
+                             |--  <class 'object'>
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+             |--  [Class MutableMapping]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class '_abcoll.MutableMapping'>
+                             |--  <class '_abcoll.Mapping'>
+                             |--  <class '_abcoll.Sized'>
+                             |--  <class '_abcoll.Iterable'>
+                             |--  <class '_abcoll.Container'>
+                             |--  <class 'object'>
+                     |--  [  object  ]:
+                             |--  _MutableMapping__marker
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_negative_cache_version
+                             |--  _abc_registry
+                             |--  clear (['self'])
+                             |--  get (['self', 'key', 'default'])
+                             |--  items (['self'])
+                             |--  keys (['self'])
+                             |--  pop (['self', 'key', 'default'])
+                             |--  popitem (['self'])
+                             |--  setdefault (['self', 'key', 'default'])
+                             |--  update ([])
+                             |--  values (['self'])
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+                     |--  [  function  ]:
+                             |--  clear (['self'])
+                             |--  get (['self', 'key', 'default'])
+                             |--  items (['self'])
+                             |--  keys (['self'])
+                             |--  pop (['self', 'key', 'default'])
+                             |--  popitem (['self'])
+                             |--  setdefault (['self', 'key', 'default'])
+                             |--  update ([])
+                             |--  values (['self'])
+             |--  [Class MutableSequence]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class '_abcoll.MutableSequence'>
+                             |--  <class '_abcoll.Sequence'>
+                             |--  <class '_abcoll.Sized'>
+                             |--  <class '_abcoll.Iterable'>
+                             |--  <class '_abcoll.Container'>
+                             |--  <class 'object'>
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+                     |--  [  function  ]:
+                             |--  append (['self', 'value'])
+                             |--  count (['self', 'value'])
+                             |--  extend (['self', 'values'])
+                             |--  index (['self', 'value'])
+                             |--  insert (['self', 'index', 'value'])
+                             |--  pop (['self', 'index'])
+                             |--  remove (['self', 'value'])
+                             |--  reverse (['self'])
+             |--  [Class MutableSet]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class '_abcoll.MutableSet'>
+                             |--  <class '_abcoll.Set'>
+                             |--  <class '_abcoll.Sized'>
+                             |--  <class '_abcoll.Iterable'>
+                             |--  <class '_abcoll.Container'>
+                             |--  <class 'object'>
+                     |--  [  method  ]:
+                             |--  _from_iterable
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+                     |--  [  function  ]:
+                             |--  _hash (['self'])
+                             |--  add (['self', 'value'])
+                             |--  clear (['self'])
+                             |--  discard (['self', 'value'])
+                             |--  isdisjoint (['self', 'other'])
+                             |--  pop (['self'])
+                             |--  remove (['self', 'value'])
+             |--  [Class OrderedDict]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'collections.OrderedDict'>
+                             |--  <class 'dict'>
+                             |--  <class 'object'>
+                     |--  [  object  ]:
+                             |--  _OrderedDict__marker
+                             |--  _OrderedDict__update ([])
+                             |--  clear (['self'])
+                             |--  copy (['self'])
+                             |--  fromkeys
+                             |--  get
+                             |--  items (['self'])
+                             |--  keys (['self'])
+                             |--  move_to_end (['self', 'key', 'last'])
+                             |--  pop (['self', 'key', 'default'])
+                             |--  popitem (['self', 'last'])
+                             |--  setdefault (['self', 'key', 'default'])
+                             |--  update ([])
+                             |--  values (['self'])
+                     |--  [  method  ]:
+                             |--  fromkeys
+                     |--  [  method_descriptor  ]:
+                             |--  get
+                     |--  [  function  ]:
+                             |--  _OrderedDict__update ([])
+                             |--  clear (['self'])
+                             |--  copy (['self'])
+                             |--  items (['self'])
+                             |--  keys (['self'])
+                             |--  move_to_end (['self', 'key', 'last'])
+                             |--  pop (['self', 'key', 'default'])
+                             |--  popitem (['self', 'last'])
+                             |--  setdefault (['self', 'key', 'default'])
+                             |--  update ([])
+                             |--  values (['self'])
+             |--  [Class Sequence]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class '_abcoll.Sequence'>
+                             |--  <class '_abcoll.Sized'>
+                             |--  <class '_abcoll.Iterable'>
+                             |--  <class '_abcoll.Container'>
+                             |--  <class 'object'>
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+                     |--  [  function  ]:
+                             |--  count (['self', 'value'])
+                             |--  index (['self', 'value'])
+             |--  [Class Set]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class '_abcoll.Set'>
+                             |--  <class '_abcoll.Sized'>
+                             |--  <class '_abcoll.Iterable'>
+                             |--  <class '_abcoll.Container'>
+                             |--  <class 'object'>
+                     |--  [  method  ]:
+                             |--  _from_iterable
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+                     |--  [  function  ]:
+                             |--  _hash (['self'])
+                             |--  isdisjoint (['self', 'other'])
+             |--  [Class Sized]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class '_abcoll.Sized'>
+                             |--  <class 'object'>
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+             |--  [Class UserDict]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'collections.UserDict'>
+                             |--  <class '_abcoll.MutableMapping'>
+                             |--  <class '_abcoll.Mapping'>
+                             |--  <class '_abcoll.Sized'>
+                             |--  <class '_abcoll.Iterable'>
+                             |--  <class '_abcoll.Container'>
+                             |--  <class 'object'>
+                     |--  [  object  ]:
+                             |--  _MutableMapping__marker
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_negative_cache_version
+                             |--  _abc_registry
+                             |--  clear (['self'])
+                             |--  copy (['self'])
+                             |--  fromkeys
+                             |--  get (['self', 'key', 'default'])
+                             |--  items (['self'])
+                             |--  keys (['self'])
+                             |--  pop (['self', 'key', 'default'])
+                             |--  popitem (['self'])
+                             |--  setdefault (['self', 'key', 'default'])
+                             |--  update ([])
+                             |--  values (['self'])
+                     |--  [  method  ]:
+                             |--  fromkeys
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+                     |--  [  function  ]:
+                             |--  clear (['self'])
+                             |--  copy (['self'])
+                             |--  get (['self', 'key', 'default'])
+                             |--  items (['self'])
+                             |--  keys (['self'])
+                             |--  pop (['self', 'key', 'default'])
+                             |--  popitem (['self'])
+                             |--  setdefault (['self', 'key', 'default'])
+                             |--  update ([])
+                             |--  values (['self'])
+             |--  [Class UserList]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'collections.UserList'>
+                             |--  <class '_abcoll.MutableSequence'>
+                             |--  <class '_abcoll.Sequence'>
+                             |--  <class '_abcoll.Sized'>
+                             |--  <class '_abcoll.Iterable'>
+                             |--  <class '_abcoll.Container'>
+                             |--  <class 'object'>
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+                     |--  [  function  ]:
+                             |--  _UserList__cast (['self', 'other'])
+                             |--  append (['self', 'item'])
+                             |--  count (['self', 'item'])
+                             |--  extend (['self', 'other'])
+                             |--  index (['self', 'item'])
+                             |--  insert (['self', 'i', 'item'])
+                             |--  pop (['self', 'i'])
+                             |--  remove (['self', 'item'])
+                             |--  reverse (['self'])
+                             |--  sort (['self'])
+             |--  [Class UserString]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'collections.UserString'>
+                             |--  <class '_abcoll.Sequence'>
+                             |--  <class '_abcoll.Sized'>
+                             |--  <class '_abcoll.Iterable'>
+                             |--  <class '_abcoll.Container'>
+                             |--  <class 'object'>
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+                     |--  [  function  ]:
+                             |--  capitalize (['self'])
+                             |--  center (['self', 'width'])
+                             |--  count (['self', 'sub', 'start', 'end'])
+                             |--  encode (['self', 'encoding', 'errors'])
+                             |--  endswith (['self', 'suffix', 'start', 'end'])
+                             |--  expandtabs (['self', 'tabsize'])
+                             |--  find (['self', 'sub', 'start', 'end'])
+                             |--  format (['self'])
+                             |--  index (['self', 'sub', 'start', 'end'])
+                             |--  isalnum (['self'])
+                             |--  isalpha (['self'])
+                             |--  isdecimal (['self'])
+                             |--  isdigit (['self'])
+                             |--  isidentifier (['self'])
+                             |--  islower (['self'])
+                             |--  isnumeric (['self'])
+                             |--  isspace (['self'])
+                             |--  istitle (['self'])
+                             |--  isupper (['self'])
+                             |--  join (['self', 'seq'])
+                             |--  ljust (['self', 'width'])
+                             |--  lower (['self'])
+                             |--  lstrip (['self', 'chars'])
+                             |--  partition (['self', 'sep'])
+                             |--  replace (['self', 'old', 'new', 'maxsplit'])
+                             |--  rfind (['self', 'sub', 'start', 'end'])
+                             |--  rindex (['self', 'sub', 'start', 'end'])
+                             |--  rjust (['self', 'width'])
+                             |--  rpartition (['self', 'sep'])
+                             |--  rsplit (['self', 'sep', 'maxsplit'])
+                             |--  rstrip (['self', 'chars'])
+                             |--  split (['self', 'sep', 'maxsplit'])
+                             |--  splitlines (['self', 'keepends'])
+                             |--  startswith (['self', 'prefix', 'start', 'end'])
+                             |--  strip (['self', 'chars'])
+                             |--  swapcase (['self'])
+                             |--  title (['self'])
+                             |--  translate (['self'])
+                             |--  upper (['self'])
+                             |--  zfill (['self', 'width'])
+             |--  [Class ValuesView]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class '_abcoll.ValuesView'>
+                             |--  <class '_abcoll.MappingView'>
+                             |--  <class '_abcoll.Sized'>
+                             |--  <class 'object'>
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+             |--  [Class _ChainMap]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'collections._ChainMap'>
+                             |--  <class '_abcoll.MutableMapping'>
+                             |--  <class '_abcoll.Mapping'>
+                             |--  <class '_abcoll.Sized'>
+                             |--  <class '_abcoll.Iterable'>
+                             |--  <class '_abcoll.Container'>
+                             |--  <class 'object'>
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+                     |--  [  function  ]:
+                             |--  clear (['self'])
+                             |--  copy (['self'])
+                             |--  get (['self', 'key', 'default'])
+                             |--  items (['self'])
+                             |--  keys (['self'])
+                             |--  new_child (['self'])
+                             |--  pop (['self', 'key'])
+                             |--  popitem (['self'])
+                             |--  setdefault (['self', 'key', 'default'])
+                             |--  update ([])
+                             |--  values (['self'])
+                     |--  [  property  ]:
+                             |--  parents
+                     |--  [  object  ]:
+                             |--  _MutableMapping__marker
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_negative_cache_version
+                             |--  _abc_registry
+                             |--  clear (['self'])
+                             |--  copy (['self'])
+                             |--  fromkeys
+                             |--  get (['self', 'key', 'default'])
+                             |--  items (['self'])
+                             |--  keys (['self'])
+                             |--  new_child (['self'])
+                             |--  parents
+                             |--  pop (['self', 'key'])
+                             |--  popitem (['self'])
+                             |--  setdefault (['self', 'key', 'default'])
+                             |--  update ([])
+                             |--  values (['self'])
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  method  ]:
+                             |--  fromkeys
+             |--  [Class _Link]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'collections._Link'>
+                             |--  <class 'object'>
+                     |--  [  member_descriptor  ]:
+                             |--  key
+                             |--  next
+                             |--  prev
+             |--  [Class _chain]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.chain'>
+                             |--  <class 'object'>
+                     |--  [  builtin_function_or_method  ]:
+                             |--  from_iterable
+             |--  [Class _itemgetter]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'operator.itemgetter'>
+                             |--  <class 'object'>
+             |--  [Class _repeat]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.repeat'>
+                             |--  <class 'object'>
+             |--  [Class _starmap]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.starmap'>
+                             |--  <class 'object'>
+             |--  [Class defaultdict]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'collections.defaultdict'>
+                             |--  <class 'dict'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  clear
+                             |--  copy
+                             |--  get
+                             |--  items
+                             |--  keys
+                             |--  pop
+                             |--  popitem
+                             |--  setdefault
+                             |--  update
+                             |--  values
+                     |--  [  builtin_function_or_method  ]:
+                             |--  fromkeys
+                     |--  [  member_descriptor  ]:
+                             |--  default_factory
+             |--  [Class deque]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'collections.deque'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  append
+                             |--  appendleft
+                             |--  clear
+                             |--  count
+                             |--  extend
+                             |--  extendleft
+                             |--  pop
+                             |--  popleft
+                             |--  remove
+                             |--  reverse
+                             |--  rotate
+                     |--  [  getset_descriptor  ]:
+                             |--  maxlen
+
+
+          [@ FUNCTION  ]
+              @@doc :  - Function including "lambda" anonymous functions
+             |--  _recursive_repr (['fillvalue'])
+             |--  namedtuple (['typename', 'field_names', 'verbose', 'rename'])
+
+
+          [@ METHOD ]
+              @@doc ::   - bound method
+
+
+          [@ GENERATOR ]
+              @@doc :   - object is a generator with "yield" expressions
+
+
+          [@ GENERATOR FUNCTION ]
+              @@doc :     - object is a generator function
+
+
+          [@ TRACEBACK ]
+              @@doc :  - Traceback object
+
+
+          [@ FRAME ]
+              @@doc : - Frame Object
+
+
+          [@ CODE ]
+              @@doc : - Code Object
+
+
+          [@ BUILTIN ]
+              @@doc : - built-in function or bound built-in method
+             |--  _count_elements (mapping, iterable)   
+             |--  _iskeyword() 
+             |--  _proxy() 
+
+
+          [@ ABSTRACT ]
+              @@doc : - object is abstract base class
+             |--  ByteString
+             |--  Callable
+             |--  Container
+             |--  Hashable
+             |--  Iterable
+             |--  Iterator
+             |--  Mapping
+             |--  MutableMapping
+             |--  MutableSequence
+             |--  MutableSet
+             |--  Sequence
+             |--  Set
+             |--  Sized
+
+
+          [@ METHOD DESCRIPTOR ]
+              @@doc :  - Object has __get__ attribute but NOT __set__ attribute
+
+
+          [@ DATA DESCRIPTOR ]
+              @@doc :  - Object has __get__, __set__, __delete__ attributes
+
+
+          [@ GETSET DESCRIPTOR ]
+
+
+          [@ MEMBER DESCRIPTOR ]
+
+
+          [@ VARIABLES ]
+
+
+              [@ GLOBALS ]
+
+
+                  [@ bool ]
+
+
+                  [@ int ]
+
+
+                  [@ float ]
+
+
+                  [@ complex ]
+
+
+              [@ IMMUTABLE SEQUENCES ]
+
+
+                  [@ str ]
+                         |--  collections._class_template
+                         |--  collections._field_template
+                         |--  collections._repr_template
+
+
+                  [@ slice ]
+
+
+                  [@ tuple ]
+
+
+                  [@ frozenset ]
+
+
+              [@ MUTABLE SEQUENCES ]
+
+
+                  [@ list ]
+                         |--  collections.__all__
+
+
+                  [@ bytearray ]
+
+
+                  [@ set ]
+
+
+              [@ MAPPING ]
+
+
+                  [@ dict ]
+

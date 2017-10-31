@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>&lt;no title&gt; &mdash;   documentation</title>
+  <title>gcc and glibc &mdash;   documentation</title>
   
 
   
@@ -33,7 +33,10 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="  documentation" href="../../index.html"/> 
+    <link rel="top" title="  documentation" href="../../index.html"/>
+        <link rel="up" title="compiler" href="index.html"/>
+        <link rel="next" title="Yocto poky cross compiler" href="yocto_cross_compiler.html"/>
+        <link rel="prev" title="compiler" href="index.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -78,12 +81,23 @@
           
             
             
-                <ul>
+                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Design</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python/index.html">PYTHON</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../GIT/index.html">Git Internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ReST/template/template.html">Template for reStructured Text</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ReST/template/slides.html">MY SLIDE TITLE</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tools</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">compiler</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">gcc and glibc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="yocto_cross_compiler.html">Yocto poky cross compiler</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../yocto/adt-toolchain-install.html">Cross Compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../yocto/yocto.html">Yocto Install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GIT/index.html">Git Internals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ReST/template/index.html">Restructured Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../verilog/verilog.html">Verilog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssh/ssh.html">SSH</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -114,7 +128,11 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-    <li>&lt;no title&gt;</li>
+          <li><a href="../index.html">Tools</a> &raquo;</li>
+      
+          <li><a href="index.html">compiler</a> &raquo;</li>
+      
+    <li>gcc and glibc</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -128,32 +146,55 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <p>GCC
-git clone git://gcc.gnu.org/git/gcc.git</p>
-<p>GLIBC
+  <div class="section" id="gcc-and-glibc">
+<h1>gcc and glibc<a class="headerlink" href="#gcc-and-glibc" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>GCC
+git clone git://gcc.gnu.org/git/gcc.git
+
+
+GLIBC
 git clone git://sourceware.org/git/glibc.git
-[evadkan&#64;eussjlx9035 COMPILER]$</p>
-<p># Set ld alternative to gold linker ld.gold
-/usr/sbin/alternatives &#8211;set ld /usr/bin/ld.gold
-/usr/sbin/alternatives &#8211;config ld</p>
-<p>#ISO C++ Compiler
+<span class="o">[</span>evadkan@eussjlx9035 COMPILER<span class="o">]</span>$
+
+<span class="c1"># Set ld alternative to gold linker ld.gold</span>
+/usr/sbin/alternatives --set ld /usr/bin/ld.gold
+/usr/sbin/alternatives --config ld
+</pre></div>
+</div>
+<div class="section" id="id1">
+<h2><a class="reference external" href="https://gcc.gnu.org/install/prerequisites.html">Prerequiste</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-shell"><div class="highlight"><pre><span></span><span class="c1"># ISO C++ Compiler</span>
 sudo yum install gcc-c++
-# GNU Bin utils
+<span class="c1"># GNU Bin utils</span>
 sudo yum install binutils-devel.x86_64
-# Multi-Precision Floating Point Computation
+<span class="c1"># Multi-Precision Floating Point Computation</span>
 sudo yum install mpfr.x86_64
 sudo yum install mpfr-devel.x86_64
-# Arithmetic complex numbers
-sudo yum install libmpc-devel.x86_64</p>
-<p>sudo yum install automake.noarch
+<span class="c1"># Arithmetic complex numbers</span>
+sudo yum install libmpc-devel.x86_64
+
+sudo yum install automake.noarch
 sudo yum install texinfo.x86_64
 sudo yum install flex-devel.x86_64
-sudo yum install flex.x86_64</p>
+sudo yum install flex.x86_64
+</pre></div>
+</div>
+</div>
+</div>
 
 
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="yocto_cross_compiler.html" class="btn btn-neutral float-right" title="Yocto poky cross compiler" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="compiler" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

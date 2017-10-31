@@ -1,0 +1,498 @@
+===========================================
+os
+===========================================
+  
+    .. code-block:: text
+
+        os
+         |--  os
+         |--  ===> /usr/lib/python3.2/os.py
+                 @@doc : " os : OS routines for Mac, NT, or Posix depending on what system we're on. "
+
+
+          [@SUBPACKAGES]
+
+
+          [@SUBMODULES ]
+             |--  os
+                 |--  _copyreg
+                 |--  errno
+                 |--  path
+                     |--  genericpath
+                         |--  os
+                             |--  _copyreg
+                             |--  errno
+                             |--  path
+                             |--  sys
+                         |--  stat
+                     |--  os
+                     |--  stat
+                     |--  sys
+                 |--  sys
+
+
+          [@CLASS        ]
+              @@doc : - Classes and Method Resolution Order
+             |--  [Class MutableMapping]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class '_abcoll.MutableMapping'>
+                             |--  <class '_abcoll.Mapping'>
+                             |--  <class '_abcoll.Sized'>
+                             |--  <class '_abcoll.Iterable'>
+                             |--  <class '_abcoll.Container'>
+                             |--  <class 'object'>
+                     |--  [  object  ]:
+                             |--  _MutableMapping__marker
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_negative_cache_version
+                             |--  _abc_registry
+                             |--  clear (['self'])
+                             |--  get (['self', 'key', 'default'])
+                             |--  items (['self'])
+                             |--  keys (['self'])
+                             |--  pop (['self', 'key', 'default'])
+                             |--  popitem (['self'])
+                             |--  setdefault (['self', 'key', 'default'])
+                             |--  update ([])
+                             |--  values (['self'])
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+                     |--  [  function  ]:
+                             |--  clear (['self'])
+                             |--  get (['self', 'key', 'default'])
+                             |--  items (['self'])
+                             |--  keys (['self'])
+                             |--  pop (['self', 'key', 'default'])
+                             |--  popitem (['self'])
+                             |--  setdefault (['self', 'key', 'default'])
+                             |--  update ([])
+                             |--  values (['self'])
+             |--  [Class _Environ]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'os._Environ'>
+                             |--  <class '_abcoll.MutableMapping'>
+                             |--  <class '_abcoll.Mapping'>
+                             |--  <class '_abcoll.Sized'>
+                             |--  <class '_abcoll.Iterable'>
+                             |--  <class '_abcoll.Container'>
+                             |--  <class 'object'>
+                     |--  [  object  ]:
+                             |--  _MutableMapping__marker
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_negative_cache_version
+                             |--  _abc_registry
+                             |--  clear (['self'])
+                             |--  copy (['self'])
+                             |--  get (['self', 'key', 'default'])
+                             |--  items (['self'])
+                             |--  keys (['self'])
+                             |--  pop (['self', 'key', 'default'])
+                             |--  popitem (['self'])
+                             |--  setdefault (['self', 'key', 'value'])
+                             |--  update ([])
+                             |--  values (['self'])
+                     |--  [  int  ]:
+                             |--  _abc_negative_cache_version
+                     |--  [  WeakSet  ]:
+                             |--  _abc_cache
+                             |--  _abc_negative_cache
+                             |--  _abc_registry
+                     |--  [  function  ]:
+                             |--  clear (['self'])
+                             |--  copy (['self'])
+                             |--  get (['self', 'key', 'default'])
+                             |--  items (['self'])
+                             |--  keys (['self'])
+                             |--  pop (['self', 'key', 'default'])
+                             |--  popitem (['self'])
+                             |--  setdefault (['self', 'key', 'value'])
+                             |--  update ([])
+                             |--  values (['self'])
+             |--  [Class _wrap_close]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'os._wrap_close'>
+                             |--  <class 'object'>
+                     |--  [  function  ]:
+                             |--  close (['self'])
+             |--  [Class error]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'OSError'>
+                             |--  <class 'EnvironmentError'>
+                             |--  <class 'Exception'>
+                             |--  <class 'BaseException'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  with_traceback
+                     |--  [  getset_descriptor  ]:
+                             |--  args
+                     |--  [  member_descriptor  ]:
+                             |--  errno
+                             |--  filename
+                             |--  strerror
+             |--  [Class stat_result]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'posix.stat_result'>
+                             |--  <class 'tuple'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  count
+                             |--  index
+                     |--  [  int  ]:
+                             |--  n_fields
+                             |--  n_sequence_fields
+                             |--  n_unnamed_fields
+                     |--  [  member_descriptor  ]:
+                             |--  st_atime
+                             |--  st_birthtime
+                             |--  st_blksize
+                             |--  st_blocks
+                             |--  st_ctime
+                             |--  st_dev
+                             |--  st_gid
+                             |--  st_ino
+                             |--  st_mode
+                             |--  st_mtime
+                             |--  st_nlink
+                             |--  st_rdev
+                             |--  st_size
+                             |--  st_uid
+             |--  [Class statvfs_result]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'posix.statvfs_result'>
+                             |--  <class 'tuple'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  count
+                             |--  index
+                     |--  [  int  ]:
+                             |--  n_fields
+                             |--  n_sequence_fields
+                             |--  n_unnamed_fields
+                     |--  [  member_descriptor  ]:
+                             |--  f_bavail
+                             |--  f_bfree
+                             |--  f_blocks
+                             |--  f_bsize
+                             |--  f_favail
+                             |--  f_ffree
+                             |--  f_files
+                             |--  f_flag
+                             |--  f_frsize
+                             |--  f_namemax
+
+
+          [@ FUNCTION  ]
+              @@doc :  - Function including "lambda" anonymous functions
+             |--  _execvpe (['file', 'args', 'env'])
+             |--  _exists (['name'])
+             |--  _get_exports_list (['module'])
+             |--  _get_masked_mode (['mode'])
+             |--  _make_stat_result (['tup', 'dict'])
+             |--  _make_statvfs_result (['tup', 'dict'])
+             |--  _pickle_stat_result (['sr'])
+             |--  _pickle_statvfs_result (['sr'])
+             |--  _spawnvef (['mode', 'file', 'args', 'env', 'func'])
+             |--  execl (['file'])
+             |--  execle (['file'])
+             |--  execlp (['file'])
+             |--  execlpe (['file'])
+             |--  execvp (['file', 'args'])
+             |--  execvpe (['file', 'args', 'env'])
+             |--  fdopen (['fd'])
+             |--  fsdecode (['filename'])
+             |--  fsencode (['filename'])
+             |--  get_exec_path (['env'])
+             |--  getenv (['key', 'default'])
+             |--  getenvb (['key', 'default'])
+             |--  makedirs (['name', 'mode', 'exist_ok'])
+             |--  popen (['cmd', 'mode', 'buffering'])
+             |--  removedirs (['name'])
+             |--  renames (['old', 'new'])
+             |--  spawnl (['mode', 'file'])
+             |--  spawnle (['mode', 'file'])
+             |--  spawnlp (['mode', 'file'])
+             |--  spawnlpe (['mode', 'file'])
+             |--  spawnv (['mode', 'file', 'args'])
+             |--  spawnve (['mode', 'file', 'args', 'env'])
+             |--  spawnvp (['mode', 'file', 'args'])
+             |--  spawnvpe (['mode', 'file', 'args', 'env'])
+             |--  walk (['top', 'topdown', 'onerror', 'followlinks'])
+
+
+          [@ METHOD ]
+              @@doc ::   - bound method
+
+
+          [@ GENERATOR ]
+              @@doc :   - object is a generator with "yield" expressions
+
+
+          [@ GENERATOR FUNCTION ]
+              @@doc :     - object is a generator function
+             |--  walk (['top', 'topdown', 'onerror', 'followlinks'])
+
+
+          [@ TRACEBACK ]
+              @@doc :  - Traceback object
+
+
+          [@ FRAME ]
+              @@doc : - Frame Object
+
+
+          [@ CODE ]
+              @@doc : - Code Object
+
+
+          [@ BUILTIN ]
+              @@doc : - built-in function or bound built-in method
+             |--  WCOREDUMP (status)   
+             |--  WEXITSTATUS (status)   
+             |--  WIFCONTINUED (status)   
+             |--  WIFEXITED (status)   
+             |--  WIFSIGNALED (status)   
+             |--  WIFSTOPPED (status)   
+             |--  WSTOPSIG (status)   
+             |--  WTERMSIG (status)   
+             |--  _exit (status)   
+             |--  _putenv() 
+             |--  _unsetenv() 
+             |--  abort ()   
+             |--  access (path, mode)   
+             |--  chdir (path)   
+             |--  chmod (path, mode)   
+             |--  chown (path, uid, gid)   
+             |--  chroot (path)   
+             |--  close (fd)   
+             |--  closerange (fd_low, fd_high)   
+             |--  confstr (name)   
+             |--  ctermid ()   
+             |--  device_encoding (fd)   
+             |--  dup (fd)   
+             |--  dup2 (old_fd, new_fd)   
+             |--  execv (path, args)   
+             |--  execve (path, args, env)   
+             |--  fchdir (fildes)   
+             |--  fchmod (fd, mode)   
+             |--  fchown (fd, uid, gid)   
+             |--  fdatasync (fildes)   
+             |--  fork ()   
+             |--  forkpty ()   
+             |--  fpathconf (fd, name)   
+             |--  fstat (fd)   
+             |--  fstatvfs (fd)   
+             |--  fsync (fildes)   
+             |--  ftruncate (fd, length)   
+             |--  getcwd ()   
+             |--  getcwdb ()   
+             |--  getegid ()   
+             |--  geteuid ()   
+             |--  getgid ()   
+             |--  getgroups ()   
+             |--  getlogin ()   
+             |--  getpgid (pid)  getpgid ()   
+             |--  getpgrp ()   
+             |--  getpid ()   
+             |--  getppid ()   
+             |--  getsid (pid)  getsid ()   
+             |--  getuid ()   
+             |--  initgroups (username, gid)  initgroups ()   
+             |--  isatty (fd)   
+             |--  kill (pid, sig)   
+             |--  killpg (pgid, sig)   
+             |--  lchown (path, uid, gid)   
+             |--  link (src, dst)   
+             |--  listdir ([path])   
+             |--  lseek (fd, pos, how)   
+             |--  lstat (path)   
+             |--  major (device)   
+             |--  makedev (major, minor)   
+             |--  minor (device)   
+             |--  mkdir (path [, mode=0777])   
+             |--  mkfifo (filename [, mode=0666])   
+             |--  mknod (filename [, mode=0600, device])   
+             |--  nice (inc)   
+             |--  open (filename, flag [, mode=0777])   
+             |--  openpty ()   
+             |--  pathconf (path, name)   
+             |--  pipe ()   
+             |--  putenv (key, value)   
+             |--  read (fd, buffersize)   
+             |--  readlink (path)   
+             |--  remove (path)   
+             |--  rename (old, new)   
+             |--  rmdir (path)   
+             |--  setegid (gid)   
+             |--  seteuid (uid)   
+             |--  setgid (gid)   
+             |--  setgroups (list)   
+             |--  setpgid (pid, pgrp)  setpgid ()   
+             |--  setpgrp ()   
+             |--  setregid (rgid, egid)   
+             |--  setreuid (ruid, euid)   
+             |--  setsid ()  setsid ()   
+             |--  setuid (uid)   
+             |--  stat (path)   
+             |--  stat_float_times ([newval])   
+             |--  statvfs (path)   
+             |--  strerror (code)   
+             |--  symlink (src, dst)   
+             |--  sysconf (name)   
+             |--  system (command)   
+             |--  tcgetpgrp (fd)   
+             |--  tcsetpgrp (fd, pgid)   
+             |--  times ()   
+             |--  ttyname (fd)   
+             |--  umask (new_mask)   
+             |--  uname ()   
+             |--  unlink (path)   
+             |--  unsetenv (key)   
+             |--  urandom (n)   
+             |--  utime (path, (atime, mtime)  utime (path, None)   
+             |--  wait ()   
+             |--  wait3 (options)   
+             |--  wait4 (pid, options)   
+             |--  waitpid (pid, options)   
+             |--  write (fd, string)   
+
+
+          [@ ABSTRACT ]
+              @@doc : - object is abstract base class
+             |--  MutableMapping
+
+
+          [@ METHOD DESCRIPTOR ]
+              @@doc :  - Object has __get__ attribute but NOT __set__ attribute
+
+
+          [@ DATA DESCRIPTOR ]
+              @@doc :  - Object has __get__, __set__, __delete__ attributes
+
+
+          [@ GETSET DESCRIPTOR ]
+
+
+          [@ MEMBER DESCRIPTOR ]
+
+
+          [@ VARIABLES ]
+
+
+              [@ GLOBALS ]
+
+
+                  [@ bool ]
+                         |--  os.supports_bytes_environ
+
+
+                  [@ int ]
+                         |--  os.EX_CANTCREAT
+                         |--  os.EX_CONFIG
+                         |--  os.EX_DATAERR
+                         |--  os.EX_IOERR
+                         |--  os.EX_NOHOST
+                         |--  os.EX_NOINPUT
+                         |--  os.EX_NOPERM
+                         |--  os.EX_NOUSER
+                         |--  os.EX_OK
+                         |--  os.EX_OSERR
+                         |--  os.EX_OSFILE
+                         |--  os.EX_PROTOCOL
+                         |--  os.EX_SOFTWARE
+                         |--  os.EX_TEMPFAIL
+                         |--  os.EX_UNAVAILABLE
+                         |--  os.EX_USAGE
+                         |--  os.F_OK
+                         |--  os.NGROUPS_MAX
+                         |--  os.O_APPEND
+                         |--  os.O_BINARY
+                         |--  os.O_CREAT
+                         |--  os.O_DIRECT
+                         |--  os.O_DIRECTORY
+                         |--  os.O_DSYNC
+                         |--  os.O_EXCL
+                         |--  os.O_NDELAY
+                         |--  os.O_NOCTTY
+                         |--  os.O_NOFOLLOW
+                         |--  os.O_NOINHERIT
+                         |--  os.O_NONBLOCK
+                         |--  os.O_RDONLY
+                         |--  os.O_RDWR
+                         |--  os.O_RSYNC
+                         |--  os.O_SYNC
+                         |--  os.O_TEXT
+                         |--  os.O_TRUNC
+                         |--  os.O_WRONLY
+                         |--  os.P_NOWAIT
+                         |--  os.P_NOWAITO
+                         |--  os.P_WAIT
+                         |--  os.R_OK
+                         |--  os.SEEK_CUR
+                         |--  os.SEEK_END
+                         |--  os.SEEK_SET
+                         |--  os.ST_NOSUID
+                         |--  os.ST_RDONLY
+                         |--  os.TMP_MAX
+                         |--  os.WCONTINUED
+                         |--  os.WNOHANG
+                         |--  os.WUNTRACED
+                         |--  os.W_OK
+                         |--  os.X_OK
+
+
+                  [@ float ]
+
+
+                  [@ complex ]
+
+
+              [@ IMMUTABLE SEQUENCES ]
+
+
+                  [@ str ]
+                         |--  os.curdir
+                         |--  os.defpath
+                         |--  os.devnull
+                         |--  os.extsep
+                         |--  os.linesep
+                         |--  os.name
+                         |--  os.pardir
+                         |--  os.pathsep
+                         |--  os.sep
+
+
+                  [@ slice ]
+
+
+                  [@ tuple ]
+
+
+                  [@ frozenset ]
+
+
+              [@ MUTABLE SEQUENCES ]
+
+
+                  [@ list ]
+                         |--  os.__all__
+
+
+                  [@ bytearray ]
+
+
+                  [@ set ]
+
+
+              [@ MAPPING ]
+
+
+                  [@ dict ]
+                         |--  os.confstr_names
+                         |--  os.pathconf_names
+                         |--  os.sysconf_names

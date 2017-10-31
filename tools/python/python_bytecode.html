@@ -34,9 +34,9 @@
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="  documentation" href="../../index.html"/>
-        <link rel="up" title="PYTHON" href="index.html"/>
-        <link rel="next" title="Basic Python Modules" href="modules.html"/>
-        <link rel="prev" title="Builtin Python Modules" href="builtin_modules.html"/> 
+        <link rel="up" title="Python" href="index.html"/>
+        <link rel="next" title="Python Code Snippets" href="python_oneliner.html"/>
+        <link rel="prev" title="yaml" href="modules/yaml.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -83,38 +83,29 @@
             
                 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Design</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">PYTHON</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="builtin_modules.html">Builtin Python Modules</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Python Disassembly</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#python-help">Python Help</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#inspect">inspect</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#trace">trace</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#dis-disassembler">dis - disassembler</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#disassembler-format">Disassembler Format</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#python-disassembly-and-byte-code">Python Disassembly and byte code</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tools</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../compiler/index.html">compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../yocto/adt-toolchain-install.html">Cross Compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../yocto/yocto.html">Yocto Install</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Python</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="python_doc.html">Python Doc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python_module_structure.html">Python Module Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="builtin_modules.html">Builtin Python Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/index.html">Python Modules</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Python Disassembly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python_oneliner.html">Python Code Snippets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python_pytest.html">Python PyTest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python_start.html">Python Start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python-install.html">python install packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python-internals.html">Python Internals</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#python-byte-opcodes">Python Byte Opcodes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-init-call-hierarchy">Module Init call hierarchy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#python-and-gdb">Python and gdb</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#python-and-pdb">python and pdb</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#python-debug-modules">Python Debug Modules</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id1">inspect</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#dis">dis</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id2">dis</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pdb">pdb</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#gdb">gdb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GIT/index.html">Git Internals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ReST/template/index.html">Restructured Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../verilog/verilog.html">Verilog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssh/ssh.html">SSH</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="modules.html">Basic Python Modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python_oneliner.html">Python Code Snippets</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../GIT/index.html">Git Internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ReST/template/template.html">Template for reStructured Text</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ReST/template/slides.html">MY SLIDE TITLE</a></li>
 </ul>
 
             
@@ -145,7 +136,9 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-          <li><a href="index.html">PYTHON</a> &raquo;</li>
+          <li><a href="../index.html">Tools</a> &raquo;</li>
+      
+          <li><a href="index.html">Python</a> &raquo;</li>
       
     <li>Python Disassembly</li>
       <li class="wy-breadcrumbs-aside">
@@ -598,7 +591,7 @@ Python Exception &lt;class <span class="s1">&#39;gdb.error&#39;</span>&gt; There
 <blockquote>
 <div><p>pdb - python debugger</p>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span>$python -m pdb hello.py
+<div><div class="highlight-text"><div class="highlight"><pre><span></span>$python -m pdb hello.py
 &gt; /Projects/python/hello/hello.py(3)&lt;module&gt;()
 -&gt; import pdb
 
@@ -678,7 +671,7 @@ retval  rv
 <div class="section" id="id1">
 <h3>inspect<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span>$python3.2 -m inspectshow inspect
+<div><div class="highlight-text"><div class="highlight"><pre><span></span>$python3.2 -m inspectshow inspect
 inspect
  |--  inspect
  |--  ===&gt; /usr/lib/python3.2/inspect.py
@@ -1000,7 +993,7 @@ inspect
 <div class="section" id="dis">
 <h3>dis<a class="headerlink" href="#dis" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-trace"><div class="highlight"><pre><span></span>trace
+<div><div class="highlight-text"><div class="highlight"><pre><span></span>trace
  |--  trace
  |--  ===&gt; /usr/lib/python3.2/trace.py
          @@doc : &quot; trace : program/module to trace Python program or function execution &quot;
@@ -1158,7 +1151,7 @@ inspect
 <div class="section" id="id2">
 <h3>dis<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span>dis
+<div><div class="highlight-text"><div class="highlight"><pre><span></span>dis
  |--  dis
  |--  ===&gt; /usr/lib/python3.2/dis.py
          @@doc : &quot; dis : Disassembler of Python byte code into mnemonics. &quot;
@@ -1217,7 +1210,7 @@ inspect
 <div class="section" id="pdb">
 <h3>pdb<a class="headerlink" href="#pdb" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span>$python3.2 -m inspectshow pdb
+<div><div class="highlight-text"><div class="highlight"><pre><span></span>$python3.2 -m inspectshow pdb
 pdb
  |--  pdb
  |--  ===&gt; /usr/lib/python3.2/pdb.py
@@ -1570,7 +1563,7 @@ pdb
 <span class="o">&gt;</span><span class="n">end</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>gdb
+<div class="highlight-text"><div class="highlight"><pre><span></span>gdb
  |--  gdb
  |--  ===&gt; /usr/share/gdb/python/gdb/__init__.py
 
@@ -2302,10 +2295,10 @@ pdb
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="modules.html" class="btn btn-neutral float-right" title="Basic Python Modules" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="python_oneliner.html" class="btn btn-neutral float-right" title="Python Code Snippets" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="builtin_modules.html" class="btn btn-neutral" title="Builtin Python Modules" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="modules/yaml.html" class="btn btn-neutral" title="yaml" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -1,0 +1,737 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>os &mdash;   documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="  documentation" href="../../../index.html"/>
+        <link rel="up" title="Python Modules" href="index.html"/>
+        <link rel="next" title="re - simple regular expression (sre)" href="sre.html"/>
+        <link rel="prev" title="math" href="math.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> 
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../design/index.html">Design</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Tools</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../compiler/index.html">compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../yocto/adt-toolchain-install.html">Cross Compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../yocto/yocto.html">Yocto Install</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Python</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../python_doc.html">Python Doc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../python_module_structure.html">Python Module Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../builtin_modules.html">Builtin Python Modules</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Python Modules</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="math.html">math</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">os</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sre.html">re - simple regular expression (sre)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="collections.html">collections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="itertools.html">itertools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="multiprocessing.html">multiprocessing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="yaml.html">yaml</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../python_bytecode.html">Python Disassembly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../python_oneliner.html">Python Code Snippets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../python_pytest.html">Python PyTest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../python_start.html">Python Start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../python-install.html">python install packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../python-internals.html">Python Internals</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../GIT/index.html">Git Internals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReST/template/index.html">Restructured Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../verilog/verilog.html">Verilog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ssh/ssh.html">SSH</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html"></a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Tools</a> &raquo;</li>
+      
+          <li><a href="../index.html">Python</a> &raquo;</li>
+      
+          <li><a href="index.html">Python Modules</a> &raquo;</li>
+      
+    <li>os</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../_sources/tools/python/modules/os.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="os">
+<h1>os<a class="headerlink" href="#os" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><div class="highlight-text"><div class="highlight"><pre><span></span>os
+ |--  os
+ |--  ===&gt; /usr/lib/python3.2/os.py
+         @@doc : &quot; os : OS routines for Mac, NT, or Posix depending on what system we&#39;re on. &quot;
+
+
+  [@SUBPACKAGES]
+
+
+  [@SUBMODULES ]
+     |--  os
+         |--  _copyreg
+         |--  errno
+         |--  path
+             |--  genericpath
+                 |--  os
+                     |--  _copyreg
+                     |--  errno
+                     |--  path
+                     |--  sys
+                 |--  stat
+             |--  os
+             |--  stat
+             |--  sys
+         |--  sys
+
+
+  [@CLASS        ]
+      @@doc : - Classes and Method Resolution Order
+     |--  [Class MutableMapping]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;_abcoll.MutableMapping&#39;&gt;
+                     |--  &lt;class &#39;_abcoll.Mapping&#39;&gt;
+                     |--  &lt;class &#39;_abcoll.Sized&#39;&gt;
+                     |--  &lt;class &#39;_abcoll.Iterable&#39;&gt;
+                     |--  &lt;class &#39;_abcoll.Container&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  object  ]:
+                     |--  _MutableMapping__marker
+                     |--  _abc_cache
+                     |--  _abc_negative_cache
+                     |--  _abc_negative_cache_version
+                     |--  _abc_registry
+                     |--  clear ([&#39;self&#39;])
+                     |--  get ([&#39;self&#39;, &#39;key&#39;, &#39;default&#39;])
+                     |--  items ([&#39;self&#39;])
+                     |--  keys ([&#39;self&#39;])
+                     |--  pop ([&#39;self&#39;, &#39;key&#39;, &#39;default&#39;])
+                     |--  popitem ([&#39;self&#39;])
+                     |--  setdefault ([&#39;self&#39;, &#39;key&#39;, &#39;default&#39;])
+                     |--  update ([])
+                     |--  values ([&#39;self&#39;])
+             |--  [  int  ]:
+                     |--  _abc_negative_cache_version
+             |--  [  WeakSet  ]:
+                     |--  _abc_cache
+                     |--  _abc_negative_cache
+                     |--  _abc_registry
+             |--  [  function  ]:
+                     |--  clear ([&#39;self&#39;])
+                     |--  get ([&#39;self&#39;, &#39;key&#39;, &#39;default&#39;])
+                     |--  items ([&#39;self&#39;])
+                     |--  keys ([&#39;self&#39;])
+                     |--  pop ([&#39;self&#39;, &#39;key&#39;, &#39;default&#39;])
+                     |--  popitem ([&#39;self&#39;])
+                     |--  setdefault ([&#39;self&#39;, &#39;key&#39;, &#39;default&#39;])
+                     |--  update ([])
+                     |--  values ([&#39;self&#39;])
+     |--  [Class _Environ]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;os._Environ&#39;&gt;
+                     |--  &lt;class &#39;_abcoll.MutableMapping&#39;&gt;
+                     |--  &lt;class &#39;_abcoll.Mapping&#39;&gt;
+                     |--  &lt;class &#39;_abcoll.Sized&#39;&gt;
+                     |--  &lt;class &#39;_abcoll.Iterable&#39;&gt;
+                     |--  &lt;class &#39;_abcoll.Container&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  object  ]:
+                     |--  _MutableMapping__marker
+                     |--  _abc_cache
+                     |--  _abc_negative_cache
+                     |--  _abc_negative_cache_version
+                     |--  _abc_registry
+                     |--  clear ([&#39;self&#39;])
+                     |--  copy ([&#39;self&#39;])
+                     |--  get ([&#39;self&#39;, &#39;key&#39;, &#39;default&#39;])
+                     |--  items ([&#39;self&#39;])
+                     |--  keys ([&#39;self&#39;])
+                     |--  pop ([&#39;self&#39;, &#39;key&#39;, &#39;default&#39;])
+                     |--  popitem ([&#39;self&#39;])
+                     |--  setdefault ([&#39;self&#39;, &#39;key&#39;, &#39;value&#39;])
+                     |--  update ([])
+                     |--  values ([&#39;self&#39;])
+             |--  [  int  ]:
+                     |--  _abc_negative_cache_version
+             |--  [  WeakSet  ]:
+                     |--  _abc_cache
+                     |--  _abc_negative_cache
+                     |--  _abc_registry
+             |--  [  function  ]:
+                     |--  clear ([&#39;self&#39;])
+                     |--  copy ([&#39;self&#39;])
+                     |--  get ([&#39;self&#39;, &#39;key&#39;, &#39;default&#39;])
+                     |--  items ([&#39;self&#39;])
+                     |--  keys ([&#39;self&#39;])
+                     |--  pop ([&#39;self&#39;, &#39;key&#39;, &#39;default&#39;])
+                     |--  popitem ([&#39;self&#39;])
+                     |--  setdefault ([&#39;self&#39;, &#39;key&#39;, &#39;value&#39;])
+                     |--  update ([])
+                     |--  values ([&#39;self&#39;])
+     |--  [Class _wrap_close]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;os._wrap_close&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  function  ]:
+                     |--  close ([&#39;self&#39;])
+     |--  [Class error]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;OSError&#39;&gt;
+                     |--  &lt;class &#39;EnvironmentError&#39;&gt;
+                     |--  &lt;class &#39;Exception&#39;&gt;
+                     |--  &lt;class &#39;BaseException&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  method_descriptor  ]:
+                     |--  with_traceback
+             |--  [  getset_descriptor  ]:
+                     |--  args
+             |--  [  member_descriptor  ]:
+                     |--  errno
+                     |--  filename
+                     |--  strerror
+     |--  [Class stat_result]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;posix.stat_result&#39;&gt;
+                     |--  &lt;class &#39;tuple&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  method_descriptor  ]:
+                     |--  count
+                     |--  index
+             |--  [  int  ]:
+                     |--  n_fields
+                     |--  n_sequence_fields
+                     |--  n_unnamed_fields
+             |--  [  member_descriptor  ]:
+                     |--  st_atime
+                     |--  st_birthtime
+                     |--  st_blksize
+                     |--  st_blocks
+                     |--  st_ctime
+                     |--  st_dev
+                     |--  st_gid
+                     |--  st_ino
+                     |--  st_mode
+                     |--  st_mtime
+                     |--  st_nlink
+                     |--  st_rdev
+                     |--  st_size
+                     |--  st_uid
+     |--  [Class statvfs_result]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;posix.statvfs_result&#39;&gt;
+                     |--  &lt;class &#39;tuple&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  method_descriptor  ]:
+                     |--  count
+                     |--  index
+             |--  [  int  ]:
+                     |--  n_fields
+                     |--  n_sequence_fields
+                     |--  n_unnamed_fields
+             |--  [  member_descriptor  ]:
+                     |--  f_bavail
+                     |--  f_bfree
+                     |--  f_blocks
+                     |--  f_bsize
+                     |--  f_favail
+                     |--  f_ffree
+                     |--  f_files
+                     |--  f_flag
+                     |--  f_frsize
+                     |--  f_namemax
+
+
+  [@ FUNCTION  ]
+      @@doc :  - Function including &quot;lambda&quot; anonymous functions
+     |--  _execvpe ([&#39;file&#39;, &#39;args&#39;, &#39;env&#39;])
+     |--  _exists ([&#39;name&#39;])
+     |--  _get_exports_list ([&#39;module&#39;])
+     |--  _get_masked_mode ([&#39;mode&#39;])
+     |--  _make_stat_result ([&#39;tup&#39;, &#39;dict&#39;])
+     |--  _make_statvfs_result ([&#39;tup&#39;, &#39;dict&#39;])
+     |--  _pickle_stat_result ([&#39;sr&#39;])
+     |--  _pickle_statvfs_result ([&#39;sr&#39;])
+     |--  _spawnvef ([&#39;mode&#39;, &#39;file&#39;, &#39;args&#39;, &#39;env&#39;, &#39;func&#39;])
+     |--  execl ([&#39;file&#39;])
+     |--  execle ([&#39;file&#39;])
+     |--  execlp ([&#39;file&#39;])
+     |--  execlpe ([&#39;file&#39;])
+     |--  execvp ([&#39;file&#39;, &#39;args&#39;])
+     |--  execvpe ([&#39;file&#39;, &#39;args&#39;, &#39;env&#39;])
+     |--  fdopen ([&#39;fd&#39;])
+     |--  fsdecode ([&#39;filename&#39;])
+     |--  fsencode ([&#39;filename&#39;])
+     |--  get_exec_path ([&#39;env&#39;])
+     |--  getenv ([&#39;key&#39;, &#39;default&#39;])
+     |--  getenvb ([&#39;key&#39;, &#39;default&#39;])
+     |--  makedirs ([&#39;name&#39;, &#39;mode&#39;, &#39;exist_ok&#39;])
+     |--  popen ([&#39;cmd&#39;, &#39;mode&#39;, &#39;buffering&#39;])
+     |--  removedirs ([&#39;name&#39;])
+     |--  renames ([&#39;old&#39;, &#39;new&#39;])
+     |--  spawnl ([&#39;mode&#39;, &#39;file&#39;])
+     |--  spawnle ([&#39;mode&#39;, &#39;file&#39;])
+     |--  spawnlp ([&#39;mode&#39;, &#39;file&#39;])
+     |--  spawnlpe ([&#39;mode&#39;, &#39;file&#39;])
+     |--  spawnv ([&#39;mode&#39;, &#39;file&#39;, &#39;args&#39;])
+     |--  spawnve ([&#39;mode&#39;, &#39;file&#39;, &#39;args&#39;, &#39;env&#39;])
+     |--  spawnvp ([&#39;mode&#39;, &#39;file&#39;, &#39;args&#39;])
+     |--  spawnvpe ([&#39;mode&#39;, &#39;file&#39;, &#39;args&#39;, &#39;env&#39;])
+     |--  walk ([&#39;top&#39;, &#39;topdown&#39;, &#39;onerror&#39;, &#39;followlinks&#39;])
+
+
+  [@ METHOD ]
+      @@doc ::   - bound method
+
+
+  [@ GENERATOR ]
+      @@doc :   - object is a generator with &quot;yield&quot; expressions
+
+
+  [@ GENERATOR FUNCTION ]
+      @@doc :     - object is a generator function
+     |--  walk ([&#39;top&#39;, &#39;topdown&#39;, &#39;onerror&#39;, &#39;followlinks&#39;])
+
+
+  [@ TRACEBACK ]
+      @@doc :  - Traceback object
+
+
+  [@ FRAME ]
+      @@doc : - Frame Object
+
+
+  [@ CODE ]
+      @@doc : - Code Object
+
+
+  [@ BUILTIN ]
+      @@doc : - built-in function or bound built-in method
+     |--  WCOREDUMP (status)
+     |--  WEXITSTATUS (status)
+     |--  WIFCONTINUED (status)
+     |--  WIFEXITED (status)
+     |--  WIFSIGNALED (status)
+     |--  WIFSTOPPED (status)
+     |--  WSTOPSIG (status)
+     |--  WTERMSIG (status)
+     |--  _exit (status)
+     |--  _putenv()
+     |--  _unsetenv()
+     |--  abort ()
+     |--  access (path, mode)
+     |--  chdir (path)
+     |--  chmod (path, mode)
+     |--  chown (path, uid, gid)
+     |--  chroot (path)
+     |--  close (fd)
+     |--  closerange (fd_low, fd_high)
+     |--  confstr (name)
+     |--  ctermid ()
+     |--  device_encoding (fd)
+     |--  dup (fd)
+     |--  dup2 (old_fd, new_fd)
+     |--  execv (path, args)
+     |--  execve (path, args, env)
+     |--  fchdir (fildes)
+     |--  fchmod (fd, mode)
+     |--  fchown (fd, uid, gid)
+     |--  fdatasync (fildes)
+     |--  fork ()
+     |--  forkpty ()
+     |--  fpathconf (fd, name)
+     |--  fstat (fd)
+     |--  fstatvfs (fd)
+     |--  fsync (fildes)
+     |--  ftruncate (fd, length)
+     |--  getcwd ()
+     |--  getcwdb ()
+     |--  getegid ()
+     |--  geteuid ()
+     |--  getgid ()
+     |--  getgroups ()
+     |--  getlogin ()
+     |--  getpgid (pid)  getpgid ()
+     |--  getpgrp ()
+     |--  getpid ()
+     |--  getppid ()
+     |--  getsid (pid)  getsid ()
+     |--  getuid ()
+     |--  initgroups (username, gid)  initgroups ()
+     |--  isatty (fd)
+     |--  kill (pid, sig)
+     |--  killpg (pgid, sig)
+     |--  lchown (path, uid, gid)
+     |--  link (src, dst)
+     |--  listdir ([path])
+     |--  lseek (fd, pos, how)
+     |--  lstat (path)
+     |--  major (device)
+     |--  makedev (major, minor)
+     |--  minor (device)
+     |--  mkdir (path [, mode=0777])
+     |--  mkfifo (filename [, mode=0666])
+     |--  mknod (filename [, mode=0600, device])
+     |--  nice (inc)
+     |--  open (filename, flag [, mode=0777])
+     |--  openpty ()
+     |--  pathconf (path, name)
+     |--  pipe ()
+     |--  putenv (key, value)
+     |--  read (fd, buffersize)
+     |--  readlink (path)
+     |--  remove (path)
+     |--  rename (old, new)
+     |--  rmdir (path)
+     |--  setegid (gid)
+     |--  seteuid (uid)
+     |--  setgid (gid)
+     |--  setgroups (list)
+     |--  setpgid (pid, pgrp)  setpgid ()
+     |--  setpgrp ()
+     |--  setregid (rgid, egid)
+     |--  setreuid (ruid, euid)
+     |--  setsid ()  setsid ()
+     |--  setuid (uid)
+     |--  stat (path)
+     |--  stat_float_times ([newval])
+     |--  statvfs (path)
+     |--  strerror (code)
+     |--  symlink (src, dst)
+     |--  sysconf (name)
+     |--  system (command)
+     |--  tcgetpgrp (fd)
+     |--  tcsetpgrp (fd, pgid)
+     |--  times ()
+     |--  ttyname (fd)
+     |--  umask (new_mask)
+     |--  uname ()
+     |--  unlink (path)
+     |--  unsetenv (key)
+     |--  urandom (n)
+     |--  utime (path, (atime, mtime)  utime (path, None)
+     |--  wait ()
+     |--  wait3 (options)
+     |--  wait4 (pid, options)
+     |--  waitpid (pid, options)
+     |--  write (fd, string)
+
+
+  [@ ABSTRACT ]
+      @@doc : - object is abstract base class
+     |--  MutableMapping
+
+
+  [@ METHOD DESCRIPTOR ]
+      @@doc :  - Object has __get__ attribute but NOT __set__ attribute
+
+
+  [@ DATA DESCRIPTOR ]
+      @@doc :  - Object has __get__, __set__, __delete__ attributes
+
+
+  [@ GETSET DESCRIPTOR ]
+
+
+  [@ MEMBER DESCRIPTOR ]
+
+
+  [@ VARIABLES ]
+
+
+      [@ GLOBALS ]
+
+
+          [@ bool ]
+                 |--  os.supports_bytes_environ
+
+
+          [@ int ]
+                 |--  os.EX_CANTCREAT
+                 |--  os.EX_CONFIG
+                 |--  os.EX_DATAERR
+                 |--  os.EX_IOERR
+                 |--  os.EX_NOHOST
+                 |--  os.EX_NOINPUT
+                 |--  os.EX_NOPERM
+                 |--  os.EX_NOUSER
+                 |--  os.EX_OK
+                 |--  os.EX_OSERR
+                 |--  os.EX_OSFILE
+                 |--  os.EX_PROTOCOL
+                 |--  os.EX_SOFTWARE
+                 |--  os.EX_TEMPFAIL
+                 |--  os.EX_UNAVAILABLE
+                 |--  os.EX_USAGE
+                 |--  os.F_OK
+                 |--  os.NGROUPS_MAX
+                 |--  os.O_APPEND
+                 |--  os.O_BINARY
+                 |--  os.O_CREAT
+                 |--  os.O_DIRECT
+                 |--  os.O_DIRECTORY
+                 |--  os.O_DSYNC
+                 |--  os.O_EXCL
+                 |--  os.O_NDELAY
+                 |--  os.O_NOCTTY
+                 |--  os.O_NOFOLLOW
+                 |--  os.O_NOINHERIT
+                 |--  os.O_NONBLOCK
+                 |--  os.O_RDONLY
+                 |--  os.O_RDWR
+                 |--  os.O_RSYNC
+                 |--  os.O_SYNC
+                 |--  os.O_TEXT
+                 |--  os.O_TRUNC
+                 |--  os.O_WRONLY
+                 |--  os.P_NOWAIT
+                 |--  os.P_NOWAITO
+                 |--  os.P_WAIT
+                 |--  os.R_OK
+                 |--  os.SEEK_CUR
+                 |--  os.SEEK_END
+                 |--  os.SEEK_SET
+                 |--  os.ST_NOSUID
+                 |--  os.ST_RDONLY
+                 |--  os.TMP_MAX
+                 |--  os.WCONTINUED
+                 |--  os.WNOHANG
+                 |--  os.WUNTRACED
+                 |--  os.W_OK
+                 |--  os.X_OK
+
+
+          [@ float ]
+
+
+          [@ complex ]
+
+
+      [@ IMMUTABLE SEQUENCES ]
+
+
+          [@ str ]
+                 |--  os.curdir
+                 |--  os.defpath
+                 |--  os.devnull
+                 |--  os.extsep
+                 |--  os.linesep
+                 |--  os.name
+                 |--  os.pardir
+                 |--  os.pathsep
+                 |--  os.sep
+
+
+          [@ slice ]
+
+
+          [@ tuple ]
+
+
+          [@ frozenset ]
+
+
+      [@ MUTABLE SEQUENCES ]
+
+
+          [@ list ]
+                 |--  os.__all__
+
+
+          [@ bytearray ]
+
+
+          [@ set ]
+
+
+      [@ MAPPING ]
+
+
+          [@ dict ]
+                 |--  os.confstr_names
+                 |--  os.pathconf_names
+                 |--  os.sysconf_names
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sre.html" class="btn btn-neutral float-right" title="re - simple regular expression (sre)" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="math.html" class="btn btn-neutral" title="math" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+.. docs
+
+Python Modules
+==============
+
+.. toctree::
+    :maxdepth: 2
+
+    math
+    os
+    sre
+    collections
+    itertools
+    multiprocessing
+    yaml

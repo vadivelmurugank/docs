@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Branching and merge to a tag &mdash;   documentation</title>
+  <title>Basic &mdash;   documentation</title>
   
 
   
@@ -80,10 +80,7 @@
             
                 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Design</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python/index.html">PYTHON</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html">Git Internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ReST/template/template.html">Template for reStructured Text</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ReST/template/slides.html">MY SLIDE TITLE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Tools</a></li>
 </ul>
 
             
@@ -114,7 +111,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-    <li>Branching and merge to a tag</li>
+    <li>Basic</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -128,7 +125,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <p>git pull &#8211;rebase</p>
+  <div class="section" id="basic">
+<h1>Basic<a class="headerlink" href="#basic" title="Permalink to this headline">¶</a></h1>
+<p>git pull &#8211;rebase</p>
 <p>git log
 git status</p>
 <p># Latest commit tag
@@ -145,6 +144,9 @@ git hash-object</p>
 git log &#8211;decorate &#8211;oneline
 git log &#8211;decorate &#8211;oneline &#8211;full &#8211;graph ssc_podd.c | more</p>
 <p>git tags -l</p>
+</div>
+<div class="section" id="latest-gerrit-instructions">
+<h1>Latest Gerrit Instructions<a class="headerlink" href="#latest-gerrit-instructions" title="Permalink to this headline">¶</a></h1>
 <p>git authclone &lt;tree&gt;  -b  &lt;branch&gt;</p>
 <p>git status</p>
 <p>git checkout -b &lt;branch&gt; remotes/origin/&lt;tree&gt;</p>
@@ -153,6 +155,9 @@ git log &#8211;decorate &#8211;oneline &#8211;full &#8211;graph ssc_podd.c | mor
 git commit
 git commit &#8211;amend</p>
 <p>git review</p>
+</div>
+<div class="section" id="gerrit-integration-branch">
+<h1>Gerrit Integration Branch<a class="headerlink" href="#gerrit-integration-branch" title="Permalink to this headline">¶</a></h1>
 <p>git authclone &lt;tree&gt; -b &lt;branch&gt;</p>
 <dl class="docutils">
 <dt>#status</dt>
@@ -184,15 +189,21 @@ git commit &#8211;amend</p>
 git rebase -i</p>
 <p># Go back to previous good tree
 git reset HEAD~1 &#8211;soft</p>
+</div>
+<div class="section" id="paas-dev-branch">
+<h1>paas dev branch<a class="headerlink" href="#paas-dev-branch" title="Permalink to this headline">¶</a></h1>
 <p>authclone paas -b paas_dev</p>
 <div class="section" id="branching-and-merge-to-a-tag">
-<h1>Branching and merge to a tag<a class="headerlink" href="#branching-and-merge-to-a-tag" title="Permalink to this headline">¶</a></h1>
+<h2>Branching and merge to a tag<a class="headerlink" href="#branching-and-merge-to-a-tag" title="Permalink to this headline">¶</a></h2>
 <p>git branch nhk_mfg
 git checkout nhk_mfg</p>
 <p>git fetch &#8211;tags origin
 git merge v16.4.0.600.46</p>
 <p>Updating 74e7711..b642193</p>
-<p>#</p>
+</div>
+</div>
+<div class="section" id="branching">
+<h1>Branching<a class="headerlink" href="#branching" title="Permalink to this headline">¶</a></h1>
 <p># Create a branch with a tag</p>
 <p>git tag v16.4.0.600.46 nhk_diags_mfg_release
 git branch nhk_diags_mfg_release v16.4.0.600.46
@@ -203,14 +214,17 @@ git checkout -b nhk_diags_mfg_release v16.4.0.600.46</p>
 git branch experiment1
 git checkout experiment1</p>
 <p># Do some work
-git add, git commit ?amend, git add, git commit ?amend ?</p>
-<p># Switch back to the ?master? branch
+git add, git commit amend, git add, git commit amend</p>
+<p># Switch back to the master branch
 git checkout &lt;tree&gt;_dev</p>
 <p>#and merge in the changes
 git merge experiment1</p>
 <p>Delete the branch when done
-git branch ?d experiment1</p>
-<p>You can always do ?git branch? to see all the branches you have created and which one is currently working in.</p>
+git branch d experiment1</p>
+<p>You can always do git branch to see all the branches you have created and which one is currently working in.</p>
+</div>
+<div class="section" id="git-clone">
+<h1>git clone<a class="headerlink" href="#git-clone" title="Permalink to this headline">¶</a></h1>
 <p>git clone <a class="reference external" href="ssh://vadivel&#64;github.com/project/project.git">ssh://vadivel&#64;github.com/project/project.git</a></p>
 <p>cd rel_ssr
 cd pkt
@@ -218,6 +232,9 @@ emq PRODUCT=ASG DBG=yes</p>
 <p>git add &lt;file&gt;
 git commit  -m message &lt;file&gt;
 authpush filename &lt;template log&gt;</p>
+</div>
+<div class="section" id="kernel">
+<h1>Kernel<a class="headerlink" href="#kernel" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><p>git clone -q /project/rbnlinux/wolf-int.git /project/vadivel/kernel/linux
 git submodule init
@@ -225,6 +242,9 @@ git submodule update</p>
 <p>Branch:
 git checkout -q &#8211;track -b rbos-3.0 origin/rbos-3.0</p>
 </div></blockquote>
+</div>
+<div class="section" id="create-local-repo">
+<h1>Create local repo<a class="headerlink" href="#create-local-repo" title="Permalink to this headline">¶</a></h1>
 <p>#Initialize existing Directory into Git revisions
 git init &lt;directory&gt;</p>
 <p># Initialize  bare/empty local repo git
@@ -233,8 +253,9 @@ git init &#8211;shared &#8211;bare
 <p># git remote add
 git remote add origin /firmware/firmware-uboot.git
 git remote -v</p>
+</div>
 <div class="section" id="git-config">
-<h2>## Git config<a class="headerlink" href="#git-config" title="Permalink to this headline">¶</a></h2>
+<h1>Git config<a class="headerlink" href="#git-config" title="Permalink to this headline">¶</a></h1>
 <p>git-config denyCurrentBranch &#8220;warn&#8221;
 git-config hooks.mailinglist &#8220;<a class="reference external" href="mailto:vadivel&#46;murugan&#37;&#52;&#48;gmail&#46;com">vadivel<span>&#46;</span>murugan<span>&#64;</span>gmail<span>&#46;</span>com</a>&#8221;
 git-config hooks.emailprefix &#8220;[FIRMWARE-UBOOT.GIT]&#8221;</p>
@@ -242,6 +263,9 @@ git-config hooks.emailprefix &#8220;[FIRMWARE-UBOOT.GIT]&#8221;</p>
 git-config hooks.senderfullname &#8220;GIT Mailer&#8221;</p>
 <p>cp /tools/swdev/devsup/git/admin/hooks/DEVSUP_post-recieve post-receive
 - Edit post-receive for receipients and &lt;repo&gt;.git</p>
+</div>
+<div class="section" id="initial-commits">
+<h1>Initial Commits<a class="headerlink" href="#initial-commits" title="Permalink to this headline">¶</a></h1>
 <p>git clone localhost:/firmware/firmware-uboot.git</p>
 <p>git add &lt;dir&gt;
 git commit -m &#8220;initial commit&#8221; &lt;&lt;dir&gt;&gt;
@@ -250,11 +274,17 @@ git push origin master</p>
 #git remote add &lt;origin&gt; &lt;path to .git file&gt;
 #git remote -v</p>
 <p>git reset &#8211;hard</p>
+</div>
+<div class="section" id="git-log">
+<h1>git log<a class="headerlink" href="#git-log" title="Permalink to this headline">¶</a></h1>
 <p># Show &lt;No of Commits&gt; &lt;author&gt;
 git shortlog -n -s &#8211;no-merges</p>
 <p># git log &#8211;ADOG
 git log &#8211;decorate &#8211;oneline &#8211;graph &#8211;no-merges
 git log &#8211;all &#8211;decorate &#8211;oneline &#8211;graph &#8211;no-merges</p>
+</div>
+<div class="section" id="log">
+<h1>Log<a class="headerlink" href="#log" title="Permalink to this headline">¶</a></h1>
 <p>$more config
 [core]</p>
 <blockquote>
@@ -271,7 +301,6 @@ emailprefix = [FIRMWARE-UBOOT.GIT]
 envelopesender = git_tool
 senderfullname = GIT Mailer</dd>
 </dl>
-<hr class="docutils" />
 <p># List all Branches
 $git branch -a
 * master                                 : local master copy</p>
@@ -287,6 +316,9 @@ remotes/origin/HEAD                 -&gt; origin/master
 remotes/origin/master               51c39f8 Merge branch &#8216;merge&#8217; into build
 remotes/origin/master-lastgoodbuild 51c39f8 Merge branch &#8216;merge&#8217; into build</div></blockquote>
 <p>SRC_TOP=PROJECT TOP</p>
+</div>
+<div class="section" id="git-diff">
+<h1>GIT DIFF<a class="headerlink" href="#git-diff" title="Permalink to this headline">¶</a></h1>
 <p>#git pull &#8211;rebase
 git fetch &amp;&amp; git diff origin master &#8211;name-only ..origin &gt; $SRC_TOP/../mods/files.&lt;date&gt;
 git pull &#8211;rebase</p>
@@ -305,7 +337,7 @@ do</p>
 </div></blockquote>
 </div>
 <div class="section" id="git-diff-between-two-timestamps">
-<h2>#git diff between two timestamps<a class="headerlink" href="#git-diff-between-two-timestamps" title="Permalink to this headline">¶</a></h2>
+<h1>git diff between two timestamps<a class="headerlink" href="#git-diff-between-two-timestamps" title="Permalink to this headline">¶</a></h1>
 <p>git diff &#8211;stat &#64;{2015-01-08}..&#64;{2015-01-09}</p>
 <p># Just list files only
 git log &#8211;since=&#8221;8 Jan 2015&#8221; &#8211;until=&#8221;10 Jan 2015&#8221; &#8211;stat &#8211;name-only &#8211;pretty=oneline</p>
@@ -313,8 +345,8 @@ git log &#8211;since=&#8221;8 Jan 2015&#8221; &#8211;until=&#8221;10 Jan 2015&#8
 <p># git diff between tags
 # git describe
 git diff v16.1.0.700.64 v16.1.0.700.56 &#8211;stat</p>
-<p>#### git reflog
-#### git log -g &#8211;decorate
+<p>git reflog
+git log -g &#8211;decorate
 git log &#8211;pretty=oneline -3
 git diff origin master</p>
 <p>$git log &#8211;decorate &#8211;oneline &#8211;full &#8211;graph ssc_podd.c | more
@@ -384,6 +416,9 @@ git clean -xdf</p>
 datestr=$(date +%m%d%y-%H%M)
 mkdir -p ~/gitlog/sandbox/${datestr}
 for file in <cite>cat ~/gitlog/git.files</cite>; do echo $file; ls $file| cpio -pmd ~/gitlog/sandbox/${datestr}; done</p>
+</div>
+<div class="section" id="may-02-2013-10-01-07">
+<h1>.. May 02, 2013 (10:01:07)<a class="headerlink" href="#may-02-2013-10-01-07" title="Permalink to this headline">¶</a></h1>
 <p>git add &lt;file&gt;
 # Same as p4 checkout &lt;file&gt;</p>
 <p>git diff origin master
@@ -394,16 +429,16 @@ ccollab addgitdiffs &lt;review #&gt;  origin master
 authpush        &lt;- git commit</p>
 <p>clobber:
 from the top level (above pkt)
-git clean –xfd
+git clean xfd
 You must scratch-config to a new location
 or worse:
-git clean –xfd &amp;&amp; git reset &#8211;hard &amp;&amp; rm -rf $BLDTREE/* &amp;&amp; scratch-config
+git clean xfd &amp;&amp; git reset &#8211;hard &amp;&amp; rm -rf $BLDTREE/* &amp;&amp; scratch-config
 $BLDTREE</p>
 <p>git-commit-between .# .#-end
 Are the .# the sha?</p>
 <p>git whatchanged $filename
 # gives all the diffs for the $filename
-git log –p $filename</p>
+git log p $filename</p>
 <p>git fsck &lt;- what does this do?</p>
 <p>git cherry-pick  $SHA  &lt;- newest to oldest</p>
 <p>git add &lt;file&gt;
@@ -416,22 +451,28 @@ ccollab addgitdiffs &lt;review #&gt;  origin master
 authpush        &lt;- git commit</p>
 <p>clobber:
 from the top level (above pkt)
-git clean –xfd
+git clean xfd
 You must scratch-config to a new location
 or worse:
-git clean –xfd &amp;&amp; git reset &#8211;hard &amp;&amp; rm -rf $BLDTREE/* &amp;&amp; scratch-config
+git clean xfd &amp;&amp; git reset &#8211;hard &amp;&amp; rm -rf $BLDTREE/* &amp;&amp; scratch-config
 $BLDTREE</p>
 <p>git-commit-between .# .#-end
 Are the .# the sha?</p>
 <p>git whatchanged $filename
 # gives all the diffs for the $filename
-git log –p $filename</p>
+git log p $filename</p>
 <p>git fsck &lt;- what does this do?</p>
 <p>git cherry-pick  $SHA  &lt;- newest to oldest</p>
+</div>
+<div class="section" id="git-betweene-two-repository">
+<h1>Git betweene two repository<a class="headerlink" href="#git-betweene-two-repository" title="Permalink to this headline">¶</a></h1>
 <p>How do I diff between files in two different git branches/repo. (ex: swfeature_int.git/master and rel_ssr.git/REL_IPOS_13_1_114)</p>
 <p>git remote add rel_ssr <a class="reference external" href="ssh://github.com/project/project.git">ssh://github.com/project/project.git</a>
 git fetch rel_ssr
 git diff rel_ssr/REL_IPOS_13_1_114</p>
+</div>
+<div class="section" id="mar-27-2013-16-48-55">
+<h1>.. Mar 27, 2013 (16:48:55)<a class="headerlink" href="#mar-27-2013-16-48-55" title="Permalink to this headline">¶</a></h1>
 <p># GIT Global Config
 git config &#8211;global user.name &#8220;vmurugan&#8221;
 git config &#8211;global user.email &#8220;vadivel.murugan&#8221;</p>
@@ -460,9 +501,12 @@ $ git push origin atlas</p>
 <p>git checkout atlas</p>
 </div>
 <div class="section" id="remove-files-from-git-repository">
-<h2># Remove files from git repository<a class="headerlink" href="#remove-files-from-git-repository" title="Permalink to this headline">¶</a></h2>
+<h1># Remove files from git repository<a class="headerlink" href="#remove-files-from-git-repository" title="Permalink to this headline">¶</a></h1>
 <p>git rm file.txt
 git commit -m &#8220;remove file.txt&#8221;</p>
+</div>
+<div class="section" id="may-07-2013-13-35-34">
+<h1>.. May 07, 2013 (13:35:34)<a class="headerlink" href="#may-07-2013-13-35-34" title="Permalink to this headline">¶</a></h1>
 <p>Extract it in the directory:
 ~/.vim
 or ~vimfiles on Windows.
@@ -475,6 +519,9 @@ Look at the equivalent of &#8220;git blame&#8221; by doing
 :Gblame</p>
 <p>## History of a file
 git log &#8211;follow -p &lt;file&gt;</p>
+</div>
+<div class="section" id="jan-22-2014-10-48-27">
+<h1>.. Jan 22, 2014 (10:48:27)<a class="headerlink" href="#jan-22-2014-10-48-27" title="Permalink to this headline">¶</a></h1>
 <p>$git log -1 &#8211;decorate &#8211;oneline ssc_podd.c | more
 9602d0e EV 220994
 $git name-rev &#8211;name-only 9602d0e
@@ -484,7 +531,6 @@ $</p>
 a5f31e2 EV 220994
 $git name-rev &#8211;name-only a5f31e2
 tags/v13.2.118.0.271~7</p>
-</div>
 </div>
 
 

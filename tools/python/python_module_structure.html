@@ -1,0 +1,335 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Python Module Structure &mdash;   documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="  documentation" href="../../index.html"/>
+        <link rel="up" title="Python" href="index.html"/>
+        <link rel="next" title="Builtin Python Modules" href="builtin_modules.html"/>
+        <link rel="prev" title="Python Doc" href="python_doc.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Design</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tools</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../compiler/index.html">compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../yocto/adt-toolchain-install.html">Cross Compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../yocto/yocto.html">Yocto Install</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Python</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="python_doc.html">Python Doc</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Python Module Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="builtin_modules.html">Builtin Python Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/index.html">Python Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python_bytecode.html">Python Disassembly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python_oneliner.html">Python Code Snippets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python_pytest.html">Python PyTest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python_start.html">Python Start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python-install.html">python install packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python-internals.html">Python Internals</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../GIT/index.html">Git Internals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ReST/template/index.html">Restructured Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../verilog/verilog.html">Verilog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssh/ssh.html">SSH</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html"></a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Tools</a> &raquo;</li>
+      
+          <li><a href="index.html">Python</a> &raquo;</li>
+      
+    <li>Python Module Structure</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/tools/python/python_module_structure.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="python-module-structure">
+<h1>Python Module Structure<a class="headerlink" href="#python-module-structure" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="project-directory">
+<h2>Project Directory<a class="headerlink" href="#project-directory" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-text"><div class="highlight"><pre><span></span>Project/
+|
+|-- mymodule/
+|   |-- tests/
+|   |   |-- conftest.py
+|   |   |-- test_main.py
+|   |
+|   |-- __init__.py
+|   |-- __main__.py
+|   |-- __path__.py
+|   |
+|   |-- mymodule.py
+|
+|-- bin/
+|   |-- project
+|
+|-- setup.py
+|-- README
+</pre></div>
+</div>
+</div>
+<div class="section" id="package">
+<h2>Package<a class="headerlink" href="#package" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-text"><div class="highlight"><pre><span></span> __init__.py : Presence of this file indicates this as package.
+                       This also sets &quot;__all__&quot; variable
+                       __all__ = [&quot;module1&quot;, &quot;module2&quot;, &quot;module3&quot;]
+                               :: list of module names that should be imported when &quot;from package import *&quot; is encountered.
+
+__path__.py : list containing the name of the directory holding packages __init__.py
+
+__main__.py : Main Frame of the package
+
+setup.py : Package install/setup script using distutils
+</pre></div>
+</div>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<p>To create a release, your source code needs to be packaged into a single archive file. This can be done with the sdist command:
+$ python setup.py sdist
+=&gt; dist/&lt;mypackage&gt;.tar.gz</p>
+</div>
+<div class="section" id="init-py">
+<h2>__init__.py<a class="headerlink" href="#init-py" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">__init__</span><span class="o">.</span><span class="n">py</span>
+
+     <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;module1&quot;</span><span class="p">,</span> <span class="s2">&quot;module2&quot;</span><span class="p">,</span> <span class="s2">&quot;module3&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="main-py">
+<h2>__main__.py<a class="headerlink" href="#main-py" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">__main__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">display</span><span class="p">()</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;help&quot;</span><span class="p">)):</span>
+        <span class="n">pydoc</span><span class="o">.</span><span class="n">help</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setup-py">
+<h2>setup.py<a class="headerlink" href="#setup-py" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">distutils.core</span> <span class="kn">import</span> <span class="n">setup</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;description&#39;</span><span class="p">:</span>       <span class="s1">&#39;My Project&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;author&#39;</span><span class="p">:</span>              <span class="s1">&#39;My Name&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;url&#39;</span><span class="p">:</span>                    <span class="s1">&#39;URL to get it at.&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;download_url&#39;</span><span class="p">:</span>    <span class="s1">&#39;Where to download it.&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;author_email&#39;</span><span class="p">:</span>    <span class="s1">&#39;My email.&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;version&#39;</span><span class="p">:</span>             <span class="s1">&#39;0.1&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;install_requires&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;nose&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;packages&#39;</span><span class="p">:</span>          <span class="p">[</span><span class="s1">&#39;NAME&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;scripts&#39;</span><span class="p">:</span>              <span class="p">[],</span>
+    <span class="s1">&#39;name&#39;</span><span class="p">:</span>                <span class="s1">&#39;projectname&#39;</span>
+<span class="p">}</span>
+
+<span class="n">setup</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pytest">
+<h2>pytest<a class="headerlink" href="#pytest" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">tests</span><span class="o">/&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="n">_tests</span><span class="o">.</span><span class="n">py</span>
+
+<span class="kn">from</span> <span class="nn">nose.tools</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">NAME</span>
+<span class="k">def</span> <span class="nf">setup</span><span class="p">():</span>
+    <span class="k">print</span> <span class="s2">&quot;SETUP!&quot;</span>
+<span class="k">def</span> <span class="nf">teardown</span><span class="p">():</span>
+    <span class="k">print</span> <span class="s2">&quot;TEAR DOWN!&quot;</span>
+<span class="k">def</span> <span class="nf">test_basic</span><span class="p">():</span>
+    <span class="k">print</span> <span class="s2">&quot;I RAN!&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="builtin_modules.html" class="btn btn-neutral float-right" title="Builtin Python Modules" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="python_doc.html" class="btn btn-neutral" title="Python Doc" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

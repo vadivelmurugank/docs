@@ -1,0 +1,194 @@
+===========================================
+itertools
+===========================================
+
+    .. code-block:: text
+
+        itertools
+         |--  itertools
+         |--  ===> Builtin Module
+                 @@doc : " itertools : Functional tools for creating and using iterators. "
+
+
+          [@SUBPACKAGES]
+
+
+          [@SUBMODULES ]
+             |--  itertools
+
+
+          [@CLASS        ]
+              @@doc : - Classes and Method Resolution Order
+             |--  [Class accumulate]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.accumulate'>
+                             |--  <class 'object'>
+             |--  [Class chain]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.chain'>
+                             |--  <class 'object'>
+                     |--  [  builtin_function_or_method  ]:
+                             |--  from_iterable
+             |--  [Class combinations]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.combinations'>
+                             |--  <class 'object'>
+             |--  [Class combinations_with_replacement]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.combinations_with_replacement'>
+                             |--  <class 'object'>
+             |--  [Class compress]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.compress'>
+                             |--  <class 'object'>
+             |--  [Class count]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.count'>
+                             |--  <class 'object'>
+             |--  [Class cycle]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.cycle'>
+                             |--  <class 'object'>
+             |--  [Class dropwhile]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.dropwhile'>
+                             |--  <class 'object'>
+             |--  [Class filterfalse]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.filterfalse'>
+                             |--  <class 'object'>
+             |--  [Class groupby]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.groupby'>
+                             |--  <class 'object'>
+             |--  [Class islice]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.islice'>
+                             |--  <class 'object'>
+             |--  [Class permutations]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.permutations'>
+                             |--  <class 'object'>
+             |--  [Class product]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.product'>
+                             |--  <class 'object'>
+             |--  [Class repeat]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.repeat'>
+                             |--  <class 'object'>
+             |--  [Class starmap]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.starmap'>
+                             |--  <class 'object'>
+             |--  [Class takewhile]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.takewhile'>
+                             |--  <class 'object'>
+             |--  [Class zip_longest]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'itertools.zip_longest'>
+                             |--  <class 'object'>
+
+
+          [@ FUNCTION  ]
+              @@doc :  - Function including "lambda" anonymous functions
+
+
+          [@ METHOD ]
+              @@doc ::   - bound method
+
+
+          [@ GENERATOR ]
+              @@doc :   - object is a generator with "yield" expressions
+
+
+          [@ GENERATOR FUNCTION ]
+              @@doc :     - object is a generator function
+
+
+          [@ TRACEBACK ]
+              @@doc :  - Traceback object
+
+
+          [@ FRAME ]
+              @@doc : - Frame Object
+
+
+          [@ CODE ]
+              @@doc : - Code Object
+
+
+          [@ BUILTIN ]
+              @@doc : - built-in function or bound built-in method
+             |--  tee (iterable, n=2)   
+
+
+          [@ ABSTRACT ]
+              @@doc : - object is abstract base class
+
+
+          [@ METHOD DESCRIPTOR ]
+              @@doc :  - Object has __get__ attribute but NOT __set__ attribute
+
+
+          [@ DATA DESCRIPTOR ]
+              @@doc :  - Object has __get__, __set__, __delete__ attributes
+
+
+          [@ GETSET DESCRIPTOR ]
+
+
+          [@ MEMBER DESCRIPTOR ]
+
+
+          [@ VARIABLES ]
+
+
+              [@ GLOBALS ]
+
+
+                  [@ bool ]
+
+
+                  [@ int ]
+
+
+                  [@ float ]
+
+
+                  [@ complex ]
+
+
+              [@ IMMUTABLE SEQUENCES ]
+
+
+                  [@ str ]
+
+
+                  [@ slice ]
+
+
+                  [@ tuple ]
+
+
+                  [@ frozenset ]
+
+
+              [@ MUTABLE SEQUENCES ]
+
+
+                  [@ list ]
+
+
+                  [@ bytearray ]
+
+
+                  [@ set ]
+
+
+              [@ MAPPING ]
+
+
+                  [@ dict ]
+
