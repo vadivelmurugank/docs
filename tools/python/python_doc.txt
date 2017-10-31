@@ -1,0 +1,51 @@
+===========================================
+Python Doc
+===========================================
+
+Doc
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Refer to Python Documentation: docs.python.org_
+
+.. _docs.python.org: https://docs.python.org/3/py-modindex.html/
+
+.. code-block:: python
+
+    pydoc
+    pydoc3 <moule>
+    pydoc3 -k <keyword>
+    python3 -m pydoc <module>
+
+help
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    help
+    import <module>
+    help(<module>)
+
+__doc__
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    __doc__
+    print(module.__doc__)
+
+dir
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    dir
+    dir(module)
+
+inspect
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    inspect
+    inspect.getmembers(module)
+

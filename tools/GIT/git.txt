@@ -1,7 +1,7 @@
 
 ###########################################
-# Basic
-##########################################
+ Basic
+###########################################
 
 git pull --rebase
 
@@ -31,8 +31,8 @@ git tags -l
 
 
 
-###########################################
-# Latest Gerrit Instructions
+##########################################
+ Latest Gerrit Instructions
 ##########################################
   
 git authclone <tree>  -b  <branch>
@@ -50,7 +50,7 @@ git commit --amend
 
 git review
 
-###########################################
+##########################################
 Gerrit Integration Branch
 ##########################################
 
@@ -95,8 +95,8 @@ git rebase -i
 # Go back to previous good tree
 git reset HEAD~1 --soft
 
-###########################################
-# paas dev branch
+##########################################
+paas dev branch
 ##########################################
 
 authclone paas -b paas_dev
@@ -120,10 +120,9 @@ Updating 74e7711..b642193
   
   
 
-###########################################
-#Branching
 ##########################################
-#
+Branching
+##########################################
 
 # Create a branch with a tag
 
@@ -141,20 +140,20 @@ git branch experiment1
 git checkout experiment1
 
 # Do some work 
-git add, git commit –amend, git add, git commit –amend …
+git add, git commit amend, git add, git commit amend 
 
-# Switch back to the “master” branch
+# Switch back to the master branch
 git checkout <tree>_dev
 
 #and merge in the changes
 git merge experiment1
 
 Delete the branch when done
-git branch –d experiment1
+git branch d experiment1
 
-You can always do “git branch” to see all the branches you have created and which one is currently working in.
+You can always do git branch to see all the branches you have created and which one is currently working in.
 
-###########################################
+##########################################
 git clone
 ##########################################
 
@@ -168,8 +167,8 @@ git add <file>
 git commit  -m message <file>
 authpush filename <template log>
 
-###########################################
-# Kernel
+##########################################
+Kernel
 ##########################################
 
     git clone -q /project/rbnlinux/wolf-int.git /project/vadivel/kernel/linux
@@ -180,8 +179,8 @@ authpush filename <template log>
     git checkout -q --track -b rbos-3.0 origin/rbos-3.0
 
 
-###########################################
-# Create local repo
+##########################################
+Create local repo
 ##########################################
 
 #Initialize existing Directory into Git revisions
@@ -198,7 +197,7 @@ git remote -v
 
 
 ###############
-## Git config
+Git config
 ###############
 
 git-config denyCurrentBranch "warn"
@@ -212,9 +211,9 @@ git-config hooks.senderfullname "GIT Mailer"
 cp /tools/swdev/devsup/git/admin/hooks/DEVSUP_post-recieve post-receive
 - Edit post-receive for receipients and <repo>.git
 
-#######
-## Initial Commits
-#########
+####################
+Initial Commits
+####################
 
 git clone localhost:/firmware/firmware-uboot.git
 
@@ -228,7 +227,7 @@ git push origin master
 
 git reset --hard
 
-###########################################
+##########################################
 git log
 ##########################################
 
@@ -244,8 +243,8 @@ git log --all --decorate --oneline --graph --no-merges
   
 
 ############
-## Log
-#############
+Log
+############
 
 $more config 
 [core]
@@ -260,14 +259,6 @@ $more config
 	emailprefix = [FIRMWARE-UBOOT.GIT]
 	envelopesender = git_tool
 	senderfullname = GIT Mailer
-
-
-  
-  
-###########################################
-# 
-##########################################
-
 
 # List all Branches
 $git branch -a
@@ -286,8 +277,8 @@ $git branch -av
 
 SRC_TOP=PROJECT TOP
 
-###########################################
-# GIT DIFF
+##########################################
+GIT DIFF
 ##########################################
   
 #git pull --rebase
@@ -308,9 +299,9 @@ git diff --name-only --relative origin/master HEAD | more
         git-difftool -y -t gvimdiff origin master $file; 
     done
 
-#################
-#git diff between two timestamps
-#################
+##################################
+git diff between two timestamps
+##################################
 git diff --stat @{2015-01-08}..@{2015-01-09}
 
 # Just list files only
@@ -322,8 +313,8 @@ git log -p <tree>_dev@{2015-01-08}..<tree>_dev@{2015-01-09}
 # git describe
 git diff v16.1.0.700.64 v16.1.0.700.56 --stat
 
-#### git reflog
-#### git log -g --decorate
+git reflog
+git log -g --decorate
 git log --pretty=oneline -3
 git diff origin master
 
@@ -418,7 +409,7 @@ mkdir -p ~/gitlog/sandbox/${datestr}
 for file in `cat ~/gitlog/git.files`; do echo $file; ls $file| cpio -pmd ~/gitlog/sandbox/${datestr}; done
 
 
-###########################################
+##########################################
 .. May 02, 2013 (10:01:07)
 ##########################################
    
@@ -435,10 +426,10 @@ authpush        <- git commit
 
 clobber: 
 from the top level (above pkt)
-git clean â€“xfd
+git clean xfd
 You must scratch-config to a new location 
 or worse:
-git clean â€“xfd && git reset --hard && rm -rf $BLDTREE/* && scratch-config
+git clean xfd && git reset --hard && rm -rf $BLDTREE/* && scratch-config
 $BLDTREE
 
 git-commit-between .# .#-end
@@ -446,7 +437,7 @@ Are the .# the sha?
 
 git whatchanged $filename
 # gives all the diffs for the $filename
-git log â€“p $filename
+git log p $filename
 
 git fsck <- what does this do? 
 
@@ -465,10 +456,10 @@ authpush        <- git commit
 
 clobber: 
 from the top level (above pkt)
-git clean â€“xfd
+git clean xfd
 You must scratch-config to a new location 
 or worse:
-git clean â€“xfd && git reset --hard && rm -rf $BLDTREE/* && scratch-config
+git clean xfd && git reset --hard && rm -rf $BLDTREE/* && scratch-config
 $BLDTREE
 
 git-commit-between .# .#-end
@@ -476,14 +467,14 @@ Are the .# the sha?
 
 git whatchanged $filename
 # gives all the diffs for the $filename
-git log â€“p $filename
+git log p $filename
 
 git fsck <- what does this do? 
 
 git cherry-pick  $SHA  <- newest to oldest
 
 
-###########################################
+##########################################
 Git betweene two repository
 ##########################################
 How do I diff between files in two different git branches/repo. (ex: swfeature_int.git/master and rel_ssr.git/REL_IPOS_13_1_114)  
@@ -493,7 +484,7 @@ git fetch rel_ssr
 git diff rel_ssr/REL_IPOS_13_1_114
 
 
-###########################################
+##########################################
 .. Mar 27, 2013 (16:48:55)
 ##########################################
 # GIT Global Config
@@ -542,7 +533,7 @@ git rm file.txt
 git commit -m "remove file.txt"
 
 
-###########################################
+##########################################
 .. May 07, 2013 (13:35:34)
 ##########################################
 
@@ -562,7 +553,7 @@ Look at the equivalent of "git blame" by doing
 git log --follow -p <file>
  
 
-###########################################
+##########################################
 .. Jan 22, 2014 (10:48:27)
 ##########################################
 

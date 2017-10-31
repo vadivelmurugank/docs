@@ -1,17 +1,26 @@
-nstall gawk wget git-core diffstat unzip texinfo build-essential chrpath libsdl1.2-dev xterm
-sudo yum install python gcc gcc-c++ git chrpath make wget diffstat texinfo python-curses libSDL-devel xterm
+===========================================
+Yocto Install
+===========================================
 
-yocto repository:
-#git clone git://git.yoctoproject.org/poky.git -b daisy
-git clone git://git.yoctoproject.org/poky
+.. code-block:: txt
 
-open embedded:
-cd  poke
-git clone git://git.openembedded.org/meta-openembedded
+    Install gawk wget git-core diffstat unzip texinfo build-essential chrpath libsdl1.2-dev xterm
+    sudo yum install python gcc gcc-c++ git chrpath make wget diffstat texinfo python-curses libSDL-devel xterm
 
-source ./oe-init-build
-bitbake -v -c fetchall image-core-minimal
 
-# Build now
-bitbake image-core-minimal
+.. code-block:: txt
+
+    yocto repository:
+    #git clone git://git.yoctoproject.org/poky.git -b daisy
+    git clone git://git.yoctoproject.org/poky
+
+    open embedded:
+    cd  poke
+    git clone git://git.openembedded.org/meta-openembedded
+
+    source ./oe-init-build
+    bitbake -v -c fetchall image-core-minimal
+
+    # Build now
+    bitbake image-core-minimal
 

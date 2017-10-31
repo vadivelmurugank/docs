@@ -1,16 +1,13 @@
 .. docs
+..  :numbered:
 
 .. toctree::
     :maxdepth: 2
+    :titlesonly:
+    :glob:
+    :includehidden:
+    :name: masetertoc
 
     design/index
-    tools/python/index
-    tools/GIT/index
-    tools/ReST/template/index
+    tools/index
 
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

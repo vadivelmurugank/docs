@@ -1,0 +1,120 @@
+===========================================
+Python Module Structure
+===========================================
+
+Project Directory
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: text
+
+    Project/
+    |
+    |-- mymodule/
+    |   |-- tests/
+    |   |   |-- conftest.py
+    |   |   |-- test_main.py
+    |   |   
+    |   |-- __init__.py
+    |   |-- __main__.py
+    |   |-- __path__.py
+    |   |   
+    |   |-- mymodule.py
+    |
+    |-- bin/
+    |   |-- project
+    |
+    |-- setup.py
+    |-- README
+
+
+Package
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: text
+
+     __init__.py : Presence of this file indicates this as package.
+                           This also sets "__all__" variable
+                           __all__ = ["module1", "module2", "module3"]
+                                   :: list of module names that should be imported when "from package import *" is encountered.
+
+    __path__.py : list containing the name of the directory holding packages __init__.py 
+
+    __main__.py : Main Frame of the package
+
+    setup.py : Package install/setup script using distutils
+
+.. code-block:: shell
+
+To create a release, your source code needs to be packaged into a single archive file. This can be done with the sdist command:
+$ python setup.py sdist
+=> dist/<mypackage>.tar.gz
+
+
+__init__.py
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    __init__.py
+
+         __all__ = ["module1", "module2", "module3"]
+
+__main__.py
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    __main__.py:
+    if __name__ == "__main__":
+        if len(sys.argv) < 2:
+            display()
+            sys.exit()
+
+        if ((len(sys.argv) > 2) and (sys.argv[2] == "help")):
+            pydoc.help(sys.argv[1])
+            sys.exit()
+
+setup.py
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    try:
+        from setuptools import setup
+    except ImportError:
+        from distutils.core import setup
+
+    config = {
+        'description':       'My Project',
+        'author':              'My Name',
+        'url':                    'URL to get it at.',
+        'download_url':    'Where to download it.',
+        'author_email':    'My email.',
+        'version':             '0.1',
+        'install_requires': ['nose'],
+        'packages':          ['NAME'],
+        'scripts':              [],
+        'name':                'projectname'
+    }
+
+    setup(**config)
+
+pytest
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    tests/<name>_tests.py
+
+    from nose.tools import *
+    import NAME
+    def setup():
+        print "SETUP!"
+    def teardown():
+        print "TEAR DOWN!"
+    def test_basic():
+        print "I RAN!"
+
+
+
+  

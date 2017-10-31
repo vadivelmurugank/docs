@@ -1,0 +1,40 @@
+===========================================
+python install packages
+===========================================
+
+.. code-block:: shell
+ 
+    PIP=pip3.4
+
+    ${PIP} install \
+        alabaster \
+        Babel \
+        data \
+        decorator \
+        docutils \
+        funcsigs \
+        future \
+        inspectshow \
+        Jinja2 \
+        latex \
+        lxml \
+        MarkupSafe \
+        mekk.xmind \
+        pdfrw \
+        Pillow \
+        pip \
+        Pygments \
+        pytz \
+        reportlab \
+         rst2pdf \
+        setuptools \
+        shutilwhich \
+        six \
+        snowballstemmer \
+        Sphinx \
+        sphinx-rtd-theme \
+        tempdir \
+        tex \
+        virtualenv \
+        pillow
+

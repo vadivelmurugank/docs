@@ -1,0 +1,64 @@
+===========================================
+Python PyTest
+===========================================
+
+.. sectnum
+.. contents
+
+Module Structure
+~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    mymodule
+         |
+         +-- __init__.py  # Class Definitions
+         |
+         +-- __main__.py  # Start Main
+         |
+         +-- mymodule.py  # Module Container - Classes, definition
+         |
+         + tests/
+            |
+            + conftest.py  # Test setup/teardown
+            + test_testcase1.py
+            + test_testcase2.py
+
+Run Pytest
+~~~~~~~~~~
+
+    .. code-block:: python
+
+        python -m pytest
+        py.test tests/test_testcase1.py
+        py.test tests/test_testcase2.py
+
+
+conftest.py
+~~~~~~~~~~~
+
+    .. code-block:: python
+
+        import sys
+
+        def pytest_configure(config):
+            print ("configure..", config)
+
+        def pytest_unconfigure(config):
+            print ("Unconfigure..", config)
+
+tests
+~~~~~
+
+    .. code-block:: python
+
+        tests/test_testcase1.py:
+            def test_func1():
+                pass
+
+        tests/test_testcase2.py
+            def test_func2():
+                pass
+
+
+ 

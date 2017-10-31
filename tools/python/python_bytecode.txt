@@ -2,9 +2,6 @@
 Python Disassembly
 ===========================================
 
-.. sectnum
-.. contents
-
 Python Help 
 ----------------------------------------------------------------
 
@@ -437,7 +434,7 @@ python and pdb
 -------------------------------------------------------
  pdb - python debugger
 
-    .. code-block:: python
+    .. code-block:: text
 
         $python -m pdb hello.py
         > /Projects/python/hello/hello.py(3)<module>()
@@ -520,7 +517,7 @@ Python Debug Modules
 inspect
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    .. code-block:: python
+    .. code-block:: text
 
         $python3.2 -m inspectshow inspect
         inspect
@@ -841,7 +838,7 @@ inspect
 dis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    .. code-block:: trace
+    .. code-block:: text
 
         trace
          |--  trace
@@ -999,7 +996,7 @@ dis
 dis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    .. code-block:: python
+    .. code-block:: text
 
         dis
          |--  dis
@@ -1060,7 +1057,7 @@ dis
 pdb
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
-    .. code-block:: python
+    .. code-block:: text
 
         $python3.2 -m inspectshow pdb    
         pdb
@@ -1415,7 +1412,7 @@ gdb
         >show("gdb")
         >end
 
-    .. code-block:: python
+    .. code-block:: text
 
         gdb
          |--  gdb

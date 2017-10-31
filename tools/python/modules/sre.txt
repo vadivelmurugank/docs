@@ -1,0 +1,205 @@
+===========================================
+  re - simple regular expression (sre)
+===========================================
+
+    .. code-block:: text
+
+        re
+         |--  re
+         |--  ===> /usr/lib/python3.2/re.py
+                 @@doc : " re : Support for regular expressions (RE). "
+
+
+          [@SUBPACKAGES]
+
+
+          [@SUBMODULES ]
+             |--  re
+                 |--  copyreg
+                 |--  functools
+                 |--  sre_compile
+                     |--  _sre
+                     |--  sre_parse
+                         |--  sys
+                     |--  sys
+                 |--  sre_parse
+                 |--  sys
+
+
+          [@CLASS        ]
+              @@doc : - Classes and Method Resolution Order
+             |--  [Class Scanner]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 're.Scanner'>
+                             |--  <class 'object'>
+                     |--  [  function  ]:
+                             |--  scan (['self', 'string'])
+             |--  [Class _pattern_type]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class '_sre.SRE_Pattern'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  findall
+                             |--  finditer
+                             |--  match
+                             |--  scanner
+                             |--  search
+                             |--  split
+                             |--  sub
+                             |--  subn
+                     |--  [  member_descriptor  ]:
+                             |--  flags
+                             |--  groupindex
+                             |--  groups
+                             |--  pattern
+             |--  [Class error]
+                     |--  MRO - Class Member Resolution Order:
+                             |--  <class 'sre_constants.error'>
+                             |--  <class 'Exception'>
+                             |--  <class 'BaseException'>
+                             |--  <class 'object'>
+                     |--  [  method_descriptor  ]:
+                             |--  with_traceback
+                     |--  [  getset_descriptor  ]:
+                             |--  args
+
+
+          [@ FUNCTION  ]
+              @@doc :  - Function including "lambda" anonymous functions
+             |--  _compile (['pattern', 'flags'])
+             |--  _compile_repl (['repl', 'pattern'])
+             |--  _expand (['pattern', 'match', 'template'])
+             |--  _pickle (['p'])
+             |--  _subx (['pattern', 'template'])
+             |--  compile (['pattern', 'flags'])
+             |--  escape (['pattern'])
+             |--  findall (['pattern', 'string', 'flags'])
+             |--  finditer (['pattern', 'string', 'flags'])
+             |--  match (['pattern', 'string', 'flags'])
+             |--  purge ([])
+             |--  search (['pattern', 'string', 'flags'])
+             |--  split (['pattern', 'string', 'maxsplit', 'flags'])
+             |--  sub (['pattern', 'repl', 'string', 'count', 'flags'])
+             |--  subn (['pattern', 'repl', 'string', 'count', 'flags'])
+             |--  template (['pattern', 'flags'])
+
+
+          [@ METHOD ]
+              @@doc ::   - bound method
+
+
+          [@ GENERATOR ]
+              @@doc :   - object is a generator with "yield" expressions
+
+
+          [@ GENERATOR FUNCTION ]
+              @@doc :     - object is a generator function
+
+
+          [@ TRACEBACK ]
+              @@doc :  - Traceback object
+
+
+          [@ FRAME ]
+              @@doc : - Frame Object
+
+
+          [@ CODE ]
+              @@doc : - Code Object
+
+
+          [@ BUILTIN ]
+              @@doc : - built-in function or bound built-in method
+
+
+          [@ ABSTRACT ]
+              @@doc : - object is abstract base class
+
+
+          [@ METHOD DESCRIPTOR ]
+              @@doc :  - Object has __get__ attribute but NOT __set__ attribute
+
+
+          [@ DATA DESCRIPTOR ]
+              @@doc :  - Object has __get__, __set__, __delete__ attributes
+
+
+          [@ GETSET DESCRIPTOR ]
+
+
+          [@ MEMBER DESCRIPTOR ]
+
+
+          [@ VARIABLES ]
+
+
+              [@ GLOBALS ]
+
+
+                  [@ bool ]
+
+
+                  [@ int ]
+                         |--  re.A
+                         |--  re.ASCII
+                         |--  re.DEBUG
+                         |--  re.DOTALL
+                         |--  re.I
+                         |--  re.IGNORECASE
+                         |--  re.L
+                         |--  re.LOCALE
+                         |--  re.M
+                         |--  re.MULTILINE
+                         |--  re.S
+                         |--  re.T
+                         |--  re.TEMPLATE
+                         |--  re.U
+                         |--  re.UNICODE
+                         |--  re.VERBOSE
+                         |--  re.X
+                         |--  re._MAXCACHE
+
+
+                  [@ float ]
+
+
+                  [@ complex ]
+
+
+              [@ IMMUTABLE SEQUENCES ]
+
+
+                  [@ str ]
+
+
+                  [@ slice ]
+
+
+                  [@ tuple ]
+
+
+                  [@ frozenset ]
+                         |--  re._alphanum_bytes
+                         |--  re._alphanum_str
+
+
+              [@ MUTABLE SEQUENCES ]
+
+
+                  [@ list ]
+                         |--  re.__all__
+
+
+                  [@ bytearray ]
+
+
+                  [@ set ]
+
+
+              [@ MAPPING ]
+
+
+                  [@ dict ]
+                         |--  re._cache
+                         |--  re._cache_repl
+

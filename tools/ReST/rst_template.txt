@@ -3,7 +3,7 @@
 
 
 *****************************************
-  Template for reStructured Text
+ ReStructured Text
 *****************************************
 
 ..toctree:: 

@@ -2,11 +2,6 @@
         GIT INTERNALS
 ===========================================
 
-..  sectnum::
-..  contents:: Table of Contents
-..  header::
-    GIT Internals
-
 .. footer::
     @ Vadivel 2014
 
@@ -636,7 +631,7 @@ Porcelain or user interface commands
                 directory
 
              $ git merge [branch]
-                Combines the specified branch’s history into the current branch
+                Combines the specified branchs history into the current branch
 
              $ git branch -d [branch-name]
                 Deletes the specified branch
@@ -651,7 +646,7 @@ Porcelain or user interface commands
                 Downloads all history from the repository bookmark
 
              $ git merge [bookmark]/[branch]
-                Combines bookmark’s branch into current local branch
+                Combines bookmarks branch into current local branch
 
              $ git push [alias] [branch]
                 Uploads all local branch commits to GitHub
