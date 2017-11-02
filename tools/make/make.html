@@ -1,0 +1,364 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Make &mdash;   documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="  documentation" href="../../index.html"/>
+        <link rel="up" title="Tools" href="../index.html"/>
+        <link rel="next" title="Python" href="../python/index.html"/>
+        <link rel="prev" title="Yocto Install" href="../yocto/yocto.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Design</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tools</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../compiler/index.html">compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../yocto/adt-toolchain-install.html">Cross Compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../yocto/yocto.html">Yocto Install</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Make</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GIT/index.html">Git Internals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ReST/template/index.html">Restructured Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../verilog/verilog.html">Verilog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssh/ssh.html">SSH</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html"></a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Tools</a> &raquo;</li>
+      
+    <li>Make</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/tools/make/make.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="make">
+<h1>Make<a class="headerlink" href="#make" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="make-inbuilt-functions">
+<h2>Make Inbuilt Functions<a class="headerlink" href="#make-inbuilt-functions" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils" id="id7">
+<caption><span class="caption-text">Make inbuilt Functions</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Functions</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>$(subst from,to,text)</td>
+<td>Replace from with to in text.</td>
+</tr>
+<tr class="row-odd"><td>$(patsubst pattern,replacement,text)</td>
+<td>Replace words matching pattern with replacement in text.</td>
+</tr>
+<tr class="row-even"><td>$(strip string)</td>
+<td>Remove excess whitespace characters from string.</td>
+</tr>
+<tr class="row-odd"><td>$(findstring find,text)</td>
+<td>Locate find in text.</td>
+</tr>
+<tr class="row-even"><td>$(filter pattern...,text)</td>
+<td>Select words in text that match one of the pattern words.</td>
+</tr>
+<tr class="row-odd"><td>$(filter-out pattern...,text)</td>
+<td>Select words in text that do not match any of the pattern words.</td>
+</tr>
+<tr class="row-even"><td>$(sort list)</td>
+<td>Sort the words in list lexicographically, removing duplicates.</td>
+</tr>
+<tr class="row-odd"><td>$(dir names...)</td>
+<td>Extract the directory part of each file name.</td>
+</tr>
+<tr class="row-even"><td>$(notdir names...)</td>
+<td>Extract the non-directory part of each file name.</td>
+</tr>
+<tr class="row-odd"><td>$(suffix names...)</td>
+<td>Extract the suffix (the last dot and following characters) of each file name.</td>
+</tr>
+<tr class="row-even"><td>$(basename names...)</td>
+<td>Extract the base name (name without suffix) of each file name.</td>
+</tr>
+<tr class="row-odd"><td>$(addsuffix suffix,names...)</td>
+<td>Append suffix to each word in names.</td>
+</tr>
+<tr class="row-even"><td>$(addprefix prefix,names...)</td>
+<td>Prepend prefix to each word in names.</td>
+</tr>
+<tr class="row-odd"><td>$(join list1,list2)</td>
+<td>Join two parallel lists of words.</td>
+</tr>
+<tr class="row-even"><td>$(word n,text)</td>
+<td>Extract the nth word (one-origin) of text.</td>
+</tr>
+<tr class="row-odd"><td>$(words text)</td>
+<td>Count the number of words in text.</td>
+</tr>
+<tr class="row-even"><td>$(wordlist s,e,text)</td>
+<td>Returns the list of words in text from s to e.</td>
+</tr>
+<tr class="row-odd"><td>$(firstword names...)</td>
+<td>Extract the first word of names.</td>
+</tr>
+<tr class="row-even"><td>$(wildcard pattern...)</td>
+<td>Find file names matching a shell file name pattern (not a <a href="#id1"><span class="problematic" id="id2">`</span></a>%&#8217; pattern).</td>
+</tr>
+<tr class="row-odd"><td>$(error text...)</td>
+<td>When this function is evaluated, make generates a fatal error with the message text.</td>
+</tr>
+<tr class="row-even"><td>$(warning text...)</td>
+<td>When this function is evaluated, make generates a warning with the message text.</td>
+</tr>
+<tr class="row-odd"><td>$(shell command)</td>
+<td>Execute a shell command and return its output.</td>
+</tr>
+<tr class="row-even"><td>$(origin variable)</td>
+<td>Return a string describing how the make variable variable was defined.</td>
+</tr>
+<tr class="row-odd"><td>$(foreach var,words,text)</td>
+<td>Evaluate text with var bound to each word in words, and concatenate the results.</td>
+</tr>
+<tr class="row-even"><td>$(call var,param,...)</td>
+<td>Evaluate the variable var replacing any references to $(1), $(2) with the first, second, etc. param values.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="make-variables">
+<h2>Make Variables<a class="headerlink" href="#make-variables" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils" id="id8">
+<caption><span class="caption-text">Make Variables</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Variables</th>
+<th class="head">Usage</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>$&#64;</td>
+<td>The name of the target.&#8221;</td>
+</tr>
+<tr class="row-odd"><td>$%</td>
+<td>The target member name, when the target is an archive member.</td>
+</tr>
+<tr class="row-even"><td>$&lt;</td>
+<td>The name of the first (or only) prerequisite.</td>
+</tr>
+<tr class="row-odd"><td>$?</td>
+<td>The names of all the prerequisites that are newer than the target, with spaces between them.</td>
+</tr>
+<tr class="row-even"><td>$^, $+</td>
+<td><blockquote class="first last">
+<div>The names of all the prerequisites, with spaces between them. The value of $^ omits duplicate prerequisites, while $+ retains them and preserves their order.$*The stem with which an implicit rule matches.</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td>$(&#64;D), $(&#64;F)</td>
+<td>The directory part and the file-within-directory part of $&#64;</td>
+</tr>
+<tr class="row-even"><td>$(<a href="#id3"><span class="problematic" id="id4">*</span></a>D), $(<a href="#id5"><span class="problematic" id="id6">*</span></a>F)</td>
+<td>The directory part and the file-within-directory part of $*</td>
+</tr>
+<tr class="row-odd"><td>$(%D), $(%F)</td>
+<td>The directory part and the file-within-directory part of $%</td>
+</tr>
+<tr class="row-even"><td>$(&lt;D), $(&lt;F)</td>
+<td>The directory part and the file-within-directory part of $&lt;</td>
+</tr>
+<tr class="row-odd"><td>$(^D), $(^F)</td>
+<td>The directory part and the file-within-directory part of $^</td>
+</tr>
+<tr class="row-even"><td>$(+D), $(+F)</td>
+<td>The directory part and the file-within-directory part of $+</td>
+</tr>
+<tr class="row-odd"><td>$(?D), $(?F)</td>
+<td>The directory part and the file-within-directory part of $?</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../python/index.html" class="btn btn-neutral float-right" title="Python" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../yocto/yocto.html" class="btn btn-neutral" title="Yocto Install" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

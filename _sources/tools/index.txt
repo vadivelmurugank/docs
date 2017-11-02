@@ -9,6 +9,7 @@ Tools
    compiler/index
    yocto/adt-toolchain-install
    yocto/yocto
+   make/make
    python/index
    GIT/index
    ReST/template/index
