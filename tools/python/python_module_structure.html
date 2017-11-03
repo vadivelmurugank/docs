@@ -175,6 +175,11 @@
 |-- bin/
 |   |-- project
 |
+|-- Makefile
+|-- make/
+|   |-- defs.inc
+|   |-- make.python
+|
 |-- setup.py
 |-- README
 </pre></div>
@@ -259,6 +264,100 @@ $ python setup.py sdist
     <span class="k">print</span> <span class="s2">&quot;TEAR DOWN!&quot;</span>
 <span class="k">def</span> <span class="nf">test_basic</span><span class="p">():</span>
     <span class="k">print</span> <span class="s2">&quot;I RAN!&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="makefile">
+<h2>Makefile<a class="headerlink" href="#makefile" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1">###############################################</span>
+<span class="c1"># Makefile</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+
+<span class="nv">MODULE</span><span class="o">=</span>mymodule.py
+<span class="nv">ARGS</span><span class="o">=</span>
+
+include <span class="k">$(</span>HOME<span class="k">)</span>/build/defs.inc
+include <span class="k">$(</span>MAKEDIR<span class="k">)</span>/make.python
+</pre></div>
+</div>
+</div>
+<div class="section" id="defs-inc">
+<h2>defs.inc<a class="headerlink" href="#defs-inc" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1">################################################</span>
+<span class="c1"># defs.inc</span>
+
+<span class="nv">MAKEDIR</span><span class="o">=</span><span class="k">$(</span>HOME<span class="k">)</span>/github/source/build
+
+<span class="nv">PYTHON</span><span class="o">=</span>python2
+<span class="nv">PYTHON3</span><span class="o">=</span>python3
+</pre></div>
+</div>
+</div>
+<div class="section" id="make-python">
+<h2>make.python<a class="headerlink" href="#make-python" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1">##################################################</span>
+<span class="c1"># make.python</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+
+.phony: clean run runtest doc bytecode trace
+
+<span class="nv">PYFILES</span><span class="o">=</span><span class="k">$(</span>wildcard *.py<span class="k">)</span>
+<span class="nv">PYCFILES</span><span class="o">=</span><span class="k">$(</span>PYFILES:.py<span class="o">=</span>.pyc<span class="k">)</span>
+<span class="nv">MODNAME</span><span class="o">=</span><span class="k">$(</span>patsubst %.py,%,<span class="k">$(</span>MODULE<span class="k">))</span>
+
+help:
+        @echo <span class="s2">&quot;make for </span><span class="k">$(</span>MODULE<span class="k">)</span><span class="s2">&quot;</span>
+        @echo <span class="s2">&quot;     run     : run the module&quot;</span>
+        @echo <span class="s2">&quot;     runtest : run module pytests&quot;</span>
+        @echo <span class="s2">&quot;     doc     : Generate pydoc and inspectshow&quot;</span>
+        @echo <span class="s2">&quot;     bytecode: Dump Bytecode of module&quot;</span>
+        @echo <span class="s2">&quot;     trace   : Generate function traces&quot;</span>
+
+all: run doc bytecode trace runtest
+
+clean:
+        rm -f *.pyc
+        rm -rf doc
+        rm -rf bytecode
+        rm -rf trace
+        rm -rf __pycache__
+
+run:
+        <span class="k">$(</span>PYTHON<span class="k">)</span> <span class="k">$(</span>MODULE<span class="k">)</span> <span class="k">$(</span>ARGS<span class="k">)</span>
+
+runtest:
+        @echo <span class="s2">&quot;Running pytests..&quot;</span>
+        <span class="nb">test</span> -d tests <span class="o">&amp;&amp;</span> py.test tests
+
+doc:
+        <span class="nb">test</span> ! -d doc <span class="o">&amp;&amp;</span> mkdir doc
+        <span class="k">$(</span>PYTHON<span class="k">)</span> -m pydoc <span class="k">$(</span>MODNAME<span class="k">)</span> &gt; doc/<span class="k">$(</span>MODNAME<span class="k">)</span>.doc
+        <span class="k">$(</span>PYTHON3<span class="k">)</span> -m inspectshow <span class="k">$(</span>MODNAME<span class="k">)</span> &gt; doc/<span class="k">$(</span>MODNAME<span class="k">)</span>.inspect
+
+bytecode: <span class="k">$(</span>PYFILES<span class="k">)</span>
+        <span class="nb">test</span> ! -d bytecode <span class="o">&amp;&amp;</span> mkdir bytecode
+        <span class="k">$(</span>PYTHON<span class="k">)</span> -m dis <span class="nv">$?</span> &gt; bytecode/<span class="nv">$?</span>.bytecode
+
+
+trace:
+        <span class="nb">test</span> ! -d trace <span class="o">&amp;&amp;</span> mkdir trace
+        @echo -e <span class="s2">&quot;\n\n======&gt;CALLING RELATIONSHIPS \n\n&quot;</span> &gt; trace/<span class="k">$(</span>MODULE<span class="k">)</span>.trace
+        <span class="k">$(</span>PYTHON<span class="k">)</span> -m trace -T <span class="k">$(</span>MODULE<span class="k">)</span> <span class="k">$(</span>ARGS<span class="k">)</span> &gt;&gt; trace/<span class="k">$(</span>MODULE<span class="k">)</span>.trace
+        @echo -e <span class="s2">&quot;\n\n======&gt;LIST FUNCTIONS \n\n&quot;</span> &gt;&gt; trace/<span class="k">$(</span>MODULE<span class="k">)</span>.trace
+        <span class="k">$(</span>PYTHON<span class="k">)</span> -m trace -l <span class="k">$(</span>MODULE<span class="k">)</span> <span class="k">$(</span>ARGS<span class="k">)</span> &gt;&gt; trace/<span class="k">$(</span>MODULE<span class="k">)</span>.trace
+        @echo -e <span class="s2">&quot;\n\n======&gt;TRACE LINES \n\n&quot;</span> &gt;&gt; trace/<span class="k">$(</span>MODULE<span class="k">)</span>.trace
+        <span class="k">$(</span>PYTHON<span class="k">)</span> -m trace -t <span class="k">$(</span>MODULE<span class="k">)</span> <span class="k">$(</span>ARGS<span class="k">)</span> &gt;&gt; trace/<span class="k">$(</span>MODULE<span class="k">)</span>.trace
+        @echo -e <span class="s2">&quot;\n\n======&gt;STATEMENT EXECUTIONS \n\n&quot;</span> &gt;&gt; trace/<span class="k">$(</span>MODULE<span class="k">)</span>.trace
+        <span class="k">$(</span>PYTHON<span class="k">)</span> -m trace -c <span class="k">$(</span>MODULE<span class="k">)</span> <span class="k">$(</span>ARGS<span class="k">)</span> &gt;&gt; trace/<span class="k">$(</span>MODULE<span class="k">)</span>.trace
+
+
+<span class="c1">##################################################</span>
+<span class="c1"># Generic rules</span>
+
+%.pyc: %.py
+        <span class="k">$(</span>PYTHON<span class="k">)</span> -m compileall $&lt;
 </pre></div>
 </div>
 </div>
