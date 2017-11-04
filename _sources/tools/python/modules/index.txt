@@ -6,10 +6,17 @@ Python Modules
 .. toctree::
     :maxdepth: 2
 
-    math
     os
+    string
     sre
     collections
+    math
+    numpy
+    scipy
+    matplotlib
     itertools
     multiprocessing
     yaml
+    pexpect
+    pandas
+    xmind

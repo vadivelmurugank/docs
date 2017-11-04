@@ -2,6 +2,8 @@
 Yocto Install
 ===========================================
 
+.. contents::
+
 .. code-block:: txt
 
     Install gawk wget git-core diffstat unzip texinfo build-essential chrpath libsdl1.2-dev xterm

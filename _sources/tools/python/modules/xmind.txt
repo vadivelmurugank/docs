@@ -1,0 +1,378 @@
+===========================================
+mekk.xmind
+===========================================
+
+.. code-block:: text
+
+    mekk
+     |--  mekk
+     |--  ===> C:\WinPython-64bit-3.4.3.4\python-3.4.3.amd64\lib\site-packages\mekk.xmind-0.5.0-py3.4.egg\mekk\__init__.py
+
+
+      [@SUBPACKAGES]
+         |--  mekk.xmind
+                 @@doc : " mekk.xmind : mekk.xmind entry API. Provides XMindDocument class "
+
+
+      [@SUBMODULES ]
+         |--  mekk
+             |--  xmind
+                 |--  document
+                     |--  etree
+                         |--  __builtins__
+                     |--  logging
+                         |--  atexit
+                         |--  collections
+                             |--  _collections_abc
+                                 |--  sys
+                             |--  _heapq
+                             |--  _sys
+                             |--  abc
+                         |--  io
+                             |--  _io
+                             |--  abc
+                         |--  os
+                             |--  errno
+                             |--  path
+                                 |--  genericpath
+                                     |--  os
+                                     |--  stat
+                                 |--  os
+                                 |--  stat
+                                 |--  sys
+                             |--  st
+                             |--  sys
+                         |--  sys
+                         |--  threading
+                             |--  _sys
+                         |--  time
+                         |--  traceback
+                             |--  linecache
+                                 |--  os
+                                 |--  sys
+                                 |--  tokenize
+                                     |--  collections
+                                     |--  re
+                                         |--  _locale
+                                         |--  copyreg
+                                         |--  sre_compile
+                                             |--  _sre
+                                             |--  sre_parse
+                                         |--  sre_parse
+                                         |--  sys
+                                     |--  sys
+                             |--  operator
+                             |--  sys
+                         |--  warnings
+                             |--  sys
+                         |--  weakref
+                             |--  collections
+                             |--  itertools
+                             |--  sys
+                     |--  zipfile
+                         |--  binascii
+                         |--  bz2
+                             |--  io
+                             |--  warnings
+                         |--  importlib
+                             |--  _bootstrap
+                                 |--  _imp
+                                 |--  _io
+                                 |--  _os
+                                 |--  _thread
+                                 |--  _warnings
+                                 |--  _weakref
+                                 |--  _winreg
+                                 |--  builtins
+                                 |--  marshal
+                                 |--  sys
+                             |--  _imp
+                             |--  machinery
+                                 |--  _imp
+                             |--  sys
+                             |--  types
+                             |--  util
+                                 |--  functools
+                                 |--  sys
+                                 |--  warnings
+                             |--  warnings
+                         |--  io
+                         |--  lzma
+                             |--  builtins
+                             |--  io
+                         |--  os
+                         |--  re
+                         |--  shutil
+                             |--  collections
+                             |--  errno
+                             |--  fnmatch
+                                 |--  functools
+                                 |--  os
+                                 |--  posixpath
+                                     |--  genericpath
+                                     |--  os
+                                     |--  stat
+                                     |--  sys
+                                 |--  re
+                             |--  nt
+                             |--  os
+                             |--  stat
+                             |--  sys
+                             |--  tarfile
+                                 |--  copy
+                                     |--  builtins
+                                     |--  weakref
+                                 |--  io
+                                 |--  os
+                                 |--  re
+                                 |--  shutil
+                                 |--  stat
+                                 |--  struct
+                                 |--  sys
+                                 |--  time
+                         |--  stat
+                         |--  struct
+                         |--  sys
+                         |--  time
+                         |--  zlib
+                 |--  id_gen
+                 |--  xmlutil
+                     |--  etree
+         |--  mekk.xmind
+             |--  document
+                 |--  etree
+                     |--  __builtins__
+                 |--  logging
+                     |--  atexit
+                     |--  collections
+                         |--  _collections_abc
+                             |--  sys
+                         |--  _heapq
+                         |--  _sys
+                         |--  abc
+                     |--  io
+                         |--  _io
+                         |--  abc
+                     |--  os
+                         |--  errno
+                         |--  path
+                             |--  genericpath
+                                 |--  os
+                                 |--  stat
+                             |--  os
+                             |--  stat
+                             |--  sys
+                         |--  st
+                         |--  sys
+                     |--  sys
+                     |--  threading
+                         |--  _sys
+                     |--  time
+                     |--  traceback
+                         |--  linecache
+                             |--  os
+                             |--  sys
+                             |--  tokenize
+                                 |--  collections
+                                 |--  re
+                                     |--  _locale
+                                     |--  copyreg
+                                     |--  sre_compile
+                                         |--  _sre
+                                         |--  sre_parse
+                                     |--  sre_parse
+                                     |--  sys
+                                 |--  sys
+                         |--  operator
+                         |--  sys
+                     |--  warnings
+                         |--  sys
+                     |--  weakref
+                         |--  collections
+                         |--  itertools
+                         |--  sys
+                 |--  zipfile
+                     |--  binascii
+                     |--  bz2
+                         |--  io
+                         |--  warnings
+                     |--  importlib
+                         |--  _bootstrap
+                             |--  _imp
+                             |--  _io
+                             |--  _os
+                             |--  _thread
+                             |--  _warnings
+                             |--  _weakref
+                             |--  _winreg
+                             |--  builtins
+                             |--  marshal
+                             |--  sys
+                         |--  _imp
+                         |--  machinery
+                             |--  _imp
+                         |--  sys
+                         |--  types
+                         |--  util
+                             |--  functools
+                             |--  sys
+                             |--  warnings
+                         |--  warnings
+                     |--  io
+                     |--  lzma
+                         |--  builtins
+                         |--  io
+                     |--  os
+                     |--  re
+                     |--  shutil
+                         |--  collections
+                         |--  errno
+                         |--  fnmatch
+                             |--  functools
+                             |--  os
+                             |--  posixpath
+                                 |--  genericpath
+                                 |--  os
+                                 |--  stat
+                                 |--  sys
+                             |--  re
+                         |--  nt
+                         |--  os
+                         |--  stat
+                         |--  sys
+                         |--  tarfile
+                             |--  copy
+                                 |--  builtins
+                                 |--  weakref
+                             |--  io
+                             |--  os
+                             |--  re
+                             |--  shutil
+                             |--  stat
+                             |--  struct
+                             |--  sys
+                             |--  time
+                     |--  stat
+                     |--  struct
+                     |--  sys
+                     |--  time
+                     |--  zlib
+             |--  id_gen
+             |--  xmlutil
+                 |--  etree
+
+
+      [@CLASS   <mro>]
+          @@doc : - Classes and Method Resolution Order
+         |--  XMindDocument
+                 |--  <class 'mekk.xmind.document.XMindDocument'>
+                 |--  <class 'mekk.xmind.xmlutil.XmlHelper'>
+                 |--  <class 'object'>
+
+
+      [@ FUNCTION  ]
+          @@doc :  - Function including "lambda" anonymous functions
+
+
+      [@ ROUTINE  ]
+          @@doc :  user-defined or built-in function or method
+
+
+      [@ METHOD ]
+          @@doc ::   - bound method
+
+
+      [@ GENERATOR ]
+          @@doc :   - object is a generator with "yield" expressions
+
+
+      [@ GENERATOR FUNCTION ]
+          @@doc :     - object is a generator function
+
+
+      [@ TRACEBACK ]
+          @@doc :  - Traceback object
+
+
+      [@ FRAME ]
+          @@doc : - Frame Object
+
+
+      [@ CODE ]
+          @@doc : - Code Object
+
+
+      [@ BUILTIN ]
+          @@doc : - built-in function or bound built-in method
+
+
+      [@ ABSTRACT ]
+          @@doc : - object is abstract base class
+
+
+      [@ METHOD DESCRIPTOR ]
+          @@doc :  - Object has __get__ attribute but NOT __set__ attribute
+
+
+      [@ DATA DESCRIPTOR ]
+          @@doc :  - Object has __get__, __set__, __delete__ attributes
+
+
+      [@ GETSET DESCRIPTOR ]
+
+
+      [@ MEMBER DESCRIPTOR ]
+
+
+      [@ VARIABLES ]
+
+
+          [@ GLOBALS ]
+
+
+              [@ bool ]
+
+
+              [@ int ]
+
+
+              [@ float ]
+
+
+              [@ complex ]
+
+
+          [@ IMMUTABLE SEQUENCES ]
+
+
+              [@ str ]
+
+
+              [@ slice ]
+
+
+              [@ tuple ]
+
+
+              [@ frozenset ]
+
+
+          [@ MUTABLE SEQUENCES ]
+
+
+              [@ list ]
+                     |--  mekk.__all__
+                     |--  mekk.xmind.XMIND_MARKS
+                     |--  mekk.xmind.__all__
+
+
+              [@ bytearray ]
+
+
+              [@ set ]
+
+
+          [@ MAPPING ]
+
+
+              [@ dict ]

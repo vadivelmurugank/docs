@@ -1,5 +1,5 @@
 ..  Command: rst2html.py temp.txt temp.html
-.. /project/pcb/evadkan/python/anaconda3/bin/rst2html.py
+.. python/anaconda3/bin/rst2html.py
 
 ===========================================
 Rst Syntax
@@ -160,7 +160,7 @@ CODE BLOCK
 PYTHON CODE and PLOTs
 --------------------------------------------------------------------
 
-.. plot:: /home/evadkan/github/docs/tools/ReST/template/circlemc.py
+.. plot:: docs/tools/ReST/template/circlemc.py
   :align: center
   :height: 300
   :include-source:

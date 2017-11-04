@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Python Modules &mdash;   documentation</title>
+  <title>string &mdash;   documentation</title>
   
 
   
@@ -34,9 +34,9 @@
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
     <link rel="top" title="  documentation" href="../../../index.html"/>
-        <link rel="up" title="Python" href="../index.html"/>
-        <link rel="next" title="os" href="os.html"/>
-        <link rel="prev" title="Builtin Python Modules" href="../builtin_modules.html"/> 
+        <link rel="up" title="Python Modules" href="index.html"/>
+        <link rel="next" title="re - simple regular expression (sre)" href="sre.html"/>
+        <link rel="prev" title="os" href="os.html"/> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
@@ -92,9 +92,9 @@
 <li class="toctree-l3"><a class="reference internal" href="../python_doc.html">Python Doc</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../python_module_structure.html">Python Module Structure</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../builtin_modules.html">Builtin Python Modules</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Python Modules</a><ul>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Python Modules</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="os.html">os</a></li>
-<li class="toctree-l4"><a class="reference internal" href="string.html">string</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">string</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sre.html">re - simple regular expression (sre)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="collections.html">collections</a></li>
 <li class="toctree-l4"><a class="reference internal" href="math.html">math</a></li>
@@ -157,11 +157,13 @@
       
           <li><a href="../index.html">Python</a> &raquo;</li>
       
-    <li>Python Modules</li>
+          <li><a href="index.html">Python Modules</a> &raquo;</li>
+      
+    <li>string</li>
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../../../_sources/tools/python/modules/index.txt" rel="nofollow"> View page source</a>
+            <a href="../../../_sources/tools/python/modules/string.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -171,25 +173,188 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="python-modules">
-<h1>Python Modules<a class="headerlink" href="#python-modules" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="os.html">os</a></li>
-<li class="toctree-l1"><a class="reference internal" href="string.html">string</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sre.html">re - simple regular expression (sre)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collections.html">collections</a></li>
-<li class="toctree-l1"><a class="reference internal" href="math.html">math</a></li>
-<li class="toctree-l1"><a class="reference internal" href="numpy.html">numpy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="scipy.html">scipy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="matplotlib.html">matplotlib</a></li>
-<li class="toctree-l1"><a class="reference internal" href="itertools.html">itertools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="multiprocessing.html">multiprocessing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="yaml.html">yaml</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pexpect.html">pexpect</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pandas.html">pandas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="xmind.html">mekk.xmind</a></li>
-</ul>
+  <div class="section" id="string">
+<h1>string<a class="headerlink" href="#string" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-text"><div class="highlight"><pre><span></span>string
+ |--  string
+ |--  ===&gt; /usr/lib/python3.2/string.py
+         @@doc : &quot; string : A collection of string constants. &quot;
+
+
+  [@SUBPACKAGES]
+
+
+  [@SUBMODULES ]
+     |--  string
+         |--  _re
+             |--  copyreg
+             |--  functools
+             |--  sre_compile
+                 |--  _sre
+                 |--  sre_parse
+                     |--  sys
+                 |--  sys
+             |--  sre_parse
+             |--  sys
+         |--  _string
+
+
+  [@CLASS        ]
+      @@doc : - Classes and Method Resolution Order
+     |--  [Class Formatter]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;string.Formatter&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  function  ]:
+                     |--  _vformat ([&#39;self&#39;, &#39;format_string&#39;, &#39;args&#39;, &#39;kwargs&#39;, &#39;used_args&#39;, &#39;recursion_depth&#39;])
+                     |--  check_unused_args ([&#39;self&#39;, &#39;used_args&#39;, &#39;args&#39;, &#39;kwargs&#39;])
+                     |--  convert_field ([&#39;self&#39;, &#39;value&#39;, &#39;conversion&#39;])
+                     |--  format ([&#39;self&#39;, &#39;format_string&#39;])
+                     |--  format_field ([&#39;self&#39;, &#39;value&#39;, &#39;format_spec&#39;])
+                     |--  get_field ([&#39;self&#39;, &#39;field_name&#39;, &#39;args&#39;, &#39;kwargs&#39;])
+                     |--  get_value ([&#39;self&#39;, &#39;key&#39;, &#39;args&#39;, &#39;kwargs&#39;])
+                     |--  parse ([&#39;self&#39;, &#39;format_string&#39;])
+                     |--  vformat ([&#39;self&#39;, &#39;format_string&#39;, &#39;args&#39;, &#39;kwargs&#39;])
+     |--  [Class Template]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;string.Template&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  SRE_Pattern  ]:
+                     |--  pattern
+             |--  [  str  ]:
+                     |--  delimiter
+                     |--  idpattern
+             |--  [  function  ]:
+                     |--  _invalid ([&#39;self&#39;, &#39;mo&#39;])
+                     |--  safe_substitute ([&#39;self&#39;])
+                     |--  substitute ([&#39;self&#39;])
+             |--  [  int  ]:
+                     |--  flags
+     |--  [Class _TemplateMetaclass]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;string._TemplateMetaclass&#39;&gt;
+                     |--  &lt;class &#39;type&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+             |--  [  method_descriptor  ]:
+                     |--  mro
+             |--  [  str  ]:
+                     |--  pattern
+     |--  [Class _multimap]
+             |--  MRO - Class Member Resolution Order:
+                     |--  &lt;class &#39;string._multimap&#39;&gt;
+                     |--  &lt;class &#39;object&#39;&gt;
+
+
+  [@ FUNCTION  ]
+      @@doc :  - Function including &quot;lambda&quot; anonymous functions
+     |--  capwords ([&#39;s&#39;, &#39;sep&#39;])
+
+
+  [@ METHOD ]
+      @@doc ::   - bound method
+
+
+  [@ GENERATOR ]
+      @@doc :   - object is a generator with &quot;yield&quot; expressions
+
+
+  [@ GENERATOR FUNCTION ]
+      @@doc :     - object is a generator function
+
+
+  [@ TRACEBACK ]
+      @@doc :  - Traceback object
+
+
+  [@ FRAME ]
+      @@doc : - Frame Object
+
+
+  [@ CODE ]
+      @@doc : - Code Object
+
+
+  [@ BUILTIN ]
+      @@doc : - built-in function or bound built-in method
+
+
+  [@ ABSTRACT ]
+      @@doc : - object is abstract base class
+
+
+  [@ METHOD DESCRIPTOR ]
+      @@doc :  - Object has __get__ attribute but NOT __set__ attribute
+
+
+  [@ DATA DESCRIPTOR ]
+      @@doc :  - Object has __get__, __set__, __delete__ attributes
+
+
+  [@ GETSET DESCRIPTOR ]
+
+
+  [@ MEMBER DESCRIPTOR ]
+
+
+  [@ VARIABLES ]
+
+
+      [@ GLOBALS ]
+
+
+          [@ bool ]
+
+
+          [@ int ]
+
+
+          [@ float ]
+
+
+          [@ complex ]
+
+
+      [@ IMMUTABLE SEQUENCES ]
+
+
+          [@ str ]
+                 |--  string.ascii_letters
+                 |--  string.ascii_lowercase
+                 |--  string.ascii_uppercase
+                 |--  string.digits
+                 |--  string.hexdigits
+                 |--  string.octdigits
+                 |--  string.printable
+                 |--  string.punctuation
+                 |--  string.whitespace
+
+
+          [@ slice ]
+
+
+          [@ tuple ]
+
+
+          [@ frozenset ]
+
+
+      [@ MUTABLE SEQUENCES ]
+
+
+          [@ list ]
+
+
+          [@ bytearray ]
+
+
+          [@ set ]
+
+
+      [@ MAPPING ]
+
+
+          [@ dict ]
+</pre></div>
 </div>
 </div>
 
@@ -200,10 +365,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="os.html" class="btn btn-neutral float-right" title="os" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="sre.html" class="btn btn-neutral float-right" title="re - simple regular expression (sre)" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../builtin_modules.html" class="btn btn-neutral" title="Builtin Python Modules" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="os.html" class="btn btn-neutral" title="os" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

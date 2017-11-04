@@ -2,6 +2,9 @@
 python install packages
 ===========================================
 
+
+.. contents::
+
 .. code-block:: shell
  
     PIP=pip3.4
