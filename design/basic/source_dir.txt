@@ -2,6 +2,8 @@
         Source Directories
 ===========================================
 
+.. contents::
+
 .. csv-table:: SOURCE CODE CONTENTS
     :header: "FILES", "CONTENTS"
     :widths: 15, 60

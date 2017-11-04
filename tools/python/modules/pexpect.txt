@@ -1,0 +1,320 @@
+===========================================
+pexpect
+===========================================
+
+.. code-block:: text
+  
+
+    pexpect
+     |--  pexpect
+     |--  ===> /project/pcb/user/python/anaconda3/lib/python3.4/site-packages/pexpect/__init__.py
+             @@doc : " pexpect : Pexpect is a Python module for spawning child applications and controlling "
+
+
+      [@SUBPACKAGES]
+
+
+      [@SUBMODULES ]
+         |--  pexpect
+             |--  exceptions
+                 |--  sys
+                 |--  traceback
+                     |--  linecache
+                         |--  os
+                             |--  errno
+                             |--  path
+                                 |--  genericpath
+                                     |--  os
+                                     |--  stat
+                                 |--  os
+                                 |--  stat
+                                 |--  sys
+                             |--  st
+                             |--  sys
+                         |--  sys
+                         |--  tokenize
+                             |--  collections
+                                 |--  _collections_abc
+                                     |--  sys
+                                 |--  _heapq
+                                 |--  _sys
+                             |--  re
+                                 |--  _locale
+                                 |--  copyreg
+                                 |--  sre_compile
+                                     |--  _sre
+                                     |--  sre_parse
+                                 |--  sre_parse
+                                 |--  sys
+                             |--  sys
+                     |--  operator
+                     |--  sys
+             |--  expect
+                 |--  time
+             |--  pty_spawn
+                 |--  errno
+                 |--  os
+                 |--  pty
+                     |--  os
+                     |--  tty
+                 |--  ptyprocess
+                     |--  ptyprocess
+                     |--  util
+                 |--  signal
+                 |--  sys
+                 |--  time
+                 |--  tty
+             |--  spawnbase
+                 |--  codecs
+                     |--  builtins
+                     |--  sys
+                 |--  errno
+                 |--  os
+                 |--  re
+                 |--  sys
+             |--  sys
+             |--  utils
+                 |--  errno
+                 |--  os
+                 |--  select
+                 |--  stat
+                 |--  sys
+                 |--  time
+
+
+      [@CLASS        ]
+          @@doc : - Classes and Method Resolution Order
+         |--  [Class EOF]
+                 |--  MRO - Class Member Resolution Order:
+                         |--  <class 'pexpect.exceptions.EOF'>
+                         |--  <class 'pexpect.exceptions.ExceptionPexpect'>
+                         |--  <class 'Exception'>
+                         |--  <class 'BaseException'>
+                         |--  <class 'object'>
+                 |--  [  function  ]:
+                         |--  get_trace (['self'])
+                 |--  [  getset_descriptor  ]:
+                         |--  args
+                 |--  [  method_descriptor  ]:
+                         |--  with_traceback
+         |--  [Class ExceptionPexpect]
+                 |--  MRO - Class Member Resolution Order:
+                         |--  <class 'pexpect.exceptions.ExceptionPexpect'>
+                         |--  <class 'Exception'>
+                         |--  <class 'BaseException'>
+                         |--  <class 'object'>
+                 |--  [  function  ]:
+                         |--  get_trace (['self'])
+                 |--  [  getset_descriptor  ]:
+                         |--  args
+                 |--  [  method_descriptor  ]:
+                         |--  with_traceback
+         |--  [Class Expecter]
+                 |--  MRO - Class Member Resolution Order:
+                         |--  <class 'pexpect.expect.Expecter'>
+                         |--  <class 'object'>
+                 |--  [  function  ]:
+                         |--  eof (['self', 'err'])
+                         |--  errored (['self'])
+                         |--  expect_loop (['self', 'timeout'])
+                         |--  new_data (['self', 'data'])
+                         |--  timeout (['self', 'err'])
+         |--  [Class TIMEOUT]
+                 |--  MRO - Class Member Resolution Order:
+                         |--  <class 'pexpect.exceptions.TIMEOUT'>
+                         |--  <class 'pexpect.exceptions.ExceptionPexpect'>
+                         |--  <class 'Exception'>
+                         |--  <class 'BaseException'>
+                         |--  <class 'object'>
+                 |--  [  function  ]:
+                         |--  get_trace (['self'])
+                 |--  [  getset_descriptor  ]:
+                         |--  args
+                 |--  [  method_descriptor  ]:
+                         |--  with_traceback
+         |--  [Class searcher_re]
+                 |--  MRO - Class Member Resolution Order:
+                         |--  <class 'pexpect.expect.searcher_re'>
+                         |--  <class 'object'>
+                 |--  [  function  ]:
+                         |--  search (['self', 'buffer', 'freshlen', 'searchwindowsize'])
+         |--  [Class searcher_string]
+                 |--  MRO - Class Member Resolution Order:
+                         |--  <class 'pexpect.expect.searcher_string'>
+                         |--  <class 'object'>
+                 |--  [  function  ]:
+                         |--  search (['self', 'buffer', 'freshlen', 'searchwindowsize'])
+         |--  [Class spawn]
+                 |--  MRO - Class Member Resolution Order:
+                         |--  <class 'pexpect.pty_spawn.spawn'>
+                         |--  <class 'pexpect.spawnbase.SpawnBase'>
+                         |--  <class 'object'>
+                 |--  [  NoneType  ]:
+                         |--  encoding
+                         |--  pid
+                 |--  [  function  ]:
+                         |--  _coerce_expect_string (['self', 's'])
+                         |--  _coerce_send_string (['self', 's'])
+                         |--  _log (['self', 's', 'direction'])
+                         |--  _log_control (['self', 's'])
+                         |--  _pattern_type_err (['self', 'pattern'])
+                         |--  _spawn (['self', 'command', 'args', 'preexec_fn', 'dimensions'])
+                         |--  _spawn__interact_copy (['self', 'escape_character', 'input_filter', 'output_filter'])
+                         |--  _spawn__interact_read (['self', 'fd'])
+                         |--  _spawn__interact_writen (['self', 'fd', 'data'])
+                         |--  _spawnpty (['self', 'args'])
+                         |--  close (['self', 'force'])
+                         |--  compile_pattern_list (['self', 'patterns'])
+                         |--  eof (['self'])
+                         |--  expect (['self', 'pattern', 'timeout', 'searchwindowsize', 'async'])
+                         |--  expect_exact (['self', 'pattern_list', 'timeout', 'searchwindowsize', 'async'])
+                         |--  expect_list (['self', 'pattern_list', 'timeout', 'searchwindowsize', 'async'])
+                         |--  expect_loop (['self', 'searcher', 'timeout', 'searchwindowsize'])
+                         |--  fileno (['self'])
+                         |--  flush (['self'])
+                         |--  getecho (['self'])
+                         |--  getwinsize (['self'])
+                         |--  interact (['self', 'escape_character', 'input_filter', 'output_filter'])
+                         |--  isalive (['self'])
+                         |--  isatty (['self'])
+                         |--  kill (['self', 'sig'])
+                         |--  read (['self', 'size'])
+                         |--  read_nonblocking (['self', 'size', 'timeout'])
+                         |--  readline (['self', 'size'])
+                         |--  readlines (['self', 'sizehint'])
+                         |--  send (['self', 's'])
+                         |--  sendcontrol (['self', 'char'])
+                         |--  sendeof (['self'])
+                         |--  sendintr (['self'])
+                         |--  sendline (['self', 's'])
+                         |--  setecho (['self', 'state'])
+                         |--  setwinsize (['self', 'rows', 'cols'])
+                         |--  terminate (['self', 'force'])
+                         |--  wait (['self'])
+                         |--  waitnoecho (['self', 'timeout'])
+                         |--  write (['self', 's'])
+                         |--  writelines (['self', 'sequence'])
+                 |--  [  property  ]:
+                         |--  flag_eof
+                 |--  [  bool  ]:
+                         |--  use_native_pty_fork
+
+
+      [@ FUNCTION  ]
+          @@doc :  - Function including "lambda" anonymous functions
+         |--  is_executable_file (['path'])
+         |--  run (['command', 'timeout', 'withexitstatus', 'events', 'extra_args', 'logfile', 'cwd', 'env'])
+         |--  runu (['command', 'timeout', 'withexitstatus', 'events', 'extra_args', 'logfile', 'cwd', 'env'])
+         |--  spawnu ([])
+         |--  split_command_line (['command_line'])
+         |--  which (['filename', 'env'])
+
+
+      [@ ROUTINE  ]
+          @@doc :  user-defined or built-in function or method
+         |--  is_executable_file (['path'])
+         |--  run (['command', 'timeout', 'withexitstatus', 'events', 'extra_args', 'logfile', 'cwd', 'env'])
+         |--  runu (['command', 'timeout', 'withexitstatus', 'events', 'extra_args', 'logfile', 'cwd', 'env'])
+         |--  spawnu ([])
+         |--  split_command_line (['command_line'])
+         |--  which (['filename', 'env'])
+
+
+      [@ METHOD ]
+          @@doc ::   - bound method
+
+
+      [@ GENERATOR ]
+          @@doc :   - object is a generator with "yield" expressions
+
+
+      [@ GENERATOR FUNCTION ]
+          @@doc :     - object is a generator function
+
+
+      [@ TRACEBACK ]
+          @@doc :  - Traceback object
+
+
+      [@ FRAME ]
+          @@doc : - Frame Object
+
+
+      [@ CODE ]
+          @@doc : - Code Object
+
+
+      [@ BUILTIN ]
+          @@doc : - built-in function or bound built-in method
+
+
+      [@ ABSTRACT ]
+          @@doc : - object is abstract base class
+
+
+      [@ METHOD DESCRIPTOR ]
+          @@doc :  - Object has __get__ attribute but NOT __set__ attribute
+
+
+      [@ DATA DESCRIPTOR ]
+          @@doc :  - Object has __get__, __set__, __delete__ attributes
+
+
+      [@ GETSET DESCRIPTOR ]
+
+
+      [@ MEMBER DESCRIPTOR ]
+
+
+      [@ VARIABLES ]
+
+
+          [@ GLOBALS ]
+
+
+              [@ bool ]
+                     |--  pexpect.PY3
+
+
+              [@ int ]
+
+
+              [@ float ]
+
+
+              [@ complex ]
+
+
+          [@ IMMUTABLE SEQUENCES ]
+
+
+              [@ str ]
+                     |--  pexpect.__revision__
+
+
+              [@ slice ]
+
+
+              [@ tuple ]
+
+
+              [@ frozenset ]
+
+
+          [@ MUTABLE SEQUENCES ]
+
+
+              [@ list ]
+                     |--  pexpect.__all__
+
+
+              [@ bytearray ]
+
+
+              [@ set ]
+
+
+          [@ MAPPING ]
+
+
+              [@ dict ]

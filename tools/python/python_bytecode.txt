@@ -1,6 +1,8 @@
 ===========================================
-Python Disassembly
+Python Bytecode
 ===========================================
+
+.. contents::
 
 Python Help 
 ----------------------------------------------------------------
@@ -48,8 +50,7 @@ Python Help
 
         .. code-block:: python
         
-            python -m trace < --trace, --tracecalls, --listfuns, --count>
-<file.py>  
+            python -m trace < --trace, --tracecalls, --listfuns, --count> <file.py>  
 
 
 inspect

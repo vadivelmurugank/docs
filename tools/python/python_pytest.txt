@@ -2,8 +2,7 @@
 Python PyTest
 ===========================================
 
-.. sectnum
-.. contents
+.. contents::
 
 Module Structure
 ~~~~~~~~~~~~~~~~

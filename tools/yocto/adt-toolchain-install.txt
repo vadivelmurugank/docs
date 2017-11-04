@@ -3,6 +3,8 @@
 Cross Compiler
 ================================================
 
+.. contents::
+
 .. code-block:: shell
 
     Yocto Releases:

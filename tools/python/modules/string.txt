@@ -1,0 +1,186 @@
+
+===========================================
+string
+===========================================
+
+.. code-block:: text
+
+    string
+     |--  string
+     |--  ===> /usr/lib/python3.2/string.py
+             @@doc : " string : A collection of string constants. "
+
+
+      [@SUBPACKAGES]
+
+
+      [@SUBMODULES ]
+         |--  string
+             |--  _re
+                 |--  copyreg
+                 |--  functools
+                 |--  sre_compile
+                     |--  _sre
+                     |--  sre_parse
+                         |--  sys
+                     |--  sys
+                 |--  sre_parse
+                 |--  sys
+             |--  _string
+
+
+      [@CLASS        ]
+          @@doc : - Classes and Method Resolution Order
+         |--  [Class Formatter]
+                 |--  MRO - Class Member Resolution Order:
+                         |--  <class 'string.Formatter'>
+                         |--  <class 'object'>
+                 |--  [  function  ]:
+                         |--  _vformat (['self', 'format_string', 'args', 'kwargs', 'used_args', 'recursion_depth'])
+                         |--  check_unused_args (['self', 'used_args', 'args', 'kwargs'])
+                         |--  convert_field (['self', 'value', 'conversion'])
+                         |--  format (['self', 'format_string'])
+                         |--  format_field (['self', 'value', 'format_spec'])
+                         |--  get_field (['self', 'field_name', 'args', 'kwargs'])
+                         |--  get_value (['self', 'key', 'args', 'kwargs'])
+                         |--  parse (['self', 'format_string'])
+                         |--  vformat (['self', 'format_string', 'args', 'kwargs'])
+         |--  [Class Template]
+                 |--  MRO - Class Member Resolution Order:
+                         |--  <class 'string.Template'>
+                         |--  <class 'object'>
+                 |--  [  SRE_Pattern  ]:
+                         |--  pattern
+                 |--  [  str  ]:
+                         |--  delimiter
+                         |--  idpattern
+                 |--  [  function  ]:
+                         |--  _invalid (['self', 'mo'])
+                         |--  safe_substitute (['self'])
+                         |--  substitute (['self'])
+                 |--  [  int  ]:
+                         |--  flags
+         |--  [Class _TemplateMetaclass]
+                 |--  MRO - Class Member Resolution Order:
+                         |--  <class 'string._TemplateMetaclass'>
+                         |--  <class 'type'>
+                         |--  <class 'object'>
+                 |--  [  method_descriptor  ]:
+                         |--  mro
+                 |--  [  str  ]:
+                         |--  pattern
+         |--  [Class _multimap]
+                 |--  MRO - Class Member Resolution Order:
+                         |--  <class 'string._multimap'>
+                         |--  <class 'object'>
+
+
+      [@ FUNCTION  ]
+          @@doc :  - Function including "lambda" anonymous functions
+         |--  capwords (['s', 'sep'])
+
+
+      [@ METHOD ]
+          @@doc ::   - bound method
+
+
+      [@ GENERATOR ]
+          @@doc :   - object is a generator with "yield" expressions
+
+
+      [@ GENERATOR FUNCTION ]
+          @@doc :     - object is a generator function
+
+
+      [@ TRACEBACK ]
+          @@doc :  - Traceback object
+
+
+      [@ FRAME ]
+          @@doc : - Frame Object
+
+
+      [@ CODE ]
+          @@doc : - Code Object
+
+
+      [@ BUILTIN ]
+          @@doc : - built-in function or bound built-in method
+
+
+      [@ ABSTRACT ]
+          @@doc : - object is abstract base class
+
+
+      [@ METHOD DESCRIPTOR ]
+          @@doc :  - Object has __get__ attribute but NOT __set__ attribute
+
+
+      [@ DATA DESCRIPTOR ]
+          @@doc :  - Object has __get__, __set__, __delete__ attributes
+
+
+      [@ GETSET DESCRIPTOR ]
+
+
+      [@ MEMBER DESCRIPTOR ]
+
+
+      [@ VARIABLES ]
+
+
+          [@ GLOBALS ]
+
+
+              [@ bool ]
+
+
+              [@ int ]
+
+
+              [@ float ]
+
+
+              [@ complex ]
+
+
+          [@ IMMUTABLE SEQUENCES ]
+
+
+              [@ str ]
+                     |--  string.ascii_letters
+                     |--  string.ascii_lowercase
+                     |--  string.ascii_uppercase
+                     |--  string.digits
+                     |--  string.hexdigits
+                     |--  string.octdigits
+                     |--  string.printable
+                     |--  string.punctuation
+                     |--  string.whitespace
+
+
+              [@ slice ]
+
+
+              [@ tuple ]
+
+
+              [@ frozenset ]
+
+
+          [@ MUTABLE SEQUENCES ]
+
+
+              [@ list ]
+
+
+              [@ bytearray ]
+
+
+              [@ set ]
+
+
+          [@ MAPPING ]
+
+
+              [@ dict ]

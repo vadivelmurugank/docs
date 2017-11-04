@@ -1,5 +1,5 @@
 ..  Command: rst2html.py temp.txt temp.html
-.. /project/pcb/evadkan/python/anaconda3/bin/rst2html.py
+.. /project/pcb/user/python/anaconda3/bin/rst2html.py
 
 
 *****************************************
