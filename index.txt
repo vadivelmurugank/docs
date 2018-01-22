@@ -1,8 +1,13 @@
 .. docs
 ..  :numbered:
 
+:tocdepth: 6
+
+Plain Docs
+==============
+
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 6
     :titlesonly:
     :glob:
     :includehidden:
