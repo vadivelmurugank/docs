@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>&lt;no title&gt; &mdash;   documentation</title>
+  <title>Plain Docs &mdash;   documentation</title>
   
 
   
@@ -114,7 +114,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="#">Docs</a> &raquo;</li>
       
-    <li>&lt;no title&gt;</li>
+    <li>Plain Docs</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -128,7 +128,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="toctree-wrapper compound" id="masetertoc">
+  <div class="section" id="plain-docs">
+<h1>Plain Docs<a class="headerlink" href="#plain-docs" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound" id="masetertoc">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="design/index.html">Design</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="design/basic/project_design.html">Project Design</a></li>
@@ -137,18 +139,58 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tools/index.html">Tools</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tools/compiler/index.html">compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/compiler/index.html">compiler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools/compiler/gcc_compiler.html">gcc and glibc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/compiler/yocto_cross_compiler.html">Yocto poky cross compiler</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="tools/yocto/adt-toolchain-install.html">Cross Compiler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tools/yocto/yocto.html">Yocto Install</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tools/make/make.html">Make</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tools/python/index.html">Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tools/GIT/index.html">Git Internals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tools/ReST/template/index.html">Restructured Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/python/index.html">Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools/python/python_doc.html">Python Doc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/python/python_module_structure.html">Python Module Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/python/builtin_modules.html">Builtin Python Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/python/modules/index.html">Python Modules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tools/python/modules/os.html">os</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tools/python/modules/string.html">string</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tools/python/modules/sre.html">re - simple regular expression (sre)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tools/python/modules/collections.html">collections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tools/python/modules/math.html">math</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tools/python/modules/numpy.html">numpy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tools/python/modules/scipy.html">scipy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tools/python/modules/matplotlib.html">matplotlib</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tools/python/modules/itertools.html">itertools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tools/python/modules/multiprocessing.html">multiprocessing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tools/python/modules/yaml.html">yaml</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tools/python/modules/pexpect.html">pexpect</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tools/python/modules/pandas.html">pandas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tools/python/modules/xmind.html">mekk.xmind</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tools/python/python_bytecode.html">Python Bytecode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/python/python_oneliner.html">Python Code Snippets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/python/python_pytest.html">Python PyTest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/python/python_start.html">Python Start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/python/python-install.html">python install packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/python/python-internals.html">Python Internals</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tools/GIT/index.html">Git Internals</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools/GIT/GIT_INTERNALS.html">Git Internals</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tools/ReST/template/index.html">Restructured Text</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools/ReST/template/template.html">Rst Syntax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/ReST/template/slides.html">Rst Slides</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="tools/verilog/verilog.html">Verilog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tools/ssh/ssh.html">SSH</a></li>
 </ul>
 </li>
 </ul>
+</div>
 </div>
 
 
@@ -209,12 +251,6 @@
   
 
   
-  
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
-      });
-  </script>
    
 
 </body>
