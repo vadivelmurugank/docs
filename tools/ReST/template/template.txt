@@ -26,6 +26,20 @@ Rst Syntax
 BLOCK TABLE
 --------------------------------------------------------------------
 
+	.. code-block:: raw
+
+			+------------+------------+-----------+
+			| Header 1   | Header 2   | Header 3  |
+			+============+============+===========+
+			| body row 1 | column 2   | column 3  |
+			+------------+------------+-----------+
+			| body row 2 | Cells may span columns.|
+			+------------+------------+-----------+
+			| body row 3 | Cells may  | - Cells   |
+			+------------+ span rows. | - contain |
+			| body row 4 |            | - blocks. |
+			+------------+------------+-----------+
+
     +------------+------------+-----------+
     | Header 1   | Header 2   | Header 3  |
     +============+============+===========+
@@ -37,6 +51,22 @@ BLOCK TABLE
     +------------+ span rows. | - contain |
     | body row 4 |            | - blocks. |
     +------------+------------+-----------+
+
+
+	.. code-block:: raw
+
+			=====  =====
+			col 1  col 2
+			=====  =====
+			1      Second column of row 1.
+			2      Second column of row 2.
+				   Second line of paragraph.
+			3      - Second column of row 3.
+
+				   - Second item in bullet
+					 list (row 3, column 2).
+			\      Row 4; column 1 will be empty.
+			=====  =====
 
     =====  =====
     col 1  col 2
@@ -50,6 +80,8 @@ BLOCK TABLE
              list (row 3, column 2).
     \      Row 4; column 1 will be empty.
     =====  =====
+
+
 
 
 
@@ -157,14 +189,26 @@ CODE BLOCK
 		printf("C function code \n");
 	}
 
-PYTHON CODE and PLOTs
+MATLAB PLOTS
 --------------------------------------------------------------------
 
-.. plot:: docs/tools/ReST/template/circlemc.py
+.. plot:: circlemc.py
   :align: center
   :height: 300
   :include-source:
 
+GRAPHVIZ
+--------------------------------------------------------------------
+
+.. graphviz::
+
+   digraph foo {
+      "bar" -> "baz";
+   }
+
+.. digraph:: foo
+	
+	"bar" -> "baz" -> "quux";
 
 IMAGE BLOCKS
 --------------------------------------------------------------------
