@@ -70,11 +70,20 @@
 # Links
 ====================================
 
+.. _reflink: https://github.com/rtfd/sphinx_rtd_theme/tree/master/docs
+
+See examples with reflink_
+
+
     '_' underscore at the end of the link
 
         `Internal and External links`_
 
         `Python <http://www.python.org/>`_
+ 
+     .. _alink: <http://www.python.org
+     
+     Python link is here : alink_
 
 ====================================
 # Lists and Bullets
@@ -164,8 +173,19 @@ Code Block:
 
     .. code-block:: html
     :linenos:
+    :emphasize-lines: 7, 11, 12
 
    <h1>code block example</h1>
+   
+   .. code-block:: python
+   :linenos:
+   :emphasize-lines: 3,5
+
+   def some_function():
+       interesting = False
+       print 'This line is highlighted.'
+       print 'This one is not...'
+       print '...but this one is.'
 
 Literals Block:
 
@@ -199,6 +219,32 @@ Image Directive
    Subsequent indented lines comprise
    the body of the sidebar, and are
    interpreted as body elements.
+
+.. Attention:: Directives at large.
+
+.. Caution:: Don't take any wooden nickels.
+
+.. DANGER:: Mad scientist at work!
+
+.. Error:: Does not compute.
+
+.. Hint:: It's bigger than a bread box.
+
+.. Important::
+   - Wash behind your ears.
+   - Clean up your room.
+
+     - Including the closet.
+     - The bathroom too.
+
+       - Take the trash out of the bathroom.
+       - Clean the sink.
+   - Call your mother.
+   - Back up your data.
+
+.. Note:: This is a note.
+   Equations within a note:
+   :math:`G_{\mu\nu} = 8 \pi G (T_{\mu\nu}  + \rho_\Lambda g_{\mu\nu})`.
 
 
 
