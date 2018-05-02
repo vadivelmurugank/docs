@@ -62,6 +62,10 @@ GIT gh-pages branch
 
     git commit -m "added gh-pages as submodule"
     git push origin master
+    
+    # publish/.nojekyll file
+    Jekyll processing on GitHub Pages by creating a file named .nojekyll in gh-pages repo
+     It is required to process files that start with underscores since Jekyll considers these to be special resources.
 
 
     # Push changes into gh-pages
